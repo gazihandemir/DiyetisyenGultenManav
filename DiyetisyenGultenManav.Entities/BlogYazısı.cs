@@ -22,5 +22,9 @@ namespace DiyetisyenGultenManav.Entities
         public virtual Kullanıcı Owner { get; set; }
         public virtual List<Yorum> Yorumlar{ get; set; }
         public virtual Kategori Kategori{ get; set; }
+        public BlogYazısı()
+        {
+            Yorumlar = new List<Yorum>();
+        }
     }
 }
