@@ -50,7 +50,30 @@ namespace DiyetisyenGultenManav.DataAccessLayer
             context.Kullanıcılar.Add(gulten);
             context.SaveChanges();
 
-            // FakeDate ile kategori ekleme
+
+            // diet eklemek
+            Diet gazininDieti = new Diet()
+            {
+                Title = "diyet1",
+                Description="3 günlük diyet",
+                Text = "sabah 1 ekmek öglen 2 ekmek akşam 3 ekmek",
+                CreatedOn = DateTime.Now,
+                ModifiedOn=DateTime.Now.AddMinutes(10),
+                ModifiedUsername="gazihandemir"
+            };
+            Diet gulteninDieti = new Diet()
+            {
+                Title = "diyet2",
+                Description = "3 günlük diyet",
+                Text = "sabah 1 ekmek öglen 2 ekmek akşam 3 ekmek",
+                CreatedOn = DateTime.Now,
+                ModifiedOn = DateTime.Now.AddMinutes(10),
+                ModifiedUsername = "gazihandemir"
+            };
+            gazi.Dietler.Add(gazininDieti);
+            gulten.Dietler.Add(gulteninDieti);
+
+            // FakeData ile kategori ekleme
             for (int i = 0; i < 10; i++)
             {
                 Kategori kat = new Kategori()
@@ -61,6 +84,7 @@ namespace DiyetisyenGultenManav.DataAccessLayer
                     ModifiedOn = DateTime.Now,
                     ModifiedUsername = "gazihandemir"
                 };
+                // FakeData ile blogyazısı eklemek
                 for (int k = 0; k < FakeData.NumberData.GetNumber(5, 9); k++)
                 {
                     BlogYazısı blogYazısı = new BlogYazısı()
@@ -75,6 +99,7 @@ namespace DiyetisyenGultenManav.DataAccessLayer
                         ModifiedUsername = (k % 2 == 0) ? gazi.Username : gulten.Username,
 
                     };
+                    // kategorinin blog yazızına kendi oluşturdugumuz blogyazısını eklemek...
                     kat.BlogYazıları.Add(blogYazısı);
                 }
 
