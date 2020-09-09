@@ -16,9 +16,14 @@ namespace DiyetisyenGultenManav.Entities
         public bool IsActive { get; set; }
         public Guid ActivateGuid { get; set; }
         public bool isAdmin { get; set; }
+        public bool isOnline { get; set; }
+        public bool isNormal { get; set; }
+        public bool isPayOnline { get; set; }
+
 
         public virtual List<BlogYazısı> BlogYazıları { get; set; }
         public virtual List<Yorum> Yorumlar { get; set; }
+        public Diet Diet { get; set; }
 
     }
 }
