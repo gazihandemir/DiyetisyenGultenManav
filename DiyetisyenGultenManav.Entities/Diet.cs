@@ -17,7 +17,7 @@ namespace DiyetisyenGultenManav.Entities
         public string Description { get; set; }
         [Required, StringLength(1000)]
         public string Text { get; set; }
-        public Kullanıcı Owner { get; set; }
+        public virtual Kullanıcı Owner { get; set; }
 
     }
 }

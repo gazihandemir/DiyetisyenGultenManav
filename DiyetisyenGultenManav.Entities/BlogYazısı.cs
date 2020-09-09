@@ -19,7 +19,7 @@ namespace DiyetisyenGultenManav.Entities
         public string LikeCount { get; set; }
         public string Picture { get; set; }
         public int KategoriId{ get; set; }
-        public virtual Kullanıcı owner { get; set; }
+        public virtual Kullanıcı Owner { get; set; }
         public virtual List<Yorum> Yorumlar{ get; set; }
         public virtual Kategori Kategori{ get; set; }
     }

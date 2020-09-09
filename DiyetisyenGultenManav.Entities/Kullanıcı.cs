@@ -32,7 +32,7 @@ namespace DiyetisyenGultenManav.Entities
 
         public virtual List<BlogYazısı> BlogYazıları { get; set; }
         public virtual List<Yorum> Yorumlar { get; set; }
-        public Diet Diet { get; set; }
+        public virtual List<Diet> Dietler { get; set; }
 
     }
 }

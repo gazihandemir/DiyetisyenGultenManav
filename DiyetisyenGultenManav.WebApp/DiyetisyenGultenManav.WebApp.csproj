@@ -289,6 +289,16 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DiyetisyenGultenManav.BusinessLayer\DiyetisyenGultenManav.BusinessLayer.csproj">
+      <Project>{78904541-1150-4e48-8fde-491dd1aa7c73}</Project>
+      <Name>DiyetisyenGultenManav.BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DiyetisyenGultenManav.Entities\DiyetisyenGultenManav.Entities.csproj">
+      <Project>{91b72113-86d7-4c66-800e-f92e3ba84e7a}</Project>
+      <Name>DiyetisyenGultenManav.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

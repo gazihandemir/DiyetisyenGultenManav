@@ -11,6 +11,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            BusinessLayer.test test = new BusinessLayer.test();
             return View();
         }
     }
