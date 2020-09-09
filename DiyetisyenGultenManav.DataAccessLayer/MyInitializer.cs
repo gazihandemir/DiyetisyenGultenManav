@@ -49,6 +49,7 @@ namespace DiyetisyenGultenManav.DataAccessLayer
             context.Kullanıcılar.Add(gazi);
             context.Kullanıcılar.Add(gulten);
             context.SaveChanges();
+
             // FakeDate ile kategori ekleme
             for (int i = 0; i < 10; i++)
             {
@@ -56,11 +57,29 @@ namespace DiyetisyenGultenManav.DataAccessLayer
                 {
                     Title = FakeData.PlaceData.GetStreetName(),
                     Description = FakeData.PlaceData.GetAddress(),
-                   CreatedOn = DateTime.Now,
-                   ModifiedOn = DateTime.Now,
-                   ModifiedUsername = "gazihandemir"
+                    CreatedOn = DateTime.Now,
+                    ModifiedOn = DateTime.Now,
+                    ModifiedUsername = "gazihandemir"
                 };
+                for (int k = 0; k < FakeData.NumberData.GetNumber(5, 9); k++)
+                {
+                    BlogYazısı blogYazısı = new BlogYazısı()
+                    {
+                        Title = FakeData.TextData.GetAlphabetical(FakeData.NumberData.GetNumber(5, 25)),
+                        Text = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1,3)),
+                        Kategori = kat,
+                        IsDraft = false,
+                        Owner = (k % 2 == 0) ? gazi : gulten,
+                        CreatedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1),DateTime.Now.AddYears(+1)),
+                        ModifiedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1),DateTime.Now.AddYears(+1)),
+                        ModifiedUsername = (k % 2 == 0) ? gazi.Username : gulten.Username,
+
+                    };
+                    kat.BlogYazıları.Add(blogYazısı);
+                }
+
             }
+
 
         }
     }
