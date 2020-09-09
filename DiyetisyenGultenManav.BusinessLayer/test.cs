@@ -11,7 +11,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
         public test()
         {
             DataAccessLayer.DatabaseContext db = new DataAccessLayer.DatabaseContext();
-            db.Database.CreateIfNotExists();
+            db.Kategoriler.ToList();
         }
     }
 }

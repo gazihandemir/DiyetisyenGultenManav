@@ -15,6 +15,10 @@ namespace DiyetisyenGultenManav.DataAccessLayer
         public DbSet<Yorum> Yorumlar { get; set; }
         public DbSet<Kategori> Kategoriler { get; set; }
         public DbSet<Diet> Dietler { get; set; }
+        public DatabaseContext()
+        {
+            Database.SetInitializer(new MyInitializer());
+        }
 
     }
 }

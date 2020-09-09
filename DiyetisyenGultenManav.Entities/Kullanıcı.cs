@@ -33,6 +33,10 @@ namespace DiyetisyenGultenManav.Entities
         public virtual List<BlogYazısı> BlogYazıları { get; set; }
         public virtual List<Yorum> Yorumlar { get; set; }
         public virtual List<Diet> Dietler { get; set; }
+        public Kullanıcı()
+        {
+            Dietler = new List<Diet>();
+        }
 
     }
 }
