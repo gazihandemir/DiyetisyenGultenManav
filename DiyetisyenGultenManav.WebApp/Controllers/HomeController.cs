@@ -12,6 +12,10 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         public ActionResult Index()
         {
             BusinessLayer.test test = new BusinessLayer.test();
+            // test.InsertTest();
+            //  test.UpdateTest();
+            // test.DeleteTest();
+            test.YorumTest();
             return View();
         }
     }
