@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DiyetisyenGultenManav.DataAccessLayer
+namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
 {
     public class MyInitializer : CreateDatabaseIfNotExists<DatabaseContext>
     {

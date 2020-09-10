@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DiyetisyenGultenManav.BusinessLayer
+namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
 {
     public class RepositoryBase
     {

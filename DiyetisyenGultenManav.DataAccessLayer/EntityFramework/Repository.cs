@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DiyetisyenGultenManav.DataAccessLayer.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -6,9 +7,9 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DiyetisyenGultenManav.BusinessLayer
+namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
 {
-    public class Repository<T> : RepositoryBase where T : class
+    public class Repository<T> : RepositoryBase,IRepository<T> where T : class
     {
         // private DataAccessLayer.DatabaseContext db = new DataAccessLayer.DatabaseContext();
       //  private DataAccessLayer.DatabaseContext db;
@@ -40,7 +41,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
             _objectSet.Remove(obj);
             return Save();
         }
-        private int Save()
+        public int Save()
         {
             return context.SaveChanges();
         }
