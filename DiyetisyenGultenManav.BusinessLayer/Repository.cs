@@ -8,13 +8,15 @@ using System.Threading.Tasks;
 
 namespace DiyetisyenGultenManav.BusinessLayer
 {
-    public class Repository<T> where T : class
+    public class Repository<T> : RepositoryBase where T : class
     {
-        private DataAccessLayer.DatabaseContext db = new DataAccessLayer.DatabaseContext();
+        // private DataAccessLayer.DatabaseContext db = new DataAccessLayer.DatabaseContext();
+      //  private DataAccessLayer.DatabaseContext db;
         private DbSet<T> _objectSet;
         public Repository()
         {
-            _objectSet = db.Set<T>();
+        //    db = RepositoryBase.CreateContext();
+            _objectSet = context.Set<T>();
         }
         public List<T> List()
         {
@@ -22,7 +24,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
         }
         public List<T> List(Expression<Func<T, bool>> where)
         {
-            return _objectSet.Where(where).ToList(); 
+            return _objectSet.Where(where).ToList();
         }
         public int Insert(T obj)
         {
@@ -40,7 +42,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
         }
         private int Save()
         {
-            return db.SaveChanges();
+            return context.SaveChanges();
         }
         public T Find(Expression<Func<T, bool>> where)
         {
