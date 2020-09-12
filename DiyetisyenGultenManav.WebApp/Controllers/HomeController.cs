@@ -11,11 +11,11 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            BusinessLayer.test test = new BusinessLayer.test();
+           /* BusinessLayer.test test = new BusinessLayer.test();
             // test.InsertTest();
             //  test.UpdateTest();
             // test.DeleteTest();
-            test.YorumTest();
+            test.YorumTest(); */
             return View();
         }
     }

@@ -1,0 +1,17 @@
+﻿@using DiyetisyenGultenManav.BusinessLayer
+@using DiyetisyenGultenManav.Entities
+@{
+
+    KategoriManager CM = new KategoriManager();
+    List<Kategori> KategoriList = CM.GetKategoriler();
+
+}
+<p class="lead">Kategoriler</p>
+<div class="list-group">
+    <a href="@Url.Action("Index","Home")" class="list-group-item">Tümü </a>
+    @foreach (Kategori kate in KategoriList)
+    {
+        <a href="" title="@kate.Description" class="list-group-item">@kate.Title</a>
+    }
+
+</div>

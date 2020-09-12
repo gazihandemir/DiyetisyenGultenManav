@@ -2,7 +2,7 @@
 using DiyetisyenGultenManav.Entities;
 using System;
 using System.Collections.Generic;
-
+/* 
 namespace DiyetisyenGultenManav.BusinessLayer
 {
     public class test
@@ -15,10 +15,10 @@ namespace DiyetisyenGultenManav.BusinessLayer
 
         public test()
         {
-            /* DataAccessLayer.DatabaseContext db = new DataAccessLayer.DatabaseContext();
-             db.Kategoriler.ToList(); */
-            // repo.List(x => x.Id > 5 );
-            List<Kategori> kategoriler =  repo_kategori.List();
+         //   DataAccessLayer.DatabaseContext db = new DataAccessLayer.DatabaseContext();
+           //  db.Kategoriler.ToList(); 
+// repo.List(x => x.Id > 5 );
+List<Kategori> kategoriler =  repo_kategori.List();
             List<Kategori> kategorilerFiltre =  repo_kategori.List(x => x.Id > 5);
         }
         public void InsertTest()
@@ -77,3 +77,4 @@ namespace DiyetisyenGultenManav.BusinessLayer
         } 
     }
 }
+*/
