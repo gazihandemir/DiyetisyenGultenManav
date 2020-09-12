@@ -1,4 +1,6 @@
-﻿@{
+﻿@using DiyetisyenGultenManav.Entities
+@model List<BlogYazısı>
+@{
     ViewBag.Title = "Index";
 }
 <meta charset="UTF-8">
@@ -22,37 +24,47 @@
         @* @Html.Partial("_PartialKategoriler")*@
     </div>
     <div class="col-md-12">
-        <!-- TEAM -->
+        <!-- TEAM - Blog yazıları-->
         <section id="team" data-stellar-background-ratio="0.5">
             <div class="container">
                 <div class="row">
-
                     <div class="col-md-12 col-sm-12">
                         <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
                             <h2>Meet our chefs</h2>
                             <h4>They are nice &amp; friendly</h4>
                         </div>
                     </div>
-
-                    <div class="col-md-4 col-sm-4">
-                        <div class="team-thumb wow fadeInUp" data-wow-delay="0.2s">
-                            <img src="~/images/team-image1.jpg" class="img-responsive" alt="">
-                            <div class="team-hover">
-                                <div class="team-item">
-                                    <h4>Duis vel lacus id magna mattis vehicula</h4>
-                                    <ul class="social-icon">
-                                        <li><a href="#" class="fa fa-linkedin-square"></a></li>
-                                        <li><a href="#" class="fa fa-envelope-o"></a></li>
-                                    </ul>
+                    @foreach (BlogYazısı BlogYazısı in Model)
+                    {
+                        <div class="col-md-4 col-sm-4">
+                            <div class="team-thumb wow fadeInUp" data-wow-delay="0.2s">
+                                <img src="~/images/team-image1.jpg" class="img-responsive" alt="">
+                                <div class="team-hover">
+                                    <div class="team-item">
+                                        <h4>@BlogYazısı.Title</h4>
+                                        <ul class="social-icon">
+                                            <li><a href="#" class="fa fa-linkedin-square"></a></li>
+                                            <li><a href="#" class="fa fa-envelope-o"></a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="team-info">
-                            <h3>New Catherine</h3>
-                            <p>Kitchen Officer</p>
-                        </div>
-                    </div>
+                            <div class="team-info">
+                                <h3>@BlogYazısı.Title</h3>
+                                <p>
+                                    @if (string.IsNullOrEmpty(BlogYazısı.Text) == false && BlogYazısı.Text.Length > 60)
+                                    {
+                                        @(BlogYazısı.Text.Substring(0, 60)) <a href="#">...</a>
 
+                                    }
+                                    else
+                                    {
+                                        @BlogYazısı.Text
+                                    }
+                                </p>
+                            </div>
+                        </div>
+                    }
                     <div class="col-md-4 col-sm-4">
                         <div class="team-thumb wow fadeInUp" data-wow-delay="0.4s">
                             <img src="~/images/team-image2.jpg" class="img-responsive" alt="">

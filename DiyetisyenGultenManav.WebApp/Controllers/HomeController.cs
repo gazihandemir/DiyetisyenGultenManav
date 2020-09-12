@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DiyetisyenGultenManav.BusinessLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,13 +11,16 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
     {
         // GET: Home
         public ActionResult Index()
+        /* BusinessLayer.test test = new BusinessLayer.test();
+       // test.InsertTest();
+       //  test.UpdateTest();
+       // test.DeleteTest();
+         test.YorumTest(); */
         {
-           /* BusinessLayer.test test = new BusinessLayer.test();
-            // test.InsertTest();
-            //  test.UpdateTest();
-            // test.DeleteTest();
-            test.YorumTest(); */
-            return View();
+            BlogYazısıManager nm = new BlogYazısıManager();
+
+
+            return View(nm.getAllBlogYazısı());
         }
     }
 }
