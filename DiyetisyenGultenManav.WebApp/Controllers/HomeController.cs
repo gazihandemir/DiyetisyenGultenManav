@@ -1,5 +1,6 @@
 ﻿using DiyetisyenGultenManav.BusinessLayer;
 using DiyetisyenGultenManav.Entities;
+using DiyetisyenGultenManav.WebApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,6 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
     {
         // GET: Home
         public ActionResult Index()
-        /* BusinessLayer.test test = new BusinessLayer.test();
-       // test.InsertTest();
-       //  test.UpdateTest();
-       // test.DeleteTest();
-         test.YorumTest(); */
         {
             BlogYazısıManager nm = new BlogYazısıManager();
             return View(nm.getAllBlogYazısı());
@@ -33,7 +29,16 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             {
                 return HttpNotFound();
             }
-            return View("Index", kate.BlogYazıları);
+            return View("Index", kate.BlogYazıları.OrderByDescending(x => x.ModifiedOn).ToList());
+        }
+        public ActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(LoginViewModel model)
+        {
+            return View();
         }
     }
 }

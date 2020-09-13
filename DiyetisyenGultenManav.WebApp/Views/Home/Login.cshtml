@@ -1,0 +1,95 @@
+﻿@using DiyetisyenGultenManav.WebApp.ViewModels
+@model LoginViewModel
+@{
+    ViewBag.Title = "Giriş Sayfası";
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/new-login-style.css" rel="stylesheet" />
+<style>
+    .vertical-strech {
+        height: 100vh;
+    }
+</style>
+<div class="row mr-0">
+    <div class="col-md-12 p-0">
+        <section class="login-block p-4 vertical-strech">
+            <div class="row">
+                <div class="col-md-4 login-sec">
+                    <h2 class="text-center">Giriş</h2>
+                    @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "login-form" }))
+                    {
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            </div>
+                            @Html.TextBoxFor(model => model.Username, new { placeholder = "lütfen kullanıcı adınızı giriniz", @class = "form-control" })
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-key"></i></span>
+                            </div>
+                            @Html.PasswordFor(model => model.Password, new { placeholder = "lütfen şifrenizi giriniz", @class = "form-control" })
+                        </div>
+                        <div class="form-check">
+                            <button type="submit" class="btn btn-login float-right">Giriş</button>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group mt-4">
+                            <div class="col-md-12">
+                                @Html.ValidationSummary(false)
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="col-md-8 banner-sec pl-0">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner" role="listbox">
+                            <div class="carousel-item active">
+                                <img class="d-block img-fluid" src="https://picsum.photos/980/600?random=1" alt="First slide">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <div class="banner-text">
+                                        <h2>This is Heaven</h2>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block img-fluid" src="https://picsum.photos/980/600?random=2" alt="First slide">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <div class="banner-text">
+                                        <h2>This is Heaven</h2>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block img-fluid" src="https://picsum.photos/980/600?random=3" alt="First slide">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <div class="banner-text">
+                                        <h2>This is Heaven</h2>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.5.1.min.js"></script>
+<script>
+    $(function () {
+        $("footer").hide();
+        $('#home').hide();
+        $('#menu').hide();
+     
+    });
+</script>

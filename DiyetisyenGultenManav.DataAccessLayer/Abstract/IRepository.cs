@@ -7,15 +7,16 @@ using System.Threading.Tasks;
 
 namespace DiyetisyenGultenManav.DataAccessLayer.Abstract
 {
-  public  interface IRepository<T>
+    public interface IRepository<T>
     {
-       
-         List<T> List();
-         List<T> List(Expression<Func<T, bool>> where);
-         int Insert(T obj);
-         int Update(T obj);
-         int Delete(T obj);
-         int Save();
+
+        List<T> List();
+        List<T> List(Expression<Func<T, bool>> where);
+        int Insert(T obj);
+        int Update(T obj);
+        int Delete(T obj);
+        int Save();
+        IQueryable<T> ListQueryable();
         T Find(Expression<Func<T, bool>> where);
     }
 }

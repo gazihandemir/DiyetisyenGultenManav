@@ -15,5 +15,9 @@ namespace DiyetisyenGultenManav.BusinessLayer
         {
             return repo_blogYazısı.List();
         }
+        public IQueryable<BlogYazısı> getAllBlogYazısıQueryable()
+        {
+            return repo_blogYazısı.ListQueryable();
+        }
     }
 }
