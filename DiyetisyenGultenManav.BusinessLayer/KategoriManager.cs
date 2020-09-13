@@ -15,5 +15,9 @@ namespace DiyetisyenGultenManav.BusinessLayer
         {
             return repo_kategori.List();
         }
+        public Kategori GetKategoriById(int id)
+        {
+            return repo_kategori.Find(x => x.Id == id);
+        }
     }
 }
