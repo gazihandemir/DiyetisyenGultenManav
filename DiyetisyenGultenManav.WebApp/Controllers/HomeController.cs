@@ -40,5 +40,18 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         {
             return View();
         }
+        public ActionResult Register()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Register(RegisterViewModel model)
+        {
+            return View();
+        }
+        public ActionResult UserActivate()
+        {
+            return View();
+        }
     }
 }

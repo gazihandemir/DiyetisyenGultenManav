@@ -1,8 +1,11 @@
-﻿@using DiyetisyenGultenManav.WebApp.ViewModels
-@model LoginViewModel
+﻿
+@using DiyetisyenGultenManav.WebApp.ViewModels
+@model RegisterViewModel
 @{
-    ViewBag.Title = "Giriş";
+    ViewBag.Title = "Kayıt Ol";
+    Layout = null;
 }
+
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <link href="~/Content/new-login-style.css" rel="stylesheet" />
 <style>
@@ -15,10 +18,9 @@
         <section class="login-block p-4 vertical-strech">
             <div class="row">
                 <div class="col-md-4 login-sec">
-                    <h2 class="text-center">Giriş</h2>
-                    @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "login-form" }))
+                    <h2 class="text-center">Kayıt Ol</h2>
+                    @using (Html.BeginForm("Register", "Home", FormMethod.Post, new { @class = "login-form" }))
                     {
-
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-user"></i></span>
@@ -27,12 +29,23 @@
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                            </div>
+                            @Html.TextBoxFor(model => model.Email, new { placeholder = "lütfen E-posta giriniz", @class = "form-control" })
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-key"></i></span>
                             </div>
                             @Html.PasswordFor(model => model.Password, new { placeholder = "lütfen şifrenizi giriniz", @class = "form-control" })
+                        </div> <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-key"></i></span>
+                            </div>
+                            @Html.PasswordFor(model => model.RePassword, new { placeholder = "lütfen şifrenizi tekrar giriniz", @class = "form-control" })
                         </div>
                         <div class="form-check">
-                            <button type="submit" class="btn btn-login float-right">Giriş</button>
+                            <button type="submit" class="btn btn-login float-right">Kayıt Ol</button>
                         </div>
                         <div class="clearfix"></div>
                         <div class="form-group mt-4">
@@ -85,11 +98,4 @@
     </div>
 </div>
 <script src="~/Scripts/jquery-3.5.1.min.js"></script>
-<script>
-    $(function () {
-        $("footer").hide();
-        $('#home').hide();
-        $('#menu').hide();
-     
-    });
-</script>
+<script src="~/Scripts/bootstrap.min.js"></script>
