@@ -68,6 +68,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DiyetisyenGultenManav.Common\DiyetisyenGultenManav.Common.csproj">
+      <Project>{eab6dd40-aae1-4352-b5f7-ab6577b02aba}</Project>
+      <Name>DiyetisyenGultenManav.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DiyetisyenGultenManav.Entities\DiyetisyenGultenManav.Entities.csproj">
       <Project>{91b72113-86d7-4c66-800e-f92e3ba84e7a}</Project>
       <Name>DiyetisyenGultenManav.Entities</Name>

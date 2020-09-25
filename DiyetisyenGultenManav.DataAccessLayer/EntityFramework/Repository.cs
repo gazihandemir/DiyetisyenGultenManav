@@ -1,4 +1,5 @@
-﻿using DiyetisyenGultenManav.DataAccessLayer.Abstract;
+﻿using DiyetisyenGultenManav.Common;
+using DiyetisyenGultenManav.DataAccessLayer.Abstract;
 using DiyetisyenGultenManav.Entities;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,7 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
                 DateTime now = DateTime.Now;
                 o.CreatedOn = now;
                 o.ModifiedOn = now;
-                o.ModifiedUsername = "system"; // TODO : işlem yapan kullanıcı adı yazılmalı.
+                o.ModifiedUsername = App.Common.GetCurrentUsername(); // TODO : işlem yapan kullanıcı adı yazılmalı.
 
             }
             return Save();
@@ -53,7 +54,8 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
                 EntityBase o = obj as EntityBase;
  
                 o.ModifiedOn = DateTime.Now;
-                o.ModifiedUsername = "system"; // TODO : işlem yapan kullanıcı adı yazılmalı.
+              //  o.ModifiedUsername = "system"; // TODO : işlem yapan kullanıcı adı yazılmalı.
+              o.ModifiedUsername = App.Common.GetCurrentUsername(); 
 
             }
             return Save();

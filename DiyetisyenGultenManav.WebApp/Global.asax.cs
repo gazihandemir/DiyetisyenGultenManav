@@ -1,3 +1,5 @@
+using DiyetisyenGultenManav.Common;
+using DiyetisyenGultenManav.WebApp.Init;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +15,7 @@ namespace DiyetisyenGultenManav.WebApp
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            App.Common = new WebCommon();
         }
     }
 }
