@@ -1,5 +1,6 @@
 ﻿using DiyetisyenGultenManav.BusinessLayer;
 using DiyetisyenGultenManav.Entities;
+using DiyetisyenGultenManav.Entities.Messages;
 using DiyetisyenGultenManav.Entities.ValueObjects;
 using System;
 using System.Collections.Generic;
@@ -44,7 +45,12 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 BusinessLayerResult<Kullanıcı> res = km.LoginUser(model);
                 if (res.Errors.Count > 0)
                 {
-                    res.Errors.ForEach(x => ModelState.AddModelError(" ", x));
+                    res.Errors.ForEach(x => ModelState.AddModelError(" ", x.Message));
+                    if (res.Errors.Find(x => x.Code == ErrorMessageCode.UserIsNotActive) != null)
+                    {
+                        ViewBag.SetLink = "E-posta Gönder";
+                    }
+                    
                     return View(model);
                 }
                 Session["login"] = res.Result;   // session'a kullanıcı bilgi saklama
@@ -66,7 +72,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 BusinessLayerResult<Kullanıcı> res = km.RegisterUser(model);
                 if (res.Errors.Count > 0)
                 {
-                    res.Errors.ForEach(x => ModelState.AddModelError(" ", x));
+                    res.Errors.ForEach(x => ModelState.AddModelError(" ", x.Message));
                     return View(model);
                 }
                 return RedirectToAction("RegisterOk");

@@ -1,11 +1,9 @@
 ﻿using DiyetisyenGultenManav.DataAccessLayer.EntityFramework;
 using DiyetisyenGultenManav.Entities;
 using DiyetisyenGultenManav.Entities.ValueObjects;
+using DiyetisyenGultenManav.Entities.Messages;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace DiyetisyenGultenManav.BusinessLayer
 {
@@ -27,11 +25,12 @@ namespace DiyetisyenGultenManav.BusinessLayer
             {
                 if (user.Username == data.Username)
                 {
-                    res.Errors.Add("Kullanıcı adı kayıtlı.");
+                    res.AddError(ErrorMessageCode.UsernameAlreadyExists, "Kullanıcı adı zaten kayıtlı.");
                 }
                 if (user.Email == data.Email)
                 {
-                    res.Errors.Add("E-posta adresi kayıtlı.");
+                    //res.Errors.Add("E-posta adresi kayıtlı.");
+                    res.AddError(ErrorMessageCode.EmailAlreadyExists, "E-posta adresi zaten kayıtlı.");
                 }
             }
             else
@@ -68,15 +67,15 @@ namespace DiyetisyenGultenManav.BusinessLayer
             {
                 if (!res.Result.IsActive)
                 {
-                    res.Errors.Add("Kullanıcı aktifleştirilmemiştir. Lütfen e-posta adresinizi kontrol ediniz.");
+                    res.AddError(ErrorMessageCode.UserIsNotActive, "Kullanıcı aktifleştirilmemiştir.");
+                    res.AddError(ErrorMessageCode.CheckYourEmail, "Lütfen e - posta adresinizi kontrol ediniz.");
                 }
-
-
             }
             else
             {
-                res.Errors.Add("Kullanıcı adı yada şifre uyuşmuyor.");
+                res.AddError(ErrorMessageCode.UsernameOrPassWrong, "Kullanıcı adı yada şifre uyuşmuyor.");
             }
+            return res;
         }
 
     }

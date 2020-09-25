@@ -52,6 +52,10 @@
                         <div class="form-group mt-4">
                             <div class="col-md-12">
                                 @Html.ValidationSummary(false)
+                                @if (ViewBag.SetLink != null)
+                                {
+                                    <a href="@ViewBag.SetLink" class="btn btn-primary">Aktifleştir</a>
+                                }
                             </div>
                         </div>
                     }
