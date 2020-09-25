@@ -38,7 +38,20 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         [HttpPost]
         public ActionResult Login(LoginViewModel model)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                KullanıcıManager km = new KullanıcıManager();
+                BusinessLayerResult<Kullanıcı> res = km.LoginUser(model);
+                if (res.Errors.Count > 0)
+                {
+                    res.Errors.ForEach(x => ModelState.AddModelError(" ", x));
+                    return View(model);
+                }
+                Session["login"] = res.Result;   // session'a kullanıcı bilgi saklama
+                return RedirectToAction("Index"); // Yönlendirme
+            }
+
+            return View(model);
         }
         public ActionResult Register()
         {

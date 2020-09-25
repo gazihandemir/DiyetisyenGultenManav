@@ -21,17 +21,17 @@ namespace DiyetisyenGultenManav.BusinessLayer
             // Aktivasyon e-postası gönderimi
 
             Kullanıcı user = repo_user.Find(x => x.Username == data.Username || x.Email == data.Email);
-            BusinessLayerResult<Kullanıcı> layerResult = new BusinessLayerResult<Kullanıcı>();
+            BusinessLayerResult<Kullanıcı> res = new BusinessLayerResult<Kullanıcı>();
 
             if (user != null)
             {
                 if (user.Username == data.Username)
                 {
-                    layerResult.Errors.Add("Kullanıcı adı kayıtlı.");
+                    res.Errors.Add("Kullanıcı adı kayıtlı.");
                 }
                 if (user.Email == data.Email)
                 {
-                    layerResult.Errors.Add("E-posta adresi kayıtlı.");
+                    res.Errors.Add("E-posta adresi kayıtlı.");
                 }
             }
             else
@@ -50,11 +50,33 @@ namespace DiyetisyenGultenManav.BusinessLayer
                 });
                 if (dbResult > 0)
                 {
-                    layerResult.Result = repo_user.Find(x => x.Email == data.Email && x.Username == data.Username);
+                    res.Result = repo_user.Find(x => x.Email == data.Email && x.Username == data.Username);
 
                 }
             }
-            return layerResult;
+            return res;
+        }
+        public BusinessLayerResult<Kullanıcı> LoginUser(LoginViewModel data)
+        {
+            // Giriş kontrolü
+            // Hesap aktive edilmiş mi ?
+
+            BusinessLayerResult<Kullanıcı> res = new BusinessLayerResult<Kullanıcı>();
+            res.Result = repo_user.Find(x => x.Username == data.Username && x.Password == data.Password);
+
+            if (res.Result != null)
+            {
+                if (!res.Result.IsActive)
+                {
+                    res.Errors.Add("Kullanıcı aktifleştirilmemiştir. Lütfen e-posta adresinizi kontrol ediniz.");
+                }
+
+
+            }
+            else
+            {
+                res.Errors.Add("Kullanıcı adı yada şifre uyuşmuyor.");
+            }
         }
 
     }
