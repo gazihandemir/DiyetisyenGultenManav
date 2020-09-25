@@ -1,5 +1,5 @@
 ﻿
-@using DiyetisyenGultenManav.WebApp.ViewModels
+@using DiyetisyenGultenManav.Entities.ValueObjects
 @model RegisterViewModel
 @{
     ViewBag.Title = "Kayıt Ol";
@@ -12,7 +12,20 @@
     .vertical-strech {
         height: 100vh;
     }
+
+    .validation-summary-errors {
+        border: 2px dotted #a94442;
+        background-color: #d76663;
+        border-radius: 8px;
+    }
+    .validation-summary-errors ul{
+        list-style-type : none;
+        padding:10px;
+        color:#ffffff;
+        text-align : center;
+    }
 </style>
+
 <div class="row mr-0">
     <div class="col-md-12 p-0">
         <section class="login-block p-4 vertical-strech">
@@ -31,7 +44,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                             </div>
-                            @Html.TextBoxFor(model => model.Email, new { placeholder = "lütfen E-posta giriniz", @class = "form-control" })
+                            @Html.TextBoxFor(model => model.Email, new { placeholder = "lütfen E-posta adresinizi giriniz", @class = "form-control" })
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">

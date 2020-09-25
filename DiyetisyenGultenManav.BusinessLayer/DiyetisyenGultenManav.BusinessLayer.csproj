@@ -52,7 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlogYazısıManager.cs" />
+    <Compile Include="BusinessLayerResult.cs" />
     <Compile Include="KategoriManager.cs" />
+    <Compile Include="KullanıcıManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="test.cs" />
   </ItemGroup>

@@ -1,6 +1,6 @@
 ﻿using DiyetisyenGultenManav.BusinessLayer;
 using DiyetisyenGultenManav.Entities;
-using DiyetisyenGultenManav.WebApp.ViewModels;
+using DiyetisyenGultenManav.Entities.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,9 +47,46 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         [HttpPost]
         public ActionResult Register(RegisterViewModel model)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                KullanıcıManager km = new KullanıcıManager();
+                BusinessLayerResult<Kullanıcı> res = km.RegisterUser(model);
+                if (res.Errors.Count > 0)
+                {
+                    res.Errors.ForEach(x => ModelState.AddModelError(" ", x));
+                    return View(model);
+                }
+                return RedirectToAction("RegisterOk");
+            }
+            return View(model);
+
+
+            /*   if (ModelState.IsValid)
+            {
+                  if (model.Username == "aaa")
+                  {
+                      ModelState.AddModelError("", "Kullanıcı Adı kullanılıyor");
+                  }
+                  if (model.Email == "aaa@aa.com")
+                  {
+                      ModelState.AddModelError("", "e-posta adresi  kullanılıyor");
+                  }
+              }
+             foreach (var item in ModelState)
+              {
+                  if (item.Value.Errors.Count > 0)
+                  {
+                      return View(model);
+                  }
+              }
+          */
+
         }
         public ActionResult UserActivate()
+        {
+            return View();
+        }
+        public ActionResult RegisterOk()
         {
             return View();
         }

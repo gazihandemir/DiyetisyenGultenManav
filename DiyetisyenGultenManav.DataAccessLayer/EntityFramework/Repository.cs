@@ -1,4 +1,5 @@
 ﻿using DiyetisyenGultenManav.DataAccessLayer.Abstract;
+using DiyetisyenGultenManav.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
 {
-    public class Repository<T> : RepositoryBase,IRepository<T> where T : class
+    public class Repository<T> : RepositoryBase, IRepository<T> where T : class
     {
         // private DataAccessLayer.DatabaseContext db = new DataAccessLayer.DatabaseContext();
-      //  private DataAccessLayer.DatabaseContext db;
+        //  private DataAccessLayer.DatabaseContext db;
         private DbSet<T> _objectSet;
         public Repository()
         {
-        //    db = RepositoryBase.CreateContext();
+            //    db = RepositoryBase.CreateContext();
             _objectSet = context.Set<T>();
         }
         public List<T> List()
@@ -34,14 +35,39 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
         public int Insert(T obj)
         {
             _objectSet.Add(obj);
+            if (obj is EntityBase)
+            {
+                EntityBase o = obj as EntityBase;
+                DateTime now = DateTime.Now;
+                o.CreatedOn = now;
+                o.ModifiedOn = now;
+                o.ModifiedUsername = "system"; // TODO : işlem yapan kullanıcı adı yazılmalı.
+
+            }
             return Save();
         }
         public int Update(T obj)
         {
+            if (obj is EntityBase)
+            {
+                EntityBase o = obj as EntityBase;
+ 
+                o.ModifiedOn = DateTime.Now;
+                o.ModifiedUsername = "system"; // TODO : işlem yapan kullanıcı adı yazılmalı.
+
+            }
             return Save();
         }
         public int Delete(T obj)
         {
+            if (obj is EntityBase)
+            {
+                EntityBase o = obj as EntityBase;
+
+                o.ModifiedOn = DateTime.Now;
+                o.ModifiedUsername = "system"; // TODO : işlem yapan kullanıcı adı yazılmalı.
+
+            }
             _objectSet.Remove(obj);
             return Save();
         }

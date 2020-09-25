@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace DiyetisyenGultenManav.WebApp.ViewModels
+namespace DiyetisyenGultenManav.Entities.ValueObjects
 {
     public class RegisterViewModel
     {

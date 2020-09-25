@@ -1,7 +1,8 @@
-﻿@using DiyetisyenGultenManav.WebApp.ViewModels
+﻿@using DiyetisyenGultenManav.Entities.ValueObjects
 @model LoginViewModel
 @{
     ViewBag.Title = "Giriş";
+    Layout = null;
 }
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <link href="~/Content/new-login-style.css" rel="stylesheet" />
@@ -85,11 +86,4 @@
     </div>
 </div>
 <script src="~/Scripts/jquery-3.5.1.min.js"></script>
-<script>
-    $(function () {
-        $("footer").hide();
-        $('#home').hide();
-        $('#menu').hide();
-     
-    });
-</script>
+<script src="~/Scripts/bootstrap.min.js"></script>
