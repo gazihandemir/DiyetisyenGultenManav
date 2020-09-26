@@ -1,5 +1,7 @@
-﻿@{
-    ViewBag.Title = "RegisterOk";
+﻿@using DiyetisyenGultenManav.Entities.Messages
+@model List<ErrorMessageObj>
+@{
+    ViewBag.Title = "Hesap Geçersiz";
     Layout = null;
 }
 
@@ -9,9 +11,12 @@
     <p><h1>Yönlendiriliyorsunuz</h1></p>
     <p>
         <h2>
-            Lütfen e-posta adresinize gönderdiğimiz aktivasyon linkene tıklayarak hesabınızı aktive ediniz .<br />
-            hesabınızı aktive etmeden not ekleyemez ve beğenme yapamazsınız.
+            Hesabınız geçerli değildir.<br />
         </h2>
+        @foreach (ErrorMessageObj err in Model)
+        {
+            @err.Message <br>
+        }
     </p>
 </div>
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />

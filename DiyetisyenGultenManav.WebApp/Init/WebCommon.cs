@@ -16,7 +16,7 @@ namespace DiyetisyenGultenManav.WebApp.Init
                 Kullanıcı user = HttpContext.Current.Session["login"] as Kullanıcı;
                 return user.Username;
             }
-            return null;
+            return "system";
         }
     }
 }

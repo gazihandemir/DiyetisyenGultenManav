@@ -3,7 +3,7 @@ using DiyetisyenGultenManav.Entities;
 using DiyetisyenGultenManav.Entities.ValueObjects;
 using DiyetisyenGultenManav.Entities.Messages;
 using System;
-
+using DiyetisyenGultenManav.Common.Helpers;
 
 namespace DiyetisyenGultenManav.BusinessLayer
 {
@@ -50,7 +50,11 @@ namespace DiyetisyenGultenManav.BusinessLayer
                 if (dbResult > 0)
                 {
                     res.Result = repo_user.Find(x => x.Email == data.Email && x.Username == data.Username);
-
+                    string siteUri = ConfigHelper.Get<string>("SiteRootUri");
+                    string activateUri = $"{siteUri}/Home/UserActivate/{res.Result.ActivateGuid}";
+                    string body = $"Merhaba {res.Result.Username} Hesabınızı aktifleştirmek için <a href='{activateUri}' target='_blank'>tıklayınız</a>.";
+                    string subject = "Aktivasyon";
+                    MailHelper.SendMail(body, res.Result.Email,subject);
                 }
             }
             return res;
@@ -78,5 +82,25 @@ namespace DiyetisyenGultenManav.BusinessLayer
             return res;
         }
 
+        public BusinessLayerResult<Kullanıcı> ActivateUser(Guid id)
+        {
+            BusinessLayerResult<Kullanıcı> res = new BusinessLayerResult<Kullanıcı>();
+            Kullanıcı user = repo_user.Find(x => x.ActivateGuid == id);
+            if (res.Result != null)
+            {
+                if (res.Result.IsActive)
+                {
+                    res.AddError(ErrorMessageCode.UserAlreadyActive, "Kullanıcı Zaten aktif edilmiştir.");
+                    return res;
+                }
+                res.Result.IsActive = true;
+                repo_user.Update(res.Result);
+            }
+            else
+            {
+                res.AddError(ErrorMessageCode.ActivateIdDoesNotExists, "Aktifleştirilecek kullanıcı bulunamadı");
+            }
+            return res;
+        }
     }
 }

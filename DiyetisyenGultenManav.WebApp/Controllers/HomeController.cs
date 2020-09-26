@@ -50,7 +50,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                     {
                         ViewBag.SetLink = "E-posta Gönder";
                     }
-                    
+
                     return View(model);
                 }
                 Session["login"] = res.Result;   // session'a kullanıcı bilgi saklama
@@ -101,14 +101,35 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
           */
 
         }
-        public ActionResult UserActivate()
-        {
-            return View();
-        }
         public ActionResult RegisterOk()
         {
             return View();
         }
+        public ActionResult UserActivate(Guid id)
+        {
+            KullanıcıManager km = new KullanıcıManager();
+            BusinessLayerResult<Kullanıcı> res = km.ActivateUser(id);
+            if (res.Errors.Count > 0)
+            {
+                TempData["errors"] = res.Errors;
+                return RedirectToAction("UserActivateCancel");
+            }
+            return RedirectToAction("UserActivateOk");
+        }
+        public ActionResult UserActivateOk()
+        {
+            return View();
+        }
+        public ActionResult UserActivateCancel()
+        {
+            List<ErrorMessageObj> errors = null;
+            if (TempData["errors"] != null)
+            {
+               errors = TempData["errors"] as List<ErrorMessageObj>;
+            }
+            return View(errors);
+        }
+      
         public ActionResult Logout()
         {
             Session.Clear();
