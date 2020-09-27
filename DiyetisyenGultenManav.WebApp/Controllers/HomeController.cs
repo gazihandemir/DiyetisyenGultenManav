@@ -2,6 +2,7 @@
 using DiyetisyenGultenManav.Entities;
 using DiyetisyenGultenManav.Entities.Messages;
 using DiyetisyenGultenManav.Entities.ValueObjects;
+using DiyetisyenGultenManav.WebApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,6 +57,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         {
             return View();
         }
+   
         public ActionResult Login()
         {
             return View();
@@ -159,5 +161,31 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             Session.Clear();
             return RedirectToAction("Index");
         }
+        #region TestNotify
+        /*  public ActionResult TestNotify()
+        {
+            /*   OkViewModel model = new OkViewModel()
+            //InfoViewModel model = new InfoViewModel()
+            //WarningViewModel model = new WarningViewModel()
+               {
+                   Header = "Yönlendirme",
+                   Title="ok test",
+                   RedirectingTimeout=3000,
+                   Items=new List<string>() { "test basarılı 1","test basarılı 2"}
+               }; (*)/
+        ErrorViewModel model = new ErrorViewModel()
+            {
+                Header = "Yönlendirme",
+                Title = "error test",
+                RedirectingTimeout = 3000,
+                Items = new List<ErrorMessageObj>() { 
+                  new ErrorMessageObj() { Message="test 1 başarılı"},
+                  new ErrorMessageObj() { Message="test 2 başarılı"}
+               }
+            };
+            return View("Error",model);
+        }
+    */
+        #endregion
     }
 }
