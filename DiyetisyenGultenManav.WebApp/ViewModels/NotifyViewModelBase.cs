@@ -20,6 +20,7 @@ namespace DiyetisyenGultenManav.WebApp.ViewModels
             IsRedirecting = true; // Yönlendirme olsun mu 
             RedirectingUrl = "/Home/Index"; // Nereye yönlendirilsin
             RedirectingTimeout = 8000; // kaç saniye sonra yönlendirilsin.
+            Items = new List<T>();
         }
     }
 }

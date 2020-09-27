@@ -41,6 +41,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
                     Email = data.Email,
                     Password = data.Password,
                     ActivateGuid = Guid.NewGuid(),
+                    ProfileImageFileName = "user.png",
                     IsActive = false,
                     IsAdmin = false,
                     IsOnline = false,
@@ -54,7 +55,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
                     string activateUri = $"{siteUri}/Home/UserActivate/{res.Result.ActivateGuid}";
                     string body = $"Merhaba {res.Result.Username} Hesabınızı aktifleştirmek için <a href='{activateUri}' target='_blank'>tıklayınız</a>.";
                     string subject = "Aktivasyon";
-                    MailHelper.SendMail(body, res.Result.Email,subject,true);
+                    MailHelper.SendMail(body, res.Result.Email, subject, true);
                 }
             }
             return res;

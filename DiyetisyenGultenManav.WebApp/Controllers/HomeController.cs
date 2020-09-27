@@ -40,7 +40,14 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             BusinessLayerResult<Kullanıcı> res = km.GetUserById(currentUser.Id);
             if (res.Errors.Count > 0)
             {
-                // Kullanıcıyı bir hata ekranına yönlendirmek gerekiyor.
+                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                {
+                    Title = "Hata Oluştu",
+                    RedirectingUrl = "/Home/Index",
+                    Items = res.Errors
+
+                };
+                return View("Error", ErrNotifyObj);
             }
             return View(res.Result);
         }
@@ -57,7 +64,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         {
             return View();
         }
-   
+
         public ActionResult Login()
         {
             return View();
@@ -101,7 +108,15 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                     res.Errors.ForEach(x => ModelState.AddModelError(" ", x.Message));
                     return View(model);
                 }
-                return RedirectToAction("RegisterOk");
+                OkViewModel notifyObj = new OkViewModel()
+                {
+                    Header = "Yönlendirliyorsunuz..",
+                    Title = "Kayıt Başarılı",
+                    RedirectingUrl = "/Home/Login",
+                };
+                notifyObj.Items.Add("Lütfen e-posta adresinize gönderdiğimiz aktivasyon link'ine tıklayarak hesabınızı aktive ediniz." +
+                    "Hesabınızı aktive etmeden sitemizden yararlanamazsınız !");
+                return View("Ok", notifyObj);
             }
             return View(model);
 
@@ -127,35 +142,31 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
           */
 
         }
-        public ActionResult RegisterOk()
-        {
-            return View();
-        }
+
         public ActionResult UserActivate(Guid id)
         {
             KullanıcıManager km = new KullanıcıManager();
             BusinessLayerResult<Kullanıcı> res = km.ActivateUser(id);
             if (res.Errors.Count > 0)
             {
-                TempData["errors"] = res.Errors;
-                return RedirectToAction("UserActivateCancel");
-            }
-            return RedirectToAction("UserActivateOk");
-        }
-        public ActionResult UserActivateOk()
-        {
-            return View();
-        }
-        public ActionResult UserActivateCancel()
-        {
-            List<ErrorMessageObj> errors = null;
-            if (TempData["errors"] != null)
-            {
-                errors = TempData["errors"] as List<ErrorMessageObj>;
-            }
-            return View(errors);
-        }
+                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                {
+                    Title = "Geçersiz İşlem",
+                    RedirectingUrl = "/Home/Index",
+                    Items = res.Errors
 
+                };
+                return View("Error", ErrNotifyObj);
+                //TempData["errors"] = res.Errors;
+            }
+            OkViewModel OkNotifyObj = new OkViewModel()
+            {
+                Title = "Hesap Aktifleştirildi ! ",
+                RedirectingUrl = "/Home/Login"
+            };
+            OkNotifyObj.Items.Add("Hesabınız aktifleştirildi. Artık Sitemizden Faydalanabilirsiniz.");
+            return View("Ok", OkNotifyObj);
+        }
         public ActionResult Logout()
         {
             Session.Clear();
