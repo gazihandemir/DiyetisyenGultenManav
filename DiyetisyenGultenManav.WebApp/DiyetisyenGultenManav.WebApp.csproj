@@ -129,6 +129,7 @@
     <Content Include="images\team-image2.jpg" />
     <Content Include="images\team-image3.jpg" />
     <Content Include="images\testimonial-bg.jpg" />
+    <Content Include="images\user.png" />
     <Content Include="index.html" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\custom.js" />
@@ -280,6 +281,8 @@
     <Content Include="Views\Home\RegisterOk.cshtml" />
     <Content Include="Views\Home\UserActivateOk.cshtml" />
     <Content Include="Views\Home\UserActivateCancel.cshtml" />
+    <Content Include="Views\Home\ShowProfile.cshtml" />
+    <Content Include="Views\Home\EditProfile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

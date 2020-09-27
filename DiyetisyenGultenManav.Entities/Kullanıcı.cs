@@ -18,6 +18,8 @@ namespace DiyetisyenGultenManav.Entities
         public string Email { get; set; }
         [Required, StringLength(100)]
         public string Password { get; set; }
+        [StringLength(30)] // images/user_12.jpg
+        public string ProfileImageFileName { get; set; }
 
         [Required]
         public Guid ActivateGuid { get; set; }

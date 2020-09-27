@@ -45,7 +45,7 @@ namespace DiyetisyenGultenManav.Common.Helpers
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine("ex : " + ex);
             }
             return result;
         }

@@ -1,0 +1,30 @@
+﻿@using DiyetisyenGultenManav.Entities
+@model Kullanıcı
+@{
+    ViewBag.Title = "Profiliniz";
+    Layout = null;
+}
+
+
+<div class="row pl-5 pt-5">
+    <div class="col-md-12">
+        <p class="display-4 border-bottom">
+            <b> Kullanıcı Hesabı</b>
+        </p>
+    </div>
+</div>
+
+<div class="row p-5">
+    <div class="col-md-2">
+        <img src="~/Images/@Model.ProfileImageFileName" class="rounded-circle img-thumbnail" width="256" height="256" />
+    </div>
+    <div class="col-md-10 mb-4">
+        <h3>@(Model.Name + " "+ Model.Surname)</h3>
+
+        <p>
+            <b>@Html.DisplayNameFor(model => model.Username) : </b>@Model.Username<br />
+            <b>@Html.DisplayNameFor(model => model.Email) : </b>@Model.Email
+        </p>
+        <br />
+    </div>
+</div>

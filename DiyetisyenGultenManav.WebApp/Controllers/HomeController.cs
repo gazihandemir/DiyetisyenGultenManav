@@ -32,6 +32,30 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View("Index", kate.BlogYazıları.OrderByDescending(x => x.ModifiedOn).ToList());
         }
+        public ActionResult ShowProfile()
+        {
+            Kullanıcı currentUser = Session["login"] as Kullanıcı;
+            KullanıcıManager km = new KullanıcıManager();
+            BusinessLayerResult<Kullanıcı> res = km.GetUserById(currentUser.Id);
+            if (res.Errors.Count > 0)
+            {
+                // Kullanıcıyı bir hata ekranına yönlendirmek gerekiyor.
+            }
+            return View(res.Result);
+        }
+        public ActionResult EditProfile()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult EditProfile(Kullanıcı user)
+        {
+            return View();
+        }
+        public ActionResult RemoveProfile()
+        {
+            return View();
+        }
         public ActionResult Login()
         {
             return View();
@@ -125,11 +149,11 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             List<ErrorMessageObj> errors = null;
             if (TempData["errors"] != null)
             {
-               errors = TempData["errors"] as List<ErrorMessageObj>;
+                errors = TempData["errors"] as List<ErrorMessageObj>;
             }
             return View(errors);
         }
-      
+
         public ActionResult Logout()
         {
             Session.Clear();

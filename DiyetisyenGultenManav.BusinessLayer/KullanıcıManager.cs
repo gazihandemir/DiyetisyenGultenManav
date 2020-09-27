@@ -54,11 +54,12 @@ namespace DiyetisyenGultenManav.BusinessLayer
                     string activateUri = $"{siteUri}/Home/UserActivate/{res.Result.ActivateGuid}";
                     string body = $"Merhaba {res.Result.Username} Hesabınızı aktifleştirmek için <a href='{activateUri}' target='_blank'>tıklayınız</a>.";
                     string subject = "Aktivasyon";
-                    MailHelper.SendMail(body, res.Result.Email,subject);
+                    MailHelper.SendMail(body, res.Result.Email,subject,true);
                 }
             }
             return res;
         }
+
         public BusinessLayerResult<Kullanıcı> LoginUser(LoginViewModel data)
         {
             // Giriş kontrolü
@@ -99,6 +100,16 @@ namespace DiyetisyenGultenManav.BusinessLayer
             else
             {
                 res.AddError(ErrorMessageCode.ActivateIdDoesNotExists, "Aktifleştirilecek kullanıcı bulunamadı");
+            }
+            return res;
+        }
+        public BusinessLayerResult<Kullanıcı> GetUserById(int id)
+        {
+            BusinessLayerResult<Kullanıcı> res = new BusinessLayerResult<Kullanıcı>();
+            res.Result = repo_user.Find(x => x.Id == id);
+            if (res.Result == null)
+            {
+                res.AddError(ErrorMessageCode.UserIsNotFound, "Kullanıcı bulunamadı.");
             }
             return res;
         }
