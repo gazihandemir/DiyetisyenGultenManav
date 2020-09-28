@@ -10,5 +10,7 @@
         UserAlreadyActive = 154,
         ActivateIdDoesNotExists = 155,
         UserIsNotFound = 156,
+        ProfileCouldNotUpdated = 157,
+        UserCouldNotRemove = 158,
     }
 }

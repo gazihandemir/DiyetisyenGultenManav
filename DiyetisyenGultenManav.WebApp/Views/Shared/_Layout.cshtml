@@ -39,165 +39,127 @@
 
     <!-- MENU -->
     <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
-        <div class="container">
 
-            <div class="navbar-header">
-                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon icon-bar"></span>
-                    <span class="icon icon-bar"></span>
-                    <span class="icon icon-bar"></span>
-                </button>
-                <!-- lOGO TEXT HERE -->
-                <a href="/Home/Index" class="navbar-brand">Diyetisyen<span>.</span> Gülten Manav</a>
-            </div>
-            @{
-                Kullanıcı user = null;
-                if (Session["login"] != null)
-                {
-                    user = Session["login"] as Kullanıcı;
-                }
-
-                <!-- MENU LINKS -->
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-nav-first">
-                        @if (user != null)
-                        {
-                            <li><a href="#" class="smoothScroll">Yönetim</a></li>
-                        }
-                            <li><a href="#team" class="smoothScroll">Blog</a></li>
-                            <li><a href="#about" class="smoothScroll">Hakkımızda</a></li>
-                            <li><a href="#menu" class="smoothScroll">Online Diyet</a></li>
-                            <li><a href="#contact" class="smoothScroll">Bize Ulaşın</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        @if (user != null)
-                        {
-                            <li><a href="/Home/ShowProfile" class="smoothScroll">@user.Username </a></li>
-                            <li><a href="/Home/Logout" class="section-btn">Çıkış</a></li>
-                        }
-                        else
-                        {
-                            <li><a href="/Home/Login" class="section-btn">Giriş</a></li>
-                            <li><a href="/Home/Register" class="section-btn">Üye Ol</a></li>
-                        }
-                    </ul>
-                </div>
+        <!-- <div class="container">-->
+        <div class="navbar-header">
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon icon-bar"></span>
+                <span class="icon icon-bar"></span>
+                <span class="icon icon-bar"></span>
+            </button>
+            <!-- lOGO TEXT HERE -->
+            <a href="/Home/Index" class="navbar-brand">Diyetisyen<span>.</span> Gülten Manav</a>
+        </div>
+        @{
+            Kullanıcı user = null;
+            if (Session["login"] != null)
+            {
+                user = Session["login"] as Kullanıcı;
             }
-        </div>
-    </section> 
 
-    <!-- HOME -->
-    <section id="home" class="slider" data-stellar-background-ratio="0.5">
-        <div class="row">
-            <div class="owl-carousel owl-theme">
-                <div class="item item-first">
-                    <div class="caption">
-                        <div class="container">
-                            <div class="col-md-8 col-sm-12">
-                                <h3>Eatery Cafe &amp; Restaurant</h3>
-                                <h1>Our mission is to provide an unforgettable experience</h1>
-                                <a href="#team" class="section-btn btn btn-default smoothScroll">Meet our chef</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item item-second">
-                    <div class="caption">
-                        <div class="container">
-                            <div class="col-md-8 col-sm-12">
-                                <h3>Your Perfect Breakfast</h3>
-                                <h1>The best dinning quality can be here too!</h1>
-                                <a href="#menu" class="section-btn btn btn-default smoothScroll">Discover menu</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <!-- MENU LINKS -->
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-nav-first">
+            @if (user != null)
+            {
+                <li><a href="#" class="smoothScroll">Yönetim</a></li>
+            }
+            <li><a href="#team" class="smoothScroll">Blog</a></li>
+            <li><a href="#about" class="smoothScroll">Hakkımızda</a></li>
+            <li><a href="#menu" class="smoothScroll">Online Diyet</a></li>
+            <li><a href="#contact" class="smoothScroll">Bize Ulaşın</a></li>
+            <li><a href="#contact" class="smoothScroll">Bize Ulaşın</a></li>
+            <li><a href="#contact" class="smoothScroll">Bize Ulaşın</a></li>
+            <li><a href="#contact" class="smoothScroll">Bize Ulaşın</a></li>
 
-                <div class="item item-third">
-                    <div class="caption">
-                        <div class="container">
-                            <div class="col-md-8 col-sm-12">
-                                <h3>New Restaurant in Town</h3>
-                                <h1>Enjoy our special menus every Sunday and Friday</h1>
-                                <a href="#contact" class="section-btn btn btn-default smoothScroll">Reservation</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <!-- <ul class="nav navbar-nav navbar-right">-->
+            @if (user != null)
+            {
+                <li><a href="/Home/ShowProfile" class="smoothScroll">@user.Username </a></li>
+                <li><a href="/Home/Logout" class="section-btn">Çıkış</a></li>
+            }
+            else
+            {
+                <li><a href="/Home/Login" class="section-btn">Giriş</a></li>
+                <li><a href="/Home/Register" class="section-btn">Üye Ol</a></li>
+            }
+        </ul>
+        <!-- </ul>-->
+    </div>
+        }
+        <!--</div>-->
     </section>
     @RenderBody()
 
     <!-- FOOTER -->
     <footer id="footer" data-stellar-background-ratio="0.5">
-            <div class="row center-block ">
+        <div class="row center-block ">
 
-                <div class="col-md-4 col-sm-8">
-                    <div class="footer-info">
-                        <div class="section-title">
-                            <h2 class="wow fadeInUp" data-wow-delay="0.2s">Bizi Bulun</h2>
-                        </div>
-                        <address class="wow fadeInUp" data-wow-delay="0.4s">
-                            Guzelyalı Mah. 81126 Sokak. Çukurova Tv Karşısı. Kahve Deryası üstü. A2 Blok Kat:2 Daire:8 (Turgut Özal Bulvarı)
-                            01170 Adana</p>
-                        </address>
+            <div class="col-md-4 col-sm-8">
+                <div class="footer-info">
+                    <div class="section-title">
+                        <h2 class="wow fadeInUp" data-wow-delay="0.2s">Bizi Bulun</h2>
                     </div>
+                    <address class="wow fadeInUp" data-wow-delay="0.4s">
+                        Guzelyalı Mah. 81126 Sokak. Çukurova Tv Karşısı. Kahve Deryası üstü. A2 Blok Kat:2 Daire:8 (Turgut Özal Bulvarı)
+                        01170 Adana</p>
+                    </address>
                 </div>
+            </div>
 
-                <div class="col-md-3 col-sm-8">
-                    <div class="footer-info">
-                        <div class="section-title">
-                            <h2 class="wow fadeInUp" data-wow-delay="0.2s">Klinik Danışmanlığı</h2>
-                        </div>
-                        <address class="wow fadeInUp" data-wow-delay="0.4s">
-                            <p>0538 372 87 97</p>
-                            <p><a href="mailto:gazihand@gmail.com">gazihand@gmail.com</a></p>
-                            <p><a href="https://www.instagram.com/dytgultenmanav/" target="_blank" class="fa fa-instagram"> dytgultenmanav</a></p>
-                        </address>
+            <div class="col-md-3 col-sm-8">
+                <div class="footer-info">
+                    <div class="section-title">
+                        <h2 class="wow fadeInUp" data-wow-delay="0.2s">Klinik Danışmanlığı</h2>
                     </div>
+                    <address class="wow fadeInUp" data-wow-delay="0.4s">
+                        <p>0538 372 87 97</p>
+                        <p><a href="mailto:gazihand@gmail.com">gazihand@gmail.com</a></p>
+                        <p><a href="https://www.instagram.com/dytgultenmanav/" target="_blank" class="fa fa-instagram"> dytgultenmanav</a></p>
+                    </address>
                 </div>
+            </div>
 
-                <div class="col-md-5 col-sm-8">
-                    <div class="footer-info footer-open-hour">
-                        <div class="section-title">
-                            <h2 class="wow fadeInUp" data-wow-delay="0.2s">Açık Saatler</h2>
+            <div class="col-md-5 col-sm-8">
+                <div class="footer-info footer-open-hour">
+                    <div class="section-title">
+                        <h2 class="wow fadeInUp" data-wow-delay="0.2s">Açık Saatler</h2>
+                    </div>
+                    <div class="wow fadeInUp" data-wow-delay="0.4s">
+                        <div>
+                            <strong>PAZAR</strong>
+                            <p>Kapalı</p>
                         </div>
-                        <div class="wow fadeInUp" data-wow-delay="0.4s">
-                            <div>
-                                <strong>PAZAR</strong>
-                                <p>Kapalı</p>
-                            </div>
-                            <div>
-                                <strong>CUMARTESİ</strong>
-                                <p>08:00 - 12:00</p>
-                            </div>
-                            <div>
-                                <strong>PAZARTESİ - CUMA</strong>
-                                <p>08:00 - 17:00</p>
-                            </div>
+                        <div>
+                            <strong>CUMARTESİ</strong>
+                            <p>08:00 - 12:00</p>
+                        </div>
+                        <div>
+                            <strong>PAZARTESİ - CUMA</strong>
+                            <p>08:00 - 17:00</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--Copyright-->
-            <div class="col-md-12 col-sm-4">
-                <ul class="wow fadeInUp social-icon" data-wow-delay="0.4s">
-                    <!--
+        </div>
+        <!--Copyright-->
+        <div class="col-md-12 col-sm-4">
+            <ul class="wow fadeInUp social-icon" data-wow-delay="0.4s">
+                <!--
 
-                      <li><a href="#" class="fa fa-facebook-square" attr="facebook icon"></a></li>
-                       <li><a href="#" class="fa fa-map-marker"></a></li>
-                       <li><a href="#" class="fa fa-instagram"></a></li>
-                       <li><a href="#" class="fa fa-google"></a></li>
-                    -->
-                </ul>
+                  <li><a href="#" class="fa fa-facebook-square" attr="facebook icon"></a></li>
+                   <li><a href="#" class="fa fa-map-marker"></a></li>
+                   <li><a href="#" class="fa fa-instagram"></a></li>
+                   <li><a href="#" class="fa fa-google"></a></li>
+                -->
+            </ul>
 
-                <div class="wow fadeInUp copyright-text pull-right" data-wow-delay="0.8s">
-                    <p>
-                        <br>Copyright &copy; 2020  Diyetisyen Gülten Manav 
-                    </p>
-                </div>
+            <div class="wow fadeInUp copyright-text pull-right" data-wow-delay="0.8s">
+                <p>
+                    <br>Copyright &copy; 2020  Diyetisyen Gülten Manav
+                </p>
             </div>
+        </div>
     </footer>
 
     <!-- SCRIPTS -->

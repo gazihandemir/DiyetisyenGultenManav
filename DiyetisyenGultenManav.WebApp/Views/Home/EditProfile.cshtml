@@ -1,7 +1,78 @@
-﻿
+﻿@using DiyetisyenGultenManav.Entities
+@model Kullanıcı
 @{
-    ViewBag.Title = "EditProfile";
+    ViewBag.Title = "Profil Düzenle";
+    Layout = null;
 }
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<div class="row pl-5 pt-5">
+    <div class="col-md-12">
+        <p class="display-4 border-bottom">
+            <b> Profil Düzenle</b>
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("EditProfile", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="row">
+                <div class="col-md-3 p-5">
+                    <img src="~/Images/@Model.ProfileImageFileName" class="img-thumbnail rounded-circle" width="256" height="256" />
+                    @Html.HiddenFor(model => model.ProfileImageFileName)
+                    <div class="custom-file mt-3">
+                        <input type="file" class="custom-file-input" id="ProfileImage" name="ProfileImage" />
+                        <label class="custom-file-label" for="customFile">Dosya Seçiniz.</label>
+                    </div>
+                    <div class="pl-3 pt-3">
+                        <i class="fa fa-info-circle mr-2"></i>
+                        <small><i>Lütfen jpg,jpeg yada png formatı kullanın.</i></small>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    @Html.ValidationSummary(false)
+                    @Html.HiddenFor(model => model.Id)
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
 
-<h2>EditProfile</h2>
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control col-md-10" } })
 
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.Surname, htmlAttributes: new { @class = "col-form-label font-weight-bold  col-md-2" })
+
+                        @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "col-form-label font-weight-bold  col-md-2" })
+
+                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control col-md-10", type = "password" } })
+
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "col-form-label font-weight-bold  col-md-2" })
+
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 text-right pr-0">
+                            @Html.ActionLink("İptal", "ShowProfile", "Home", null, new { @class = "btn btn-secondary" })
+                            <input type="submit" value="Kaydet" class="btn btn-success" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    &nbsp;
+                </div>
+            </div>
+        }
+    </div>
+</div>
