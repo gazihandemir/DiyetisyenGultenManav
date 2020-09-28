@@ -26,8 +26,9 @@ namespace DiyetisyenGultenManav.Entities
         public string Password { get; set; }
         [StringLength(30)] // images/user_12.jpg
         public string ProfileImageFileName { get; set; }
+
         [DisplayName("Doğum Tarihiniz"),
-            StringLength(10, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
+                StringLength(10, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
         public string DogumTarihi { get; set; }
 
         [DisplayName("Telefon Numaranız"),
@@ -48,8 +49,6 @@ namespace DiyetisyenGultenManav.Entities
         [DisplayName("Yaşadığınız Şehir"),
             StringLength(15, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
         public string Sehir { get; set; }
-
-
 
         [Required]
         public Guid ActivateGuid { get; set; }
