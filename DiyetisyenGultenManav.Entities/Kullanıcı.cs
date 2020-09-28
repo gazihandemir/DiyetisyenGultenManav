@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -8,15 +9,20 @@ namespace DiyetisyenGultenManav.Entities
     [Table("Kullanıcılar")]
     public class Kullanıcı : EntityBase
     {
-        [StringLength(25)]
+        [DisplayName("İsim"),
+            StringLength(25, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
         public string Name { get; set; }
-        [StringLength(25)]
+        [DisplayName("Soyisim"),
+            StringLength(25, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
         public string Surname { get; set; }
-        [Required, StringLength(50)]
+        [DisplayName("Kullnıcı Adı"), Required(ErrorMessage = "{0} alanı gereklidir."),
+            StringLength(50, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
         public string Username { get; set; }
-        [Required, StringLength(70)]
+        [DisplayName("E-Posta"), Required(ErrorMessage = "{0} alanı gereklidir."),
+            StringLength(70, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
         public string Email { get; set; }
-        [Required, StringLength(100)]
+        [DisplayName("Şifre"), Required(ErrorMessage = "{0} alanı gereklidir."),
+            StringLength(100, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
         public string Password { get; set; }
         [StringLength(30)] // images/user_12.jpg
         public string ProfileImageFileName { get; set; }

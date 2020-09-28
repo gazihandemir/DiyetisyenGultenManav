@@ -61,7 +61,6 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 ErrorViewModel ErrNotifyObj = new ErrorViewModel()
                 {
                     Title = "Hata Oluştu",
-                    RedirectingUrl = "/Home/Index",
                     Items = res.Errors
 
                 };
@@ -73,36 +72,41 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         [HttpPost]
         public ActionResult EditProfile(Kullanıcı model, HttpPostedFileBase ProfileImage)
         {
-            if (ProfileImage != null && (
-                ProfileImage.ContentType == "image/jpeg" ||
-                ProfileImage.ContentType == "image/jpg" ||
-                ProfileImage.ContentType == "image/png"))
+            ModelState.Remove("ModifiedUsername");
+            if (ModelState.IsValid)
             {
-                string filename = $"user_{model.Id}.{ProfileImage.ContentType.Split('/')[1]}";
-                ProfileImage.SaveAs(Server.MapPath($"~/images/{filename}"));
-                model.ProfileImageFileName = filename;
-            }
-            KullanıcıManager km = new KullanıcıManager();
-            BusinessLayerResult<Kullanıcı> res = km.UpdateProfile(model);
-            if (res.Errors.Count > 0 )
-            {
-                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                if (ProfileImage != null && (
+               ProfileImage.ContentType == "image/jpeg" ||
+               ProfileImage.ContentType == "image/jpg" ||
+               ProfileImage.ContentType == "image/png"))
                 {
-                    Items = res.Errors,
-                    Title="Profil Güncellenemedi.",
-                    RedirectingUrl = "/Home/EditProfile"
-                };
-                return View("Error", ErrNotifyObj);
+                    string filename = $"user_{model.Id}.{ProfileImage.ContentType.Split('/')[1]}";
+                    ProfileImage.SaveAs(Server.MapPath($"~/images/{filename}"));
+                    model.ProfileImageFileName = filename;
+                }
+                KullanıcıManager km = new KullanıcıManager();
+                BusinessLayerResult<Kullanıcı> res = km.UpdateProfile(model);
+                if (res.Errors.Count > 0)
+                {
+                    ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                    {
+                        Items = res.Errors,
+                        Title = "Profil Güncellenemedi.",
+                        RedirectingUrl = "/Home/EditProfile"
+                    };
+                    return View("Error", ErrNotifyObj);
+                }
+                Session["login"] = res.Result;
+                return RedirectToAction("ShowProfile");
             }
-            Session["login"] = res.Result;
-            return RedirectToAction("ShowProfile");
+            return View();
         }
         public ActionResult RemoveProfile()
         {
             Kullanıcı currentUser = Session["login"] as Kullanıcı;
             KullanıcıManager km = new KullanıcıManager();
             BusinessLayerResult<Kullanıcı> res = km.RemoveUserById(currentUser.Id);
-            if (res.Errors.Count > 0 )
+            if (res.Errors.Count > 0)
             {
                 ErrorViewModel ErrNotifyObj = new ErrorViewModel()
                 {

@@ -138,9 +138,9 @@ namespace DiyetisyenGultenManav.BusinessLayer
         }
         public BusinessLayerResult<Kullanıcı> UpdateProfile(Kullanıcı data)
         {
-            Kullanıcı db_user = repo_user.Find(x => x.Username == data.Username || x.Email == data.Email);
+            Kullanıcı db_user = repo_user.Find(x => x.Id != data.Id && (x.Username == data.Username || x.Email == data.Email));
             BusinessLayerResult<Kullanıcı> res = new BusinessLayerResult<Kullanıcı>();
-            if (db_user.Username != null && db_user.Id != data.Id)
+            if (db_user != null && db_user.Id != data.Id)
             {
                 if (db_user.Username == data.Username)
                 {
