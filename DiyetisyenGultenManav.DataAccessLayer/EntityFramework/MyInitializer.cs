@@ -27,6 +27,7 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
                 Username = "gazihandemir",
                 ProfileImageFileName = "user.png",
                 Password = "123",
+                
                 CreatedOn = DateTime.Now,
                 ModifiedOn = DateTime.Now.AddMinutes(5),
                 ModifiedUsername = "gazihandemir"
