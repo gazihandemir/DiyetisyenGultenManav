@@ -159,6 +159,13 @@ namespace DiyetisyenGultenManav.BusinessLayer
             res.Result.Surname = data.Surname;
             res.Result.Password = data.Password;
             res.Result.Username = data.Username;
+            res.Result.TelefonNumarası = data.TelefonNumarası;
+            res.Result.DogumTarihi = data.DogumTarihi;
+            res.Result.Boy = data.Boy;
+            res.Result.Kilo = data.Kilo;
+            res.Result.Yas = data.Yas;
+            res.Result.Meslek = data.Meslek;
+            res.Result.Sehir = data.Sehir;
             if (string.IsNullOrEmpty(data.ProfileImageFileName) == false)
             {
                 res.Result.ProfileImageFileName = data.ProfileImageFileName;

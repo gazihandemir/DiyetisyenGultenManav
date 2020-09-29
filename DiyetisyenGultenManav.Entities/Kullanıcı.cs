@@ -27,27 +27,20 @@ namespace DiyetisyenGultenManav.Entities
         [StringLength(30)] // images/user_12.jpg
         public string ProfileImageFileName { get; set; }
 
-        [DisplayName("Doğum Tarihiniz"),
-                StringLength(10, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
+       [DisplayName("Doğum Tarihiniz")]
         public string DogumTarihi { get; set; }
 
-        [DisplayName("Telefon Numaranız"),
-            StringLength(11, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
+        [DisplayName("Telefon Numaranız")]
         public string TelefonNumarası { get; set; }
-        [DisplayName("Boyunuz"),
-            StringLength(4, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
+        [DisplayName("Boyunuz")]
         public string Boy { get; set; }
-        [DisplayName("Kilonuz"),
-            StringLength(3, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
+        [DisplayName("Kilonuz")]
         public string Kilo { get; set; }
-        [DisplayName("Yaşınız"),
-            StringLength(3, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
+        [DisplayName("Yaşınız")]
         public string Yas { get; set; }
-        [DisplayName("Mesleğiniz"),
-            StringLength(25, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
+        [DisplayName("Mesleğiniz")]
         public string Meslek { get; set; }
-        [DisplayName("Yaşadığınız Şehir"),
-            StringLength(15, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
+        [DisplayName("Yaşadığınız Şehir")]
         public string Sehir { get; set; }
 
         [Required]
