@@ -63,6 +63,10 @@
       <Project>{eab6dd40-aae1-4352-b5f7-ab6577b02aba}</Project>
       <Name>DiyetisyenGultenManav.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DiyetisyenGultenManav.Core\DiyetisyenGultenManav.Core.csproj">
+      <Project>{25a0add8-3a6f-4157-98bf-299070ded3cf}</Project>
+      <Name>DiyetisyenGultenManav.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DiyetisyenGultenManav.DataAccessLayer\DiyetisyenGultenManav.DataAccessLayer.csproj">
       <Project>{cc02bbaf-9936-4da5-b6b3-b7eb6f86638e}</Project>
       <Name>DiyetisyenGultenManav.DataAccessLayer</Name>

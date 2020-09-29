@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DiyetisyenGultenManav.BusinessLayer
 {
-    public class KategoriManager
+    public class KategoriManager : DataAccessLayer.EntityFramework.Repository<Kategori>
     {
 
         private DataAccessLayer.EntityFramework.Repository<Kategori> repo_kategori = new DataAccessLayer.EntityFramework.Repository<Kategori>();

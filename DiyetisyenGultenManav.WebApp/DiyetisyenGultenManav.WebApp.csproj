@@ -259,6 +259,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KategoriController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -291,6 +292,11 @@
     <Content Include="Views\Shared\Info.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_PartialFooter.cshtml" />
+    <Content Include="Views\Kategori\Create.cshtml" />
+    <Content Include="Views\Kategori\Delete.cshtml" />
+    <Content Include="Views\Kategori\Details.cshtml" />
+    <Content Include="Views\Kategori\Edit.cshtml" />
+    <Content Include="Views\Kategori\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -300,6 +306,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -316,6 +323,10 @@
     <ProjectReference Include="..\DiyetisyenGultenManav.Common\DiyetisyenGultenManav.Common.csproj">
       <Project>{eab6dd40-aae1-4352-b5f7-ab6577b02aba}</Project>
       <Name>DiyetisyenGultenManav.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DiyetisyenGultenManav.Core\DiyetisyenGultenManav.Core.csproj">
+      <Project>{25a0add8-3a6f-4157-98bf-299070ded3cf}</Project>
+      <Name>DiyetisyenGultenManav.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\DiyetisyenGultenManav.Entities\DiyetisyenGultenManav.Entities.csproj">
       <Project>{91b72113-86d7-4c66-800e-f92e3ba84e7a}</Project>

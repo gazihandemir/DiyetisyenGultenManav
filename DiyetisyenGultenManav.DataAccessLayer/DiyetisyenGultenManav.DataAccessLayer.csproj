@@ -54,7 +54,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\IRepository.cs" />
     <Compile Include="EntityFramework\DatabaseContext.cs" />
     <Compile Include="EntityFramework\Repository.cs" />
     <Compile Include="EntityFramework\RepositoryBase.cs" />
@@ -72,12 +71,18 @@
       <Project>{eab6dd40-aae1-4352-b5f7-ab6577b02aba}</Project>
       <Name>DiyetisyenGultenManav.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DiyetisyenGultenManav.Core\DiyetisyenGultenManav.Core.csproj">
+      <Project>{25A0ADD8-3A6F-4157-98BF-299070DED3CF}</Project>
+      <Name>DiyetisyenGultenManav.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DiyetisyenGultenManav.Entities\DiyetisyenGultenManav.Entities.csproj">
       <Project>{91b72113-86d7-4c66-800e-f92e3ba84e7a}</Project>
       <Name>DiyetisyenGultenManav.Entities</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Abstract\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

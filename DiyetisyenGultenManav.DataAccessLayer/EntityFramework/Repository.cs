@@ -1,5 +1,5 @@
 ﻿using DiyetisyenGultenManav.Common;
-using DiyetisyenGultenManav.DataAccessLayer.Abstract;
+using DiyetisyenGultenManav.Core.DataAccess;
 using DiyetisyenGultenManav.Entities;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
 {
-    public class Repository<T> : RepositoryBase, IRepository<T> where T : class
+    public class Repository<T> : RepositoryBase, IDataAccess<T> where T : class
     {
         // private DataAccessLayer.DatabaseContext db = new DataAccessLayer.DatabaseContext();
         //  private DataAccessLayer.DatabaseContext db;
