@@ -47,6 +47,9 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Kategori kategori)
         {
+            ModelState.Remove("CreatedOn");
+            ModelState.Remove("ModifiedOn");
+            ModelState.Remove("ModifiedUsername");
             if (ModelState.IsValid)
             {
                 kategoriManager.Insert(kategori);
@@ -76,10 +79,15 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Kategori kategori)
         {
+            ModelState.Remove("CreatedOn");
+            ModelState.Remove("ModifiedOn");
+            ModelState.Remove("ModifiedUsername");
             if (ModelState.IsValid)
             {
-                // TODO : inceli..
-                kategoriManager.Update(kategori);
+                Kategori kat = kategoriManager.Find(x => x.Id == kategori.Id);
+                kat.Title = kategori.Title;
+                kat.Description = kategori.Description;
+                kategoriManager.Update(kat);
                 return RedirectToAction("Index");
             }
             return View(kategori);

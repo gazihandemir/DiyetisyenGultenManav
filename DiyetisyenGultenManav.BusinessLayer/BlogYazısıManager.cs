@@ -1,4 +1,5 @@
-﻿using DiyetisyenGultenManav.Entities;
+﻿using DiyetisyenGultenManav.BusinessLayer.Abstract;
+using DiyetisyenGultenManav.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,17 +8,18 @@ using System.Threading.Tasks;
 
 namespace DiyetisyenGultenManav.BusinessLayer
 {
-    public class BlogYazısıManager
+    public class BlogYazısıManager : ManagerBase<BlogYazısı>
     {
-        private DataAccessLayer.EntityFramework.Repository<BlogYazısı> repo_blogYazısı = new DataAccessLayer.EntityFramework.Repository<BlogYazısı>();
-
-        public List<BlogYazısı> getAllBlogYazısı()
-        {
-            return repo_blogYazısı.List();
-        }
-        public IQueryable<BlogYazısı> getAllBlogYazısıQueryable()
-        {
-            return repo_blogYazısı.ListQueryable();
-        }
+        //   private DataAccessLayer.EntityFramework.Repository<BlogYazısı> repo_blogYazısı = new DataAccessLayer.EntityFramework.Repository<BlogYazısı>();
+        /*
+                public List<BlogYazısı> getAllBlogYazısı()
+                {
+                    return repo_blogYazısı.List();
+                }
+                public IQueryable<BlogYazısı> getAllBlogYazısıQueryable()
+                {
+                    return repo_blogYazısı.ListQueryable();
+                }
+        */
     }
 }

@@ -1,4 +1,5 @@
 ﻿using DiyetisyenGultenManav.BusinessLayer;
+using DiyetisyenGultenManav.BusinessLayer.Results;
 using DiyetisyenGultenManav.Entities;
 using DiyetisyenGultenManav.Entities.Messages;
 using DiyetisyenGultenManav.Entities.ValueObjects;
@@ -13,11 +14,14 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
 {
     public class HomeController : Controller
     {
+        private BlogYazısıManager blogYazısıManager = new BlogYazısıManager();
+        private KategoriManager kategoriManager = new KategoriManager();
+        private KullanıcıManager kullanıcıManager = new KullanıcıManager();
+
         // GET: Home
         public ActionResult Index()
         {
-            BlogYazısıManager nm = new BlogYazısıManager();
-            return View(nm.getAllBlogYazısı());
+            return View(blogYazısıManager.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList());
         }
         public ActionResult ByKategori(int? id)
         {
@@ -25,8 +29,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             {
                 return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
             }
-            KategoriManager cm = new KategoriManager();
-            Kategori kate = cm.GetKategoriById(id.Value);
+            Kategori kate = kategoriManager.Find(x => x.Id == id.Value);
             if (kate == null)
             {
                 return HttpNotFound();
@@ -36,8 +39,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         public ActionResult ShowProfile()
         {
             Kullanıcı currentUser = Session["login"] as Kullanıcı;
-            KullanıcıManager km = new KullanıcıManager();
-            BusinessLayerResult<Kullanıcı> res = km.GetUserById(currentUser.Id);
+            BusinessLayerResult<Kullanıcı> res = kullanıcıManager.GetUserById(currentUser.Id);
             if (res.Errors.Count > 0)
             {
                 ErrorViewModel ErrNotifyObj = new ErrorViewModel()
@@ -54,8 +56,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         public ActionResult EditProfile()
         {
             Kullanıcı currentUser = Session["login"] as Kullanıcı;
-            KullanıcıManager km = new KullanıcıManager();
-            BusinessLayerResult<Kullanıcı> res = km.GetUserById(currentUser.Id);
+            BusinessLayerResult<Kullanıcı> res = kullanıcıManager.GetUserById(currentUser.Id);
             if (res.Errors.Count > 0)
             {
                 ErrorViewModel ErrNotifyObj = new ErrorViewModel()
@@ -84,8 +85,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                     ProfileImage.SaveAs(Server.MapPath($"~/images/{filename}"));
                     model.ProfileImageFileName = filename;
                 }
-                KullanıcıManager km = new KullanıcıManager();
-                BusinessLayerResult<Kullanıcı> res = km.UpdateProfile(model);
+                BusinessLayerResult<Kullanıcı> res = kullanıcıManager.UpdateProfile(model);
                 if (res.Errors.Count > 0)
                 {
                     ErrorViewModel ErrNotifyObj = new ErrorViewModel()
@@ -104,8 +104,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         public ActionResult RemoveProfile()
         {
             Kullanıcı currentUser = Session["login"] as Kullanıcı;
-            KullanıcıManager km = new KullanıcıManager();
-            BusinessLayerResult<Kullanıcı> res = km.RemoveUserById(currentUser.Id);
+            BusinessLayerResult<Kullanıcı> res = kullanıcıManager.RemoveUserById(currentUser.Id);
             if (res.Errors.Count > 0)
             {
                 ErrorViewModel ErrNotifyObj = new ErrorViewModel()
@@ -129,8 +128,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                KullanıcıManager km = new KullanıcıManager();
-                BusinessLayerResult<Kullanıcı> res = km.LoginUser(model);
+                BusinessLayerResult<Kullanıcı> res = kullanıcıManager.LoginUser(model);
                 if (res.Errors.Count > 0)
                 {
                     res.Errors.ForEach(x => ModelState.AddModelError(" ", x.Message));
@@ -156,8 +154,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                KullanıcıManager km = new KullanıcıManager();
-                BusinessLayerResult<Kullanıcı> res = km.RegisterUser(model);
+                BusinessLayerResult<Kullanıcı> res = kullanıcıManager.RegisterUser(model);
                 if (res.Errors.Count > 0)
                 {
                     res.Errors.ForEach(x => ModelState.AddModelError(" ", x.Message));
@@ -200,8 +197,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
 
         public ActionResult UserActivate(Guid id)
         {
-            KullanıcıManager km = new KullanıcıManager();
-            BusinessLayerResult<Kullanıcı> res = km.ActivateUser(id);
+            BusinessLayerResult<Kullanıcı> res = kullanıcıManager.ActivateUser(id);
             if (res.Errors.Count > 0)
             {
                 ErrorViewModel ErrNotifyObj = new ErrorViewModel()

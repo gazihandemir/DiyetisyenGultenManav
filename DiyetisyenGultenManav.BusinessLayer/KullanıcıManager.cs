@@ -4,13 +4,15 @@ using DiyetisyenGultenManav.Entities.ValueObjects;
 using DiyetisyenGultenManav.Entities.Messages;
 using System;
 using DiyetisyenGultenManav.Common.Helpers;
+using DiyetisyenGultenManav.BusinessLayer.Results;
+using DiyetisyenGultenManav.BusinessLayer.Abstract;
 
 namespace DiyetisyenGultenManav.BusinessLayer
 {
 
-    public class KullanıcıManager
+    public class KullanıcıManager : ManagerBase<Kullanıcı>
     {
-        private Repository<Kullanıcı> repo_user = new Repository<Kullanıcı>();
+      //  private Repository<Kullanıcı> repo_user = new Repository<Kullanıcı>(); Managerbaseden gelen metotları kullanıyoruz.
         public BusinessLayerResult<Kullanıcı> RegisterUser(RegisterViewModel data)
         {
             // Kullanıcı username kontrolü
@@ -18,7 +20,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
             // Kayıt işlemi
             // Aktivasyon e-postası gönderimi
 
-            Kullanıcı user = repo_user.Find(x => x.Username == data.Username || x.Email == data.Email);
+            Kullanıcı user = Find(x => x.Username == data.Username || x.Email == data.Email);
             BusinessLayerResult<Kullanıcı> res = new BusinessLayerResult<Kullanıcı>();
 
             if (user != null)
@@ -35,7 +37,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
             }
             else
             {
-                int dbResult = repo_user.Insert(new Kullanıcı()
+                int dbResult =Insert(new Kullanıcı()
                 {
                     Username = data.Username,
                     Email = data.Email,
@@ -50,7 +52,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
                 });
                 if (dbResult > 0)
                 {
-                    res.Result = repo_user.Find(x => x.Email == data.Email && x.Username == data.Username);
+                    res.Result = Find(x => x.Email == data.Email && x.Username == data.Username);
                     string siteUri = ConfigHelper.Get<string>("SiteRootUri");
                     string activateUri = $"{siteUri}/Home/UserActivate/{res.Result.ActivateGuid}";
                     string body = $"Merhaba {res.Result.Username} Hesabınızı aktifleştirmek için <a href='{activateUri}' target='_blank'>tıklayınız</a>.";
@@ -67,7 +69,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
             // Hesap aktive edilmiş mi ?
 
             BusinessLayerResult<Kullanıcı> res = new BusinessLayerResult<Kullanıcı>();
-            res.Result = repo_user.Find(x => x.Username == data.Username && x.Password == data.Password);
+            res.Result =Find(x => x.Username == data.Username && x.Password == data.Password);
 
             if (res.Result != null)
             {
@@ -89,7 +91,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
         public BusinessLayerResult<Kullanıcı> ActivateUser(Guid id)
         {
             BusinessLayerResult<Kullanıcı> res = new BusinessLayerResult<Kullanıcı>();
-            Kullanıcı user = repo_user.Find(x => x.ActivateGuid == id);
+            Kullanıcı user =Find(x => x.ActivateGuid == id);
             if (res.Result != null)
             {
                 if (res.Result.IsActive)
@@ -98,7 +100,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
                     return res;
                 }
                 res.Result.IsActive = true;
-                repo_user.Update(res.Result);
+                Update(res.Result);
             }
             else
             {
@@ -110,10 +112,10 @@ namespace DiyetisyenGultenManav.BusinessLayer
         public BusinessLayerResult<Kullanıcı> RemoveUserById(int id)
         {
             BusinessLayerResult<Kullanıcı> res = new BusinessLayerResult<Kullanıcı>();
-            Kullanıcı user = repo_user.Find(x => x.Id == id);
+            Kullanıcı user = Find(x => x.Id == id);
             if (user != null)
             {
-                if (repo_user.Delete(user) == 0)
+                if (Delete(user) == 0)
                 {
                     res.AddError(ErrorMessageCode.UserCouldNotRemove, "Kullanıcı Silinemedi.");
                     return res;
@@ -129,7 +131,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
         public BusinessLayerResult<Kullanıcı> GetUserById(int id)
         {
             BusinessLayerResult<Kullanıcı> res = new BusinessLayerResult<Kullanıcı>();
-            res.Result = repo_user.Find(x => x.Id == id);
+            res.Result =Find(x => x.Id == id);
             if (res.Result == null)
             {
                 res.AddError(ErrorMessageCode.UserIsNotFound, "Kullanıcı bulunamadı.");
@@ -138,7 +140,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
         }
         public BusinessLayerResult<Kullanıcı> UpdateProfile(Kullanıcı data)
         {
-            Kullanıcı db_user = repo_user.Find(x => x.Id != data.Id && (x.Username == data.Username || x.Email == data.Email));
+            Kullanıcı db_user =Find(x => x.Id != data.Id && (x.Username == data.Username || x.Email == data.Email));
             BusinessLayerResult<Kullanıcı> res = new BusinessLayerResult<Kullanıcı>();
             if (db_user != null && db_user.Id != data.Id)
             {
@@ -153,7 +155,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
                 return res;
             }
 
-            res.Result = repo_user.Find(x => x.Id == data.Id);
+            res.Result =Find(x => x.Id == data.Id);
             res.Result.Email = data.Email;
             res.Result.Name = data.Name;
             res.Result.Surname = data.Surname;
@@ -170,7 +172,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
             {
                 res.Result.ProfileImageFileName = data.ProfileImageFileName;
             }
-            if (repo_user.Update(res.Result) == 0)
+            if (Update(res.Result) == 0)
             {
                 res.AddError(ErrorMessageCode.ProfileCouldNotUpdated, "Profil Güncellenemedi.");
             }
