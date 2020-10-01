@@ -18,7 +18,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
 
         public ActionResult Index()
         {
-            return View(kategoriManager.GetKategoriler());
+            return View(kategoriManager.List());
         }
 
 
@@ -28,7 +28,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Kategori kategori = kategoriManager.GetKategoriById(id.Value);
+            Kategori kategori = kategoriManager.Find(x => x.Id == id.Value);
             if (kategori == null)
             {
                 return HttpNotFound();
@@ -49,8 +49,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Kategoris.Add(kategori);
-                db.SaveChanges();
+                kategoriManager.Insert(kategori);
                 return RedirectToAction("Index");
             }
 
@@ -64,7 +63,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Kategori kategori = db.Kategoris.Find(id);
+            Kategori kategori = kategoriManager.Find(x => x.Id == id.Value);
             if (kategori == null)
             {
                 return HttpNotFound();
@@ -79,8 +78,8 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(kategori).State = EntityState.Modified;
-                db.SaveChanges();
+                // TODO : inceli..
+                kategoriManager.Update(kategori);
                 return RedirectToAction("Index");
             }
             return View(kategori);
@@ -92,7 +91,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Kategori kategori = db.Kategoris.Find(id);
+            Kategori kategori = kategoriManager.Find(x => x.Id == id.Value);
             if (kategori == null)
             {
                 return HttpNotFound();
@@ -105,9 +104,9 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Kategori kategori = db.Kategoris.Find(id);
-            db.Kategoris.Remove(kategori);
-            db.SaveChanges();
+            Kategori kategori = kategoriManager.Find(x => x.Id == id);
+
+            kategoriManager.Delete(kategori);
             return RedirectToAction("Index");
         }
     }
