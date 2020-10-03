@@ -1,15 +1,17 @@
 ﻿@model DiyetisyenGultenManav.Entities.Kategori
-
 @{
     ViewBag.Title = "Edit";
+    Layout = null;
 }
 
 <h2>Edit</h2>
-
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/validation-summary.css" rel="stylesheet" />
+<link href="~/Content/new-login-style.css" rel="stylesheet" />
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Kategori</h4>
         <hr />
@@ -58,12 +60,10 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                @Bootstrap.Button("success", string.Empty, "submit", "save", " Save")
+                @Bootstrap.LinkButton("/Kategori/Index", "default", string.Empty, string.Empty, "arrow-left", " Back to List")
+
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
