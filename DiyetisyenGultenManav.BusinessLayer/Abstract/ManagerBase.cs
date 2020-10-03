@@ -13,7 +13,7 @@ namespace DiyetisyenGultenManav.BusinessLayer.Abstract
     {
         private Repository<T> repo = new Repository<T>();
 
-        public int Delete(T obj)
+     virtual  public int Delete(T obj)
         {
             return repo.Delete(obj);
         }

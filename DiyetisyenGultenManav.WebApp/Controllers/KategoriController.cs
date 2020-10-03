@@ -113,7 +113,6 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Kategori kategori = kategoriManager.Find(x => x.Id == id);
-
             kategoriManager.Delete(kategori);
             return RedirectToAction("Index");
         }

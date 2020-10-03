@@ -19,6 +19,12 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
         {
             Database.SetInitializer(new MyInitializer());
         }
-
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<BlogYazısı>()
+                .HasMany(b => b.Yorumlar)
+                .WithRequired(y => y.BlogYazısı)
+                .WillCascadeOnDelete(true);
+        }
     }
 }
