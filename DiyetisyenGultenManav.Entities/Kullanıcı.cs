@@ -24,7 +24,7 @@ namespace DiyetisyenGultenManav.Entities
         [DisplayName("Şifre"), Required(ErrorMessage = "{0} alanı gereklidir."),
             StringLength(100, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
         public string Password { get; set; }
-        [StringLength(30)] // images/user_12.jpg
+        [StringLength(30),ScaffoldColumn(false)] // images/user_12.jpg
         public string ProfileImageFileName { get; set; }
 
        [DisplayName("Doğum Tarihiniz")]
@@ -43,7 +43,7 @@ namespace DiyetisyenGultenManav.Entities
         [DisplayName("Yaşadığınız Şehir")]
         public string Sehir { get; set; }
 
-        [Required]
+        [Required, ScaffoldColumn(false)]
         public Guid ActivateGuid { get; set; }
         public bool IsActive { get; set; }
         public bool IsAdmin { get; set; }

@@ -1,0 +1,194 @@
+﻿@model DiyetisyenGultenManav.Entities.Kullanıcı
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Kullanıcı</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Surname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProfileImageFileName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProfileImageFileName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DogumTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DogumTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TelefonNumarası)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TelefonNumarası)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Boy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Boy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kilo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kilo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Yas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Meslek)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Meslek)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sehir)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sehir)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActivateGuid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActivateGuid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsAdmin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsAdmin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsOnline)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsOnline)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsNormal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsNormal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsPayOnline)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsPayOnline)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedUsername)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedUsername)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

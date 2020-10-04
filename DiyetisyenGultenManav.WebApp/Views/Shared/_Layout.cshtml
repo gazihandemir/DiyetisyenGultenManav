@@ -81,8 +81,8 @@
                                 <li><a href="/Diet/MyDiet">Diyetim</a></li>
 
                                 <li role="separator" class="divider"></li>
-                                <li><a href="/?/?">Kullanıcılar</a></li>
-                                <li><a href="/?/?">Kullanıcı Ekle</a></li>
+                                @Bootstrap.LinkMenu("/Kullanıcı/Index","user", "Kullanıcılar")
+                                @Bootstrap.LinkMenu("/Kullanıcı/Create", "user", "Kullanıcı Ekle")
                                 @if (user.IsAdmin)
                                 {
                                     // Admine göre linkleri eklemeyi unutma !

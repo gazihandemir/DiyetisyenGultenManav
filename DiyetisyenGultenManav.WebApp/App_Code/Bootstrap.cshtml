@@ -3,14 +3,14 @@
 {
     <a href="@url" id="@id" name="@id" class="btn btn-@color @addtionalClass" title="@title">
         <i class="fa fa-@icon"></i>  @text
-    <i class="fa fa-trash"></i>
+        <i class="fa fa-trash"></i>
     </a>
 }
 @helper LinkButton(string url = "", string color = "", string addtionalClass = "", string title = "", string icon = "", string text = "")
 {
-<a href="@url" class="btn btn-@color @addtionalClass" title="@title">
-    <i class="fa fa-@icon"></i>   @text
-</a>
+    <a href="@url" class="btn btn-@color @addtionalClass" title="@title">
+        <i class="fa fa-@icon"></i>   @text
+    </a>
 }
 @helper Button(string id = "", string color = "", string addtionalClass = "", string type = "button", string icon = "", string text = "")
 {
@@ -23,4 +23,8 @@
     <button type="@type" class="btn btn-@color @addtionalClass">
         @text
     </button>
+}
+@helper LinkMenu(string url = "", string icon = "", string text = "")
+{
+    <a href="@url"><i class="fa fa-@icon"> </i> @text</a>
 }
