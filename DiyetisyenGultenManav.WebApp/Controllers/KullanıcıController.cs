@@ -47,6 +47,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             ModelState.Remove("CreatedOn");
             ModelState.Remove("ModifiedOn");
             ModelState.Remove("ModifiedUsername");
+            ModelState.Remove("ActivateGuid");
             if (ModelState.IsValid)
             {
                 // todo : düzeltilecek
@@ -78,11 +79,20 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Surname,Username,Email,Password,ProfileImageFileName,DogumTarihi,TelefonNumarası,Boy,Kilo,Yas,Meslek,Sehir,ActivateGuid,IsActive,IsAdmin,IsOnline,IsNormal,IsPayOnline,CreatedOn,ModifiedOn,ModifiedUsername")] Kullanıcı kullanıcı)
+        public ActionResult Edit(Kullanıcı kullanıcı)
         {
+            ModelState.Remove("CreatedOn");
+            ModelState.Remove("ModifiedOn");
+            ModelState.Remove("ModifiedUsername");
+            ModelState.Remove("ActivateGuid");
             if (ModelState.IsValid)
             {
-                // todo : düzenlenecek
+                BusinessLayerResult<Kullanıcı> res = kullanıcıManager.Update(kullanıcı);
+                if (res.Errors.Count > 0)
+                {
+                    res.Errors.ForEach(x => ModelState.AddModelError("", x.Message));
+                    return View(kullanıcı);
+                }
                 return RedirectToAction("Index");
             }
             return View(kullanıcı);
