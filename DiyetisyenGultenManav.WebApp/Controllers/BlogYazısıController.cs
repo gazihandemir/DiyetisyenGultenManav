@@ -18,7 +18,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         KategoriManager kategoriManager = new KategoriManager();
         public ActionResult Index()
         {
-            var blogYazısı = blogYazısıManager.ListQueryable().Include("Kategori")
+            var blogYazısı = blogYazısıManager.ListQueryable().Include("Kategori").Include("Owner")
                 .Where(x => x.Owner.Id == CurrentSession.User.Id).OrderByDescending(x => x.ModifiedOn);
             return View(blogYazısı.ToList());
         }
@@ -45,8 +45,12 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(BlogYazısı blogYazısı)
         {
+            ModelState.Remove("CreatedOn");
+            ModelState.Remove("ModifiedOn");
+            ModelState.Remove("ModifiedUsername");
             if (ModelState.IsValid)
             {
+                blogYazısı.Owner = CurrentSession.User;
                 blogYazısıManager.Insert(blogYazısı);
                 return RedirectToAction("Index");
             }
@@ -73,10 +77,18 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(BlogYazısı blogYazısı)
         {
+            ModelState.Remove("CreatedOn");
+            ModelState.Remove("ModifiedOn");
+            ModelState.Remove("ModifiedUsername");
             if (ModelState.IsValid)
             {
-                db.Entry(blogYazısı).State = EntityState.Modified;
-                db.SaveChanges();
+                BlogYazısı db_blog = blogYazısıManager.Find(x => x.Id == blogYazısı.Id);
+                db_blog.IsDraft = blogYazısı.IsDraft;
+                db_blog.KategoriId = blogYazısı.KategoriId;
+                db_blog.Text = blogYazısı.Text;
+                db_blog.Title = blogYazısı.Title;
+
+                blogYazısıManager.Update(db_blog);
                 return RedirectToAction("Index");
             }
             ViewBag.KategoriId = new SelectList(kategoriManager.List(), "Id", "Title", blogYazısı.KategoriId);
