@@ -259,6 +259,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BlogYazısıController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KategoriController.cs" />
     <Compile Include="Controllers\KullanıcıController.cs" />
@@ -266,6 +267,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Init\WebCommon.cs" />
+    <Compile Include="Models\CurrentSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ErrorViewModel.cs" />
     <Compile Include="ViewModels\InfoViewModel.cs" />
@@ -304,6 +306,11 @@
     <Content Include="Views\Kullanıcı\Details.cshtml" />
     <Content Include="Views\Kullanıcı\Edit.cshtml" />
     <Content Include="Views\Kullanıcı\Index.cshtml" />
+    <Content Include="Views\BlogYazısı\Create.cshtml" />
+    <Content Include="Views\BlogYazısı\Delete.cshtml" />
+    <Content Include="Views\BlogYazısı\Details.cshtml" />
+    <Content Include="Views\BlogYazısı\Edit.cshtml" />
+    <Content Include="Views\BlogYazısı\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -314,7 +321,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
