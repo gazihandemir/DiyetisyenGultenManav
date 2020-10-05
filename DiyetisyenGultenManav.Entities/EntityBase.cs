@@ -12,11 +12,11 @@ namespace DiyetisyenGultenManav.Entities
     {
         [Key,DatabaseGenerated(DatabaseGeneratedOption.Identity)] // pk ve otomatik artma
         public int Id { get; set; }
-        [Required]
+        [Required, ScaffoldColumn(false)]
         public DateTime CreatedOn { get; set; }
-        [Required]
+        [Required, ScaffoldColumn(false)]
         public DateTime ModifiedOn { get; set; }
-        [Required,StringLength(30)]
+        [Required,StringLength(30), ScaffoldColumn(false)]
         public string ModifiedUsername { get; set; }
     }
 }

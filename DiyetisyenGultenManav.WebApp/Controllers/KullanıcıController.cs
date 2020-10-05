@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DiyetisyenGultenManav.BusinessLayer;
+using DiyetisyenGultenManav.BusinessLayer.Results;
 using DiyetisyenGultenManav.Entities;
 namespace DiyetisyenGultenManav.WebApp.Controllers
 {
@@ -43,9 +44,18 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Kullanıcı kullanıcı)
         {
+            ModelState.Remove("CreatedOn");
+            ModelState.Remove("ModifiedOn");
+            ModelState.Remove("ModifiedUsername");
             if (ModelState.IsValid)
             {
                 // todo : düzeltilecek
+                BusinessLayerResult<Kullanıcı> res = kullanıcıManager.Insert(kullanıcı);
+                if (res.Errors.Count > 0)
+                {
+                    res.Errors.ForEach(x => ModelState.AddModelError("", x.Message));
+                    return View(kullanıcı);
+                }
                 return RedirectToAction("Index");
             }
 

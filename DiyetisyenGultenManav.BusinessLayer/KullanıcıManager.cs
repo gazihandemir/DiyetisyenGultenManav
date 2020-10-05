@@ -37,7 +37,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
             }
             else
             {
-                int dbResult =Insert(new Kullanıcı()
+                int dbResult =base.Insert(new Kullanıcı()
                 {
                     Username = data.Username,
                     Email = data.Email,
@@ -175,6 +175,35 @@ namespace DiyetisyenGultenManav.BusinessLayer
             if (Update(res.Result) == 0)
             {
                 res.AddError(ErrorMessageCode.ProfileCouldNotUpdated, "Profil Güncellenemedi.");
+            }
+            return res;
+        }
+
+        public new BusinessLayerResult<Kullanıcı> Insert(Kullanıcı data) // Metot hiding
+        {
+            Kullanıcı user = Find(x => x.Username == data.Username || x.Email == data.Email);
+            BusinessLayerResult<Kullanıcı> res = new BusinessLayerResult<Kullanıcı>();
+            res.Result = data;
+            if (user != null)
+            {
+                if (user.Username == data.Username)
+                {
+                    res.AddError(ErrorMessageCode.UsernameAlreadyExists, "Kullanıcı adı zaten kayıtlı.");
+                }
+                if (user.Email == data.Email)
+                {
+                    //res.Errors.Add("E-posta adresi kayıtlı.");
+                    res.AddError(ErrorMessageCode.EmailAlreadyExists, "E-posta adresi zaten kayıtlı.");
+                }
+            }
+            else
+            {
+                res.Result.ProfileImageFileName = "user.png";
+                res.Result.ActivateGuid = Guid.NewGuid();
+                if (base.Insert(res.Result) == 0)
+                {
+                    res.AddError(ErrorMessageCode.userCouldNotInserted, "Kullanıcı eklenemedi");
+                }
             }
             return res;
         }
