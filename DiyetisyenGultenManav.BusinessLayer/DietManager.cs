@@ -1,4 +1,5 @@
 ﻿using DiyetisyenGultenManav.BusinessLayer.Abstract;
+using DiyetisyenGultenManav.BusinessLayer.Results;
 using DiyetisyenGultenManav.Entities;
 using System;
 using System.Collections.Generic;

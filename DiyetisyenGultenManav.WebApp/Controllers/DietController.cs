@@ -15,12 +15,9 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
     public class DietController : Controller
     {
         DietManager dietManager = new DietManager();
+        KullanıcıManager kullanıcıManager = new KullanıcıManager();
 
         // GET : ALL diet
-        public ActionResult DiyetisyenBilgileri()
-        {
-            return View(dietManager.List());
-        }
         public ActionResult AllDiet()
         {
             return View(dietManager.List());
@@ -31,9 +28,9 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         {
             var diet = dietManager.ListQueryable().Include("Owner").
                 Where(x => x.Owner.Id == CurrentSession.User.Id).OrderByDescending(x => x.ModifiedOn);
+            
             return View(diet.ToList());
         }
-
         // GET: Diet/Details/5
         public ActionResult Details(int? id)
         {
@@ -52,23 +49,27 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         // GET: Diet/Create
         public ActionResult Create()
         {
+            ViewBag.KullanıcıId = new SelectList(dietManager.List(), "Id", "Owner.Username");
+
             return View();
         }
-
         // POST: Diet/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Diet diet)
         {
+            ModelState.Remove("CreatedOn");
+            ModelState.Remove("ModifiedOn");
+            ModelState.Remove("ModifiedUsername");
             if (ModelState.IsValid)
             {
-           
-                return RedirectToAction("Index");
+                dietManager.Insert(diet);
+                return RedirectToAction("AllDiet");
             }
-
+            ViewBag.KullanıcıId = new SelectList(kullanıcıManager.List(), "Id", "Owner.Username", diet.Owner.Username);
+            diet.Owner = ViewBag.KullanıcıId;
             return View(diet);
         }
-
         // GET: Diet/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -87,12 +88,20 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         // POST: Diet/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Description,Text,CreatedOn,ModifiedOn,ModifiedUsername")] Diet diet)
+        public ActionResult Edit(Diet diet)
         {
+            ModelState.Remove("CreatedOn");
+            ModelState.Remove("ModifiedOn");
+            ModelState.Remove("ModifiedUsername");
+
             if (ModelState.IsValid)
             {
-
-                return RedirectToAction("Index");
+                Diet db_diet= dietManager.Find(x => x.Id == diet.Id);
+                db_diet.Title = diet.Title;
+                db_diet.Text = diet.Text;
+                db_diet.Description = diet.Description;
+                dietManager.Update(db_diet);
+                return RedirectToAction("AllDiet");
             }
             return View(diet);
         }
@@ -117,7 +126,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Diet diet = dietManager.Find(x => x.Id == id);
-            return RedirectToAction("Index");
+            return RedirectToAction("AllDiet");
         }
     }
 }

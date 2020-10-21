@@ -17,11 +17,8 @@ namespace DiyetisyenGultenManav.Entities
         public string Description { get; set; }
         [Required, StringLength(1000)]
         public string Text { get; set; }
-        public string Hastalik { get; set; }
-        public string Hikaye { get; set; }
-        public string Olcüm { get; set; }
-        public string Tahlil { get; set; }
-        public string EkBilgiler { get; set; }
+        public int KullanıcıId{ get; set; }
+
         public virtual Kullanıcı Owner { get; set; }
 
     }
