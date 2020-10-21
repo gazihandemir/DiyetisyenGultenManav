@@ -16,6 +16,16 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
     {
         DietManager dietManager = new DietManager();
 
+        // GET : ALL diet
+        public ActionResult DiyetisyenBilgileri()
+        {
+            return View(dietManager.List());
+        }
+        public ActionResult AllDiet()
+        {
+            return View(dietManager.List());
+        }
+
         // GET: Diet
         public ActionResult Index()
         {
