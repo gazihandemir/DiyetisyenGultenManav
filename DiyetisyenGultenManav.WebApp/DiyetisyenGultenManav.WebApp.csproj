@@ -318,6 +318,7 @@
     <Content Include="Views\Diet\Edit.cshtml" />
     <Content Include="Views\Diet\Index.cshtml" />
     <Content Include="Views\Diet\AllDiet.cshtml" />
+    <Content Include="Views\Diet\NewDiet.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

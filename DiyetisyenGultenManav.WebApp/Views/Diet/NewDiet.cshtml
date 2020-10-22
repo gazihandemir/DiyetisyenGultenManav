@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<DiyetisyenGultenManav.Entities.Diet>
 
 @{
-    ViewBag.Title = "Bütün Diyetler";
+    ViewBag.Title = "Yeni Diyetler";
 }
 
-<h2>Bütün Diyetler</h2>
+<h2>Yeni Diyetler</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -23,6 +23,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Text)
         </th>
+        <th>@Html.DisplayNameFor(model => model.ModifiedOn)</th>
 
         <th></th>
     </tr>
@@ -42,7 +43,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Text)
             </td>
-
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedOn)
+            </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                 @Html.ActionLink("Details", "Details", new { id = item.Id }) |

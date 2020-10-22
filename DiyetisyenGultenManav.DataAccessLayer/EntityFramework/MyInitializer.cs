@@ -70,6 +70,7 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
                 Title = "diyet1",
                 Description = "3 günlük diyet",
                 Text = "sabah 1 ekmek öglen 2 ekmek akşam 3 ekmek",
+                isNew = true,
                 CreatedOn = DateTime.Now,
                 ModifiedOn = DateTime.Now.AddMinutes(10),
                 ModifiedUsername = "gazihandemir"
@@ -79,6 +80,7 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
                 Title = "diyet2",
                 Description = "3 günlük diyet",
                 Text = "sabah 1 ekmek öglen 2 ekmek akşam 3 ekmek",
+                isNew = true,
                 CreatedOn = DateTime.Now,
                 ModifiedOn = DateTime.Now.AddMinutes(10),
                 ModifiedUsername = "gazihandemir"
@@ -121,6 +123,7 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
                     Title = $"diyet{i}",
                     Description = "3 günlük diyet",
                     Text = $"sabah {i} ekmek öglen {i} ekmek akşam {i} ekmek",
+                    isNew = true,
                     CreatedOn = DateTime.Now,
                     ModifiedOn = DateTime.Now.AddMinutes(10),
                     ModifiedUsername = "gazihandemir"

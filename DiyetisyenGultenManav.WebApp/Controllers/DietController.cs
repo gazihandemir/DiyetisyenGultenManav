@@ -22,13 +22,18 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         {
             return View(dietManager.List());
         }
-
+        public ActionResult NewDiet()
+        {
+            var diet = dietManager.ListQueryable().Where(x => x.isNew == true).OrderByDescending(x => x.ModifiedOn);
+            return View(diet.ToList());
+        }
         // GET: Diet
         public ActionResult Index()
         {
             var diet = dietManager.ListQueryable().Include("Owner").
                 Where(x => x.Owner.Id == CurrentSession.User.Id).OrderByDescending(x => x.ModifiedOn);
             
+
             return View(diet.ToList());
         }
         // GET: Diet/Details/5
@@ -49,7 +54,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         // GET: Diet/Create
         public ActionResult Create()
         {
-            ViewBag.KullanıcıId = new SelectList(dietManager.List(), "Id", "Owner.Username");
+            ViewBag.KullanıcıId = new SelectList(kullanıcıManager.List(), "Id", "Username");
 
             return View();
         }
@@ -58,6 +63,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Diet diet)
         {
+
             ModelState.Remove("CreatedOn");
             ModelState.Remove("ModifiedOn");
             ModelState.Remove("ModifiedUsername");
@@ -66,7 +72,8 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 dietManager.Insert(diet);
                 return RedirectToAction("AllDiet");
             }
-            ViewBag.KullanıcıId = new SelectList(kullanıcıManager.List(), "Id", "Owner.Username", diet.Owner.Username);
+
+            ViewBag.KullanıcıId = new SelectList(kullanıcıManager.List(), "Id", "Username");
             diet.Owner = ViewBag.KullanıcıId;
             return View(diet);
         }
@@ -96,10 +103,11 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
 
             if (ModelState.IsValid)
             {
-                Diet db_diet= dietManager.Find(x => x.Id == diet.Id);
+                Diet db_diet = dietManager.Find(x => x.Id == diet.Id);
                 db_diet.Title = diet.Title;
                 db_diet.Text = diet.Text;
                 db_diet.Description = diet.Description;
+                db_diet.isNew = diet.isNew;
                 dietManager.Update(db_diet);
                 return RedirectToAction("AllDiet");
             }
