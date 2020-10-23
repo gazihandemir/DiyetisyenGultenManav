@@ -20,26 +20,24 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         // GET : ALL diet
         public ActionResult AllDiet()
         {
-            
-
-                return View(dietManager.List());
+            return View(dietManager.List());
+        }
+        public ActionResult DiyetisyenBilgileri()
+        {
+            return View(dietManager.List());
         }
         public ActionResult NewDiet()
         {
-           
-            
-                var diet = dietManager.ListQueryable().Where(x => x.isNew == true).OrderByDescending(x => x.ModifiedOn);
-                return View(diet.ToList());
-            
-    
-            
+            var diet = dietManager.ListQueryable().Where(x => x.IsNew == true).OrderByDescending(x => x.ModifiedOn);
+            return View(diet.ToList());
+
         }
         // GET: Diet
         public ActionResult Index()
         {
             var diet = dietManager.ListQueryable().Include("Owner").
                 Where(x => x.Owner.Id == CurrentSession.User.Id).OrderByDescending(x => x.ModifiedOn);
-            
+
 
             return View(diet.ToList());
         }
@@ -70,7 +68,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Diet diet)
         {
-            
+
             ModelState.Remove("CreatedOn");
             ModelState.Remove("ModifiedOn");
             ModelState.Remove("ModifiedUsername");
@@ -113,7 +111,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 db_diet.Title = diet.Title;
                 db_diet.Text = diet.Text;
                 db_diet.Description = diet.Description;
-                db_diet.isNew = diet.isNew;
+                db_diet.IsNew = diet.IsNew;
                 dietManager.Update(db_diet);
                 return RedirectToAction("AllDiet");
             }

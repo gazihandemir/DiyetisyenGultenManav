@@ -1,10 +1,9 @@
 ﻿@model IEnumerable<DiyetisyenGultenManav.Entities.Diet>
-
 @{
-    ViewBag.Title = "Bütün Diyetler";
+    ViewBag.Title = "DiyetisyenBilgileri";
 }
 
-<h2>Bütün Diyetler</h2>
+<h2>DiyetisyenBilgileri</h2>
 
 <p>
     @Bootstrap.LinkButton("/Diet/Create", "info", string.Empty, string.Empty, "plus", " Create")
@@ -21,19 +20,19 @@
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Text)
+            @Html.DisplayNameFor(model => model.Hastalik)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CreatedOn)
+            @Html.DisplayNameFor(model => model.Tahlil)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ModifiedOn)
+            @Html.DisplayNameFor(model => model.Olcum)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ModifiedUsername)
+            @Html.DisplayNameFor(model => model.Hikaye)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsNew)
+            @Html.DisplayNameFor(model => model.EkAciklama)
         </th>
     </tr>
 
@@ -50,19 +49,19 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Text)
+                @Html.DisplayFor(modelItem => item.Hastalik)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CreatedOn)
+                @Html.DisplayFor(modelItem => item.Tahlil)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ModifiedOn)
+                @Html.DisplayFor(modelItem => item.Olcum)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ModifiedUsername)
+                @Html.DisplayFor(modelItem => item.Hikaye)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IsNew)
+                @Html.DisplayFor(modelItem => item.EkAciklama)
             </td>
             <td>
                 @Bootstrap.LinkButton("/Diet/Edit/" + @item.Id, "warning", "btn-xs", "Edit", "edit", string.Empty)
@@ -70,8 +69,8 @@
                 @Bootstrap.LinkButton("/Diet/Delete/" + @item.Id, "danger", "btn-xs", "Delete", "trash", string.Empty)
 
                 @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
             </td>
         </tr>
     }
