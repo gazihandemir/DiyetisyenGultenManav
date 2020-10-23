@@ -26,19 +26,20 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         {
             return View(dietManager.List());
         }
+        public ActionResult DanisanBasariHikayesiDanisanBasariHikayesi()
+        {
+            return View(dietManager.List());
+        }
         public ActionResult NewDiet()
         {
             var diet = dietManager.ListQueryable().Where(x => x.IsNew == true).OrderByDescending(x => x.ModifiedOn);
             return View(diet.ToList());
-
         }
         // GET: Diet
         public ActionResult Index()
         {
             var diet = dietManager.ListQueryable().Include("Owner").
                 Where(x => x.Owner.Id == CurrentSession.User.Id).OrderByDescending(x => x.ModifiedOn);
-
-
             return View(diet.ToList());
         }
         // GET: Diet/Details/5

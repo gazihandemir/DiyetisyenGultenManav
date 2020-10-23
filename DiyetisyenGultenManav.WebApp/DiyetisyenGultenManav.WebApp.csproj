@@ -320,6 +320,7 @@
     <Content Include="Views\Diet\AllDiet.cshtml" />
     <Content Include="Views\Diet\NewDiet.cshtml" />
     <Content Include="Views\Diet\DiyetisyenBilgileri.cshtml" />
+    <Content Include="Views\Diet\DanisanBasariHikayesi.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
