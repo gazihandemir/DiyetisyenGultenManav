@@ -65,9 +65,7 @@
             </td>
             <td>
                 @Bootstrap.LinkButton("/Diet/DiyetisyenBilgileriEdit/" + @item.Id, "warning", "btn-xs", "Edit", "edit", string.Empty)
-                @Bootstrap.LinkButton("/Diet/Details/" + @item.Id, "info", "btn-xs", "Details", "search", string.Empty)
-                @Bootstrap.LinkButton("/Diet/Delete/" + @item.Id, "danger", "btn-xs", "Delete", "trash", string.Empty)
-
+                @Bootstrap.LinkButton("/Diet/DiyetisyenBilgileriDetails/" + @item.Id, "info", "btn-xs", "Details", "search", string.Empty)
                 @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                     @Html.ActionLink("Details", "Details", new { id = item.Id }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@

@@ -1,13 +1,12 @@
 ﻿@model DiyetisyenGultenManav.Entities.Diet
-
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "DiyetisyenBilgileriDetails";
 }
-    @for (int i = 0; i < 10; i++)
-    {
-        <br />
-    }
-<h2>Diyet Detayı</h2>
+@for (int i = 0; i < 10; i++)
+{
+    <br />
+}
+<h2>Diyetisyen Bilgileri Detayı</h2>
 <div>
     <dl class="dl-horizontal">
         <dt>
@@ -30,28 +29,34 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Text)
+            @Html.DisplayNameFor(model => model.Hastalik)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Text)
+            @Html.DisplayFor(model => model.Hastalik)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.CreatedOn)
+            @Html.DisplayNameFor(model => model.Tahlil)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.CreatedOn)
+            @Html.DisplayFor(model => model.Tahlil)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.ModifiedOn)
+            @Html.DisplayNameFor(model => model.Olcum)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.ModifiedOn)
+            @Html.DisplayFor(model => model.Olcum)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.ModifiedUsername)
+            @Html.DisplayNameFor(model => model.Hikaye)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.ModifiedUsername)
+            @Html.DisplayFor(model => model.Hikaye)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EkAciklama)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EkAciklama)
         </dd>
     </dl>
 </div>
