@@ -123,7 +123,8 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Diet diet = dietManager.Find(x => x.Id == id); if (diet == null)
+            Diet diet = dietManager.Find(x => x.Id == id);
+            if (diet == null)
             {
                 return HttpNotFound();
             }
@@ -136,8 +137,13 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Diet diet = dietManager.Find(x => x.Id == id);
+            dietManager.Delete(diet);
             return RedirectToAction("AllDiet");
         }
+
+
+
+        // DİYETİSYEN BİLGİLERİ START
         public ActionResult DiyetisyenBilgileri()
         {
             return View(dietManager.List());
@@ -178,5 +184,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View(diet);
         }
+        // DİYETİSYEN BİLGİLERİ END
+
     }
 }
