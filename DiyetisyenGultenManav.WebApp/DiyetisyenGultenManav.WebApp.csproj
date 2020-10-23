@@ -324,6 +324,7 @@
     <Content Include="Views\Diet\EditDiyetisyenBilgileri.cshtml" />
     <Content Include="Views\Diet\DetailsDiyetisyenBilgileri.cshtml" />
     <Content Include="Views\Diet\EditDanisanBasariHikayesi.cshtml" />
+    <Content Include="Views\Diet\DetailsDanisanBasariHikayesi.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

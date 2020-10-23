@@ -246,6 +246,20 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View(diet);
         }
+        // GET
+        public ActionResult DetailsDanisanBasariHikayesi(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Diet diet = dietManager.Find(x => x.Id == id);
+            if (diet == null)
+            {
+                return HttpNotFound();
+            }
+            return View(diet);
+        }
         // DANIŞAN BAŞARI HİKAYESİ END
 
     }
