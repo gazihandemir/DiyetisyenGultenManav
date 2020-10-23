@@ -35,7 +35,6 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View(blogYazısı);
         }
-
         public ActionResult Create()
         {
             ViewBag.KategoriId = new SelectList(kategoriManager.List(), "Id", "Title");
@@ -54,11 +53,9 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 blogYazısıManager.Insert(blogYazısı);
                 return RedirectToAction("Index");
             }
-
             ViewBag.KategoriId = new SelectList(kategoriManager.List(), "Id", "Title", blogYazısı.KategoriId);
             return View(blogYazısı);
         }
-
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -94,7 +91,6 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             ViewBag.KategoriId = new SelectList(kategoriManager.List(), "Id", "Title", blogYazısı.KategoriId);
             return View(blogYazısı);
         }
-
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -108,7 +104,6 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View(blogYazısı);
         }
-
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

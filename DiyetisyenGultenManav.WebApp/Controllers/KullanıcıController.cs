@@ -50,7 +50,6 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             ModelState.Remove("ActivateGuid");
             if (ModelState.IsValid)
             {
-                // todo : düzeltilecek
                 BusinessLayerResult<Kullanıcı> res = kullanıcıManager.Insert(kullanıcı);
                 if (res.Errors.Count > 0)
                 {
@@ -59,10 +58,8 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 }
                 return RedirectToAction("Index");
             }
-
             return View(kullanıcı);
         }
-
         public ActionResult Edit(int? id)
         {
             if (id == null)

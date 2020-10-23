@@ -20,12 +20,19 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         // GET : ALL diet
         public ActionResult AllDiet()
         {
-            return View(dietManager.List());
+            
+
+                return View(dietManager.List());
         }
         public ActionResult NewDiet()
         {
-            var diet = dietManager.ListQueryable().Where(x => x.isNew == true).OrderByDescending(x => x.ModifiedOn);
-            return View(diet.ToList());
+           
+            
+                var diet = dietManager.ListQueryable().Where(x => x.isNew == true).OrderByDescending(x => x.ModifiedOn);
+                return View(diet.ToList());
+            
+    
+            
         }
         // GET: Diet
         public ActionResult Index()
@@ -63,7 +70,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Diet diet)
         {
-
+            
             ModelState.Remove("CreatedOn");
             ModelState.Remove("ModifiedOn");
             ModelState.Remove("ModifiedUsername");
@@ -72,7 +79,6 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 dietManager.Insert(diet);
                 return RedirectToAction("AllDiet");
             }
-
             ViewBag.KullanıcıId = new SelectList(kullanıcıManager.List(), "Id", "Username");
             diet.Owner = ViewBag.KullanıcıId;
             return View(diet);

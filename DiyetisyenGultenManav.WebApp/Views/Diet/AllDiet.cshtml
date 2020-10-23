@@ -7,7 +7,7 @@
 <h2>Bütün Diyetler</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Bootstrap.LinkButton("/Diet/Create", "info", string.Empty, string.Empty, "plus", " Create")
 </p>
 <table class="table">
     <tr>
@@ -23,8 +23,18 @@
         <th>
             @Html.DisplayNameFor(model => model.Text)
         </th>
-
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedUsername)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isNew)
+        </th>
     </tr>
 
     @foreach (var item in Model)
@@ -42,11 +52,26 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Text)
             </td>
-
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedUsername)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isNew)
+            </td>
+            <td>
+                @Bootstrap.LinkButton("/Diet/Edit/" + @item.Id, "warning", "btn-xs", "Edit", "edit", string.Empty)
+                @Bootstrap.LinkButton("/Diet/Details/" + @item.Id, "info", "btn-xs", "Details", "search", string.Empty)
+                @Bootstrap.LinkButton("/Diet/Delete/" + @item.Id, "danger", "btn-xs", "Delete", "trash", string.Empty)
+
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
             </td>
         </tr>
     }

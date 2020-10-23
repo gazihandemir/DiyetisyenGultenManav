@@ -11,6 +11,6 @@ namespace DiyetisyenGultenManav.BusinessLayer
 {
   public  class DietManager : ManagerBase<Diet>
     {
-
+         
     }
 }
