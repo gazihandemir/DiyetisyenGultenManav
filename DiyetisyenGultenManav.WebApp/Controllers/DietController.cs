@@ -221,6 +221,31 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View(diet);
         }
+        // POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditDanisanBasariHikayesi(Diet diet)
+        {
+            ModelState.Remove("CreatedOn");
+            ModelState.Remove("ModifiedOn");
+            ModelState.Remove("ModifiedUsername");
+            ModelState.Remove("Title");
+            ModelState.Remove("Description");
+            ModelState.Remove("Text");
+            if (ModelState.IsValid)
+            {
+                Diet db_diet = dietManager.Find(x => x.Id == diet.Id);
+                db_diet.BasariHikayesi = diet.BasariHikayesi;
+                db_diet.BaslangicKilosu = diet.BaslangicKilosu;
+                db_diet.HaftaBir = diet.HaftaBir;
+                db_diet.HaftaIki = diet.HaftaIki;
+                db_diet.HaftaUc = diet.HaftaUc;
+                db_diet.HaftaDort = diet.HaftaDort;
+                dietManager.Update(db_diet);
+                return RedirectToAction("IndexDanisanBasariHikayesi");
+            }
+            return View(diet);
+        }
         // DANIŞAN BAŞARI HİKAYESİ END
 
     }
