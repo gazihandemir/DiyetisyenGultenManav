@@ -22,10 +22,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         {
             return View(dietManager.List());
         }
-        public ActionResult DiyetisyenBilgileri()
-        {
-            return View(dietManager.List());
-        }
+
         public ActionResult DanisanBasariHikayesiDanisanBasariHikayesi()
         {
             return View(dietManager.List());
@@ -140,6 +137,46 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         {
             Diet diet = dietManager.Find(x => x.Id == id);
             return RedirectToAction("AllDiet");
+        }
+        public ActionResult DiyetisyenBilgileri()
+        {
+            return View(dietManager.List());
+        }
+        public ActionResult DiyetisyenBilgileriEdit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Diet diet = dietManager.Find(x => x.Id == id);
+            if (diet == null)
+            {
+                return HttpNotFound();
+            }
+            return View(diet);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DiyetisyenBilgileriEdit(Diet diet)
+        {
+            ModelState.Remove("CreatedOn");
+            ModelState.Remove("ModifiedOn");
+            ModelState.Remove("ModifiedUsername");
+            ModelState.Remove("Title");
+            ModelState.Remove("Description");
+            ModelState.Remove("Text");
+            if (ModelState.IsValid)
+            {
+                Diet db_diet = dietManager.Find(x => x.Id == diet.Id);
+                db_diet.Hastalik = diet.Hastalik;
+                db_diet.Tahlil = diet.Tahlil;
+                db_diet.Olcum = diet.Olcum;
+                db_diet.Hikaye = diet.Hikaye;
+                db_diet.EkAciklama = diet.EkAciklama;
+                dietManager.Update(db_diet);
+                return RedirectToAction("DiyetisyenBilgileri");
+            }
+            return View(diet);
         }
     }
 }

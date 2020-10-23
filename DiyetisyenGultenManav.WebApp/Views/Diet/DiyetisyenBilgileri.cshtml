@@ -6,7 +6,7 @@
 <h2>DiyetisyenBilgileri</h2>
 
 <p>
-    @Bootstrap.LinkButton("/Diet/Create", "info", string.Empty, string.Empty, "plus", " Create")
+    @Bootstrap.LinkButton("/Diet/DiyetisyenBilgileriCreate", "info", string.Empty, string.Empty, "plus", " Create")
 </p>
 <table class="table">
     <tr>
@@ -64,7 +64,7 @@
                 @Html.DisplayFor(modelItem => item.EkAciklama)
             </td>
             <td>
-                @Bootstrap.LinkButton("/Diet/Edit/" + @item.Id, "warning", "btn-xs", "Edit", "edit", string.Empty)
+                @Bootstrap.LinkButton("/Diet/DiyetisyenBilgileriEdit/" + @item.Id, "warning", "btn-xs", "Edit", "edit", string.Empty)
                 @Bootstrap.LinkButton("/Diet/Details/" + @item.Id, "info", "btn-xs", "Details", "search", string.Empty)
                 @Bootstrap.LinkButton("/Diet/Delete/" + @item.Id, "danger", "btn-xs", "Delete", "trash", string.Empty)
 
