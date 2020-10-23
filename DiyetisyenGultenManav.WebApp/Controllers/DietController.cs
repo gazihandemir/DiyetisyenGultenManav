@@ -23,10 +23,6 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             return View(dietManager.List());
         }
 
-        public ActionResult DanisanBasariHikayesiDanisanBasariHikayesi()
-        {
-            return View(dietManager.List());
-        }
         public ActionResult NewDiet()
         {
             var diet = dietManager.ListQueryable().Where(x => x.IsNew == true).OrderByDescending(x => x.ModifiedOn);
@@ -199,6 +195,28 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             return View(diet);
         }
         // DİYETİSYEN BİLGİLERİ END
+
+        // DANIŞAN BAŞARI HİKAYESİ START
+
+        public ActionResult DanisanBasariHikayesi()
+        {
+            return View(dietManager.List());
+        }
+        // GET
+        public ActionResult DanisanBasariHikayesiEdit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Diet diet = dietManager.Find(x => x.Id == id);
+            if (diet == null)
+            {
+                return HttpNotFound();
+            }
+            return View(diet);
+        }
+        // DANIŞAN BAŞARI HİKAYESİ END
 
     }
 }
