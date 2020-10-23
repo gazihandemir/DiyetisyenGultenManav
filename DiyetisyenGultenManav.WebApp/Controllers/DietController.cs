@@ -140,11 +140,15 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
 
 
         // DİYETİSYEN BİLGİLERİ START
-        public ActionResult DiyetisyenBilgileri()
+
+
+        // GET
+        public ActionResult IndexDiyetisyenBilgileri()
         {
             return View(dietManager.List());
         }
-        public ActionResult DiyetisyenBilgileriEdit(int? id)
+        // GET
+        public ActionResult EditDiyetisyenBilgileri(int? id)
         {
             if (id == null)
             {
@@ -157,9 +161,10 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View(diet);
         }
+        // POST
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DiyetisyenBilgileriEdit(Diet diet)
+        public ActionResult EditDiyetisyenBilgileri(Diet diet)
         {
             ModelState.Remove("CreatedOn");
             ModelState.Remove("ModifiedOn");
@@ -181,7 +186,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             return View(diet);
         }
         // GET
-        public ActionResult DiyetisyenBilgileriDetails(int? id)
+        public ActionResult DetailsDiyetisyenBilgileri(int? id)
         {
             if (id == null)
             {
@@ -198,12 +203,12 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
 
         // DANIŞAN BAŞARI HİKAYESİ START
 
-        public ActionResult DanisanBasariHikayesi()
+        public ActionResult IndexDanisanBasariHikayesi()
         {
             return View(dietManager.List());
         }
         // GET
-        public ActionResult DanisanBasariHikayesiEdit(int? id)
+        public ActionResult EditDanisanBasariHikayesi(int? id)
         {
             if (id == null)
             {

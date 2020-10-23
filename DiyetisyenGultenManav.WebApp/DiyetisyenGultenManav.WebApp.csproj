@@ -319,11 +319,11 @@
     <Content Include="Views\Diet\Index.cshtml" />
     <Content Include="Views\Diet\AllDiet.cshtml" />
     <Content Include="Views\Diet\NewDiet.cshtml" />
-    <Content Include="Views\Diet\DiyetisyenBilgileri.cshtml" />
-    <Content Include="Views\Diet\DanisanBasariHikayesi.cshtml" />
-    <Content Include="Views\Diet\DiyetisyenBilgileriEdit.cshtml" />
-    <Content Include="Views\Diet\DiyetisyenBilgileriDetails.cshtml" />
-    <Content Include="Views\Diet\DanisanBasariHikayesiEdit.cshtml" />
+    <Content Include="Views\Diet\IndexDiyetisyenBilgileri.cshtml" />
+    <Content Include="Views\Diet\IndexDanisanBasariHikayesi.cshtml" />
+    <Content Include="Views\Diet\EditDiyetisyenBilgileri.cshtml" />
+    <Content Include="Views\Diet\DetailsDiyetisyenBilgileri.cshtml" />
+    <Content Include="Views\Diet\EditDanisanBasariHikayesi.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -2,12 +2,11 @@
 @{
     ViewBag.Title = "DiyetisyenBilgileri";
 }
-
+@for (int i = 0; i < 3; i++)
+{
+    <br />
+}
 <h2>DiyetisyenBilgileri</h2>
-
-<p>
-    @Bootstrap.LinkButton("/Diet/DiyetisyenBilgileriCreate", "info", string.Empty, string.Empty, "plus", " Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -64,8 +63,8 @@
                 @Html.DisplayFor(modelItem => item.EkAciklama)
             </td>
             <td>
-                @Bootstrap.LinkButton("/Diet/DiyetisyenBilgileriEdit/" + @item.Id, "warning", "btn-xs", "Edit", "edit", string.Empty)
-                @Bootstrap.LinkButton("/Diet/DiyetisyenBilgileriDetails/" + @item.Id, "info", "btn-xs", "Details", "search", string.Empty)
+                @Bootstrap.LinkButton("/Diet/EditDiyetisyenBilgileri/" + @item.Id, "warning", "btn-xs", "Edit", "edit", string.Empty)
+                @Bootstrap.LinkButton("/Diet/DetailsDiyetisyenBilgileri/" + @item.Id, "info", "btn-xs", "Details", "search", string.Empty)
                 @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                     @Html.ActionLink("Details", "Details", new { id = item.Id }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
