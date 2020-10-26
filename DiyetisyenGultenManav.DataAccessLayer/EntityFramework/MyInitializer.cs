@@ -107,10 +107,27 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
                 ModifiedOn = DateTime.Now.AddMinutes(10),
                 ModifiedUsername = "gazihandemir"
             };
+
+            OdemeBildirimi odemeBildirimi = new OdemeBildirimi()
+            {
+                IsimSoyisim=" ",
+                BankaIsmi=" ",
+                YatirilanMiktar=" ",
+                TelefonNo=" ",
+                EkAciklamalar=" ",
+                IsNotification= false,
+                IsPay = false,
+                CreatedOn = DateTime.Now,
+                ModifiedOn = DateTime.Now.AddMinutes(10),
+                ModifiedUsername = "gazihandemir"
+            };
             context.Kullanıcılar.Add(gazi);
             context.Kullanıcılar.Add(gulten);
             gazi.Dietler.Add(gazininDieti);
             gulten.Dietler.Add(gulteninDieti);
+            gazi.OdemeBildirimi.Add(odemeBildirimi);
+            gulten.OdemeBildirimi.Add(odemeBildirimi);
+
             context.SaveChanges();
             // Kullanıcılar fakedata ile diet yazmak
             for (int i = 0; i < 8; i++)
@@ -157,6 +174,19 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
                     HaftaIki = "2",
                     HaftaUc = "3",
                     HaftaDort = "4",
+                    CreatedOn = DateTime.Now,
+                    ModifiedOn = DateTime.Now.AddMinutes(10),
+                    ModifiedUsername = "gazihandemir"
+                };
+                OdemeBildirimi odemeBildirimiUsers = new OdemeBildirimi()
+                {
+                    IsimSoyisim = $"user{i}",
+                    BankaIsmi = $"user{i}",
+                    YatirilanMiktar = $"user{i}",
+                    TelefonNo = $"user{i}",
+                    EkAciklamalar = $"user{i}",
+                    IsNotification = false,
+                    IsPay = false,
                     CreatedOn = DateTime.Now,
                     ModifiedOn = DateTime.Now.AddMinutes(10),
                     ModifiedUsername = "gazihandemir"

@@ -264,6 +264,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KategoriController.cs" />
     <Compile Include="Controllers\KullanıcıController.cs" />
+    <Compile Include="Controllers\OdemeBildirimiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -325,6 +326,11 @@
     <Content Include="Views\Diet\DetailsDiyetisyenBilgileri.cshtml" />
     <Content Include="Views\Diet\EditDanisanBasariHikayesi.cshtml" />
     <Content Include="Views\Diet\DetailsDanisanBasariHikayesi.cshtml" />
+    <Content Include="Views\OdemeBildirimi\Create.cshtml" />
+    <Content Include="Views\OdemeBildirimi\Delete.cshtml" />
+    <Content Include="Views\OdemeBildirimi\Details.cshtml" />
+    <Content Include="Views\OdemeBildirimi\Edit.cshtml" />
+    <Content Include="Views\OdemeBildirimi\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

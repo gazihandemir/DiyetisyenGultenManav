@@ -24,10 +24,10 @@ namespace DiyetisyenGultenManav.Entities
         [DisplayName("Şifre"), Required(ErrorMessage = "{0} alanı gereklidir."),
             StringLength(100, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
         public string Password { get; set; }
-        [StringLength(30),ScaffoldColumn(false)] // images/user_12.jpg
+        [StringLength(30), ScaffoldColumn(false)] // images/user_12.jpg
         public string ProfileImageFileName { get; set; }
 
-       [DisplayName("Doğum Tarihiniz")]
+        [DisplayName("Doğum Tarihiniz")]
         public string DogumTarihi { get; set; }
 
         [DisplayName("Telefon Numaranız")]
@@ -55,9 +55,11 @@ namespace DiyetisyenGultenManav.Entities
         public virtual List<BlogYazısı> BlogYazıları { get; set; }
         public virtual List<Yorum> Yorumlar { get; set; }
         public virtual List<Diet> Dietler { get; set; }
+        public virtual List<OdemeBildirimi> OdemeBildirimi { get; set; }
         public Kullanıcı()
         {
             Dietler = new List<Diet>();
+            OdemeBildirimi = new List();
         }
 
     }

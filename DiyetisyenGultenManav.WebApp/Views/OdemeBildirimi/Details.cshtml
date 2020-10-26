@@ -1,0 +1,74 @@
+﻿@model DiyetisyenGultenManav.Entities.OdemeBildirimi
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>OdemeBildirimi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IsimSoyisim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsimSoyisim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BankaIsmi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BankaIsmi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YatirilanMiktar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YatirilanMiktar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TelefonNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TelefonNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EkAciklamalar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EkAciklamalar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bildirdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bildirdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsPay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsPay)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
