@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace DiyetisyenGultenManav.BusinessLayer
 {
-    class OdemeBildirimiManager : ManagerBase<OdemeBildirimi>
+    public class OdemeBildirimiManager : ManagerBase<OdemeBildirimi>
     {
+
     }
 }

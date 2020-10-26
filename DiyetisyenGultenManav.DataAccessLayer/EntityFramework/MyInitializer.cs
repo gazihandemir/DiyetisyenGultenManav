@@ -110,12 +110,24 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
 
             OdemeBildirimi odemeBildirimi = new OdemeBildirimi()
             {
-                IsimSoyisim=" ",
-                BankaIsmi=" ",
-                YatirilanMiktar=" ",
-                TelefonNo=" ",
-                EkAciklamalar=" ",
+                IsimSoyisim="1",
+                BankaIsmi="1",
+                YatirilanMiktar="1",
+                TelefonNo="1",
+                EkAciklamalar="1",
                 IsNotification= false,
+                IsPay = false,
+                CreatedOn = DateTime.Now,
+                ModifiedOn = DateTime.Now.AddMinutes(10),
+                ModifiedUsername = "gazihandemir"
+            }; OdemeBildirimi odemeBildirimi2 = new OdemeBildirimi()
+            {
+                IsimSoyisim = "1",
+                BankaIsmi = "1",
+                YatirilanMiktar = "1",
+                TelefonNo = "1",
+                EkAciklamalar = "1",
+                IsNotification = false,
                 IsPay = false,
                 CreatedOn = DateTime.Now,
                 ModifiedOn = DateTime.Now.AddMinutes(10),
@@ -126,7 +138,7 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
             gazi.Dietler.Add(gazininDieti);
             gulten.Dietler.Add(gulteninDieti);
             gazi.OdemeBildirimi.Add(odemeBildirimi);
-            gulten.OdemeBildirimi.Add(odemeBildirimi);
+            gulten.OdemeBildirimi.Add(odemeBildirimi2);
 
             context.SaveChanges();
             // Kullanıcılar fakedata ile diet yazmak
@@ -193,6 +205,7 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
                 };
                 context.Kullanıcılar.Add(user);
                 user.Dietler.Add(diet);
+                user.OdemeBildirimi.Add(odemeBildirimiUsers);
             }
             context.SaveChanges();
             List<Kullanıcı> kullanıcıList = context.Kullanıcılar.ToList();

@@ -11,7 +11,6 @@ namespace DiyetisyenGultenManav.Entities
     [Table("OdemeBildirimi")]
     public class OdemeBildirimi : EntityBase
     {
-        [Required]
         public string IsimSoyisim { get; set; }
         public string BankaIsmi { get; set; }
         public string YatirilanMiktar { get; set; }

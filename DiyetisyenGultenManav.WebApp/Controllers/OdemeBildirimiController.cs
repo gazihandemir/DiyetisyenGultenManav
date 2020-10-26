@@ -6,19 +6,18 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using DiyetisyenGultenManav.BusinessLayer;
 using DiyetisyenGultenManav.Entities;
-using DiyetisyenGultenManav.WebApp.Data;
 
 namespace DiyetisyenGultenManav.WebApp.Controllers
 {
     public class OdemeBildirimiController : Controller
     {
-        private DiyetisyenGultenManavWebAppContext db = new DiyetisyenGultenManavWebAppContext();
-
+        OdemeBildirimiManager odemeBildirimiManager = new OdemeBildirimiManager();
         // GET: OdemeBildirimi
         public ActionResult Index()
         {
-            return View(db.OdemeBildirimis.ToList());
+            return View(odemeBildirimiManager.List());
         }
 
         // GET: OdemeBildirimi/Details/5
@@ -28,7 +27,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            OdemeBildirimi odemeBildirimi = db.OdemeBildirimis.Find(id);
+            OdemeBildirimi odemeBildirimi = odemeBildirimiManager.Find(x => x.Id == id);
             if (odemeBildirimi == null)
             {
                 return HttpNotFound();
@@ -47,12 +46,11 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,IsimSoyisim,BankaIsmi,YatirilanMiktar,TelefonNo,EkAciklamalar,Bildirdi,IsPay,CreatedOn,ModifiedOn,ModifiedUsername")] OdemeBildirimi odemeBildirimi)
+        public ActionResult Create(OdemeBildirimi odemeBildirimi)
         {
             if (ModelState.IsValid)
             {
-                db.OdemeBildirimis.Add(odemeBildirimi);
-                db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 
@@ -66,7 +64,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            OdemeBildirimi odemeBildirimi = db.OdemeBildirimis.Find(id);
+            OdemeBildirimi odemeBildirimi = odemeBildirimiManager.Find(x => x.Id == id);
             if (odemeBildirimi == null)
             {
                 return HttpNotFound();
@@ -83,8 +81,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(odemeBildirimi).State = EntityState.Modified;
-                db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
             return View(odemeBildirimi);
@@ -97,7 +94,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            OdemeBildirimi odemeBildirimi = db.OdemeBildirimis.Find(id);
+            OdemeBildirimi odemeBildirimi = odemeBildirimiManager.Find(x => x.Id == id);
             if (odemeBildirimi == null)
             {
                 return HttpNotFound();
@@ -110,19 +107,8 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            OdemeBildirimi odemeBildirimi = db.OdemeBildirimis.Find(id);
-            db.OdemeBildirimis.Remove(odemeBildirimi);
-            db.SaveChanges();
+            OdemeBildirimi odemeBildirimi = odemeBildirimiManager.Find(x => x.Id == id);
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

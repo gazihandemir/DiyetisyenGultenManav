@@ -59,7 +59,7 @@ namespace DiyetisyenGultenManav.Entities
         public Kullanıcı()
         {
             Dietler = new List<Diet>();
-            OdemeBildirimi = new List();
+            OdemeBildirimi = new List<OdemeBildirimi>();
         }
 
     }
