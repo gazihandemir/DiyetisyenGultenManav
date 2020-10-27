@@ -8,12 +8,18 @@ using System.Web;
 using System.Web.Mvc;
 using DiyetisyenGultenManav.BusinessLayer;
 using DiyetisyenGultenManav.Entities;
+using DiyetisyenGultenManav.WebApp.Models;
 
 namespace DiyetisyenGultenManav.WebApp.Controllers
 {
     public class OdemeBildirimiController : Controller
     {
         OdemeBildirimiManager odemeBildirimiManager = new OdemeBildirimiManager();
+        public ActionResult IndexOdemeBildirimiOwner()
+        {
+            var Owner = odemeBildirimiManager.ListQueryable().Include("Owner").Where(x => x.Owner.Id == CurrentSession.User.Id).OrderByDescending(x => x.ModifiedOn);
+            return View(Owner.ToList());
+        }
         // GET: OdemeBildirimi
         public ActionResult Index()
         {
@@ -42,8 +48,6 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         }
 
         // POST: OdemeBildirimi/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(OdemeBildirimi odemeBildirimi)
@@ -73,11 +77,9 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         }
 
         // POST: OdemeBildirimi/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,IsimSoyisim,BankaIsmi,YatirilanMiktar,TelefonNo,EkAciklamalar,Bildirdi,IsPay,CreatedOn,ModifiedOn,ModifiedUsername")] OdemeBildirimi odemeBildirimi)
+        public ActionResult Edit(OdemeBildirimi odemeBildirimi)
         {
             if (ModelState.IsValid)
             {

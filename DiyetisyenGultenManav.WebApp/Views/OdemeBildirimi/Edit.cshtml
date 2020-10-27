@@ -57,11 +57,11 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Bildirdi, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IsNotification, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.Bildirdi)
-                    @Html.ValidationMessageFor(model => model.Bildirdi, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.IsNotification)
+                    @Html.ValidationMessageFor(model => model.IsNotification, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>

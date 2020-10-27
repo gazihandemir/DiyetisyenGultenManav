@@ -1,0 +1,66 @@
+﻿@model IEnumerable<DiyetisyenGultenManav.Entities.OdemeBildirimi>
+@{
+    ViewBag.Title = "IndexOdemeBildirimiOwner";
+}
+
+<h2>IndexOdemeBildirimiOwner</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IsimSoyisim)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BankaIsmi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YatirilanMiktar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TelefonNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EkAciklamalar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsNotification)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsPay)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsimSoyisim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BankaIsmi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YatirilanMiktar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TelefonNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EkAciklamalar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsNotification)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsPay)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
