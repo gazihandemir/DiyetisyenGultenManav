@@ -128,6 +128,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             OdemeBildirimi odemeBildirimi = odemeBildirimiManager.Find(x => x.Id == id);
+            odemeBildirimiManager.Delete(odemeBildirimi);
             return RedirectToAction("Index");
         }
     }
