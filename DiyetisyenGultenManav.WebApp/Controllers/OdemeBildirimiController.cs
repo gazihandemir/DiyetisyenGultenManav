@@ -88,9 +88,20 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(OdemeBildirimi odemeBildirimi)
         {
+            ModelState.Remove("CreatedOn");
+            ModelState.Remove("ModifiedOn");
+            ModelState.Remove("ModifiedUsername");
             if (ModelState.IsValid)
             {
-
+                OdemeBildirimi db_odeme = odemeBildirimiManager.Find(x => x.Id == odemeBildirimi.Id);
+                db_odeme.IsimSoyisim = odemeBildirimi.IsimSoyisim;
+                db_odeme.BankaIsmi = odemeBildirimi.BankaIsmi;
+                db_odeme.YatirilanMiktar = odemeBildirimi.YatirilanMiktar;
+                db_odeme.TelefonNo = odemeBildirimi.TelefonNo;
+                db_odeme.EkAciklamalar = odemeBildirimi.EkAciklamalar;
+                db_odeme.IsNotification = odemeBildirimi.IsNotification;
+                db_odeme.IsPay = odemeBildirimi.IsPay;
+                odemeBildirimiManager.Update(db_odeme);
                 return RedirectToAction("Index");
             }
             return View(odemeBildirimi);
