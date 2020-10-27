@@ -21,6 +21,7 @@ namespace DiyetisyenGultenManav.Entities
         public bool IsPay { get; set; }
         public int KullanıcıId { get; set; }
 
-        public Kullanıcı Owner { get; set; }
+
+        public virtual Kullanıcı Owner { get; set; }
     }
 }

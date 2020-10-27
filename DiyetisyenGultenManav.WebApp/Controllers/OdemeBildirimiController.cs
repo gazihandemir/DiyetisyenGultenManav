@@ -15,6 +15,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
     public class OdemeBildirimiController : Controller
     {
         OdemeBildirimiManager odemeBildirimiManager = new OdemeBildirimiManager();
+        KullanıcıManager kullanıcıManager = new KullanıcıManager();
         public ActionResult IndexOdemeBildirimiOwner()
         {
             var Owner = odemeBildirimiManager.ListQueryable().Include("Owner").Where(x => x.Owner.Id == CurrentSession.User.Id).OrderByDescending(x => x.ModifiedOn);
@@ -44,6 +45,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         // GET: OdemeBildirimi/Create
         public ActionResult Create()
         {
+            ViewBag.KullanıcıId = new SelectList(kullanıcıManager.List(), "Id", "Username");
             return View();
         }
 
@@ -52,12 +54,17 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(OdemeBildirimi odemeBildirimi)
         {
+            ModelState.Remove("CreatedOn");
+            ModelState.Remove("ModifiedOn");
+            ModelState.Remove("ModifiedUsername");
             if (ModelState.IsValid)
             {
-
+                odemeBildirimiManager.Insert(odemeBildirimi);
+                
                 return RedirectToAction("Index");
             }
-
+            ViewBag.KullanıcıId = new SelectList(kullanıcıManager.List(), "Id", "Username");
+            odemeBildirimi.Owner = ViewBag.KullanıcıId;
             return View(odemeBildirimi);
         }
 
