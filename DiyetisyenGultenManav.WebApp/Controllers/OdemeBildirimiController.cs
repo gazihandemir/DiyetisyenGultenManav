@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DiyetisyenGultenManav.BusinessLayer;
+using DiyetisyenGultenManav.BusinessLayer.Results;
 using DiyetisyenGultenManav.Entities;
 using DiyetisyenGultenManav.WebApp.Models;
 
@@ -16,10 +17,33 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
     {
         OdemeBildirimiManager odemeBildirimiManager = new OdemeBildirimiManager();
         KullanıcıManager kullanıcıManager = new KullanıcıManager();
+        // GET : IndexOdemeBildirimiOwner
         public ActionResult IndexOdemeBildirimiOwner()
         {
             var Owner = odemeBildirimiManager.ListQueryable().Include("Owner").Where(x => x.Owner.Id == CurrentSession.User.Id).OrderByDescending(x => x.ModifiedOn);
             return View(Owner.ToList());
+        }
+        // GET : CreateOdemeBildirimiOwner
+        public ActionResult CreateOdemeBildirimiOwner()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateOdemeBildirimiOwner(OdemeBildirimi odemeBildirimi)
+        {
+            ModelState.Remove("CreatedOn");
+            ModelState.Remove("ModifiedOn");
+            ModelState.Remove("ModifiedUsername");
+            if (ModelState.IsValid)
+            {
+                odemeBildirimi.Owner = CurrentSession.User;
+                odemeBildirimi.IsNotification = true;
+                odemeBildirimi.IsPay = false;
+                odemeBildirimiManager.Insert(odemeBildirimi);
+                return RedirectToAction("IndexOdemeBildirimiOwner");
+            }
+            return View(odemeBildirimi);
         }
         // GET: OdemeBildirimi
         public ActionResult Index()

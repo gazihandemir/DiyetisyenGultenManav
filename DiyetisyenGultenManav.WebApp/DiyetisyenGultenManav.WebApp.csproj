@@ -332,6 +332,7 @@
     <Content Include="Views\OdemeBildirimi\Edit.cshtml" />
     <Content Include="Views\OdemeBildirimi\Index.cshtml" />
     <Content Include="Views\OdemeBildirimi\IndexOdemeBildirimiOwner.cshtml" />
+    <Content Include="Views\OdemeBildirimi\CreateOdemeBildirimiOwner.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
