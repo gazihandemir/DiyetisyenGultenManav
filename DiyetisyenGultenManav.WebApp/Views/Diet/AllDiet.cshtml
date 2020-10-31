@@ -43,9 +43,18 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Owner.Username)
-            </td>
+            @if (item.Owner.Username == "gazihandemir")
+            {
+                <td style="background-color:aquamarine">
+                    @Html.DisplayFor(modelItem => item.Owner.Username)
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Owner.Username)
+                </td>
+            }
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>

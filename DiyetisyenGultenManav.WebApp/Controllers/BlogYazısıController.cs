@@ -42,13 +42,22 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(BlogYazısı blogYazısı)
+        public ActionResult Create(BlogYazısı blogYazısı, HttpPostedFileBase blogImage)
         {
             ModelState.Remove("CreatedOn");
             ModelState.Remove("ModifiedOn");
             ModelState.Remove("ModifiedUsername");
             if (ModelState.IsValid)
             {
+                if (blogImage != null && (
+               blogImage.ContentType == "image/jpeg" ||
+               blogImage.ContentType == "image/jpg" ||
+               blogImage.ContentType == "image/png"))
+                {
+                    string filename = $"blog_{blogYazısı.Id}.{blogImage.ContentType.Split('/')[1]}";
+                    blogImage.SaveAs(Server.MapPath($"~/ImageBlog/{filename}"));
+                    blogYazısı.Picture = filename;
+                }
                 blogYazısı.Owner = CurrentSession.User;
                 blogYazısıManager.Insert(blogYazısı);
                 return RedirectToAction("Index");
