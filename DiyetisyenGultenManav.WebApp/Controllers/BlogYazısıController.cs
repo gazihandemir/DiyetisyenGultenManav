@@ -14,6 +14,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
 {
     public class BlogYazısıController : Controller
     {
+        
         BlogYazısıManager blogYazısıManager = new BlogYazısıManager();
         KategoriManager kategoriManager = new KategoriManager();
         public ActionResult Index()
@@ -44,6 +45,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(BlogYazısı blogYazısı, HttpPostedFileBase blogImage)
         {
+            
             ModelState.Remove("CreatedOn");
             ModelState.Remove("ModifiedOn");
             ModelState.Remove("ModifiedUsername");
@@ -54,7 +56,8 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                blogImage.ContentType == "image/jpg" ||
                blogImage.ContentType == "image/png"))
                 {
-                    string filename = $"blog_{blogYazısı.Id}.{blogImage.ContentType.Split('/')[1]}";
+                    Guid guid = Guid.NewGuid();
+                    string filename = $"blog_{guid}.{blogImage.ContentType.Split('/')[1]}";
                     blogImage.SaveAs(Server.MapPath($"~/ImageBlog/{filename}"));
                     blogYazısı.Picture = filename;
                 }

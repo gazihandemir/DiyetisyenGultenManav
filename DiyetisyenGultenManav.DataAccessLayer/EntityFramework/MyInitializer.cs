@@ -222,7 +222,7 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
                 };
                 context.Kategoriler.Add(kat);
                 // FakeData ile blogyazısı eklemek
-                for (int k = 0; k < FakeData.NumberData.GetNumber(5, 9); k++)
+                for (int k = 0; k < FakeData.NumberData.GetNumber(2, 3); k++)
                 {
                     Kullanıcı owner = kullanıcıList[FakeData.NumberData.GetNumber(0, kullanıcıList.Count - 1)];
                     BlogYazısı blogYazısı = new BlogYazısı()
