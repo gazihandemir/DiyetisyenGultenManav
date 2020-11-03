@@ -1,100 +1,146 @@
 ﻿@model DiyetisyenGultenManav.Entities.OdemeBildirimi
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "ÖDEME BİLDİRİMİ DETAYI";
 }
-@for (int i = 0; i < 3; i++)
-{
-    <br />
-}
-<h2>Details</h2>
+<link href="~/Content/new-login-style-odeme.css" rel="stylesheet" />
+<style>
+    .vertical-strech {
+        height: 100vh;
+    }
+</style>
+<div class="login-block pl-5 pt-3 mr-0 vertical-strech">
+    <div class="row pl-5 pt-3 mr-0">
+        <div class="col-md-12">
+            <p class="display-4 text-center">
+                @ViewBag.Title
+            </p>
+        </div>
+    </div>
 
-<div>
-    <h4>OdemeBildirimi</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Owner.Username)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Owner.Username)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.IsimSoyisim)
-        </dt>
+    <div class="row pl-3 mr-0">
+        <div class="col-md-10">
+            <div>
+                <dl class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Owner.Username)
+                    </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.Owner.Username)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.IsimSoyisim)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.IsimSoyisim)
-        </dd>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.IsimSoyisim)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BankaIsmi)
-        </dt>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.BankaIsmi)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.BankaIsmi)
-        </dd>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.BankaIsmi)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.YatirilanMiktar)
-        </dt>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.YatirilanMiktar)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.YatirilanMiktar)
-        </dd>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.YatirilanMiktar)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TelefonNo)
-        </dt>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.TelefonNo)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TelefonNo)
-        </dd>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.TelefonNo)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EkAciklamalar)
-        </dt>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.EkAciklamalar)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.EkAciklamalar)
-        </dd>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.EkAciklamalar)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IsNotification)
-        </dt>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.IsNotification)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.IsNotification)
-        </dd>
+                    <dd class="col-md-9">
+                        @if (Model.IsNotification)
+                        {
+                            <i class="fa fa-check text-success"></i>
+                        }
+                        else
+                        {
+                            <i class="fa fa-times text-danger"></i>
+                        }
+                        @*  @Html.DisplayFor(model => model.IsNotification)*@
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IsPay)
-        </dt>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.IsPay)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.IsPay)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedOn)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.CreatedOn)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ModifiedOn)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ModifiedOn)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ModifiedUsername)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ModifiedUsername)
-        </dd>
-    </dl>
+                    <dd class="col-md-9">
+                        @if (Model.IsPay)
+                        {
+                            <i class="fa fa-check text-success"></i>
+                        }
+                        else
+                        {
+                            <i class="fa fa-times text-danger"></i>
+                        }
+                        @*  @Html.DisplayFor(model => model.IsPay)*@
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.IsOkey)
+                    </dt>
+
+                    <dd class="col-md-9">
+                        @if (Model.IsOkey)
+                        {
+                            <i class="fa fa-check text-success"></i>
+                        }
+                        else
+                        {
+                            <i class="fa fa-times text-danger"></i>
+                        }
+                        @*  @Html.DisplayFor(model => model.IsOkey)*@
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.CreatedOn)
+                    </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.CreatedOn)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ModifiedOn)
+                    </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.ModifiedOn)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ModifiedUsername)
+                    </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.ModifiedUsername)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="col-md-10 pl-3">
+            <p>
+                @Bootstrap.LinkButton("/OdemeBildirimi/Index", "secondary", string.Empty,
+               string.Empty, "arrow-left", "Geri Dön!")
+                @Bootstrap.LinkButton("/OdemeBildirimi/Edit/" + Model.Id, "warning", string.Empty,
+               string.Empty, "edit", "Düzenle")
+            </p>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
