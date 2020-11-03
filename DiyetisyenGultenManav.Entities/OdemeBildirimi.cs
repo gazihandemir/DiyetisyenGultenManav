@@ -19,6 +19,7 @@ namespace DiyetisyenGultenManav.Entities
 
         public bool IsNotification { get; set; }
         public bool IsPay { get; set; }
+        public bool IsOkey { get; set; }
         public int KullanıcıId { get; set; }
 
 
