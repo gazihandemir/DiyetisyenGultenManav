@@ -40,6 +40,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 odemeBildirimi.Owner = CurrentSession.User;
                 odemeBildirimi.IsNotification = true;
                 odemeBildirimi.IsPay = false;
+                odemeBildirimi.IsOkey = false;
                 odemeBildirimiManager.Insert(odemeBildirimi);
                 return RedirectToAction("IndexOdemeBildirimiOwner");
             }

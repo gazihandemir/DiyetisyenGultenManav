@@ -70,6 +70,13 @@
                             @Html.EditorFor(model => model.IsPay)
                         </div>
                     </div>
+                </div> <div class="form-group row">
+                    @Html.LabelFor(model => model.IsOkey, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.IsOkey)
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group row">
                     @Html.LabelFor(model => model.KullanıcıId, "KullanıcıId", htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })

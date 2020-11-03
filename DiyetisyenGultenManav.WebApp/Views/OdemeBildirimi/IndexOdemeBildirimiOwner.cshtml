@@ -1,61 +1,98 @@
 ﻿@model IEnumerable<DiyetisyenGultenManav.Entities.OdemeBildirimi>
 @{
-    ViewBag.Title = "IndexOdemeBildirimiOwner";
+    ViewBag.Title = "ÖDEME BİLDİRİMLERİM";
 }
-@for (int i = 0; i < 3; i++)
-{
-    <br />
-}
-<h2>IndexOdemeBildirimiOwner</h2>
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IsimSoyisim)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BankaIsmi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.YatirilanMiktar)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TelefonNo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EkAciklamalar)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsNotification)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsimSoyisim)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BankaIsmi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.YatirilanMiktar)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TelefonNo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EkAciklamalar)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsNotification)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-            </td>
-        </tr>
+<link href="~/Content/new-login-style-odeme.css" rel="stylesheet" />
+<style>
+    .vertical-strech {
+        height: 100vh;
     }
+</style>
+<div class="login-block  mr-0 ">
+    <div class=" row pl-5 pt-3 mr-0">
+        <div class="col-md-12">
+            <p class="display-4 text-center">
+                @ViewBag.Title
+            </p>
+        </div>
+    </div>
 
-</table>
+    <div class="row pl-3 mr-0  vertical-strech">
+        <div class="col-md-12">
+            <p>
+                @Bootstrap.LinkButton("/ODemeBildirimi/CreateOdemeBildirimiOwner", "primary", "btn-sm", string.Empty, "plus", "Yeni Ödeme Bildirimi Oluştur")
+            </p>
+            <table class="table table-hover table-striped table-sm small">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsimSoyisim)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BankaIsmi)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.YatirilanMiktar)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TelefonNo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EkAciklamalar)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsNotification)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsOkey)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsimSoyisim)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BankaIsmi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.YatirilanMiktar)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TelefonNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EkAciklamalar)
+                        </td>
+                        <td class="center-block">
+                            @if (item.IsNotification)
+                            {
+                                <i class="fa fa-check text-success"></i>
+                            }
+                            else
+                            {
+                                <i class="fa fa-times text-danger"></i>
+                            }
+                        </td>
+                        <td class="center-block">
+                            @if (item.IsOkey)
+                            {
+                                <i class="fa fa-check text-success"></i>
+                            }
+                            else
+                            {
+                                <i class="fa fa-times text-danger"></i>
+                            }
+                        </td>
+                        <td>
+                            @Bootstrap.LinkButton("/OdemeBildirimi/Edit/" + item.Id, "warning", "btn-sm", "Edit", "edit", string.Empty)
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

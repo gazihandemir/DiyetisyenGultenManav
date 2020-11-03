@@ -110,13 +110,14 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
 
             OdemeBildirimi odemeBildirimi = new OdemeBildirimi()
             {
-                IsimSoyisim="1",
-                BankaIsmi="1",
-                YatirilanMiktar="1",
-                TelefonNo="1",
-                EkAciklamalar="1",
-                IsNotification= false,
+                IsimSoyisim = "1",
+                BankaIsmi = "1",
+                YatirilanMiktar = "1",
+                TelefonNo = "1",
+                EkAciklamalar = "1",
+                IsNotification = false,
                 IsPay = false,
+                IsOkey = false,
                 CreatedOn = DateTime.Now,
                 ModifiedOn = DateTime.Now.AddMinutes(10),
                 ModifiedUsername = "gazihandemir"
@@ -129,6 +130,7 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
                 EkAciklamalar = "1",
                 IsNotification = false,
                 IsPay = false,
+                IsOkey = false,
                 CreatedOn = DateTime.Now,
                 ModifiedOn = DateTime.Now.AddMinutes(10),
                 ModifiedUsername = "gazihandemir"
@@ -199,6 +201,7 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
                     EkAciklamalar = $"user{i}",
                     IsNotification = false,
                     IsPay = false,
+                    IsOkey = false,
                     CreatedOn = DateTime.Now,
                     ModifiedOn = DateTime.Now.AddMinutes(10),
                     ModifiedUsername = "gazihandemir"
