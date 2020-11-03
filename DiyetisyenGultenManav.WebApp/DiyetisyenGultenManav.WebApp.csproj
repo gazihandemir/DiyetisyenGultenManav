@@ -103,7 +103,10 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\new-login-style.css" />
+    <Content Include="Content\shop-homepage.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\validation-summary.css" />
     <Content Include="css\animate.css" />
@@ -333,6 +336,8 @@
     <Content Include="Views\OdemeBildirimi\Index.cshtml" />
     <Content Include="Views\OdemeBildirimi\IndexOdemeBildirimiOwner.cshtml" />
     <Content Include="Views\OdemeBildirimi\CreateOdemeBildirimiOwner.cshtml" />
+    <Content Include="Views\Shared\_PartialNavbar.cshtml" />
+    <Content Include="Views\Home\_PartialCarousel.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

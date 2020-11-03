@@ -28,3 +28,15 @@
 {
     <a href="@url"><i class="fa fa-@icon"> </i> @text</a>
 }
+@helper DropdownLinkMenu(string url = "", string icon = "", string text = "")
+{
+
+    <a class="dropdown-item" href="@url">
+        <i class="fa fa-@icon @(string.IsNullOrEmpty(text) ? "" :"mr-2")">
+        </i>@text
+    </a>
+}
+@helper DropdownDivider()
+{
+    <div class="dropdown-divider"></div>
+}

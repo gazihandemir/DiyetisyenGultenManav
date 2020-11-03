@@ -6,12 +6,16 @@
     List<Kategori> KategoriList = CM.List();
 
 }
-<p class="lead">Kategoriler</p>
+<p class="display-4"> Kategoriler</p>
 <div class="list-group">
-    <a href="@Url.Action("Index","Home")" class="list-group-item">Tümü </a>
+    <a href="@Url.Action("Index","Home")" class="list-group-item list-group-item-action">
+        <span class="fa fa-th-list mr-2"></span>Tümü
+    </a>
     @foreach (Kategori kate in KategoriList)
     {
-        <a href="/Home/ByKategori/@kate.Id" title="@kate.Description" class="list-group-item">@kate.Title</a>
+        <a href="/Home/ByKategori/@kate.Id" title;="@kate.Description" class="list-group-item list-group-item-action">
+            <span class="fa fa-th-list mr-2"></span> @kate.Title
+        </a>
     }
 
 </div>

@@ -121,6 +121,10 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             BlogYazısı blogYazısı = blogYazısıManager.Find(x => x.Id == id);
+            if (blogYazısı.Picture != null)
+            {
+                System.IO.File.Delete(Server.MapPath($"~/ImageBlog/{blogYazısı.Picture}")); // klasörden fotoğraf silme
+            }
             blogYazısıManager.Delete(blogYazısı);
             return RedirectToAction("Index");
         }
