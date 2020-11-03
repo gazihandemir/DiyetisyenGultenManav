@@ -119,6 +119,7 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="images\about-image.jpg" />
+    <Content Include="images\background.jpg" />
     <Content Include="images\footer-open-hour-bg.jpg" />
     <Content Include="images\menu-image1.jpg" />
     <Content Include="images\menu-image2.jpg" />
