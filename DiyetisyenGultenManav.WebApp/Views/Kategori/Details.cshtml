@@ -1,58 +1,77 @@
 ﻿@model DiyetisyenGultenManav.Entities.Kategori
-
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Kategori Detayı";
 }
+<link href="~/Content/new-login-style-kategori.css" rel="stylesheet" />
+<style>
+    .vertical-strech {
+        height: 100vh;
+    }
+</style>
+<div class="login-block pl-5 pt-3 mr-0 vertical-strech">
+    <<div class="row pl-5 pt-3 mr-0">
+        <div class="col-md-12">
+            <p class="display-4 text-center">
+                @ViewBag.Title
+            </p>
+        </div>
+    </div>
 
-<h2>Details</h2>
+    <div class="row pl-3 mr-0">
+        <div class="col-md-10">
+            <div>
+                <dl class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Title)
+                    </dt>
 
-<div>
-    <h4>Kategori</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.Title)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Description)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.CreatedOn)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedOn)
-        </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.CreatedOn)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreatedOn)
-        </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ModifiedOn)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ModifiedOn)
-        </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.ModifiedOn)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ModifiedOn)
-        </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ModifiedUsername)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ModifiedUsername)
-        </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.ModifiedUsername)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ModifiedUsername)
-        </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="col-md-10 pl-3">
+            <p>
+                @Bootstrap.LinkButton("/Kategori/Index", "secondary", string.Empty,
+                string.Empty, "arrow-left", "Geri Dön!")
+                @Bootstrap.LinkButton("/Kategori/Edit/" + Model.Id, "warning", string.Empty,
+             string.Empty, "edit", " Edit")
 
-    </dl>
+            </p>
+        </div>
+    </div>
 </div>
-<p>
-    @Bootstrap.LinkButton("/Kategori/Edit/"+Model.Id, "warning", string.Empty, string.Empty, "edit", " Edit")
-    @Bootstrap.LinkButton("/Kategori/Index", "default", string.Empty,string.Empty , "arrow-left", " Back to List")
-</p>
