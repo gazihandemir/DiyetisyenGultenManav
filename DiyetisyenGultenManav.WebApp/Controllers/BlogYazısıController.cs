@@ -84,7 +84,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(BlogYazısı blogYazısı)
+        public ActionResult Edit(BlogYazısı blogYazısı, HttpPostedFileBase blogImage)
         {
             ModelState.Remove("CreatedOn");
             ModelState.Remove("ModifiedOn");
@@ -96,7 +96,17 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 db_blog.KategoriId = blogYazısı.KategoriId;
                 db_blog.Text = blogYazısı.Text;
                 db_blog.Title = blogYazısı.Title;
-
+                if (blogImage != null && (
+              blogImage.ContentType == "image/jpeg" ||
+              blogImage.ContentType == "image/jpg" ||
+              blogImage.ContentType == "image/png"))
+                {
+                    Guid guid = Guid.NewGuid();
+                    string filename = $"blog_gazi{guid}.{blogImage.ContentType.Split('/')[1]}";
+                    blogImage.SaveAs(Server.MapPath($"~/ImageBlog/{filename}"));
+                    blogYazısı.Picture = filename;
+                    db_blog.Picture = filename;
+                }
                 blogYazısıManager.Update(db_blog);
                 return RedirectToAction("Index");
             }
