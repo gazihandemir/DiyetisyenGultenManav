@@ -1,58 +1,118 @@
 ﻿@model DiyetisyenGultenManav.Entities.BlogYazısı
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "BLOG YAZISI DETAYI";
 }
+<link href="~/Content/new-login-style.css" rel="stylesheet" />
+<style>
+    .resim {
+        object-fit: fill;
+        border: 1px solid black;
+        margin-right: 20px;
+        width: 256px;
+        height: 256px;
+    }
+</style>
+<div class="login-block pl-5 pt-3 mr-0 vertical-strech">
+    <div class="row pl-5 pt-3 mr-0">
+        <div class="col-md-12">
+            <p class="display-4 text-center">
+                @ViewBag.Title
+            </p>
+        </div>
+    </div>
 
-<h2>Details</h2>
+    <div class="row pl-3 mr-0">
+        <div class="col-md-10">
+            <div>
+                <dl class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Kategori.Title)
+                    </dt>
 
-<div>
-    <h4>BlogYazısı</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Kategori.Title)
-        </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.Kategori.Title)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Kategori.Title)
-        </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Title)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.Title)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Text)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Text)
-        </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.Text)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Text)
-        </dd>
+                    <dt class="col-md-3">
+                        Kategori @Html.DisplayNameFor(model => model.Kategori.Title)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IsDraft)
-        </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.Kategori.Title)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.CreatedOn)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.IsDraft)
-        </dd>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.CreatedOn)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ModifiedOn)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Picture)
-        </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.ModifiedOn)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ModifiedUsername)
+                    </dt>
 
-        <dd>
-            <img src="~/ImageBlog/@Model.Picture" class="rounded-circle img-thumbnail" width="256" height="256" />
-        </dd>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.ModifiedUsername)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.IsDraft)
+                    </dt>
 
-    </dl>
+                    <dd class="col-md-9">
+                        @if (Model.IsDraft)
+                        {
+                            <i class="fa fa-check text-success"></i>
+                        }
+                        else
+                        {
+                            <i class="fa fa-times text-danger"></i>
+                        }
+                        @*  @Html.DisplayFor(model => model.IsDraft)*@
+                    </dd>
+
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Picture)
+                    </dt>
+
+                    <dd class="col-md-9">
+                        <img src="~/ImageBlog/@Model.Picture" class="resim img-thumbnail" width="256" height="256"
+                             />
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="col-md-10 pl-3">
+            <p>
+                @Bootstrap.LinkButton("/BlogYazısı/Index", "secondary", string.Empty,
+               string.Empty, "arrow-left", "Geri Dön!")
+                @Bootstrap.LinkButton("/BlogYazısı/Edit/" + Model.Id, "warning", string.Empty,
+               string.Empty, "edit", "Düzenle")
+
+            </p>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

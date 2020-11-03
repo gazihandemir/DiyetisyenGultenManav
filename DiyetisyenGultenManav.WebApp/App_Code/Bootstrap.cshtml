@@ -26,7 +26,10 @@
 }
 @helper LinkMenu(string url = "", string icon = "", string text = "")
 {
-    <a href="@url"><i class="fa fa-@icon"> </i> @text</a>
+    <a class="nav-link" href="@url">
+        <i class="fa fa-@icon @(string.IsNullOrEmpty(text) ? "" :"mr-2")">
+        </i>@text
+    </a>
 }
 @helper DropdownLinkMenu(string url = "", string icon = "", string text = "")
 {

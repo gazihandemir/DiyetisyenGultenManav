@@ -18,6 +18,10 @@
     <script src="~/Scripts/bootstrap.bundle.min.js"></script>
 
     <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body>
     @Html.Partial("_PartialNavbar")
@@ -28,15 +32,7 @@
     @RenderSection("footer", required: false)
 
 
-    <!-- SCRIPTS -->
-    <script src="~/js/jquery.js"></script>
-    <script src="~/js/bootstrap.min.js"></script>
-    <script src="~/js/jquery.stellar.min.js"></script>
-    <script src="~/js/wow.min.js"></script>
-    <script src="~/js/owl.carousel.min.js"></script>
-    <script src="~/js/jquery.magnific-popup.min.js"></script>
-    <script src="~/js/smoothscroll.js"></script>
-    <script src="~/js/custom.js"></script>
+
 
 </body>
 </html>
