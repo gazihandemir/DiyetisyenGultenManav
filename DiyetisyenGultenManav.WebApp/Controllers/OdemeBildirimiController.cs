@@ -85,7 +85,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             if (ModelState.IsValid)
             {
                 odemeBildirimiManager.Insert(odemeBildirimi);
-                
+
                 return RedirectToAction("Index");
             }
             ViewBag.KullanıcıId = new SelectList(kullanıcıManager.List(), "Id", "Username");
@@ -116,6 +116,9 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             ModelState.Remove("CreatedOn");
             ModelState.Remove("ModifiedOn");
             ModelState.Remove("ModifiedUsername");
+            ModelState.Remove("IsNotification");
+            ModelState.Remove("IsPay");
+            ModelState.Remove("IsOkey");
             if (ModelState.IsValid)
             {
                 OdemeBildirimi db_odeme = odemeBildirimiManager.Find(x => x.Id == odemeBildirimi.Id);
@@ -124,10 +127,24 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 db_odeme.YatirilanMiktar = odemeBildirimi.YatirilanMiktar;
                 db_odeme.TelefonNo = odemeBildirimi.TelefonNo;
                 db_odeme.EkAciklamalar = odemeBildirimi.EkAciklamalar;
-                db_odeme.IsNotification = odemeBildirimi.IsNotification;
-                db_odeme.IsPay = odemeBildirimi.IsPay;
-                odemeBildirimiManager.Update(db_odeme);
-                return RedirectToAction("Index");
+                if (CurrentSession.User.IsAdmin)
+                {
+                    db_odeme.IsNotification = odemeBildirimi.IsNotification;
+                    db_odeme.IsPay = odemeBildirimi.IsPay;
+                    db_odeme.IsOkey = odemeBildirimi.IsOkey; 
+                    odemeBildirimiManager.Update(db_odeme);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    db_odeme.IsNotification = db_odeme.IsNotification;
+                    db_odeme.IsPay = db_odeme.IsPay;
+                    db_odeme.IsOkey = db_odeme.IsOkey;
+                    odemeBildirimiManager.Update(db_odeme);
+                    return RedirectToAction("IndexOdemeBildirimiOwner");
+                }
+
+
             }
             return View(odemeBildirimi);
         }

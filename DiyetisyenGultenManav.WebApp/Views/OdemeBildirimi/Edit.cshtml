@@ -1,92 +1,109 @@
 ﻿@model DiyetisyenGultenManav.Entities.OdemeBildirimi
+@using DiyetisyenGultenManav.WebApp.Models
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "ÖDEME BİLDİRİMİ DÜZENLE";
 }
-@for (int i = 0; i < 3; i++)
-{
-    <br />
-}
-<h2>Edit</h2>
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>OdemeBildirimi</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.IsimSoyisim, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.IsimSoyisim, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.IsimSoyisim, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.BankaIsmi, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.BankaIsmi, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.BankaIsmi, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.YatirilanMiktar, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.YatirilanMiktar, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.YatirilanMiktar, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.TelefonNo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TelefonNo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TelefonNo, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.EkAciklamalar, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EkAciklamalar, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EkAciklamalar, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.IsNotification, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.IsNotification)
-                    @Html.ValidationMessageFor(model => model.IsNotification, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.IsPay, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.IsPay)
-                    @Html.ValidationMessageFor(model => model.IsPay, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+<link href="~/Content/new-login-style-odeme.css" rel="stylesheet" />
+<style>
+    .vertical-strech {
+        height: 100vh;
+    }
+</style>
+<div class="login-block pl-5 pt-3 mr-0 vertical-strech">
+    <div class="row pl-5 pt-3 mr-0">
+        <div class="col-md-12">
+            <p class="display-4 text-center">
+                @ViewBag.Title
+            </p>
         </div>
     </div>
-}
+    <div class="row pl-5 mr-0">
+        <div class="col-md-10">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+                <div class=" form-group row">
+                    <div class="col-md-12 pr-0">
+                        @Html.ValidationSummary(false)
+                        @Html.HiddenFor(model => model.Id)
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.IsimSoyisim, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+                    @Html.EditorFor(model => model.IsimSoyisim, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.BankaIsmi, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+                    @Html.EditorFor(model => model.BankaIsmi, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.YatirilanMiktar, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+                    @Html.EditorFor(model => model.YatirilanMiktar, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.TelefonNo, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+                    @Html.EditorFor(model => model.TelefonNo, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.EkAciklamalar, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+                    @Html.EditorFor(model => model.EkAciklamalar, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                </div>
+
+                if (CurrentSession.User.IsAdmin == true)
+                {
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.IsNotification, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.IsNotification)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.IsPay, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.IsPay)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.IsOkey, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.IsOkey)
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+
+                <div class="form-group row">
+                    <div class="col-md-12 pr-0 text-right">
+                        @if (Model.Owner.IsAdmin == false)
+                        {
+                            @Bootstrap.LinkButton("/OdemeBildirimi/IndexOdemeBildirimiOwner", "secondary", string.Empty,
+                 string.Empty, "arrow-left", "Geri Dön !")
+                        }
+                        else
+                        {
+                            @Bootstrap.LinkButton("/OdemeBildirimi/Index", "secondary", string.Empty,
+               string.Empty, "arrow-left", "Geri Dön !")
+                        }
+
+                        @Bootstrap.Button("success", string.Empty, "submit", "save", "Kaydet")
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
 </div>
