@@ -37,7 +37,7 @@ namespace DiyetisyenGultenManav.Entities
         [DisplayName("Kilonuz")]
         public string Kilo { get; set; }
         [DisplayName("Yaşınız")]
-        public string Yas { get; set; }
+        public string Yas { get; set; } // kaldır
         [DisplayName("Mesleğiniz")]
         public string Meslek { get; set; }
         [DisplayName("Yaşadığınız Şehir")]
