@@ -105,6 +105,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\new-login-style-diyet.css" />
     <Content Include="Content\new-login-style-kategori.css" />
     <Content Include="Content\new-login-style-kullanici.css" />
     <Content Include="Content\new-login-style-odeme.css" />

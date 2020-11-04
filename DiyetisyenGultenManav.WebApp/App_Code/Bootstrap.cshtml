@@ -21,7 +21,7 @@
 @helper Button(string color = "", string addtionalClass = "", string type = "button", string icon = "", string text = "")
 {
     <button type="@type" class="btn btn-@color @addtionalClass">
-        @text
+        <i class="fa fa-@icon"></i> @text
     </button>
 }
 @helper LinkMenu(string url = "", string icon = "", string text = "")

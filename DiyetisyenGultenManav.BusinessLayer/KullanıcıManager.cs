@@ -165,7 +165,6 @@ namespace DiyetisyenGultenManav.BusinessLayer
             res.Result.DogumTarihi = data.DogumTarihi;
             res.Result.Boy = data.Boy;
             res.Result.Kilo = data.Kilo;
-            res.Result.Yas = data.Yas;
             res.Result.Meslek = data.Meslek;
             res.Result.Sehir = data.Sehir;
             if (string.IsNullOrEmpty(data.ProfileImageFileName) == false)
@@ -234,7 +233,6 @@ namespace DiyetisyenGultenManav.BusinessLayer
             res.Result.DogumTarihi = data.DogumTarihi;
             res.Result.Boy = data.Boy;
             res.Result.Kilo = data.Kilo;
-            res.Result.Yas = data.Yas;
             res.Result.Meslek = data.Meslek;
             res.Result.Sehir = data.Sehir;
             res.Result.IsActive = data.IsActive;
