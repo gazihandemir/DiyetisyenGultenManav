@@ -1,82 +1,96 @@
 ﻿@model IEnumerable<DiyetisyenGultenManav.Entities.Diet>
 
 @{
-    ViewBag.Title = "Bütün Diyetler";
+    ViewBag.Title = "BÜTÜN DİYETLER";
 }
-@for (int i = 0; i < 3; i++)
-{
-    <br />
-}
-<h2>Bütün Diyetler</h2>
-
-<p>
-    @Bootstrap.LinkButton("/Diet/Create", "info", string.Empty, string.Empty, "plus", " Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Owner.Username)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Text)
-        </th>
-        @*<th>
-                @Html.DisplayNameFor(model => model.CreatedOn)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ModifiedOn)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ModifiedUsername)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsNew)
-            </th>*@
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Owner.Username)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Text)
-            </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.CreatedOn)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ModifiedOn)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ModifiedUsername)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsNew)
-                </td>*@
-            <td>
-                @Bootstrap.LinkButton("/Diet/Edit/" + @item.Id, "warning", "btn-xs", "Edit", "edit", string.Empty)
-                @Bootstrap.LinkButton("/Diet/Details/" + @item.Id, "info", "btn-xs", "Details", "search", string.Empty)
-                @Bootstrap.LinkButton("/Diet/Delete/" + @item.Id, "danger", "btn-xs", "Delete", "trash", string.Empty)
-
-                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
-            </td>
-        </tr>
+<link href="~/Content/new-login-style-diyet.css" rel="stylesheet" />
+<style>
+    .vertical-strech {
+        height: 100vh;
     }
+</style>
+<div class="login-block mr-0">
+    <div class=" row pl-5 pt-3 mr-0">
+        <div class="col-md-12">
+            <p class="display-4 text-center font-weight-bold">
+                @ViewBag.Title
+            </p>
+        </div>
+    </div>
+    <div class="row pl-3 mr-0  vertical-strech">
+        <div class="col-md-12">
+            <p>
+                @Bootstrap.LinkButton("/Diet/Create", "primary", "btn-sm", string.Empty, "plus", "Yeni Diyet Ekle")
+            </p>
+            <table class="table table-hover table-striped table-sm small">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Owner.Username)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Text)
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.CreatedOn)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModifiedOn)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModifiedUsername)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IsNew)
+                        </th>*@
+                    <th></th>
+                </tr>
 
-</table>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Owner.Username)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Text)
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.CreatedOn)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ModifiedOn)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ModifiedUsername)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IsNew)
+                            </td>*@
+                        <td width="150" class="text-right">
+                            @Bootstrap.LinkButton("/Diet/Edit/" + @item.Id, "warning", "btn-sm", "Edit", "edit", string.Empty)
+                            @Bootstrap.LinkButton("/Diet/Details/" + @item.Id, "info", "btn-sm", "Details", "search", string.Empty)
+                            @Bootstrap.LinkButton("/Diet/Delete/" + @item.Id, "danger", "btn-sm", "Delete", "trash", string.Empty)
+
+                            @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
