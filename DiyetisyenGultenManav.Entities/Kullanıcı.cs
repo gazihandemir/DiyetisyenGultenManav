@@ -40,6 +40,14 @@ namespace DiyetisyenGultenManav.Entities
         public string Meslek { get; set; }
         [DisplayName("Yaşadığınız Şehir")]
         public string Sehir { get; set; }
+        [DisplayName("Hastalık")]
+        public string Hastalik{ get; set; }
+        [DisplayName("Tahlil")]
+        public string Tahlil { get; set; }
+        [DisplayName("Hikaye")]
+        public string Hikaye { get; set; }
+        [DisplayName("Anammez")]
+        public string Anammez { get; set; }
 
         [Required, ScaffoldColumn(false)]
         public Guid ActivateGuid { get; set; }

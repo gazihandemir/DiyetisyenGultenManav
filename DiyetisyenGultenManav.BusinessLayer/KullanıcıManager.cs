@@ -235,6 +235,10 @@ namespace DiyetisyenGultenManav.BusinessLayer
             res.Result.Kilo = data.Kilo;
             res.Result.Meslek = data.Meslek;
             res.Result.Sehir = data.Sehir;
+            res.Result.Hastalik = data.Hastalik;
+            res.Result.Tahlil = data.Tahlil;
+            res.Result.Hikaye = data.Hikaye;
+            res.Result.Anammez = data.Anammez;
             res.Result.IsActive = data.IsActive;
             res.Result.IsAdmin = data.IsAdmin;
             res.Result.IsNormal= data.IsNormal;

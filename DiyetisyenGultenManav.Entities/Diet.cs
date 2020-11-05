@@ -19,17 +19,18 @@ namespace DiyetisyenGultenManav.Entities
         public string Text { get; set; }
         public int KullanıcıId{ get; set; }
         public bool IsNew { get; set; }
-        public string Hastalik { get; set; }
-        public string Tahlil { get; set; }
         public string Olcum { get; set; }
-        public string Hikaye { get; set; }
-        public string EkAciklama { get; set; }
         public string BasariHikayesi { get; set; }
-        public string BaslangicKilosu { get; set; }
-        public string HaftaBir { get; set; }
-        public string HaftaIki { get; set; }
-        public string HaftaUc { get; set; }
-        public string HaftaDort { get; set; }
+        public string  DiyetKilo { get; set; }
+        public string  DiyetBmi { get; set; }
+        public string  DiyetFat { get; set; }
+        public string  DiyetMusc { get; set; }
+        public string  DiyetBmh { get; set; }
+        public string  DiyetVf { get; set; }
+        public string  DiyetEkAciklamalar { get; set; }
+        public DateTime DiyetBaslangic{ get; set; }
+        public DateTime DiyetBitis{ get; set; }
+
         public virtual Kullanıcı Owner { get; set; }
 
     }
