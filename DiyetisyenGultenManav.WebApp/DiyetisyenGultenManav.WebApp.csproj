@@ -328,9 +328,6 @@
     <Content Include="Views\Diet\Index.cshtml" />
     <Content Include="Views\Diet\AllDiet.cshtml" />
     <Content Include="Views\Diet\NewDiet.cshtml" />
-    <Content Include="Views\Diet\IndexDiyetisyenBilgileri.cshtml" />
-    <Content Include="Views\Diet\EditDiyetisyenBilgileri.cshtml" />
-    <Content Include="Views\Diet\DetailsDiyetisyenBilgileri.cshtml" />
     <Content Include="Views\OdemeBildirimi\Create.cshtml" />
     <Content Include="Views\OdemeBildirimi\Delete.cshtml" />
     <Content Include="Views\OdemeBildirimi\Details.cshtml" />

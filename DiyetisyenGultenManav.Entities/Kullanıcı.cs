@@ -15,7 +15,7 @@ namespace DiyetisyenGultenManav.Entities
         [DisplayName("Soyisim"),
             StringLength(25, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
         public string Surname { get; set; }
-        [DisplayName("Kullnıcı Adı"), Required(ErrorMessage = "{0} alanı gereklidir."),
+        [DisplayName("Kullanıcı Adı"), Required(ErrorMessage = "{0} alanı gereklidir."),
             StringLength(50, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
         public string Username { get; set; }
         [DisplayName("E-Posta"), Required(ErrorMessage = "{0} alanı gereklidir."),
