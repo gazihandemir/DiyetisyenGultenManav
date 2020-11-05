@@ -105,6 +105,16 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 db_diet.Title = diet.Title;
                 db_diet.Text = diet.Text;
                 db_diet.Description = diet.Description;
+                db_diet.DiyetKilo = diet.DiyetKilo;
+                db_diet.DiyetBmi = diet.DiyetBmi;
+                db_diet.DiyetFat = diet.DiyetFat;
+                db_diet.DiyetMusc = diet.DiyetMusc;
+                db_diet.DiyetBmh = diet.DiyetBmh;
+                db_diet.DiyetVf = diet.DiyetVf;
+                db_diet.DiyetOlcum = diet.DiyetOlcum;
+                db_diet.DiyetBaslangic = diet.DiyetBaslangic;
+                db_diet.DiyetBitis = diet.DiyetBitis;
+                db_diet.DiyetEkAciklamalar = diet.DiyetEkAciklamalar;
                 db_diet.IsNew = diet.IsNew;
                 dietManager.Update(db_diet);
                 return RedirectToAction("AllDiet");

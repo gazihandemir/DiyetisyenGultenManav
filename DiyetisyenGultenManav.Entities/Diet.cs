@@ -19,8 +19,7 @@ namespace DiyetisyenGultenManav.Entities
         public string Text { get; set; }
         public int KullanıcıId{ get; set; }
         public bool IsNew { get; set; }
-        public string Olcum { get; set; }
-        public string BasariHikayesi { get; set; }
+        public string DiyetOlcum { get; set; }
         public string  DiyetKilo { get; set; }
         public string  DiyetBmi { get; set; }
         public string  DiyetFat { get; set; }

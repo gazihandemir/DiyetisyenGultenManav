@@ -24,11 +24,11 @@
                 </div>
                 <div class="form-group row">
                     @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control col-md-10", placeholder = "Başlık Giriniz" } })
                 </div>
                 <div class="form-group row">
                     @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control col-md-10", placeholder = "Açıklama Giriniz" } })
                 </div>
                 <div class="form-group row">
                     @Html.LabelFor(model => model.Text, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
@@ -59,16 +59,16 @@
                     @Html.EditorFor(model => model.DiyetVf, new { htmlAttributes = new { @class = "form-control col-md-10" } })
                 </div>
                 <div class="form-group row">
-                    @Html.LabelFor(model => model.Olcum, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.EditorFor(model => model.Olcum, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                    @Html.LabelFor(model => model.DiyetOlcum, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+                    @Html.EditorFor(model => model.DiyetOlcum, new { htmlAttributes = new { @class = "form-control col-md-10" } })
                 </div>
                 <div class="form-group row">
                     @Html.LabelFor(model => model.DiyetBaslangic, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.EditorFor(model => model.DiyetBaslangic, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                    @Html.EditorFor(model => model.DiyetBaslangic, new { htmlAttributes = new { @class = "form-control col-md-10", placeholder = "Ör : 20.03.1997 17:30:00" } })
                 </div>
                 <div class="form-group row">
                     @Html.LabelFor(model => model.DiyetBitis, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.EditorFor(model => model.DiyetBitis, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                    @Html.EditorFor(model => model.DiyetBitis, new { htmlAttributes = new { @class = "form-control col-md-10", placeholder = "Ör : 23.03.1997 07:00:00" } })
                 </div>
                 <div class="form-group row">
                     @Html.LabelFor(model => model.DiyetEkAciklamalar, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
