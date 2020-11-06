@@ -15,7 +15,7 @@
 @helper Button(string id = "", string color = "", string addtionalClass = "", string type = "button", string icon = "", string text = "")
 {
     <button id="@id" name="@id" type="@type" class="btn btn-@color @addtionalClass">
-        @text
+        <i class="fa fa-@icon"></i> @text
     </button>
 }
 @helper Button(string color = "", string addtionalClass = "", string type = "button", string icon = "", string text = "")

@@ -18,9 +18,16 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         KullanıcıManager kullanıcıManager = new KullanıcıManager();
 
         // GET : ALL diet
-        public ActionResult AllDiet()
+        public ActionResult AllDiet(string Ara)
         {
-            return View(dietManager.List());
+            if (Ara != null)
+            {
+                return View(dietManager.ListQueryable().Where(x => x.Owner.Username.Contains(Ara) || Ara ==null));
+            }
+            else
+            {
+                return View(dietManager.List());
+            }
         }
 
         public ActionResult NewDiet()
