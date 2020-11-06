@@ -16,9 +16,9 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
     {
         private KategoriManager kategoriManager = new KategoriManager();
 
-        public ActionResult Index()
+        public ActionResult Index(string Ara)
         {
-            return View(kategoriManager.List());
+            return View(kategoriManager.ListQueryable().Where(x => x.Title.Contains(Ara) || Ara == null));
         }
 
 

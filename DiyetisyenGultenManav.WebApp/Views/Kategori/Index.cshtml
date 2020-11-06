@@ -21,9 +21,18 @@
 
     <div class="row pl-4 mr-0">
         <div class="col-md-12">
-            <p>
-                @Bootstrap.LinkButton("/Kategori/Create", "primary", "btn-sm", string.Empty, "plus", "Yeni Kategori Ekle")
-            </p>
+            <div class="row">
+                <div class="col-md-6 pr-0 text-left">
+                    @Bootstrap.LinkButton("/Kategori/Create", "primary", "btn-sm", string.Empty, "plus", "Yeni Diyet Ekle")
+                </div>
+                <div class="col-md-6  text-right">
+                    @using (Html.BeginForm())
+                    {
+                        <input class="text-box btn btn-outline-light text-left" id="ara" name="ara" type="text" placeholder="Ara">
+                    }
+                </div>
+            </div>
+            <br />
             <table class="table table-hover table-striped table-sm small">
                 <tr>
                     <th>
@@ -33,14 +42,14 @@
                         @Html.DisplayNameFor(model => model.Description)
                     </th>
                     @*<th>
-                            @Html.DisplayNameFor(model => model.CreatedOn)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.ModifiedOn)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.ModifiedUsername)
-                        </th>*@
+                    @Html.DisplayNameFor(model => model.CreatedOn)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ModifiedOn)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ModifiedUsername)
+                </th>*@
                     <th></th>
                 </tr>
                 @foreach (var item in Model)
@@ -53,19 +62,19 @@
                             @Html.DisplayFor(modelItem => item.Description)
                         </td>
                         @*<td>
-                                @Html.DisplayFor(modelItem => item.CreatedOn)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ModifiedOn)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ModifiedUsername)
-                            </td>*@
-                    <td width="150" class="text-right">
-                        @Bootstrap.LinkButton("/Kategori/Edit/" + item.Id, "warning", "btn-sm", "Edit", "edit", string.Empty)
-                        @Bootstrap.LinkButton("/Kategori/Details/" + item.Id, "info", "btn-sm", "Details", "search", string.Empty)
-                        @Bootstrap.LinkButton("/Kategori/Delete/" + item.Id, "danger", "btn-sm", "Delete", "trash", string.Empty)
+                        @Html.DisplayFor(modelItem => item.CreatedOn)
                     </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ModifiedOn)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ModifiedUsername)
+                    </td>*@
+                        <td width="150" class="text-right">
+                            @Bootstrap.LinkButton("/Kategori/Edit/" + item.Id, "warning", "btn-sm", "Edit", "edit", string.Empty)
+                            @Bootstrap.LinkButton("/Kategori/Details/" + item.Id, "info", "btn-sm", "Details", "search", string.Empty)
+                            @Bootstrap.LinkButton("/Kategori/Delete/" + item.Id, "danger", "btn-sm", "Delete", "trash", string.Empty)
+                        </td>
                     </tr>
                 }
             </table>
