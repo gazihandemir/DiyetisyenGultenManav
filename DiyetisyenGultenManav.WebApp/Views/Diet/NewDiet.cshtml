@@ -19,9 +19,18 @@
     </div>
     <div class="row pl-3 mr-0  vertical-strech">
         <div class="col-md-12">
-            <p>
-                @Bootstrap.LinkButton("/Diet/Create", "primary", "btn-sm", string.Empty, "plus", "Yeni Diyet Ekle")
-            </p>
+            <div class="row">
+                <div class="col-md-6 pr-0 text-left">
+                    @Bootstrap.LinkButton("/Diet/Create", "primary", "btn-sm", string.Empty, "plus", "Yeni Diyet Ekle")
+                </div>
+                <div class="col-md-6  text-right">
+                    @using (Html.BeginForm())
+                    {
+                        <input class="text-box btn btn-outline-light text-left" id="ara" name="ara" type="text" placeholder="Ara">
+                    }
+                </div>
+            </div>
+            <br />
             <table class="table table-hover table-striped table-sm small">
                 <tr>
                     <th>
@@ -37,14 +46,14 @@
                         @Html.DisplayNameFor(model => model.Text)
                     </th>
                     @*<th>
-                            @Html.DisplayNameFor(model => model.CreatedOn)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.ModifiedOn)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.ModifiedUsername)
-                        </th>*@
+                    @Html.DisplayNameFor(model => model.CreatedOn)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ModifiedOn)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ModifiedUsername)
+                </th>*@
                     <th>
                         @Html.DisplayNameFor(model => model.IsNew)
                     </th>
@@ -68,14 +77,14 @@
                             @Html.DisplayFor(modelItem => item.Text)
                         </td>
                         @*<td>
-                                @Html.DisplayFor(modelItem => item.CreatedOn)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ModifiedOn)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ModifiedUsername)
-                            </td>*@
+                        @Html.DisplayFor(modelItem => item.CreatedOn)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ModifiedOn)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ModifiedUsername)
+                    </td>*@
                         <td>
                             @if (item.IsNew)
                             {
@@ -93,11 +102,11 @@
                             @Bootstrap.LinkButton("/Diet/Delete/" + @item.Id, "danger", "btn-sm", "Delete", "trash", string.Empty)
 
                             @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
                         </td>
                     </tr>
-                    
+
                 }
             </table>
         </div>

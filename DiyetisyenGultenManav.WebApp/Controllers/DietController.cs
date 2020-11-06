@@ -30,10 +30,19 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
         }
 
-        public ActionResult NewDiet()
+        public ActionResult NewDiet(string Ara)
         {
             var diet = dietManager.ListQueryable().Where(x => x.IsNew == true).OrderByDescending(x => x.ModifiedOn);
-            return View(diet.ToList());
+            var AraDiet = dietManager.ListQueryable().Where(x => x.IsNew == true &&  x.Owner.Username.Contains(Ara) || Ara == null).OrderByDescending(x => x.ModifiedOn);
+            if (Ara != null)
+            {
+                return View(AraDiet.ToList());
+            }
+            else
+            {
+                return View(diet.ToList());
+
+            }
         }
         // GET: Diet
         public ActionResult Index()
