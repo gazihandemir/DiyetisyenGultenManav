@@ -15,9 +15,16 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
     {
         private KullanıcıManager kullanıcıManager = new KullanıcıManager();
 
-        public ActionResult Index()
+        public ActionResult Index(string Ara)
         {
-            return View(kullanıcıManager.List());
+            if (Ara != null)
+            {
+                return View(kullanıcıManager.ListQueryable().Where(x => x.Username.Contains(Ara) || Ara == null));
+            }
+            else
+            {
+                return View(kullanıcıManager.List());
+            }
         }
 
         public ActionResult Details(int? id)
