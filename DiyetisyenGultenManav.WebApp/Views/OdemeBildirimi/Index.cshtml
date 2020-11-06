@@ -19,9 +19,18 @@
     </div>
     <div class="row pl-3 mr-0  vertical-strech">
         <div class="col-md-12">
-            <p>
-                @Bootstrap.LinkButton("/ODemeBildirimi/Create", "primary", "btn-sm", string.Empty, "plus", "Yeni Ödeme Bildirimi Ekle")
-            </p>
+            <div class="row">
+                <div class="col-md-6 pr-0 text-left">
+                    @Bootstrap.LinkButton("/OdemeBildirimi/Create", "primary", "btn-sm", string.Empty, "plus", "Yeni Diyet Ekle")
+                </div>
+                <div class="col-md-6  text-right">
+                    @using (Html.BeginForm())
+                    {
+                        <input class="text-box btn btn-outline-light text-left" id="ara" name="ara" type="text" placeholder="Ara">
+                    }
+                </div>
+            </div>
+            <br />
             <table class="table table-hover table-striped table-sm small">
                 <tr>
                     <th>

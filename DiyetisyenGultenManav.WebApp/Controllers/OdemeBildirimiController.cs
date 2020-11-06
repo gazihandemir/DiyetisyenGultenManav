@@ -47,9 +47,16 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             return View(odemeBildirimi);
         }
         // GET: OdemeBildirimi
-        public ActionResult Index()
+        public ActionResult Index(string Ara)
         {
-            return View(odemeBildirimiManager.List());
+            if (Ara != null)
+            {
+                return View(odemeBildirimiManager.ListQueryable().Where(x => x.Owner.Username.Contains(Ara) || Ara == null));
+            }
+            else
+            {
+                return View(odemeBildirimiManager.List());
+            }
         }
 
         // GET: OdemeBildirimi/Details/5
