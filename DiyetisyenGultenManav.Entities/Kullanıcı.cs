@@ -12,7 +12,7 @@ namespace DiyetisyenGultenManav.Entities
         [DisplayName("İsim"),
             StringLength(25, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
         public string Name { get; set; }
-        [DisplayName("Soy İsim"),
+        [DisplayName("Soyisim"),
             StringLength(25, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
         public string Surname { get; set; }
         [DisplayName("Kullanıcı Adı"),
