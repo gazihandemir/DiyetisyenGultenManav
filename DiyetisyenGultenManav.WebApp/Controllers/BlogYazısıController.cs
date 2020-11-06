@@ -14,14 +14,23 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
 {
     public class BlogYazısıController : Controller
     {
-        
         BlogYazısıManager blogYazısıManager = new BlogYazısıManager();
         KategoriManager kategoriManager = new KategoriManager();
-        public ActionResult Index()
+        public ActionResult Index(string Ara)
         {
             var blogYazısı = blogYazısıManager.ListQueryable().Include("Kategori").Include("Owner")
-                .Where(x => x.Owner.Id == CurrentSession.User.Id).OrderByDescending(x => x.ModifiedOn);
-            return View(blogYazısı.ToList());
+                  .Where(x => x.Owner.Id == CurrentSession.User.Id).OrderByDescending(x => x.ModifiedOn);
+            var blogYazısıAra = blogYazısıManager.ListQueryable().Include("Kategori").Include("Owner")
+                .Where(x => x.Owner.Id == CurrentSession.User.Id && x.Title.Contains(Ara) || Ara == null).OrderByDescending(x => x.ModifiedOn);
+            if (Ara != null)
+            {
+                return View(blogYazısıAra.ToList());
+            }
+            else
+            {
+                return View(blogYazısı.ToList());
+            }
+
         }
         public ActionResult Details(int? id)
         {
@@ -45,7 +54,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(BlogYazısı blogYazısı, HttpPostedFileBase blogImage)
         {
-            
+
             ModelState.Remove("CreatedOn");
             ModelState.Remove("ModifiedOn");
             ModelState.Remove("ModifiedUsername");
