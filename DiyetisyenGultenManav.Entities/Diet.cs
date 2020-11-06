@@ -61,12 +61,10 @@ namespace DiyetisyenGultenManav.Entities
                 StringLength(50, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
         public string DiyetEkAciklamalar { get; set; }
         [DisplayName("Diyetin Başlangıç Tarihi"),
-            Required(ErrorMessage = "{0} alanı gereklidir."),
-                StringLength(50, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
+            Required(ErrorMessage = "{0} alanı gereklidir.")]
         public DateTime DiyetBaslangic { get; set; }
         [DisplayName("Diyetin Bitiş Tarihi"),
-         Required(ErrorMessage = "{0} alanı gereklidir."),
-             StringLength(50, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
+         Required(ErrorMessage = "{0} alanı gereklidir.")]
         public DateTime DiyetBitis { get; set; }
 
         public virtual Kullanıcı Owner { get; set; }
