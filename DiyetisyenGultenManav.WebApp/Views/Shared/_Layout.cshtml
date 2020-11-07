@@ -28,11 +28,13 @@
     @Html.Partial("_PartialNavbar")
     <div class="container-fluid">
         @RenderBody()
+
     </div>
+    <div class="container-fluid">
+        @Html.Partial("_PartialMap")
 
-    @RenderSection("footer", required: false)
-
-
+        @RenderSection("footer", required: false)
+    </div>
 
 
 </body>
