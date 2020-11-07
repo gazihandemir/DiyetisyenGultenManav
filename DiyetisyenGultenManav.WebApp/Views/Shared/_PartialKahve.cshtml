@@ -1,0 +1,65 @@
+﻿<link href="~/Content/kahve.css" rel="stylesheet" />
+<section class="stat" id="stats">
+
+    <div class="content-box">
+        <br><br>
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3">
+                    <!--View-->
+                    <div class="stat-items">
+                        <i class="fa fa-coffee"></i>
+                        <h2>
+                            <span class="counter text-center">360</span><span>+</span>
+                        </h2>
+                        <p>İçilen Kahve</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <!--Android-->
+                    <div class="stat-items">
+                        <i class="fa fa-android"></i>
+                        <h2>
+                            <span class="counter text-center">21</span><span></span>
+                        </h2>
+                        <p>Yapılan Uygulama</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <!--cog-->
+                    <div class="stat-items">
+                        <i class="fa fa-beer"></i>
+                        <h2>
+                            <span class="counter text-center">22</span><span></span>
+                        </h2>
+                        <p>İçilen Bira</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <!--Android-->
+                    <div class="stat-items">
+                        <i class="fa fa-briefcase"></i>
+                        <h2>
+                            <span class="counter text-center">0</span>
+                        </h2>
+                        <p>İş Görüşmesi</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+@*<script src="~/Scripts/jquery-3.5.1.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script> *@
+<script src="~/Scripts/jquery.counterup.min.js"></script>
+<script src="~/Scripts/jquery.waypoints.min.js"></script>
+<script>
+    jQuery(document).ready(function () {
+        $('.counter').counterUp({
+            delay: 10,
+            time: 1000
+        });
+    });
+</script>
