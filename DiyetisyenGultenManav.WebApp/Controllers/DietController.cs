@@ -22,7 +22,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         {
             if (Ara != null)
             {
-                return View(dietManager.ListQueryable().Where(x => x.Owner.Username.Contains(Ara) || Ara ==null));
+                return View(dietManager.ListQueryable().Where(x => x.Owner.Username.Contains(Ara) || Ara == null));
             }
             else
             {
@@ -33,7 +33,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         public ActionResult NewDiet(string Ara)
         {
             var diet = dietManager.ListQueryable().Where(x => x.IsNew == true).OrderByDescending(x => x.ModifiedOn);
-            var AraDiet = dietManager.ListQueryable().Where(x => x.IsNew == true &&  x.Owner.Username.Contains(Ara) || Ara == null).OrderByDescending(x => x.ModifiedOn);
+            var AraDiet = dietManager.ListQueryable().Where(x => x.IsNew == true && x.Owner.Username.Contains(Ara) || Ara == null).OrderByDescending(x => x.ModifiedOn);
             if (Ara != null)
             {
                 return View(AraDiet.ToList());
@@ -41,15 +41,23 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             else
             {
                 return View(diet.ToList());
-
             }
         }
         // GET: Diet
         public ActionResult Index()
         {
             var diet = dietManager.ListQueryable().Include("Owner").
-                Where(x => x.Owner.Id == CurrentSession.User.Id).OrderByDescending(x => x.ModifiedOn);
-            return View(diet.ToList());
+                Where(x => x.Owner.Id == CurrentSession.User.Id && x.IsNew == true).OrderByDescending(x => x.ModifiedOn);
+            //string satirText = db_diet.Text.ToString();
+            //Console.WriteLine(satirText);
+            if (diet != null)
+            {
+                return View(diet.ToList());
+            }
+            else
+            {
+                return View();
+            }
         }
         // GET: Diet/Details/5
         public ActionResult Details(int? id)
@@ -78,7 +86,6 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Diet diet)
         {
-
             ModelState.Remove("CreatedOn");
             ModelState.Remove("ModifiedOn");
             ModelState.Remove("ModifiedUsername");
@@ -88,7 +95,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 return RedirectToAction("AllDiet");
             }
             ViewBag.KullanıcıId = new SelectList(kullanıcıManager.List(), "Id", "Username");
-   //         diet.Owner = ViewBag.KullanıcıId;
+            //         diet.Owner = ViewBag.KullanıcıId;
             return View(diet);
         }
         // GET: Diet/Edit/5
@@ -114,12 +121,16 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             ModelState.Remove("CreatedOn");
             ModelState.Remove("ModifiedOn");
             ModelState.Remove("ModifiedUsername");
-
             if (ModelState.IsValid)
             {
                 Diet db_diet = dietManager.Find(x => x.Id == diet.Id);
                 db_diet.Title = diet.Title;
-                db_diet.Text = diet.Text;
+                db_diet.DiyetSabah = diet.DiyetSabah;
+                db_diet.DiyetAraBir = diet.DiyetAraBir;
+                db_diet.DiyetOglen = diet.DiyetOglen;
+                db_diet.DiyetAraIki = diet.DiyetAraIki;
+                db_diet.DiyetAksam = diet.DiyetAksam;
+                db_diet.DiyetGece = diet.DiyetGece;
                 db_diet.Description = diet.Description;
                 db_diet.DiyetKilo = diet.DiyetKilo;
                 db_diet.DiyetBmi = diet.DiyetBmi;

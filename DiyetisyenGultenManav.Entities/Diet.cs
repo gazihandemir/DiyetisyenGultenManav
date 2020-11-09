@@ -20,10 +20,30 @@ namespace DiyetisyenGultenManav.Entities
            Required(ErrorMessage = "{0} alanı gereklidir."),
                StringLength(50, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
         public string Description { get; set; }
-        [DisplayName("Diyet"),
+        [DisplayName("Sabah"),
            Required(ErrorMessage = "{0} alanı gereklidir."),
-               StringLength(1000, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
-        public string Text { get; set; }
+               StringLength(400, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
+        public string DiyetSabah { get; set; }
+        [DisplayName("Ara"),
+            Required(ErrorMessage = "{0} alanı gereklidir."),
+                StringLength(400, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
+        public string DiyetAraBir { get; set; }
+        [DisplayName("Öğlen"),
+         Required(ErrorMessage = "{0} alanı gereklidir."),
+             StringLength(400, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
+        public string DiyetOglen { get; set; }
+        [DisplayName("Ara"),
+         Required(ErrorMessage = "{0} alanı gereklidir."),
+             StringLength(400, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
+        public string DiyetAraIki{ get; set; }
+        [DisplayName("Aksam"),
+        Required(ErrorMessage = "{0} alanı gereklidir."),
+            StringLength(400, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
+        public string DiyetAksam { get; set; }
+        [DisplayName("Gece"),
+        Required(ErrorMessage = "{0} alanı gereklidir."),
+            StringLength(400, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
+        public string DiyetGece{ get; set; }
         [DisplayName("Kullanıcı ID")]
         public int KullanıcıId { get; set; }
         [DisplayName("Yeni mi")]
@@ -68,6 +88,5 @@ namespace DiyetisyenGultenManav.Entities
         public DateTime DiyetBitis { get; set; }
 
         public virtual Kullanıcı Owner { get; set; }
-
     }
 }

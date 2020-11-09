@@ -3,8 +3,7 @@
 @{
     ViewBag.Title = "DİYET DÜZENLE";
 }
-
-<link href="~/Content/new-login-style-diyet.css" rel="stylesheet" />
+    <link href="~/Content/new-login-style-kategori.css" rel="stylesheet" />
 <link href="~/Content/validation-summary.css" rel="stylesheet" />
 
 <div class="login-block pl-5 pt-3 mr-0">
@@ -40,8 +39,28 @@
                 </div>
 
                 <div class="form-group row">
-                    @Html.LabelFor(model => model.Text, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.TextAreaFor(model => model.Text, 5, 30, new { @class = "form-control col-md-10" })
+                    @Html.LabelFor(model => model.DiyetSabah, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+                    @Html.TextAreaFor(model => model.DiyetSabah, 4, 30, new { @class = "form-control col-md-10 " })
+                </div>
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.DiyetAraBir, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+                    @Html.TextAreaFor(model => model.DiyetAraBir, 3, 30, new { @class = "form-control col-md-10 " })
+                </div>
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.DiyetOglen, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+                    @Html.TextAreaFor(model => model.DiyetOglen, 4, 30, new { @class = "form-control col-md-10 " })
+                </div>
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.DiyetAraIki, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+                    @Html.TextAreaFor(model => model.DiyetAraIki, 3, 30, new { @class = "form-control col-md-10 " })
+                </div>
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.DiyetAksam, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+                    @Html.TextAreaFor(model => model.DiyetAksam, 4, 30, new { @class = "form-control col-md-10 " })
+                </div>
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.DiyetGece, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+                    @Html.TextAreaFor(model => model.DiyetGece, 4, 30, new { @class = "form-control col-md-10 " })
                 </div>
                 <div class="form-group row">
                     @Html.LabelFor(model => model.DiyetKilo, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })

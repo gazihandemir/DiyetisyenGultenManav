@@ -3,8 +3,7 @@
 @{
     ViewBag.Title = "DİYET DETAYI";
 }
-<link href="~/Content/new-login-style-diyet.css" rel="stylesheet" />
-
+    <link href="~/Content/new-login-style-kategori.css" rel="stylesheet" />
 <style>
     .vertical-strech {
         height: 100vh;
@@ -41,11 +40,41 @@
                     <dd class="col-md-9">
                         @Html.DisplayFor(model => model.Description)
                     </dd>
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.Text)
+                    <dt class="col-md-3 ">
+                        @Html.DisplayNameFor(model => model.DiyetSabah)
                     </dt>
                     <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.Text)
+                        @Html.DisplayFor(model => model.DiyetSabah)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.DiyetAraBir)
+                    </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.DiyetAraBir)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.DiyetOglen)
+                    </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.DiyetOglen)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.DiyetAraIki)
+                    </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.DiyetAraIki)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.DiyetAksam)
+                    </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.DiyetAksam)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.DiyetGece)
+                    </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.DiyetGece)
                     </dd>
                     <dt class="col-md-3">
                         @Html.DisplayNameFor(model => model.DiyetKilo)
