@@ -23,7 +23,7 @@
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-6 pr-0 text-left">
-                    @Bootstrap.LinkButton("/Kategori/Create", "primary", "btn-sm", string.Empty, "plus", "Yeni Diyet Ekle")
+                    @Bootstrap.LinkButton("/Kategori/Create", "primary", "btn-sm", string.Empty, "plus", "Yeni Kategori Ekle")
                 </div>
                 <div class="col-md-6  text-right">
                     @using (Html.BeginForm())
@@ -42,14 +42,14 @@
                         @Html.DisplayNameFor(model => model.Description)
                     </th>
                     @*<th>
-                    @Html.DisplayNameFor(model => model.CreatedOn)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ModifiedOn)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ModifiedUsername)
-                </th>*@
+                            @Html.DisplayNameFor(model => model.CreatedOn)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModifiedOn)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModifiedUsername)
+                        </th>*@
                     <th></th>
                 </tr>
                 @foreach (var item in Model)
@@ -62,14 +62,14 @@
                             @Html.DisplayFor(modelItem => item.Description)
                         </td>
                         @*<td>
-                        @Html.DisplayFor(modelItem => item.CreatedOn)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ModifiedOn)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ModifiedUsername)
-                    </td>*@
+                                @Html.DisplayFor(modelItem => item.CreatedOn)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ModifiedOn)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ModifiedUsername)
+                            </td>*@
                         <td width="150" class="text-right">
                             @Bootstrap.LinkButton("/Kategori/Edit/" + item.Id, "warning", "btn-sm", "Edit", "edit", string.Empty)
                             @Bootstrap.LinkButton("/Kategori/Details/" + item.Id, "info", "btn-sm", "Details", "search", string.Empty)
@@ -79,5 +79,11 @@
                 }
             </table>
         </div>
+    </div>
+    <div class="col-md-6 text-center">
+        <h3>
+            Laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue cras ut metus a risus iaculis scelerisque eu ac ante fusce non varius purus aenean nec magna felis fusce vestibulum.
+            <br />  <b>açıklama konulacak</b>
+        </h3>
     </div>
 </div>
