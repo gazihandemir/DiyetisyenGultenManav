@@ -3,11 +3,20 @@
     ViewBag.Title = "DİYETİM ";
 }
 <link href="~/Content/new-login-style-kategori.css" rel="stylesheet" />
-
+<style>
+    .resim {
+        object-fit: fill;
+        margin-right: 20px;
+        width: 100%;
+        height: 100%;
+        max-height:1000px;
+        min-height:800px;
+    }
+</style>
 <div class="login-block pl-5 pt-5 mr-0">
     <div class="row">
         <div class="col-md-5 text-center">
-            <img src="https://picsum.photos/600/800" alt="" />
+            <img src="~/images/diyetim.jpg" alt="" class="resim"/>
         </div>
         <div class="col-md-6 mr-0">
             @foreach (var item in Model)
@@ -16,32 +25,34 @@
                     <h1 style="color: white;" class="ml-2"><strong>@Html.DisplayFor(modelItem => item.Title)</strong></h1> <br />
                     <h2 style="color: white;" class="ml-5 font-italic">@Html.DisplayFor(modelItem => item.Description)</h2> <br />
                     <h3><b>@Html.DisplayNameFor(model => model.DiyetSabah)</b>&emsp;<i class="fa fa-forumbee"></i></h3>
-                    <h5>  @Html.DisplayFor(modelItem => item.DiyetSabah)</h5>
-                    <br />
-                    <h3><b>@Html.DisplayNameFor(model => model.DiyetAraBir)</b>&emsp;<i class="fa fa-reddit"></i></h3>
-                    <h5>@Html.DisplayFor(modelItem => item.DiyetAraBir)</h5>
-                    <br />
-                    <h3><b>@Html.DisplayNameFor(model => model.DiyetOglen)</b>&emsp;<i class="fa fa-drupal"></i></h3>
-                    <h5>@Html.DisplayFor(modelItem => item.DiyetOglen)</h5>
-                    <br />
-                    <h3><b>@Html.DisplayNameFor(model => model.DiyetAraIki)</b>&emsp;<i class="fa fa-gitlab"></i></h3>
-                    <h5>@Html.DisplayFor(modelItem => item.DiyetAraIki)</h5>
-                    <br />
-                    <h3><b>@Html.DisplayNameFor(model => model.DiyetAksam)</b>&emsp;<i class="fa fa-github-alt"></i></h3>
-                    <h5>@Html.DisplayFor(modelItem => item.DiyetAksam)</h5>
-                    <br />
-                    <h3><b>@Html.DisplayNameFor(model => model.DiyetGece)</b>&emsp;<i class="fa fa-github"></i></h3>
-                    <h5>@Html.DisplayFor(modelItem => item.DiyetGece)<</h5>
-                    <br /><br /><br /><br /><br /><br /><br /><br />
+                <p style="font-size:20px;">  @Html.DisplayFor(modelItem => item.DiyetSabah)</p>
+                <br />
+                <h3 title="Ara Öğün"><b>@Html.DisplayNameFor(model => model.DiyetAraBir)</b>&emsp;<i class="fa fa-reddit"></i></h3>
+                <p style="font-size:20px;">@Html.DisplayFor(modelItem => item.DiyetAraBir) </p>
+                <br />
+                <h3><b>@Html.DisplayNameFor(model => model.DiyetOglen)</b>&emsp;<i class="fa fa-drupal"></i></h3>
+                <p style="font-size:20px;">@Html.DisplayFor(modelItem => item.DiyetOglen)</p>
+                <br />
+                <h3><b>@Html.DisplayNameFor(model => model.DiyetAraIki)</b>&emsp;<i class="fa fa-gitlab"></i></h3>
+                <p style="font-size:20px;">@Html.DisplayFor(modelItem => item.DiyetAraIki)</p>
+                <br />
+                <h3><b>@Html.DisplayNameFor(model => model.DiyetAksam)</b>&emsp;<i class="fa fa-github-alt"></i></h3>
+                <p style="font-size:20px;">@Html.DisplayFor(modelItem => item.DiyetAksam)</p>
+                <br />
+                <h3><b>@Html.DisplayNameFor(model => model.DiyetGece)</b>&emsp;<i class="fa fa-github"></i></h3>
+                <p style="font-size:20px;">@Html.DisplayFor(modelItem => item.DiyetGece)<</p>
+                
                 </p>
             }
         </div>
         <div class="col-md-1"></div>
     </div>
-    <div class="col-md-6 text-center">
-        <h3>
-            Laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue cras ut metus a risus iaculis scelerisque eu ac ante fusce non varius purus aenean nec magna felis fusce vestibulum.
-            <br />  <b>açıklama konulacak</b>
-        </h3>
-    </div>
+    <br />
+
+        <div class="col-md-7 text-center">
+            <h3>
+                Laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue cras ut metus a risus iaculis scelerisque eu ac ante fusce non varius purus aenean nec magna felis fusce vestibulum.
+                <br />  <b>açıklama konulacak</b>
+            </h3>
+        </div>
 </div>

@@ -255,6 +255,7 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
                         Text = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
                         Kategori = kat,
                         IsDraft = false,
+                        DanisanPaylasimi = false,
                         Owner = owner,
                         Picture = "user.jpg",
                         CreatedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now.AddYears(+1)),

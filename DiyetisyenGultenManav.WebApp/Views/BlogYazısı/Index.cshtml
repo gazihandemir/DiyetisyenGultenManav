@@ -46,6 +46,9 @@
                         @Html.DisplayNameFor(model => model.IsDraft)
                     </th>
                     <th>
+                        @Html.DisplayNameFor(model => model.DanisanPaylasimi)
+                    </th>
+                    <th>
                         @Html.DisplayNameFor(model => model.Picture)
                     </th>
                     <th></th>
@@ -53,38 +56,48 @@
 
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Kategori.Title)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Title)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Text)
-                        </td>
-                        <td class="text-center">
-                            @if (item.IsDraft)
-                            {
-                                <i class="fa fa-check text-success"></i>
-                            }
-                            else
-                            {
-                                <i class="fa fa-times text-danger"></i>
-                            }
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Picture)
-                        </td>
-                        <td width="150" class="text-right">
-                            @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
-                            @Bootstrap.LinkButton("/BlogYazısı/Edit/" + item.Id, "warning", "btn-sm", "Edit", "edit", string.Empty)
-                            @Bootstrap.LinkButton("/BlogYazısı/Details/" + item.Id, "info", "btn-sm", "Details", "search", string.Empty)
-                            @Bootstrap.LinkButton("/BlogYazısı/Delete/" + item.Id, "danger", "btn-sm", "Delete", "trash", string.Empty)
-                        </td>
-                    </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kategori.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Text)
+                </td>
+                <td class="text-center">
+                    @if (item.IsDraft)
+                    {
+                        <i class="fa fa-check text-success"></i>
+                    }
+                    else
+                    {
+                        <i class="fa fa-times text-danger"></i>
+                    }
+                </td>
+                <td class="text-center">
+                    @if (item.DanisanPaylasimi)
+                    {
+                        <i class="fa fa-check text-success"></i>
+                    }
+                    else
+                    {
+                        <i class="fa fa-times text-danger"></i>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Picture)
+                </td>
+                <td width="150" class="text-right">
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                    @Bootstrap.LinkButton("/BlogYazısı/Edit/" + item.Id, "warning", "btn-sm", "Edit", "edit", string.Empty)
+                    @Bootstrap.LinkButton("/BlogYazısı/Details/" + item.Id, "info", "btn-sm", "Details", "search", string.Empty)
+                    @Bootstrap.LinkButton("/BlogYazısı/Delete/" + item.Id, "danger", "btn-sm", "Delete", "trash", string.Empty)
+                </td>
+            </tr>
                 }
 
             </table>

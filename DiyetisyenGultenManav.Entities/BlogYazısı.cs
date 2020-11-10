@@ -22,6 +22,8 @@ namespace DiyetisyenGultenManav.Entities
         public string Text { get; set; }
         [DisplayName("Taslak")]
         public bool IsDraft { get; set; }
+        [DisplayName("Danışan Paylaşımı")]
+        public bool DanisanPaylasimi{ get; set; }
         [DisplayName("Resim")]
         public string Picture { get; set; }
         [DisplayName("Kategori")]
