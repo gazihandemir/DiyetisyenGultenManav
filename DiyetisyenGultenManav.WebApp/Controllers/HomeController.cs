@@ -20,7 +20,14 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View(blogYazısıManager.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList());
+            List<BlogYazısı> BlogYazilari = blogYazısıManager.ListQueryable().Where(x => x.DanisanPaylasimi == false && x.IsDraft == false).OrderByDescending(x => x.ModifiedOn).ToList();
+            return View(BlogYazilari);
+        }
+        public ActionResult Danisanlarim()
+        {
+            List<BlogYazısı> BlogYazilari = blogYazısıManager.ListQueryable().Where(x => x.DanisanPaylasimi == true && x.IsDraft == false).OrderByDescending(x => x.ModifiedOn).ToList();
+
+            return View("Index",BlogYazilari);
         }
         public ActionResult ByKategori(int? id)
         {
