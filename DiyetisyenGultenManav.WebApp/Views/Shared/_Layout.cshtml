@@ -30,6 +30,7 @@
         @RenderBody()
     </div>
     <div class="container-fluid">
+        @RenderSection("princing", required: false)
         @RenderSection("stat", required: false)
         @RenderSection("map", required: false)
         @RenderSection("footer", required: false)

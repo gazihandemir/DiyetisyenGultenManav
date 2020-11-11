@@ -111,6 +111,7 @@
     <Content Include="Content\new-login-style-kullanici.css" />
     <Content Include="Content\new-login-style-odeme.css" />
     <Content Include="Content\new-login-style.css" />
+    <Content Include="Content\Princing.css" />
     <Content Include="Content\shop-homepage.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\validation-summary.css" />
@@ -345,6 +346,7 @@
     <Content Include="Views\Home\_PartialCarousel.cshtml" />
     <Content Include="Views\Shared\_PartialMap.cshtml" />
     <Content Include="Views\Shared\_PartialKahve.cshtml" />
+    <Content Include="Views\Shared\_PartialPrincing.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
