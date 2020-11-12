@@ -14,8 +14,9 @@
 }
 
 .green .pricing-divider {
-    background: #1AA85C;
-}
+    background-image:url(~/images/background.jpg)
+/*    background: #1AA85C;
+*/}
 
 .red b {
     color: #C64545
@@ -26,8 +27,8 @@
 }
 
 .green b {
-    color: #1AA85C
-}
+/*    color: #1AA85C
+*/}
 
 .pricing-divider-img {
     position: absolute;

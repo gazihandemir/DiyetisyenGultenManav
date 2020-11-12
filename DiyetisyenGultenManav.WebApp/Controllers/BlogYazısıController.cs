@@ -28,7 +28,8 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             else
             {
-                return View(blogYazısı.ToList());
+                //return View(blogYazısı.ToList());
+                return View(blogYazısıManager.List());
             }
 
         }

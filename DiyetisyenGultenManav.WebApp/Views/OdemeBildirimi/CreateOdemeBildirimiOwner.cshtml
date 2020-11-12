@@ -31,28 +31,28 @@
 
                 <div class="form-group row">
                     @Html.LabelFor(model => model.IsimSoyisim, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.EditorFor(model => model.IsimSoyisim, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                    @Html.EditorFor(model => model.IsimSoyisim, new { htmlAttributes = new { @class = "form-control col-md-4" } })
                 </div>
 
                 <div class="form-group row">
                     @Html.LabelFor(model => model.BankaIsmi, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.EditorFor(model => model.BankaIsmi, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                    @Html.EditorFor(model => model.BankaIsmi, new { htmlAttributes = new { @class = "form-control col-md-5" } })
                 </div>
 
                 <div class="form-group row">
                     @Html.LabelFor(model => model.YatirilanMiktar, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.EditorFor(model => model.YatirilanMiktar, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                    @Html.EditorFor(model => model.YatirilanMiktar, new { htmlAttributes = new { @class = "form-control col-md-6" } })
                 </div>
 
                 <div class="form-group row">
                     @Html.LabelFor(model => model.TelefonNo, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.EditorFor(model => model.TelefonNo, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                    @Html.EditorFor(model => model.TelefonNo, new { htmlAttributes = new { @class = "form-control col-md-7" } })
                 </div>
 
 
                 <div class="form-group row">
                     @Html.LabelFor(model => model.EkAciklamalar, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.EditorFor(model => model.EkAciklamalar, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                    @Html.TextAreaFor(model => model.EkAciklamalar,4,110, new { htmlAttributes = new { @class = "form-control col-md-8" } })
                 </div>
                 <div class="form-group row">
                     <div class="col-md-12 pr-0 text-right">

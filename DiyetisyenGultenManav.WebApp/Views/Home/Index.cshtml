@@ -12,10 +12,11 @@
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 
 <div class="row m-3 ">
-    <div class="col-md-3">
+    <div class="col-md-2">
         @Html.Partial("_PartialKategoriler")
+
     </div>
-    <div class="col-md-9">
+    <div class="col-md-10">
         @Html.Partial("_PartialCarousel")
         <div class="row row row-cols-1 row-cols-md-3">
             @foreach (BlogYazısı blogYazısı in Model)
@@ -70,7 +71,9 @@
                     </div>
                 </div>
             }
+
         </div>
+
     </div>
 </div>
 @section princing{
