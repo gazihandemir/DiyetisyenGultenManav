@@ -124,10 +124,10 @@
     <Content Include="css\templatemo-style.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
+    <Content Include="images\3.jpg" />
     <Content Include="images\about-image.jpg" />
     <Content Include="images\asdq111.jpeg" />
     <Content Include="images\background.jpg" />
-    <Content Include="images\carousel1.png" />
     <Content Include="images\deneme.jpg" />
     <Content Include="images\diyetim.jpg" />
     <Content Include="images\footer-open-hour-bg.jpg" />
@@ -348,6 +348,7 @@
     <Content Include="Views\Shared\_PartialMap.cshtml" />
     <Content Include="Views\Shared\_PartialKahve.cshtml" />
     <Content Include="Views\Shared\_PartialPrincing.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

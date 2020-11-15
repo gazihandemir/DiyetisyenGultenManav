@@ -17,6 +17,11 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         private BlogYazısıManager blogYazısıManager = new BlogYazısıManager();
         private KategoriManager kategoriManager = new KategoriManager();
         private KullanıcıManager kullanıcıManager = new KullanıcıManager();
+
+        public ActionResult About()
+        {
+            return View();
+        }
         public ActionResult btnKirmizi()
         {
             return RedirectToAction("/Home/Login");
