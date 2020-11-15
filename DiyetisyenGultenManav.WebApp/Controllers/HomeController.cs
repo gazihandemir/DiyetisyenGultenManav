@@ -17,17 +17,22 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         private BlogYazısıManager blogYazısıManager = new BlogYazısıManager();
         private KategoriManager kategoriManager = new KategoriManager();
         private KullanıcıManager kullanıcıManager = new KullanıcıManager();
+        public ActionResult btnKirmizi()
+        {
+            return RedirectToAction("/Home/Login");
+        }
         // GET: Home
         public ActionResult Index()
         {
             List<BlogYazısı> BlogYazilari = blogYazısıManager.ListQueryable().Where(x => x.DanisanPaylasimi == false && x.IsDraft == false).OrderByDescending(x => x.ModifiedOn).ToList();
+
             return View(BlogYazilari);
         }
         public ActionResult Danisanlarim()
         {
             List<BlogYazısı> BlogYazilari = blogYazısıManager.ListQueryable().Where(x => x.DanisanPaylasimi == true && x.IsDraft == false).OrderByDescending(x => x.ModifiedOn).ToList();
 
-            return View("Index",BlogYazilari);
+            return View("Index", BlogYazilari);
         }
         public ActionResult ByKategori(int? id)
         {

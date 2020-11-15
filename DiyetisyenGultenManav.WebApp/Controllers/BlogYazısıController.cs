@@ -29,7 +29,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             else
             {
                 //return View(blogYazısı.ToList());
-                return View(blogYazısıManager.List());
+                return View(blogYazısıManager.ListQueryable().OrderByDescending(x => x.ModifiedOn));
             }
 
         }
@@ -106,6 +106,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 db_blog.KategoriId = blogYazısı.KategoriId;
                 db_blog.Text = blogYazısı.Text;
                 db_blog.Title = blogYazısı.Title;
+                db_blog.DanisanPaylasimi = blogYazısı.DanisanPaylasimi;
                 if (blogImage != null && (
               blogImage.ContentType == "image/jpeg" ||
               blogImage.ContentType == "image/jpg" ||

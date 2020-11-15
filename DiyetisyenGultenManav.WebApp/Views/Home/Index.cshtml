@@ -18,9 +18,12 @@
     </div>
     <div class="col-md-10">
         @Html.Partial("_PartialCarousel")
-        <div class="row row row-cols-1 row-cols-md-3">
+        <div class="row row row-cols-1 row-cols-md-3 ">
+            @{ 
+                int i = 0;
+            }
             @foreach (BlogYazısı blogYazısı in Model)
-            {
+                { i  ++;
                 <div class="col mb-4">
                     <div class="card ">
                         <img src="https://picsum.photos/320/150?random=@(Model.IndexOf(blogYazısı) % 10)" class="card-img-top" alt="@blogYazısı.Title">
@@ -70,6 +73,10 @@
                         </div>
                     </div>
                 </div>
+                if (i == 9)
+                {
+                    break;
+                }
             }
 
         </div>

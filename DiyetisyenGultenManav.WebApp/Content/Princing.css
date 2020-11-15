@@ -1,5 +1,11 @@
-﻿.ul li{
-  margin-bottom: 1.4rem;
+﻿/*.bg-gradient {
+    background: #C9D6FF;
+    background: -webkit-linear-gradient(to right, #E2E2E2, #C9D6FF);
+    background: linear-gradient(to right, #E2E2E2, #C9D6FF);
+}
+*/
+ul li {
+/*    margin-bottom: 1.4rem;*/
 }
 
 .pricing-divider {
@@ -14,9 +20,8 @@
 }
 
 .green .pricing-divider {
-    background-image:url(~/images/background.jpg)
-/*    background: #1AA85C;
-*/}
+    background: #1AA85C;
+}
 
 .red b {
     color: #C64545
@@ -27,8 +32,8 @@
 }
 
 .green b {
-/*    color: #1AA85C
-*/}
+    color: #1AA85C
+}
 
 .pricing-divider-img {
     position: absolute;
