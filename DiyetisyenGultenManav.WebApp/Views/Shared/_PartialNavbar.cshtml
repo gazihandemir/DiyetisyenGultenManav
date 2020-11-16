@@ -33,6 +33,9 @@
                         @Bootstrap.DropdownLinkMenu("/Kullanıcı/Create", "plus", " Kullanıcı Ekle")
                         @Bootstrap.DropdownLinkMenu("/Kullanıcı/Index", "th-list", " Kullanıcılar")
                         @Bootstrap.DropdownDivider()
+                        @Bootstrap.DropdownLinkMenu("/Paket/Index", "th-list", " Paketler")
+                        @Bootstrap.DropdownLinkMenu("/Paket/Create", "th-list", "Paket Oluştur")
+
                         @if (CurrentSession.User.IsAdmin)
                         {
 
