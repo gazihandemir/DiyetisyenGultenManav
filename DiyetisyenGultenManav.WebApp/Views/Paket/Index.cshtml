@@ -1,0 +1,111 @@
+﻿@model IEnumerable<DiyetisyenGultenManav.Entities.Paket>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Isim)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fiyat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Süresi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OzellikBirRed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OzellikBir)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OzellikIkiRed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OzellikIki)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OzellikUcRed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OzellikUc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OzellikDortRed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OzellikDort)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Renk)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RenkButton)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aciklama)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Isim)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fiyat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Süresi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OzellikBirRed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OzellikBir)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OzellikIkiRed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OzellikIki)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OzellikUcRed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OzellikUc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OzellikDortRed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OzellikDort)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Renk)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RenkButton)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aciklama)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

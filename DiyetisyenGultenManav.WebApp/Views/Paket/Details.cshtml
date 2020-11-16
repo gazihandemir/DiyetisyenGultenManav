@@ -1,0 +1,130 @@
+﻿@model DiyetisyenGultenManav.Entities.Paket
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Paket</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Isim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Isim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fiyat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fiyat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Süresi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Süresi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OzellikBirRed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OzellikBirRed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OzellikBir)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OzellikBir)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OzellikIkiRed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OzellikIkiRed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OzellikIki)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OzellikIki)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OzellikUcRed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OzellikUcRed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OzellikUc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OzellikUc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OzellikDortRed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OzellikDortRed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OzellikDort)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OzellikDort)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Renk)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Renk)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RenkButton)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RenkButton)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aciklama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aciklama)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

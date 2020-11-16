@@ -54,6 +54,7 @@
     <Compile Include="BlogYazısıManager.cs" />
     <Compile Include="DietManager.cs" />
     <Compile Include="OdemeBildirimiManager.cs" />
+    <Compile Include="PaketManager.cs" />
     <Compile Include="Results\BusinessLayerResult.cs" />
     <Compile Include="KategoriManager.cs" />
     <Compile Include="KullanıcıManager.cs" />
