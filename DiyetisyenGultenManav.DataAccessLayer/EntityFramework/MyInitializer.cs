@@ -75,12 +75,12 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
             {
                 Title = "diyet1",
                 Description = "3 günlük diyet",
-                DiyetSabah="sabah",
-                DiyetAraBir="ara bir",
-                DiyetOglen="öglen",
-                DiyetAraIki="iki",
-                DiyetAksam="aksam",
-                DiyetGece="gece",
+                DiyetSabah = "sabah",
+                DiyetAraBir = "ara bir",
+                DiyetOglen = "öglen",
+                DiyetAraIki = "iki",
+                DiyetAksam = "aksam",
+                DiyetGece = "gece",
                 IsNew = true,
                 DiyetOlcum = "olcum",
                 DiyetKilo = "50",
@@ -121,7 +121,24 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
                 ModifiedOn = DateTime.Now.AddMinutes(10),
                 ModifiedUsername = "gazihandemir"
             };
-
+            Paket paket = new Paket()
+            {
+                Isim = " ",
+                Fiyat = " ",
+                Süresi = " ",
+                OzellikBirRed = " ",
+                OzellikBir = " ",
+                OzellikIkiRed = " ",
+                OzellikIki = " ",
+                OzellikUcRed = " ",
+                OzellikUc = " ",
+                Renk = " ",
+                RenkButton = " ",
+                Aciklama = " ",
+                CreatedOn = DateTime.Now,
+                ModifiedOn = DateTime.Now.AddMinutes(10),
+                ModifiedUsername = "gazihandemir"
+            };
             OdemeBildirimi odemeBildirimi = new OdemeBildirimi()
             {
                 IsimSoyisim = "1",
@@ -135,7 +152,8 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
                 CreatedOn = DateTime.Now,
                 ModifiedOn = DateTime.Now.AddMinutes(10),
                 ModifiedUsername = "gazihandemir"
-            }; OdemeBildirimi odemeBildirimi2 = new OdemeBildirimi()
+            };
+            OdemeBildirimi odemeBildirimi2 = new OdemeBildirimi()
             {
                 IsimSoyisim = "1",
                 BankaIsmi = "1",
@@ -151,11 +169,11 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
             };
             context.Kullanıcılar.Add(gazi);
             context.Kullanıcılar.Add(gulten);
+            context.Paketler.Add(paket);
             gazi.Dietler.Add(gazininDieti);
             gulten.Dietler.Add(gulteninDieti);
             gazi.OdemeBildirimi.Add(odemeBildirimi);
             gulten.OdemeBildirimi.Add(odemeBildirimi2);
-
             context.SaveChanges();
             // Kullanıcılar fakedata ile diet yazmak
             for (int i = 0; i < 8; i++)

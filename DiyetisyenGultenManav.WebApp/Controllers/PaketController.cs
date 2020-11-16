@@ -8,7 +8,6 @@ using System.Web;
 using System.Web.Mvc;
 using DiyetisyenGultenManav.BusinessLayer;
 using DiyetisyenGultenManav.Entities;
-using DiyetisyenGultenManav.WebApp.Data;
 
 namespace DiyetisyenGultenManav.WebApp.Controllers
 {

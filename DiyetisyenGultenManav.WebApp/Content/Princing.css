@@ -8,19 +8,25 @@ ul li {
 /*    margin-bottom: 1.4rem;*/
 }
 
-.pricing-divider {
+.red .pricing-divider {
     border-radius: 20px;
-    background: #C64545;
+    background: pink;
     padding: 1em 0 4em;
     position: relative;
 }
 
 .blue .pricing-divider {
+    border-radius: 20px;
     background: #2D5772;
+    padding: 1em 0 4em;
+    position: relative;
 }
 
 .green .pricing-divider {
+    border-radius: 20px;
     background: #1AA85C;
+    padding: 1em 0 4em;
+    position: relative;
 }
 
 .red b {

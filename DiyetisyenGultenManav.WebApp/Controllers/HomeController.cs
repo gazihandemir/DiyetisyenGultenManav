@@ -17,6 +17,8 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         private BlogYazısıManager blogYazısıManager = new BlogYazısıManager();
         private KategoriManager kategoriManager = new KategoriManager();
         private KullanıcıManager kullanıcıManager = new KullanıcıManager();
+        private PaketManager paketManager = new PaketManager();
+        HomeViewModel HomeModel = new HomeViewModel();
         public ActionResult BlogYazisiDetails(int? id)
         {
             if (id == null)
@@ -42,8 +44,10 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         public ActionResult Index()
         {
             List<BlogYazısı> BlogYazilari = blogYazısıManager.ListQueryable().Where(x => x.DanisanPaylasimi == false && x.IsDraft == false).OrderByDescending(x => x.ModifiedOn).ToList();
-
-            return View(BlogYazilari);
+            List<Paket> Paketler = paketManager.List();
+            HomeModel.BlogYazısı = BlogYazilari;
+            HomeModel.Paket = Paketler;
+            return View(HomeModel);
         }
         public ActionResult Danisanlarim()
         {

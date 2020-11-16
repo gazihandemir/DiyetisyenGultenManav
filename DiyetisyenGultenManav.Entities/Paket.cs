@@ -19,7 +19,6 @@ namespace DiyetisyenGultenManav.Entities
         public string OzellikIki { get; set; }
         public string OzellikUcRed { get; set; }
         public string OzellikUc { get; set; }
-
         public string Renk{ get; set; }
         public string RenkButton{ get; set; }
         public string Aciklama { get; set; }

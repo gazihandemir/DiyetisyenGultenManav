@@ -285,7 +285,6 @@
     <Compile Include="Controllers\KullanıcıController.cs" />
     <Compile Include="Controllers\OdemeBildirimiController.cs" />
     <Compile Include="Controllers\PaketController.cs" />
-    <Compile Include="Data\DiyetisyenGultenManavWebAppContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -369,6 +368,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Data\" />
     <Folder Include="ImageBlog\" />
   </ItemGroup>
   <ItemGroup>
