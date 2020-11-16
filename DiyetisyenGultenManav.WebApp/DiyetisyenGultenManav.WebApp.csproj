@@ -97,6 +97,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\blog-post.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -128,6 +129,8 @@
     <Content Include="images\about-image.jpg" />
     <Content Include="images\asdq111.jpeg" />
     <Content Include="images\background.jpg" />
+    <Content Include="images\carouselBir.png" />
+    <Content Include="images\carouseliki.png" />
     <Content Include="images\deneme.jpg" />
     <Content Include="images\diyetim.jpg" />
     <Content Include="images\footer-open-hour-bg.jpg" />
@@ -349,6 +352,7 @@
     <Content Include="Views\Shared\_PartialKahve.cshtml" />
     <Content Include="Views\Shared\_PartialPrincing.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\BlogYazisiDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

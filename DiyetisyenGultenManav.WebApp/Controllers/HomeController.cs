@@ -17,7 +17,19 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         private BlogYazısıManager blogYazısıManager = new BlogYazısıManager();
         private KategoriManager kategoriManager = new KategoriManager();
         private KullanıcıManager kullanıcıManager = new KullanıcıManager();
-
+        public ActionResult BlogYazisiDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+            }
+            BlogYazısı blogYazısı = blogYazısıManager.Find(x => x.Id == id);
+            if (blogYazısı == null)
+            {
+                return HttpNotFound();
+            }
+            return View(blogYazısı);
+        }
         public ActionResult About()
         {
             return View();
