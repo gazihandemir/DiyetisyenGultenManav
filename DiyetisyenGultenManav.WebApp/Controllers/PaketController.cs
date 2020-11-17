@@ -15,9 +15,16 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
     {
         PaketManager paketManager = new PaketManager();
         // GET: Paket
-        public ActionResult Index()
+        public ActionResult Index(string Ara)
         {
-            return View(paketManager.ListQueryable().OrderByDescending(x => x.ModifiedOn));
+            if (Ara != null)
+            {
+                return View();
+            }
+            else
+            {
+                return View(paketManager.ListQueryable().OrderByDescending(x => x.ModifiedOn));
+            }
         }
 
         // GET: Paket/Details/5
