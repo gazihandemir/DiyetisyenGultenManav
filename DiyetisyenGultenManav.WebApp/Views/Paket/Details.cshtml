@@ -1,113 +1,156 @@
 ﻿@model DiyetisyenGultenManav.Entities.Paket
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Paket Detayı";
 }
+<link href="~/Content/new-login-style-kullanici.css" rel="stylesheet" />
+<style>
+    .vertical-strech {
+        height: 100vh;
+    }
+</style>
+<div class="login-block pl-5 pt-3 mr-0 vertical-strech">
+    <div class="row pl-5 pt-3 mr-0">
+        <div class="col-md-12">
+            <p class="display-4 text-center font-weight-bold">
+                @ViewBag.Title
+            </p>
+        </div>
+    </div>
+    <div class="row pl-3 mr-0">
+        <div class="col-md-10">
+            <div>
+                <dl class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Isim)
+                    </dt>
 
-<h2>Details</h2>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.Isim)
+                    </dd>
 
-<div>
-    <h4>Paket</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Isim)
-        </dt>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Fiyat)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Isim)
-        </dd>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.Fiyat)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Fiyat)
-        </dt>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Süresi)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Fiyat)
-        </dd>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.Süresi)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Süresi)
-        </dt>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.OzellikBirRed)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Süresi)
-        </dd>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.OzellikBirRed)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OzellikBirRed)
-        </dt>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.OzellikBir)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.OzellikBirRed)
-        </dd>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.OzellikBir)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OzellikBir)
-        </dt>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.OzellikIkiRed)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.OzellikBir)
-        </dd>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.OzellikIkiRed)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OzellikIkiRed)
-        </dt>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.OzellikIki)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.OzellikIkiRed)
-        </dd>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.OzellikIki)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OzellikIki)
-        </dt>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.OzellikUcRed)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.OzellikIki)
-        </dd>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.OzellikUcRed)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OzellikUcRed)
-        </dt>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.OzellikUc)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.OzellikUcRed)
-        </dd>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.OzellikUc)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Renk)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OzellikUc)
-        </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.Renk)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.OzellikUc)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Renk)
-        </dt>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.RenkButton)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Renk)
-        </dd>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.RenkButton)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.RenkButton)
-        </dt>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Aciklama)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.RenkButton)
-        </dd>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.Aciklama)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.CreatedOn)
+                    </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.CreatedOn)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ModifiedOn)
+                    </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.ModifiedOn)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ModifiedUsername)
+                    </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.ModifiedUsername)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Aciklama)
-        </dt>
+                </dl>
+            </div>
+        </div>
+        <div class="col-md-10 pl-3">
+            <p>
+                @Bootstrap.LinkButton("/Paket/Index", "secondary", string.Empty,
+               string.Empty, "arrow-left", "Geri Dön!")
+                @Bootstrap.LinkButton("/BlogYazısı/Edit/" + Model.Id, "warning", string.Empty,
+               string.Empty, "edit", "Düzenle")
 
-        <dd>
-            @Html.DisplayFor(model => model.Aciklama)
-        </dd>
-
-    </dl>
+            </p>
+        </div>
+    </div>
+    <div class="col-md-6 text-center">
+        <h3>
+            Laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue cras ut metus a risus iaculis scelerisque eu ac ante fusce non varius purus aenean nec magna felis fusce vestibulum.
+            <br />  <b>açıklama konulacak</b>
+        </h3>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
