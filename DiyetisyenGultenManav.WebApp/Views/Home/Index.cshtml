@@ -10,7 +10,13 @@
 <meta name="author" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-
+<style>
+    .kücükResim {
+        max-height: 256px;
+        width: 100%;
+        height: 100%;
+    }
+</style>
 <div class="row m-3 ">
     <div class="col-md-2">
         @Html.Partial("_PartialKategoriler")
@@ -27,7 +33,7 @@
                 i++;
                 <div class="col mb-4">
                     <div class="card ">
-                        <img src="" class="card-img-top" alt="@blogYazısı.Title">
+                        <img src="~/ImageBlog/@blogYazısı.Picture" class="card-img-top kücükResim" alt="@blogYazısı.Title">
                         <div class="card-body">
                             @*<h5 class="card-title">
                                     <a href="#" data-target="#modal_notedetail" data-toggle="modal"

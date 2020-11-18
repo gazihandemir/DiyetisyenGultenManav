@@ -31,13 +31,13 @@
                                        data-note-id="@note.Id"> @note.Title</a>
                                 </h5>*@
                             <p class="card-text">
-                                @if (string.IsNullOrEmpty(blogYazısı.Text) == false && blogYazısı.Text.Length > 60)
+                                @if (string.IsNullOrEmpty(blogYazısı.ParagrafBir) == false && blogYazısı.ParagrafBir.Length > 60)
                                 {
-                                    @(blogYazısı.Text.Substring(0, 60) + "...")
+                                    @(blogYazısı.ParagrafBir.Substring(0, 60) + "...")
                                 }
                                 else
                                 {
-                                    @blogYazısı.Text
+                                    @blogYazısı.ParagrafBir
                                 }
                             </p>
                             <p class="card-text text-right">
