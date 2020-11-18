@@ -55,6 +55,7 @@
     <Compile Include="DietManager.cs" />
     <Compile Include="OdemeBildirimiManager.cs" />
     <Compile Include="PaketManager.cs" />
+    <Compile Include="PaketTalebiManager.cs" />
     <Compile Include="Results\BusinessLayerResult.cs" />
     <Compile Include="KategoriManager.cs" />
     <Compile Include="KullanıcıManager.cs" />

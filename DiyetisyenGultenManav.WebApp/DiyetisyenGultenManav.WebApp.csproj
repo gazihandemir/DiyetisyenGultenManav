@@ -285,6 +285,8 @@
     <Compile Include="Controllers\KullanıcıController.cs" />
     <Compile Include="Controllers\OdemeBildirimiController.cs" />
     <Compile Include="Controllers\PaketController.cs" />
+    <Compile Include="Controllers\PaketTalebiController.cs" />
+    <Compile Include="Data\DiyetisyenGultenManavWebAppContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -360,6 +362,11 @@
     <Content Include="Views\Paket\Edit.cshtml" />
     <Content Include="Views\Paket\Index.cshtml" />
     <Content Include="Views\Home\Blog.cshtml" />
+    <Content Include="Views\PaketTalebi\Create.cshtml" />
+    <Content Include="Views\PaketTalebi\Delete.cshtml" />
+    <Content Include="Views\PaketTalebi\Details.cshtml" />
+    <Content Include="Views\PaketTalebi\Edit.cshtml" />
+    <Content Include="Views\PaketTalebi\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -369,7 +376,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Data\" />
     <Folder Include="ImageBlog\" />
   </ItemGroup>
   <ItemGroup>
