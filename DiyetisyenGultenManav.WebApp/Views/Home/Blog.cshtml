@@ -1,7 +1,7 @@
 ﻿@using DiyetisyenGultenManav.Entities.ValueObjects
 @model HomeViewModel
 @{
-    ViewBag.Title = "AnaSayfa";
+    ViewBag.Title = "Blog";
 }
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -19,12 +19,9 @@
     <div class="col-md-10">
         @Html.Partial("_PartialCarousel")
         <div class="row row row-cols-1 row-cols-md-3 ">
-            @{
-                int i = 0;
-            }
+
             @foreach (var blogYazısı in Model.BlogYazısı)
             {
-                i++;
                 <div class="col mb-4">
                     <div class="card ">
                         <img src="" class="card-img-top" alt="@blogYazısı.Title">
@@ -34,13 +31,13 @@
                                        data-note-id="@note.Id"> @note.Title</a>
                                 </h5>*@
                             <p class="card-text">
-                                @if (string.IsNullOrEmpty(blogYazısı.ParagrafBir) == false && blogYazısı.ParagrafBir.Length > 60)
+                                @if (string.IsNullOrEmpty(blogYazısı.Text) == false && blogYazısı.Text.Length > 60)
                                 {
-                                    @(blogYazısı.ParagrafBir.Substring(0, 60) + "...")
+                                    @(blogYazısı.Text.Substring(0, 60) + "...")
                                 }
                                 else
                                 {
-                                    @blogYazısı.ParagrafBir
+                                    @blogYazısı.Text
                                 }
                             </p>
                             <p class="card-text text-right">
@@ -75,24 +72,12 @@
                         </div>
                     </div>
                 </div>
-                if (i == 9)
-                {
-                    break;
-                }
             }
 
         </div>
 
     </div>
 </div>
-
-@section princing{
-    @Html.Partial("_PartialPrincing")
-
-}
-@section stat{
-    @Html.Partial("_PartialKahve")
-}
 @section map{
     @Html.Partial("_PartialMap")
 }

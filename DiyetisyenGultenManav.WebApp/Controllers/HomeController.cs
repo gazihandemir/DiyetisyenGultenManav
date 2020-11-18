@@ -52,8 +52,18 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         public ActionResult Danisanlarim()
         {
             List<BlogYazısı> BlogYazilari = blogYazısıManager.ListQueryable().Where(x => x.DanisanPaylasimi == true && x.IsDraft == false).OrderByDescending(x => x.ModifiedOn).ToList();
-
-            return View("Index", BlogYazilari);
+            List<Paket> Paketler = paketManager.List();
+            HomeModel.BlogYazısı = BlogYazilari;
+            HomeModel.Paket = Paketler;
+            return View("Blog", HomeModel);
+        }
+        public ActionResult Blog()
+        {
+            List<BlogYazısı> BlogYazilari = blogYazısıManager.ListQueryable().Where(x => x.DanisanPaylasimi == false && x.IsDraft == false).OrderByDescending(x => x.ModifiedOn).ToList();
+            List<Paket> Paketler = paketManager.List();
+            HomeModel.BlogYazısı = BlogYazilari;
+            HomeModel.Paket = Paketler;
+            return View(HomeModel);
         }
         public ActionResult ByKategori(int? id)
         {

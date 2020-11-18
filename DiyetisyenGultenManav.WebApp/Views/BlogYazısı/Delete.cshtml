@@ -4,12 +4,7 @@
     ViewBag.Title = "BLOG SAYFASI SİL";
 }
 <link href="~/Content/new-login-style.css" rel="stylesheet" />
-<style>
-    .vertical-strech {
-        height: 100vh;
-    }
-</style>
-<div class="login-block pl-5 pt-3 mr-0 vertical-strech">
+<div class="login-block pl-5 pt-3 mr-0 ">
     <div class="row pl-5 pt-3 mr-0">
         <div class="col-md-12">
             <p class="display-4 text-center font-weight-bold">
@@ -39,11 +34,59 @@
                     </dd>
 
                     <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.Text)
+                        @Html.DisplayNameFor(model => model.ParagrafBir)
+                    </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.ParagrafBir)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ParagrafIki)
                     </dt>
 
                     <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.Text)
+                        @Html.DisplayFor(model => model.ParagrafIki)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ParagrafUc)
+                    </dt>
+
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.ParagrafUc)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ParagrafDort)
+                    </dt>
+
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.ParagrafDort)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ParagrafBes)
+                    </dt>
+
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.ParagrafBes)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ParagrafAlti)
+                    </dt>
+
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.ParagrafAlti)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ParagrafYedi)
+                    </dt>
+
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.ParagrafYedi)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ParagrafSekiz)
+                    </dt>
+
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.ParagrafSekiz)
                     </dd>
 
                     <dt class="col-md-3">

@@ -104,7 +104,14 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 BlogYazısı db_blog = blogYazısıManager.Find(x => x.Id == blogYazısı.Id);
                 db_blog.IsDraft = blogYazısı.IsDraft;
                 db_blog.KategoriId = blogYazısı.KategoriId;
-                db_blog.Text = blogYazısı.Text;
+                db_blog.ParagrafBir = blogYazısı.ParagrafBir;
+                db_blog.ParagrafIki = blogYazısı.ParagrafIki;
+                db_blog.ParagrafUc = blogYazısı.ParagrafUc;
+                db_blog.ParagrafDort = blogYazısı.ParagrafDort;
+                db_blog.ParagrafBes = blogYazısı.ParagrafBes;
+                db_blog.ParagrafAlti = blogYazısı.ParagrafAlti;
+                db_blog.ParagrafYedi = blogYazısı.ParagrafYedi;
+                db_blog.ParagrafSekiz = blogYazısı.ParagrafSekiz;
                 db_blog.Title = blogYazısı.Title;
                 db_blog.DanisanPaylasimi = blogYazısı.DanisanPaylasimi;
                 if (blogImage != null && (

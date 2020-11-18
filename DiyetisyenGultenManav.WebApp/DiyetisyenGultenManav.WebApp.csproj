@@ -359,6 +359,7 @@
     <Content Include="Views\Paket\Details.cshtml" />
     <Content Include="Views\Paket\Edit.cshtml" />
     <Content Include="Views\Paket\Index.cshtml" />
+    <Content Include="Views\Home\Blog.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

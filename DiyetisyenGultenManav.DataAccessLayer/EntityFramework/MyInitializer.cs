@@ -270,7 +270,14 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
                     BlogYazısı blogYazısı = new BlogYazısı()
                     {
                         Title = FakeData.TextData.GetAlphabetical(FakeData.NumberData.GetNumber(5, 25)),
-                        Text = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
+                        ParagrafBir = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
+                        ParagrafIki = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
+                        ParagrafUc = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
+                        ParagrafDort = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
+                        ParagrafBes = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
+                        ParagrafAlti = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
+                        ParagrafYedi = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
+                        ParagrafSekiz = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
                         Kategori = kat,
                         IsDraft = false,
                         DanisanPaylasimi = false,
