@@ -1,50 +1,91 @@
 ﻿@model DiyetisyenGultenManav.Entities.PaketTalebi
 
 @{
-    ViewBag.Title = "Details";
-}
+    ViewBag.Title = "PAKET TALEBİ DETAYI";
+}<link href="~/Content/new-login-style-kategori.css" rel="stylesheet" />
+<style>
+    .sayfaDüzeniPaketTalebi {
+        height: 100%;
+        min-height: 1000px;
+    }
+</style>
+<div class="login-block pl-5 pt-3 mr-0 sayfaDüzeniPaketTalebi">
+    <div class="row pl-5 pt-3 mr-0">
+        <div class="col-md-12">
+            <p class="display-4 text-center font-weight-bold">
+                @ViewBag.Title
+            </p>
+        </div>
+    </div>
+    <div class="row pl-3 mr-0">
+        <div class="col-md-10">
+            <div>
+                <dl class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.IsimSoyisim)
+                    </dt>
 
-<h2>Details</h2>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.IsimSoyisim)
+                    </dd>
 
-<div>
-    <h4>PaketTalebi</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.IsimSoyisim)
-        </dt>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.TelefonNo)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.IsimSoyisim)
-        </dd>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.TelefonNo)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TelefonNo)
-        </dt>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Program)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TelefonNo)
-        </dd>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.Program)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Program)
-        </dt>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.EkAciklamalar)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Program)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EkAciklamalar)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EkAciklamalar)
-        </dd>
-
-    </dl>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.EkAciklamalar)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.CreatedOn)
+                    </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.CreatedOn)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ModifiedOn)
+                    </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.ModifiedOn)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ModifiedUsername)
+                    </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.ModifiedUsername)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="col-md-10 pl-3">
+            <p>
+                @Bootstrap.LinkButton("/PaketTalebi/Index", "secondary", string.Empty,
+               string.Empty, "arrow-left", "Geri Dön!")
+                @Bootstrap.LinkButton("/PaketTalebi/Edit/" + Model.Id, "warning", string.Empty,
+               string.Empty, "edit", "Düzenle")
+            </p>
+        </div>
+    </div>
+    <div class="col-md-6 text-center">
+        <h3>
+            Laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue cras ut metus a risus iaculis scelerisque eu ac ante fusce non varius purus aenean nec magna felis fusce vestibulum.
+            <br />  <b>açıklama konulacak</b>
+        </h3>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
