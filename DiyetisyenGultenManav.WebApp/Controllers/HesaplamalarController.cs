@@ -65,7 +65,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                     "BMI değeriniz bu aralıkta ise mutlaka kan değerlerinize baktırmalısınız ve bir uzmana başvurmalısınız.";
                 renk = "alert alert-danger";
             }
-            ViewBag.sonuc = Math.Round(sonuc,2).ToString();
+            ViewBag.sonuc = Math.Round(sonuc, 2).ToString();
             ViewBag.sonucStr = sonucStr.ToString();
             ViewBag.sonucAciklama = sonucAciklama.ToString();
             ViewBag.renk = renk.ToString();
@@ -89,6 +89,40 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         }
         public ActionResult HesaplaBMH()
         {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult HesaplaBMH(FormCollection frm2)
+        {
+            string bmhCinsiyet = Convert.ToString(frm2["BmhCinsiyet"].ToString());
+            double bmhKilo = Convert.ToDouble(frm2["BmhKilo"].ToString());
+            double bmhBoy = Convert.ToDouble(frm2["BmhBoy"].ToString());
+            double bmhYas = Convert.ToDouble(frm2["BmhYas"].ToString());
+            string erkek = "erkek";
+            string kadin = "kadın";
+            double sonuc = 0.0;
+            if (bmhCinsiyet.Equals(kadin))
+            {
+                sonuc = 655 + (9.6 * bmhKilo) + (1.8 * bmhBoy) - (4.7 * bmhYas);
+            }
+            else if (bmhCinsiyet.Equals(erkek))
+            {
+                sonuc = 66.5 + (13.7 * bmhKilo) + (5 * bmhBoy) - (6.7 * bmhYas);
+
+            }
+            else
+            {
+                sonuc = 0;
+            }
+            string sonucSifir = "Lütfen geçerli bir cinsiyet Giriniz ! kadın yada erkek";
+            if (sonuc == 0)
+            {
+                ViewBag.sonuc = sonucSifir.ToString();
+            }
+            else
+            {
+                ViewBag.sonuc = sonuc.ToString();
+            }
             return View();
         }
     }

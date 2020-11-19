@@ -130,6 +130,7 @@
     <Content Include="images\asdq111.jpeg" />
     <Content Include="images\background.jpg" />
     <Content Include="images\bki.png" />
+    <Content Include="images\BMH.png" />
     <Content Include="images\carouselBir.png" />
     <Content Include="images\carouseliki.png" />
     <Content Include="images\deneme.jpg" />
@@ -370,6 +371,7 @@
     <Content Include="Views\PaketTalebi\Edit.cshtml" />
     <Content Include="Views\PaketTalebi\Index.cshtml" />
     <Content Include="Views\Hesaplamalar\HesaplaBMI.cshtml" />
+    <Content Include="Views\Hesaplamalar\HesaplaBMH.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
