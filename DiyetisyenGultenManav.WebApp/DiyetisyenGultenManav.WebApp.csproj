@@ -129,6 +129,7 @@
     <Content Include="images\about-image.jpg" />
     <Content Include="images\asdq111.jpeg" />
     <Content Include="images\background.jpg" />
+    <Content Include="images\bki.png" />
     <Content Include="images\carouselBir.png" />
     <Content Include="images\carouseliki.png" />
     <Content Include="images\deneme.jpg" />
@@ -280,6 +281,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BlogYazısıController.cs" />
     <Compile Include="Controllers\DietController.cs" />
+    <Compile Include="Controllers\HesaplamalarController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KategoriController.cs" />
     <Compile Include="Controllers\KullanıcıController.cs" />
@@ -367,6 +369,7 @@
     <Content Include="Views\PaketTalebi\Details.cshtml" />
     <Content Include="Views\PaketTalebi\Edit.cshtml" />
     <Content Include="Views\PaketTalebi\Index.cshtml" />
+    <Content Include="Views\Hesaplamalar\HesaplaBMI.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -17,9 +17,9 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         PaketTalebiManager paketTalebiManager = new PaketTalebiManager();
 
         // GET: PaketTalebi
-        public ActionResult Index()
+        public ActionResult Index(string Ara)
         {
-            return View(paketTalebiManager.List()); ;
+            return View(paketTalebiManager.ListQueryable().Where(x => x.IsimSoyisim.Contains(Ara) || Ara == null));
         }
 
         // GET: PaketTalebi/Details/5

@@ -1,0 +1,131 @@
+﻿@{
+    ViewBag.Title = "Beden Kitle İndeksi Hesaplama / BKİ Hesaplama";
+}
+<link href="~/Content/new-login-style-kullanici.css" rel="stylesheet" />
+<style>
+    .sayfaDüzeniPaketTalebi {
+        height: 100%;
+        min-height: 1000px;
+    }
+
+    .list-group a {
+        background-color: #aed6f1;
+        font-size: 20px;
+    }
+</style>
+<div class="login-block  pl-5 pt-3 mr-0 sayfaDüzeniPaketTalebi">
+    <div class="row pl-5 pt-3 mr-0">
+        <div class="col-md-12">
+            <p class="display-4 text-center font-weight-bold">
+                @ViewBag.Title
+            </p>
+        </div>
+    </div>
+    <div class="row m-3 ">
+        <div class="col-md-3">
+            <p style="font-size:28px; text-align:center"><b>Hesaplamalar</b></p>
+            <div class="list-group">
+                <a href="/Hesaplamalar/HesaplaBMI" class="list-group-item list-group-item-action">
+                    <span class="fa fa-th-list mr-2"></span>Beden Kitle İndeksi Hesaplama
+                </a>
+                <a href="/Hesaplamalar/HesaplaBMI" class="list-group-item list-group-item-action">
+                    <span class="fa fa-th-list mr-2"></span>Beden Kitle İndeksi Hesaplama
+                </a>
+                <a href="/Hesaplamalar/HesaplaBMI" class="list-group-item list-group-item-action">
+                    <span class="fa fa-th-list mr-2"></span>Beden Kitle İndeksi Hesaplama
+                </a>
+            </div>
+        </div>
+        <div class="row pl-5 pt-3 mr-0 col-md-9">
+            <div class="col-md-9">
+                <p>
+                    <img src="~/images/bki.png" alt="" />
+                </p>
+                <p>
+                    Beden kitle indeksi hesaplama veya BKİ hesaplama kilonuzun boyunuzun karesine bölünmesiyle elde edilen değerdir. <br />
+                    Bu değer obezite durumu hakkında bilgi verir. <br />
+                    BKİ değerlerinde Dünya Sağlık Örgütü’nün belirlediği aralıklar referans olarak alınır. <br />
+                    Çıkan sonuca göre kilonuzun boyunuza göre ideal olup olmadığını anlayabilirsiniz. <br />
+                </p>
+                <br />
+
+                <br />
+                <p>
+                    Aşağıdaki hesaplama aracımızdan kolaylıkla öğrenebilirsiniz.
+                </p>
+                <p class="font-weight-bold" style="font-size:24px;">
+                    Beden Kitle İndeksi (BKİ) Hesaplama
+                </p>
+                <hr />
+                @using (Html.BeginForm("HesaplaBMI", "Hesaplamalar", FormMethod.Post))
+                {
+
+                    <div class="form-group row">
+                        @Html.Label("Kilonuz", new { @class = "col-form-label font-weight-bold col-md-3" })
+                        @Html.TextBox("BmiKilo", null, new { @class = "form-control col-md-9  btn-outline-dark  text-left", type = "number", required = "required", placeholder = "Kg olarak yazılmalıdır. Örneğin 64" })
+                    </div>
+                    <div class="form-group row">
+                        @Html.Label("Boyunuz", new { @class = "col-form-label font-weight-bold col-md-3" })
+                        @Html.TextBox("BmiBoy", null, new { @class = "form-control col-md-9  btn-outline-dark  text-left", type = "number", required = "required", placeholder = "Cm olarak yazılmalıdır. Örneğin 165" })
+                    </div>
+                    <hr />
+                    <div class="form-group row">
+                        <label class="col-form-label font-weight-bold col-md-3">Beden Kitle İndeksi  :</label>
+                        @if (@ViewBag.sonuc != null)
+                        {
+                            <div class=" col-md-9 alert alert-secondary text-center">@ViewBag.sonuc&emsp;<i class="fa fa-arrow-right"></i>&emsp;<b>@ViewBag.sonucStr</b></div>
+                            <div class=" col-md-12 @ViewBag.renk text-center">@ViewBag.sonucAciklama</div>
+                            <hr />
+                        }
+                    </div>
+                    <hr />
+                    <div class="form-group row">
+                        <div class="col-md-12 pr-0 text-right">
+                            <input type="submit" value="Hesapla" class="btn btn-dark text-right" />
+                        </div>
+                    </div>
+                }
+                <hr />
+                <p>
+                    <b> BKİ değeriniz  18,5 kg/m2 ‘ten küçükse zayıfsınız.</b> <br />
+                    Zayıf sınıflandırmasına giriyorsanız kilonuz olması gereken ağırlığınızın altında demektir.<br />
+                    Düşük vücut ağırlığı saç dökülmesi, tırnak kırılması, halsizlik, yorgunluk ve baş ağrısı gibi şikayetlere neden olabilir. <br />
+                    İdeal kiloya ulaşma sürecinde önemli olan kilo artışının hızlı olması değil; sağlıklı bir kilo artışının gerçekleşmesidir. <br />
+                    Bu süreçte bir beslenme uzmanında yardım almanız daha sağlıklı olur. <br />
+                </p>
+                <hr />
+                <p>
+                    <b>  BKİ değeriniz 18,5 – 24,9 kg/m2 arasındaysa kilonuz normaldir.</b> <br />
+                    BKİ değeriniz bu aralıkta ise; kilonuz boyunuza göre ideal denilebilir. <br />
+                    İdeal vücut ağırlığında olmanız hem daha dinç ve zinde olmanızı sağlar hem de hastalıklara yakalanma riskinizi düşürür. <br />
+                </p>
+                <hr />
+                <p>
+                    <b>    BKİ değeriniz 25 – 29,9 kg/m2 arasındaysa kilolu sınıfındasınız.</b><br />
+                    BKİ değerinizin bu aralıkta olması vücut ağırlığınızın boyunuza oranla yüksek olduğunu ve obezite riski taşıdığınızı gösterir.<br />
+                    İdeal kilograma inme sürecinde hızlı kilo kaybı daha sağlıksız bir vücuda temel hazırlar.<br />
+                    Bu süreçte hızlı kilo kaybının yerine yavaş ve kalıcı olan ağırlık kaybının sağlıklı olduğu unutulmamalıdır.<br />
+                </p>
+                <hr />
+                <p>
+                    <b>BKİ değeriniz 30 – 39,9 kg/m2 arasındaysa şişman sınıfındasınız. </b> <br />
+                    BKİ değeriniz bu aralıkta ise obez sınıflandırmasına girmiş sayılırsınız ve vücut ağırlığınız olması gerekenin çok üstünde demektir.<br />
+                    Obezite diyabet, kalp-damar hastalıkları, yüksek tansiyon, kolesterol ve kanser görülme riskini artırabilir ve yaşam kalitesini olumsuz yönde etkileyebilir.<br />
+                    İdeal vücut ağılığına ulaşmak amacıyla hızlı kilo kaybının gerçekleşmesi kalıcı olmayan bir çözümdür ve aynı hızla ağırlık artışına neden olabilir. <br />
+                    Bu süreçte ağırlık kaybının diyetisyen gözetiminde olması daha sağlıklı olur.<br />
+                </p>
+                <hr />
+                <p>
+                    <b>BKİ değeriniz 40 kg/m2 ve üzerindeyse Aşırı Şişman sınıfındasınız.  </b><br />
+                    BKİ değeriniz bu aralıkta ise morbid obez sınıfındasınızdır ve sağlığınız risk altındadır.<br />
+                    Yüksek vücut ağırlığı; diyabet, kalp-damar hastalıkları, yüksek tansiyon, yüksek kolesterol ve böbrek rahatsızlıkları gibi birçok sağlık sorununu beraberinde getirebilir.<br />
+                    İdeal vücut ağırlığına inmeniz hem fiziksel hem de psikolojik açıdan daha sağlıklı olmanızı sağlar ve yaşam kalitenizi artırır. <br />
+                    BKİ değeriniz bu aralıkta ise mutlaka kan değerlerinize baktırmalısınız ve bir uzmana başvurmalısınız.<br />
+                </p>
+                <hr />
+            </div>
+        </div>
+
+    </div>
+
+</div>
