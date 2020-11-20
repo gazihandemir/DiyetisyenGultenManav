@@ -174,5 +174,20 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             ViewBag.sonuc = sonuc.ToString();
             return View();
         }
+        public ActionResult HesaplaKosuKalori()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult HesaplaKosuKalori(FormCollection frm5)
+        {
+            double kosuKilo = Convert.ToDouble(frm5["KosuKilo"].ToString());
+            double kosuHiz = Convert.ToDouble(frm5["KosuHiz"].ToString());
+            double kosuSüre = Convert.ToDouble(frm5["KosuSüre"].ToString());
+            // Hız*saat + ( kilo -60 )*4
+            double sonuc = kosuHiz * kosuSüre + (kosuKilo - 60) * 4;
+            ViewBag.sonuc = sonuc.ToString();
+            return View();
+        }
     }
 }

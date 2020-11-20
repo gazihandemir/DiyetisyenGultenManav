@@ -1,0 +1,120 @@
+﻿@{
+    ViewBag.Title = "Kardiyo da Yakılıan Kalori Hesaplama";
+}
+<link href="~/Content/new-login-style-kullanici.css" rel="stylesheet" />
+<style>
+    .sayfaDüzeniPaketTalebi {
+        height: 100%;
+        min-height: 1000px;
+    }
+
+    .list-group a {
+        background-color: #aed6f1;
+        font-size: 20px;
+    }
+</style>
+<div class="login-block  pl-5 pt-3 mr-0 sayfaDüzeniPaketTalebi">
+    <div class="row m-3 ">
+        @Html.Partial("_PartialHesaplamalarMenu")
+        <div class="row pl-5 pt-3 mr-0 col-md-9">
+            <div class="col-md-9">
+                <p>
+                    <img src="~/images/kardiyo.png" alt="" />
+                </p>
+                <p>
+                    Koşmak, özellikle spor yapmak ya da spor salonunda takılmakla ilgilenen biri değilseniz, dinç kalmanın harika bir yoludur. <br />
+                    Kendi başınıza yapabileceğiniz bir aktivitedir. <br />
+                    Kaliteli ayakkabılar dışında herhangi bir özel ekipman almanızı gerektirmez. <br />
+                </p>
+                <hr />
+                <p>
+                    <b>Kardiyo Yapmanın faydaları nelerdir?</b> <br />
+                    Günlük spor aktivitesi olarak 1 saat yürümek sağlık açısından pek çok fayda elde edilmesini sağlar.
+                    Her gün 1 saatlik yürüyüşün insan sağlığı açısından faydaları şu şekildedir;
+                    <ul>
+                        <li> Kalbi ve akciğerleri korur.</li>
+                        <li>Ömrün uzamasına yardımcıdır.</li>
+                        <li> Daha verimli ve hızlı kilo verilmesine katkı sağlar.</li>
+                        <li>Stres ve depresyondan uzaklaştırır.</li>
+                        <li>Kolesterol seviyesini dengeye alır.</li>
+                        <li>Kas ve eklemlerin güçlenmesine yardımcı olur.</li>
+                        <li>Şeker hastalığını kontrol altında tutar.</li>
+                    </ul>
+                </p>
+                <hr />
+                <br />
+                <br />
+                <p class="font-weight-bold" style="font-size:24px;">
+                    Kardiyo Yaparken Yaktığımız Kaloriyi Hesaplama
+                </p>
+                <p>
+                    Hızınızı Bilmiyorsanız <br />
+                    <ul>
+                        <li>Saatte ortalama 4-5 km. hızla yürürüz.</li>
+                        <li>Tempolu koşularda ise 8 km/h. ortalaması baz alınır. </li>
+                        <li>Kardiyo içinse hızın en az 9km/h.  olması yeterlidir.</li>
+                        Yani kalori yakmak için normal yürüme hızınızın iki katı hızına çıkarak koşmalısınız. Daha fazla kalori yakmak için kardiyo seviyesinde bir koşuya ihtiyacınız var. Çünkü, hızlı koşmak daha fazla kalori yaktırır.
+                    </ul>
+
+
+                </p>
+                <hr />
+                @using (Html.BeginForm("HesaplaKosuKalori", "Hesaplamalar", FormMethod.Post))
+                {
+
+                    <div class="form-group row">
+                        @Html.Label("Kilonuz", new { @class = "col-form-label font-weight-bold col-md-3" })
+                        @Html.TextBox("KosuKilo", null, new { @class = "form-control col-md-9  btn-outline-dark  text-left", type = "number", required = "required", placeholder = "Kg olarak yazılmalıdır. Örneğin 70" })
+                    </div>
+                    <div class="form-group row">
+                        @Html.Label("Hızınız", new { @class = "col-form-label font-weight-bold col-md-3" })
+                        @Html.TextBox("KosuHiz", null, new { @class = "form-control col-md-9  btn-outline-dark  text-left", type = "number", required = "required", placeholder = "Km olarak yazılmalıdır. Örneğin 10" })
+                    </div>
+                    <div class="form-group row">
+                        @Html.Label("Süre", new { @class = "col-form-label font-weight-bold col-md-3" })
+                        @Html.TextBox("KosuSüre", null, new { @class = "form-control col-md-9  btn-outline-dark  text-left", type = "number", required = "required", placeholder = "Dakika olarak yazılmalıdır. Örneğin 30" })
+                    </div>
+
+                    <hr />
+                    <div class="form-group row">
+                        <label class="col-form-label font-weight-bold col-md-4">Yaktığınız Kalori</label>
+                        @if (@ViewBag.sonuc != null)
+                        {
+                            <div id="HesaplaBmhGidis" name="HesaplaBmhGidis" class=" col-md-8 alert alert-secondary text-center"><b>@ViewBag.sonuc Kalori</b></div>
+                            <hr />
+                        }
+                    </div>
+                    <hr />
+                    <div class="form-group row">
+                        <div class="col-md-12 pr-0 text-right">
+                            <input type="submit" value="Hesapla" class="btn btn-dark text-right" />
+                        </div>
+                    </div>
+                }
+                <hr />
+                <p>
+                    Koşmak kaç kalori yaktırır, sorusunun cevabını vermek biraz zordur.<br />
+                    Vücut ağırlığınız, koşu hızınız ve nefes alış verişleriniz bile koşarken kaç kalori yakacağınızı etkiler.<br />
+                    Mesela, kilolu insanlar zayıf kişilere göre daha fazla kalori harcarlar.<br />
+                    Çünkü burada harcanacak kaloriyi, koşarken zeminle bağı kesilen ayakların yerle temasındaki kuvvet belirler.<br />
+                    Yani kilolu birinin zeminle teması daha sert olacağından ve bu hızlı koştukça daha fazla tekrarlanacağından dolayı vücut daha fazla kalori harcayacaktır.
+                </p>
+                <hr />
+                <p>
+                    <b>Daha Fazla Kalori Yakmak İçin</b>
+                    <ul>
+                        <li>Koşmaya alışkın değilseniz, günde 10-15 dakika, başlangıç olarak iyidir.</li>
+                        <li>
+                            Koşu sürenizi her hafta 5 dakika daha artırın. Unutmayın, yaptığınız sporu her zaman biraz daha yukarıya taşımalısınız.
+                            Yoksa, sporun hiçbir faydasını görmez, yerinizde sayarsınız.
+                        </li>
+                        <li>3-4 ay sonra düz zemin koşusu yerine yokuş yukarı çıkmak gibi değişiklikler yapın, kendinizi zorlayın.</li>
+                    </ul>
+                </p>
+                <hr />
+            </div>
+        </div>
+
+    </div>
+
+</div>
