@@ -1,0 +1,118 @@
+﻿@{
+    ViewBag.Title = "Günlük İçmemiz Gereken Su Miktarı Hesaplama";
+}
+<link href="~/Content/new-login-style-kullanici.css" rel="stylesheet" />
+<style>
+    .sayfaDüzeniPaketTalebi {
+        height: 100%;
+        min-height: 1000px;
+    }
+
+    .list-group a {
+        background-color: #aed6f1;
+        font-size: 20px;
+    }
+</style>
+<div class="login-block  pl-5 pt-3 mr-0 sayfaDüzeniPaketTalebi">
+    <div class="row m-3 ">
+        @Html.Partial("_PartialHesaplamalarMenu")
+        <div class="row pl-5 pt-3 mr-0 col-md-9">
+            <div class="col-md-9">
+                <p>
+                    <img src="~/images/su.png" alt="" />
+                </p>
+                <p>
+                    Dünyanın %70’i sudur ve yeryüzündeki su kaynaklarının yaklaşık%0.3′ü kullanılabilir ve içilebilir özelliktedir. <br />
+                    Suyun pH değerinin 7,5 – 8,5 arası yani alkali olması idealdir. <br />
+                    İçilen suların etiketleri okunmalı, pH değerinin bu aralıklarda olduğu sular tercih edilmelidir. <br />
+                </p>
+                <hr />
+                <p>
+                    <b>Su İçelim</b> <br />
+                    <ul>
+                        <li>Sıcak havalarda ve egzersiz sırasında daha fazla su tüketilmelidir.</li>
+                        <li>Eğer yeteri kadar su tüketilemezse susuzluk ortaya çıkar.</li>
+                        <li>Susuzluğun hafif belirtileri; baş ağrısı, yorgunluk ve kabızlıktır. </li>
+                        <li>Uzun süren durumlarda ciddi hastalıklara da neden olabilir. </li>
+                    </ul>
+                </p>
+                <hr />
+                <br />
+                <br />
+                <p class="font-weight-bold" style="font-size:24px;">
+                    Günlük İçmemiz Gerek Su Miktarı Hesaplama
+                </p>
+                <hr />
+                @using (Html.BeginForm("HesaplaSu", "Hesaplamalar", FormMethod.Post))
+                {
+
+                    <div class="form-group row">
+                        @Html.Label("Kilonuz", new { @class = "col-form-label font-weight-bold col-md-3" })
+                        @Html.TextBox("SuKilo", null, new { @class = "form-control col-md-9  btn-outline-dark  text-left", type = "number", required = "required", placeholder = "Kg olarak yazılmalıdır. Örneğin 70" })
+                    </div>
+                    <hr />
+                    <div class="form-group row">
+                        <label class="col-form-label font-weight-bold col-md-4">İçmeniz Gereken Su </label>
+                        @if (@ViewBag.sonuc != null)
+                        {
+                            <div id="HesaplaBmhGidis" name="HesaplaBmhGidis" class=" col-md-8 alert alert-secondary text-center"><b>@ViewBag.sonuc Litre</b></div>
+                            <hr />
+                        }
+                    </div>
+                    <hr />
+                    <div class="form-group row">
+                        <div class="col-md-12 pr-0 text-right">
+                            <input type="submit" value="Hesapla" class="btn btn-dark text-right" />
+                        </div>
+                    </div>
+                }
+                <hr />
+                <p>
+                    <b>Suyun Yerini Hiçbir Şey Tutmuyor!</b> <br />
+                    &emsp;Su tüketimi tek başına olduğu gibi süt, çay, meyve suyu gibi alkol dışındaki tüm içecekler ve besinlerden de sağlanır fakat bu içeceklerin suyun yerine geçmeyeceği unutulmamalıdır. <br />
+                    &emsp;Vücut susuz oluncaya kadar susama hissi ortaya çıkmaz. Dolayısıyla susamadan önce su içmek çok önemlidir. <br />
+                    &emsp;Çocuklar ve yaşlılar susama hissini yetişkinlere göre daha az hissettikleri için, su içmeleri hatırlatılmalıdır. <br />
+                    &emsp;Sağlıklı kişilerde su ihtiyacı; yaşa, iklim koşullarına, tükettiği besinlere, yaptığı fiziksel aktiviteye göre değişir. <br />
+                    <ul>
+                        <li>Yetişkinler için ortalama günde 2-3 lt.</li>
+                        <li>4-8 yaş çocuklar için 1-1,5 lt.</li>
+                        <li>9-13 yaş çocuklar için 1,5-2 lt.</li>
+                        <li>14-18 yaş gençler için 2-2,5 lt</li>
+                    </ul>
+                </p>
+                <hr />
+                <p>
+                    <b>Suyun Devamlığının Sağlanması İçin Bilinçli Tüketilmelidir </b> <br />
+                    &emsp;Su kaynaklarının devamlılığı ve temiz bir gelecek için herkesin doğal imkanları kullanırken dikkatli olması gerekmektedir. <br />
+                    &emsp;Su tüketirken bilinçli olunmalıdır.  <br />
+                    &emsp;Örneğin; sebze ve meyveler elde yıkamak yerine su dolu bir kapta yıkanırsa yılda ortalama 18 ton su tasarrufu sağlanabilmektedir.  <br />
+                    &emsp;Dişleri fırçalarken, yüz yıkarken suyu akar vaziyette bırakmamak günde 6 litreye kadar sudan tasarruf edilmesini sağlar. <br />
+                </p>
+                <hr />
+                <p>
+                    <b> Yeterli Miktarda Su İçmek Bunları Sağlıyor</b> <br />
+                    <ul>
+                        <li>Su içmek, böbrek rahatsızlıklarından korur</li>
+                        <li>Egzersiz yaparken gerçekleşen kasılma ve krampları önlemede yardımcı olur.</li>
+                        <li>Su stresle savaşmada öncüdür.</li>
+                        <li>Yeterli miktarda su içen kişilerde metabolizmayı çalıştırır ve hızlandırır.</li>
+                        <li>Kırık, kepek, dökülme gibi saç problemlerine engel olur.</li>
+                        <li>Emziren anneler için süt yapıcı en önemli kaynaktır.</li>
+                        <li>Reflüye iyi gelir.</li>
+                        <li>Cilt sağlığının korunmasında önemli etkileri vardır. Yeterli miktarda su içen kişilerin cildi nemlenir, parlar, sağlıklı ve genç bir görünüme kavuşur.</li>
+                        <li>Vücut ısısını dengeler.</li>
+                        <li>Grip gibi bulaşıcı hastalıklarla savaşırken, vücut direncine katkıda bulunur.</li>
+                        <li>Susuz kalmaya bağlı olarak gelişen unutkanlık, dikkat dağınıklığı gibi beyin fonksiyonlarını düzenler.</li>
+                        <li>Kan hacmini artırır, hücreler için gerekli oksijen ve besini hızlı bir şekilde taşır ve kalbin daha sağlıklı olmasını sağlar.</li>
+                        <li>Ağız kokusunu önler.</li>
+                        <li>Vücuttan ödemin atılmasını sağlar.</li>
+                        <li>Kabızlık ve bağırsak tembelliği gibi sindirim problemlerinin giderilmesini sağlar.</li>
+                    </ul>
+                </p>
+                <hr />
+            </div>
+        </div>
+
+    </div>
+
+</div>

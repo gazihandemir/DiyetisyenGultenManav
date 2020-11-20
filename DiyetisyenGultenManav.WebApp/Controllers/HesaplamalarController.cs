@@ -161,5 +161,18 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View();
         }
+
+        public ActionResult HesaplaSu()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult HesaplaSu(FormCollection frm4)
+        {
+            double suKilo = Convert.ToDouble(frm4["SuKilo"].ToString());
+            double sonuc = suKilo * 0.001 * 35;
+            ViewBag.sonuc = sonuc.ToString();
+            return View();
+        }
     }
 }

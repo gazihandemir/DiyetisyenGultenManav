@@ -136,6 +136,7 @@
     <Content Include="images\deneme.jpg" />
     <Content Include="images\diyetim.jpg" />
     <Content Include="images\footer-open-hour-bg.jpg" />
+    <Content Include="images\idealkilo.png" />
     <Content Include="images\menu-image1.jpg" />
     <Content Include="images\menu-image2.jpg" />
     <Content Include="images\menu-image3.jpg" />
@@ -145,6 +146,7 @@
     <Content Include="images\slider-image1.jpg" />
     <Content Include="images\slider-image2.jpg" />
     <Content Include="images\slider-image3.jpg" />
+    <Content Include="images\su.png" />
     <Content Include="images\team-image1.jpg" />
     <Content Include="images\team-image2.jpg" />
     <Content Include="images\team-image3.jpg" />
@@ -374,6 +376,7 @@
     <Content Include="Views\Hesaplamalar\HesaplaBMH.cshtml" />
     <Content Include="Views\Hesaplamalar\HesaplaIdealKilo.cshtml" />
     <Content Include="Views\Shared\_PartialHesaplamalarMenu.cshtml" />
+    <Content Include="Views\Hesaplamalar\HesaplaSu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
