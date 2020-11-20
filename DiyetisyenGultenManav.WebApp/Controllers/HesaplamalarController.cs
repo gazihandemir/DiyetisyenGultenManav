@@ -125,5 +125,41 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View();
         }
+        public ActionResult HesaplaIdealKilo()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult HesaplaIdealKilo(FormCollection frm3)
+        {
+            string idealCinsiyet = Convert.ToString(frm3["IdealCinsiyet"]);
+            double idealBoy = Convert.ToDouble(frm3["IdealBoy"].ToString());
+            string erkek = "erkek".ToLower();
+            string kadin = "kadın".ToLower();
+            double sonuc = 0.0;
+            if (idealCinsiyet.Equals(kadin))
+            {
+                sonuc = 45.5 + 2.3 * ((idealBoy / 2.54) - 60);
+            }
+            else if (idealCinsiyet.Equals(erkek))
+            {
+                sonuc = 50 + 2.3 * ((idealBoy / 2.54) - 60);
+
+            }
+            else
+            {
+                sonuc = 0;
+            }
+            string sonucSifir = "Lütfen geçerli bir cinsiyet Giriniz ! kadın yada erkek";
+            if (sonuc == 0)
+            {
+                ViewBag.sonuc = sonucSifir.ToString();
+            }
+            else
+            {
+                ViewBag.sonuc = sonuc.ToString();
+            }
+            return View();
+        }
     }
 }

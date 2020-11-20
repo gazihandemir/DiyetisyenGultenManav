@@ -372,6 +372,8 @@
     <Content Include="Views\PaketTalebi\Index.cshtml" />
     <Content Include="Views\Hesaplamalar\HesaplaBMI.cshtml" />
     <Content Include="Views\Hesaplamalar\HesaplaBMH.cshtml" />
+    <Content Include="Views\Hesaplamalar\HesaplaIdealKilo.cshtml" />
+    <Content Include="Views\Shared\_PartialHesaplamalarMenu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

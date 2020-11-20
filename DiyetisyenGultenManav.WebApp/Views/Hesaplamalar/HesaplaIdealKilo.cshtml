@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.Title = "İdeal Kilo Hesaplama";
+}
+<link href="~/Content/new-login-style-kullanici.css" rel="stylesheet" />
+<style>
+    .sayfaDüzeniPaketTalebi {
+        height: 100%;
+        min-height: 1000px;
+    }
+
+    .list-group a {
+        background-color: #aed6f1;
+        font-size: 20px;
+    }
+</style>
+<div class="login-block  pl-5 pt-3 mr-0 sayfaDüzeniPaketTalebi">
+    <div class="row pl-5 pt-3 mr-0">
+        <div class="col-md-12">
+            <p class="display-4 text-center font-weight-bold">
+                @ViewBag.Title
+            </p>
+        </div>
+    </div>
+    <div class="row m-3 ">
+        @Html.Partial("_PartialHesaplamalarMenu")
+
+        <div class="row pl-5 pt-3 mr-0 col-md-9">
+            <div class="col-md-9">
+                <p>
+                    <img src="~/images/BMH.png" alt="" />
+                </p>
+                <p>
+                    Kişinin hem fiziksel hem de psikolojik açıdan sağlıklı olması için olması gereken vücut ağırlığına ideal kilo denir. <br />
+                    İdeal kilo bireyin yaş, cinsiyet ve boy değerlerine göre farklılık gösterir ve kişiden kişiye değişir. <br />
+                    İdeal vücut ağırlığında olmanız hastalıkların görülme riskinin de minimum düzeyde olmasını sağlar. <br />
+                </p>
+                <br />
+                <br />
+                <p>
+                    <b>İdeal Kiloda Olmanın Yararları</b>
+                    <ul>
+                        <li>Vücut ağırlığınız ideal düzeyde ise kendinizi daha zinde ve dinamik hissedersiniz.</li>
+                        <li>Hastalıklara yakalanma riskiniz daha düşüktür ve bağışıklık sisteminiz daha kuvvetlidir.</li>
+                        <li>Ayrıca öğrenme ve konsantrasyon güçlükleri de çekmezsiniz.</li>
+                    </ul>
+                </p>
+                <p>
+                    <b>İdeal Kiloda Olmamanın Zararları</b>
+                    <ul>
+                        <li>Vücut ağırlığınız olması gerekenden az ya da fazla ise hastalıklara yakalanma riskiniz daha yüksektir.</li>
+                        <li>Çok sık halsizlik, yorgunluk, baş ağrısı, kabızlık, unutkanlık, konsantrasyon güçlüğü gibi şikayetler yaşayabilirsiniz.</li>
+                        <li>İdeal ağırlığa ulaşmak amacıyla kilo artışının ya da azalışının hızlı olması sağlıklı değildir.</li>
+                    </ul>
+                </p>
+                <p class="font-weight-bold" style="font-size:24px;">
+                    Kişiye Göre İdeal Kilo Hesaplama
+                </p>
+                <hr />
+                @using (Html.BeginForm("HesaplaIdealKilo", "Hesaplamalar", FormMethod.Post))
+                {
+                    <div class="form-group row">
+                        @Html.Label("Cinsiyet", new { @class = "col-form-label font-weight-bold col-md-3" })
+                        @Html.TextBox("IdealCinsiyet", null, new { @class = "form-control col-md-9  btn-outline-dark  text-left", required = "required", placeholder = " Örneğin : erkek yada kadın" })
+                    </div>
+                    <div class="form-group row">
+                        @Html.Label("Boyunuz", new { @class = "col-form-label font-weight-bold col-md-3" })
+                        @Html.TextBox("IdealBoy", null, new { @class = "form-control col-md-9  btn-outline-dark  text-left", type = "number", required = "required", placeholder = "Cm olarak yazılmalıdır. Örneğin 170" })
+                    </div>
+                    <hr />
+                    <div class="form-group row">
+                        <label class="col-form-label font-weight-bold col-md-4">İdeal Kilonuz  </label>
+                        @if (@ViewBag.sonuc != null)
+                        {
+                            <div class="col-md-8 alert alert-secondary text-center">@ViewBag.sonuc</div>
+                            <hr />
+                        }
+                    </div>
+                    <hr />
+                    <div class="form-group row">
+                        <div class="col-md-12 pr-0 text-right">
+                            <input type="submit" value="Hesapla" class="btn btn-dark text-right" />
+                        </div>
+                    </div>
+                }
+                <hr />
+                <p>
+                    <b>İdeal Kilonuza Çıkmak İçin Nasıl Beslenmelisiniz ?</b>
+                    <ul>
+                        <li>Kilo almak için sağlıklı kuruyemişlerden bol bol tüketebilirsiniz. Ceviz, badem, fındık gibi vücudumuz için sağlıklı yağlar içeren kuruyemişlerden tüketebilirsiniz.</li>
+                        <li>Süt, peynir, yumurta, et, yoğurt gibi kas artırıcı besinlerden her gün bol miktarda az yağlı olanlardan ve kızartmadan tercih edebilirsiniz.</li>
+                        <li>Ana öğünlerde hem et hem de kompleks karbonhidratı bir arada almalısınız. Bulgur, kepekli makarna gibi besinleri etlerle birlikte tüketmelisiniz.</li>
+                        <li>Ara öğünlerde kuru meyvelerden bol bol tüketebilirsiniz. Özelikle kuru inicr ve kuru dut çok kalorili olduğu için ara öğünlerde süt veya yoğurt ile desteklenerek kalori artırılabilir ve kilo alımına yardımcı olacaktır.</li>
+                        <li>Tahin-pekmez gibi kan yapıcı ve iştah açıcı karşımlar kahvaltı öğünlerinde tüketilebilir.</li>
+                        <li>Öğünlerle birlikte su, salata, çorba tüketimi azaltılıp daha kalorili ve midede az yer kaplayacak besinler ile kilo alımını sağlayabilirsiniz.</li>
+                    </ul>
+                </p>
+                <hr />
+                <p>
+                    <b>İdeal Kiloya İnmek İçin Nasıl Beslenilmelidir ?</b> <br />
+                    <ul>
+                        <li>İdeal kiloya inmek en başta birçok hastalıktan korunmak için gereklidir.</li>
+                        <li>Aslında ideal kiloda olmak bir nevi koruyucu bir tedavi sayılabilir.</li>
+                        <li> Günümüzde artık zayıf kalarak birçok beslenme ile ilişkili hastalıklara yakalanmadan ve ilaçlara maruz kalmadan başlamadan kurtulabilirsiniz. </li>
+                        <li>Mesela aile şeker hastalığınız varsa ideal kilonuzda olarak ve sağlıklı beslenerek şeker hastalığınızın başlamasını önleyebilirsiniz.</li>
+                        <li>Bir hastalığın başlamadan önlenmesi günümüzde çok önemli bir tedavi haline gelmiştir.</li>
+                    </ul>
+                </p>
+                <hr />
+                <p>
+                    <b>İdeal Kiloda Olmak İçin Şu Önerileri Dikkate Almalısınız</b>
+                    <ul>
+                        <li>Her gün 3 ana ve 3 ara öğün yapmalısınız ki metabolizmanın hızlansın ve daha fazla kalori harcasın. Bu yöntemin faydası ise çok fazla acıkmadan diğer öğünlerde fazla besin tüketmenizi önler.</li>
+                        <li>Her gün 2 litre su içmelisiniz. Çünkü beyindeki susuzluk ve açlık merkezi aynı yerdedir. Çoğu zaman vücudunuz susadığında yeme eğiliminiz olur su içerseniz açlık krizleriniz azalır ve bu şekilde günlük kalori alımını azaltmış olursunuz.</li>
+                        <li>Her gün düzenli spor veya yürüyüş yapmak hem yağ yakar hem de iştah kapatır. Günlük 300-400 kalori yakmış olursunuz.</li>
+                        <li>Beyaz undan yapılmış börek, simit, beyaz ekmek gibi gıdalar kan şekerinizi bozar ve yeme eğilimi oluşturur bunların yerine esmer undan yapılmış yemekler tercih ederseniz hem çabuk doyar hem de geç acıkırsınız ve kalori alımınızı azaltmış olursunuz.</li>
+                        <li>Basit şeker içeren tüm gıdalardan abur-cubur, tatlı, kek, çikolata ve pasta gibi besinlerden uzak durmalısınız. Çünkü kan şekerinizi çözer ve daha fazla yemek yeme eğilimi verir fazla kalori almanıza sebep olur.</li>
+                        <li>Şarküteri ürünleri salam, sosis, sucuk gibi besinler tuz içerdiği için ödem tutmanıza yol açar ve kanserojen besinlerdendir bu besinlerden uzak durmalısınız.</li>
+                        <li>Turşu, konserve ürünler, hazır paketli gıdalar hem katkı maddesi içerdiği hem de ödem yaptığı için şişlik oluşturabilir.</li>
+                        <li>Sakatat, kuyruk yağı, iç yağı gibi zararlı besinlerden uzak durmalısınız. </li>
+                        <li>Abur-cubur, tatlı, pasta, kek, çikolata gibi şeker içeren besinlerden uzak durmalısınız çünkü kan şekerini bozar ve sürekli yemek yeme eğilimi verir.</li>
+                    </ul>
+                </p>
+                <hr />
+            </div>
+        </div>
+
+    </div>
+
+</div>
