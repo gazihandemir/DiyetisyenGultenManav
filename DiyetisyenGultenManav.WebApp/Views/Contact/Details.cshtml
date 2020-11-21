@@ -1,58 +1,83 @@
 ﻿@model DiyetisyenGultenManav.Entities.Contact
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "İletişim Detayı";
 }
+<link href="~/Content/new-login-style-kategori.css" rel="stylesheet" />
+<style>
+    .sayfaDüzeniPaketTalebi {
+        height: 100%;
+        min-height: 1000px;
+    }
+</style>
+<div class="login-block pl-5 pt-3 mr-0 sayfaDüzeniPaketTalebi">
+    <div class="row pl-5 pt-3 mr-0">
+        <div class="col-md-12">
+            <p class="display-4 text-center font-weight-bold">
+                @ViewBag.Title
+            </p>
+        </div>
+    </div>
+    <div class="row pl-3 mr-0">
+        <div class="col-md-10">
+            <div>
+                <dl class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.IsimSoyisim)
+                    </dt>
 
-<h2>Details</h2>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.IsimSoyisim)
+                    </dd>
 
-<div>
-    <h4>Contact</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.IsimSoyisim)
-        </dt>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.TelefonNumarasi)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.IsimSoyisim)
-        </dd>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.TelefonNumarasi)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TelefonNumarasi)
-        </dt>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Email)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TelefonNumarasi)
-        </dd>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.Email)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Konu)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.Konu)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Konu)
-        </dt>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Mesaj)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Konu)
-        </dd>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.Mesaj)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Mesaj)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Mesaj)
-        </dd>
-
-    </dl>
+                </dl>
+            </div>
+        </div>
+        <div class="col-md-10 pl-3">
+            <p>
+                @Bootstrap.LinkButton("/Contact/Index", "secondary", string.Empty,
+               string.Empty, "arrow-left", "Geri Dön!")
+                @Bootstrap.LinkButton("/Contact/Edit/" + Model.ID, "warning", string.Empty,
+               string.Empty, "edit", "Düzenle")
+            </p>
+        </div>
+    </div>
+    <div class="col-md-6 text-center">
+        <h3>
+            Laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue cras ut metus a risus iaculis scelerisque eu ac ante fusce non varius purus aenean nec magna felis fusce vestibulum.
+            <br />  <b>açıklama konulacak</b>
+        </h3>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
