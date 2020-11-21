@@ -28,7 +28,7 @@ namespace DiyetisyenGultenManav.Entities
             StringLength(50, ErrorMessage = "{0} alanı max. {1} karakter içermeli.")]
         public string Konu{ get; set; }
         [DisplayName("Mesajınız"), Required(ErrorMessage = "{0} alanı gereklidir."),
-            StringLength(50, ErrorMessage = "{0} alanı max. {1} karakter içermeli.")]
+            StringLength(400, ErrorMessage = "{0} alanı max. {1} karakter içermeli.")]
         public string Mesaj{ get; set; }
     }
 }

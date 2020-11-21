@@ -17,6 +17,7 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
         public DbSet<Diet> Dietler { get; set; }
         public DbSet<Paket> Paketler { get; set; }
         public DbSet<PaketTalebi> PaketTalepleri{ get; set; }
+        public DbSet<Contact> Contactlar{ get; set; }
         public DatabaseContext()
         {
             Database.SetInitializer(new MyInitializer());

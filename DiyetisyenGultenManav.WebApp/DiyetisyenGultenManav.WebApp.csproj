@@ -104,6 +104,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\contactOlustur.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\kahve.css" />
@@ -127,7 +128,9 @@
     <Content Include="Global.asax" />
     <Content Include="images\3.jpg" />
     <Content Include="images\about-image.jpg" />
+    <Content Include="images\arkaplan.png" />
     <Content Include="images\asdq111.jpeg" />
+    <Content Include="images\avakadoiletisim.png" />
     <Content Include="images\background.jpg" />
     <Content Include="images\bki.png" />
     <Content Include="images\BMH.png" />
@@ -380,11 +383,6 @@
     <Content Include="Views\Shared\_PartialHesaplamalarMenu.cshtml" />
     <Content Include="Views\Hesaplamalar\HesaplaSu.cshtml" />
     <Content Include="Views\Hesaplamalar\HesaplaKosuKalori.cshtml" />
-    <Content Include="Views\Contacts\Create.cshtml" />
-    <Content Include="Views\Contacts\Delete.cshtml" />
-    <Content Include="Views\Contacts\Details.cshtml" />
-    <Content Include="Views\Contacts\Edit.cshtml" />
-    <Content Include="Views\Contacts\Index.cshtml" />
     <Content Include="Views\Contact\Create.cshtml" />
     <Content Include="Views\Contact\Delete.cshtml" />
     <Content Include="Views\Contact\Details.cshtml" />

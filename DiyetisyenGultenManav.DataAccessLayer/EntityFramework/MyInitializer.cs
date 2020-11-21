@@ -142,13 +142,21 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
             PaketTalebi paketTalebi = new PaketTalebi()
             {
                 IsimSoyisim = "1",
-                TelefonNo="1",
-                Program="1",
-                EkAciklamalar="aciklama",
+                TelefonNo = "1",
+                Program = "1",
+                EkAciklamalar = "aciklama",
                 CreatedOn = DateTime.Now,
                 ModifiedOn = DateTime.Now.AddMinutes(10),
                 ModifiedUsername = "gazihandemir"
 
+            };
+            Contact contact = new Contact()
+            {
+                IsimSoyisim = "isim soyisim",
+                TelefonNumarasi = "05539232123",
+                Email = "eposta@gmail.com",
+                Konu = "konu",
+                Mesaj = "mesaj"
             };
             OdemeBildirimi odemeBildirimi = new OdemeBildirimi()
             {
@@ -182,6 +190,7 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
             context.Kullanıcılar.Add(gulten);
             context.Paketler.Add(paket);
             context.PaketTalepleri.Add(paketTalebi);
+            context.Contactlar.Add(contact);
             gazi.Dietler.Add(gazininDieti);
             gulten.Dietler.Add(gulteninDieti);
             gazi.OdemeBildirimi.Add(odemeBildirimi);
