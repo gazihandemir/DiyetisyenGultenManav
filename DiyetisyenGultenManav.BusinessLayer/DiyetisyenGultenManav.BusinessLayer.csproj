@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlogYazısıManager.cs" />
+    <Compile Include="ContactManager.cs" />
     <Compile Include="DietManager.cs" />
     <Compile Include="OdemeBildirimiManager.cs" />
     <Compile Include="PaketManager.cs" />

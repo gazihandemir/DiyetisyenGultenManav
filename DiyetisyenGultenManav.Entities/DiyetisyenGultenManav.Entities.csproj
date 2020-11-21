@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlogYazısı.cs" />
+    <Compile Include="Contact.cs" />
     <Compile Include="Diet.cs" />
     <Compile Include="EntityBase.cs" />
     <Compile Include="Kategori.cs" />

@@ -284,6 +284,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BlogYazısıController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\DietController.cs" />
     <Compile Include="Controllers\HesaplamalarController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -379,6 +380,16 @@
     <Content Include="Views\Shared\_PartialHesaplamalarMenu.cshtml" />
     <Content Include="Views\Hesaplamalar\HesaplaSu.cshtml" />
     <Content Include="Views\Hesaplamalar\HesaplaKosuKalori.cshtml" />
+    <Content Include="Views\Contacts\Create.cshtml" />
+    <Content Include="Views\Contacts\Delete.cshtml" />
+    <Content Include="Views\Contacts\Details.cshtml" />
+    <Content Include="Views\Contacts\Edit.cshtml" />
+    <Content Include="Views\Contacts\Index.cshtml" />
+    <Content Include="Views\Contact\Create.cshtml" />
+    <Content Include="Views\Contact\Delete.cshtml" />
+    <Content Include="Views\Contact\Details.cshtml" />
+    <Content Include="Views\Contact\Edit.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -20,5 +20,7 @@ namespace DiyetisyenGultenManav.WebApp.Data
         }
 
         public System.Data.Entity.DbSet<DiyetisyenGultenManav.Entities.PaketTalebi> PaketTalebis { get; set; }
+
+        public System.Data.Entity.DbSet<DiyetisyenGultenManav.Entities.Contact> Contacts { get; set; }
     }
 }
