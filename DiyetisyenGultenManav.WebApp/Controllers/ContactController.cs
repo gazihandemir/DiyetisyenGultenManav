@@ -16,9 +16,16 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
     {
         ContactManager contactManager = new ContactManager();
         // GET: Contact
-        public ActionResult Index()
+        public ActionResult Index(string Ara)
         {
-            return View(contactManager.List());
+            if (Ara != null)
+            {
+                return View(contactManager.ListQueryable().Where(x => x.IsimSoyisim.Contains(Ara) || Ara == null).OrderByDescending(x => x.Zaman));
+            }
+            else
+            {
+                return View(contactManager.ListQueryable().OrderByDescending(x => x.Zaman));
+            }
         }
 
         // GET: Contact/Details/5
@@ -51,6 +58,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                contact.Zaman = DateTime.Now;
                 contactManager.Insert(contact);
                 return RedirectToAction("Index");
             }
@@ -89,6 +97,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 db_contact.Email = contact.Email;
                 db_contact.Konu = contact.Konu;
                 db_contact.Mesaj = contact.Mesaj;
+                db_contact.Zaman = db_contact.Zaman;
                 contactManager.Update(db_contact);
                 return RedirectToAction("Index");
             }

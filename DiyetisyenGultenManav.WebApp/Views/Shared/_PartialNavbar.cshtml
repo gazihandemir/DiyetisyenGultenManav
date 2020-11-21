@@ -38,6 +38,9 @@
                         @Bootstrap.DropdownDivider()
                         @Bootstrap.DropdownLinkMenu("/PaketTalebi/Index", "th-list", "Paket Talebi")
                         @Bootstrap.DropdownLinkMenu("/PaketTalebi/Create", "th-list", "Paket Talebi Oluştur")
+                        @Bootstrap.DropdownDivider()
+                        @Bootstrap.DropdownLinkMenu("/Contact/Index", "th-list", "İletişime Geçenler")
+
                         @if (CurrentSession.User.IsAdmin)
                         {
 

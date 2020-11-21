@@ -14,21 +14,24 @@ namespace DiyetisyenGultenManav.Entities
     public class Contact
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID{ get; set; }
+        public int ID { get; set; }
         [DisplayName("İsim Soyisim"), Required(ErrorMessage = "{0} alanı gereklidir."),
             StringLength(50, ErrorMessage = "{0} alanı max. {1} karakter içermeli.")]
-        public string IsimSoyisim{ get; set; }
+        public string IsimSoyisim { get; set; }
         [DisplayName("Telefon Numaranız"), Required(ErrorMessage = "{0} alanı gereklidir."),
             StringLength(50, ErrorMessage = "{0} alanı max. {1} karakter içermeli.")]
-        public string TelefonNumarasi{ get; set; }
+        public string TelefonNumarasi { get; set; }
         [DisplayName("E-posta"), Required(ErrorMessage = "{0} alanı gereklidir."),
             StringLength(50, ErrorMessage = "{0} alanı max. {1} karakter içermeli.")]
-        public string Email{ get; set; }
+        public string Email { get; set; }
         [DisplayName("Konu"), Required(ErrorMessage = "{0} alanı gereklidir."),
             StringLength(50, ErrorMessage = "{0} alanı max. {1} karakter içermeli.")]
-        public string Konu{ get; set; }
+        public string Konu { get; set; }
         [DisplayName("Mesajınız"), Required(ErrorMessage = "{0} alanı gereklidir."),
             StringLength(400, ErrorMessage = "{0} alanı max. {1} karakter içermeli.")]
-        public string Mesaj{ get; set; }
+        public string Mesaj { get; set; }
+        [DisplayName("Oluşturulma Tarihi"), Required, ScaffoldColumn(false)]
+        public DateTime Zaman { get; set; }
+
     }
 }
