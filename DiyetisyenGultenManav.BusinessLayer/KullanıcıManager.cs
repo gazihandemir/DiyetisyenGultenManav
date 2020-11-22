@@ -167,6 +167,14 @@ namespace DiyetisyenGultenManav.BusinessLayer
             res.Result.Kilo = data.Kilo;
             res.Result.Meslek = data.Meslek;
             res.Result.Sehir = data.Sehir;
+            //res.Result.Hastalik = res.Result.Hastalik;
+            //res.Result.Tahlil = db_user.Tahlil;
+            //res.Result.Hikaye = db_user.Hikaye;
+            //res.Result.Anammez = db_user.Anammez;
+            //res.Result.IsActive = db_user.IsActive;
+            //res.Result.IsAdmin = db_user.IsAdmin;
+            //res.Result.IsNormal = db_user.IsNormal;
+            //res.Result.IsOnline = db_user.IsOnline;
             if (string.IsNullOrEmpty(data.ProfileImageFileName) == false)
             {
                 res.Result.ProfileImageFileName = data.ProfileImageFileName;

@@ -115,7 +115,15 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         [HttpPost]
         public ActionResult EditProfile(Kullanıcı model, HttpPostedFileBase ProfileImage)
         {
+            ModelState.Remove("CreatedOn");
+            ModelState.Remove("ModifiedOn");
             ModelState.Remove("ModifiedUsername");
+            ModelState.Remove("ProfileImageFileName");
+
+            ModelState.Remove("Hastalik");
+            ModelState.Remove("Tahlil");
+            ModelState.Remove("Hikaye");
+            ModelState.Remove("Anammez");
             if (ModelState.IsValid)
             {
                 if (ProfileImage != null && (

@@ -116,6 +116,7 @@
     <Content Include="Content\Princing.css" />
     <Content Include="Content\shop-homepage.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\templatemo-style.css" />
     <Content Include="Content\validation-summary.css" />
     <Content Include="css\animate.css" />
     <Content Include="css\bootstrap.min.css" />
@@ -128,6 +129,7 @@
     <Content Include="Global.asax" />
     <Content Include="images\3.jpg" />
     <Content Include="images\about-image.jpg" />
+    <Content Include="images\aciksaatler.jpg" />
     <Content Include="images\arkaplan.png" />
     <Content Include="images\asdq111.jpeg" />
     <Content Include="images\avakadoiletisim.png" />

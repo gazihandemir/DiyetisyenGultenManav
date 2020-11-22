@@ -157,7 +157,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             else
             {
-                ViewBag.sonuc = sonuc.ToString();
+                ViewBag.sonuc = Math.Round(sonuc, 2).ToString();
             }
             return View();
         }
@@ -171,8 +171,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         {
             double suKilo = Convert.ToDouble(frm4["SuKilo"].ToString());
             double sonuc = suKilo * 0.001 * 35;
-            ViewBag.sonuc = sonuc.ToString();
-            return View();
+            ViewBag.sonuc = Math.Round(sonuc, 2).ToString(); return View();
         }
         public ActionResult HesaplaKosuKalori()
         {
@@ -186,8 +185,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             double kosuSüre = Convert.ToDouble(frm5["KosuSüre"].ToString());
             // Hız*saat + ( kilo -60 )*4
             double sonuc = kosuHiz * kosuSüre + (kosuKilo - 60) * 4;
-            ViewBag.sonuc = sonuc.ToString();
-            return View();
+            ViewBag.sonuc = Math.Round(sonuc, 2).ToString(); return View();
         }
     }
 }

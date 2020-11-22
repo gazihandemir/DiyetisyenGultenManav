@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "KULLANICI DETAYI";
 }
-    <link href="~/Content/new-login-style-kullanici.css" rel="stylesheet" />
+<link href="~/Content/new-login-style-kullanici.css" rel="stylesheet" />
 <style>
     .resim {
         object-fit: fill;
@@ -112,7 +112,34 @@
                     <dd class="col-md-9">
                         @Html.DisplayFor(model => model.Sehir)
                     </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Hastalik)
+                    </dt>
 
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.Hastalik)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Tahlil)
+                    </dt>
+
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.Tahlil)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Hikaye)
+                    </dt>
+
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.Hikaye)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Anammez)
+                    </dt>
+
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.Anammez)
+                    </dd>
                     <dt class="col-md-3">
                         @Html.DisplayNameFor(model => model.ActivateGuid)
                     </dt>
