@@ -57,6 +57,14 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             HomeModel.Paket = Paketler;
             return View("Blog", HomeModel);
         }
+        public ActionResult Tabaklar()
+        {
+            List<BlogYazısı> BlogYazilari = blogYazısıManager.ListQueryable().Where(x => x.TabakPaylasimi == true && x.IsDraft == false).OrderByDescending(x => x.ModifiedOn).ToList();
+            List<Paket> Paketler = paketManager.List();
+            HomeModel.BlogYazısı = BlogYazilari;
+            HomeModel.Paket = Paketler;
+            return View("Blog", HomeModel);
+        }
         public ActionResult Blog()
         {
             List<BlogYazısı> BlogYazilari = blogYazısıManager.ListQueryable().Where(x => x.DanisanPaylasimi == false && x.IsDraft == false).OrderByDescending(x => x.ModifiedOn).ToList();
@@ -110,7 +118,6 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 return View("Error", ErrNotifyObj);
             }
             return View(res.Result);
-
         }
         [HttpPost]
         public ActionResult EditProfile(Kullanıcı model, HttpPostedFileBase ProfileImage)
@@ -168,7 +175,6 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             Session.Clear();
             return RedirectToAction("Index");
         }
-
         public ActionResult Login()
         {
             return View();
@@ -192,7 +198,6 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 Session["login"] = res.Result;   // session'a kullanıcı bilgi saklama
                 return RedirectToAction("Index"); // Yönlendirme
             }
-
             return View(model);
         }
         public ActionResult Register()
@@ -221,8 +226,6 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 return View("Ok", notifyObj);
             }
             return View(model);
-
-
             /*   if (ModelState.IsValid)
             {
                   if (model.Username == "aaa")
@@ -242,9 +245,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                   }
               }
           */
-
         }
-
         public ActionResult UserActivate(Guid id)
         {
             BusinessLayerResult<Kullanıcı> res = kullanıcıManager.ActivateUser(id);

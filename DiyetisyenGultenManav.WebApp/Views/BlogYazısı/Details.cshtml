@@ -157,6 +157,21 @@
                         @*  @Html.DisplayFor(model => model.DanisanPaylasimi)*@
                     </dd>
                     <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.TabakPaylasimi)
+                    </dt>
+
+                    <dd class="col-md-9">
+                        @if (Model.TabakPaylasimi)
+                        {
+                            <i class="fa fa-check text-success"></i>
+                        }
+                        else
+                        {
+                            <i class="fa fa-times text-danger"></i>
+                        }
+                        @*  @Html.DisplayFor(model => model.DanisanPaylasimi)*@
+                    </dd>
+                    <dt class="col-md-3">
                         @Html.DisplayNameFor(model => model.Picture)
                     </dt>
 

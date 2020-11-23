@@ -45,6 +45,9 @@
                         @Html.DisplayNameFor(model => model.DanisanPaylasimi)
                     </th>
                     <th>
+                        @Html.DisplayNameFor(model => model.TabakPaylasimi)
+                    </th>
+                    <th>
                         @Html.DisplayNameFor(model => model.Picture)
                     </th>
                     <th></th>
@@ -74,6 +77,16 @@
                 </td>
                 <td class="text-center">
                     @if (item.DanisanPaylasimi)
+                    {
+                        <i class="fa fa-check text-success"></i>
+                    }
+                    else
+                    {
+                        <i class="fa fa-times text-danger"></i>
+                    }
+                </td>
+                <td class="text-center">
+                    @if (item.TabakPaylasimi)
                     {
                         <i class="fa fa-check text-success"></i>
                     }

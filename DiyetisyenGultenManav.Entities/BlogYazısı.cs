@@ -53,6 +53,8 @@ StringLength(2000, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
         public bool IsDraft { get; set; }
         [DisplayName("Danışan Paylaşımı")]
         public bool DanisanPaylasimi { get; set; }
+        [DisplayName("Tabak Paylaşımı")]
+        public bool TabakPaylasimi { get; set; }
         [DisplayName("Resim")]
         public string Picture { get; set; }
         [DisplayName("Kategori")]
