@@ -45,8 +45,11 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         {
             List<BlogYazısı> BlogYazilari = blogYazısıManager.ListQueryable().Where(x => x.DanisanPaylasimi == false && x.IsDraft == false).OrderByDescending(x => x.ModifiedOn).ToList();
             List<Paket> Paketler = paketManager.List();
+            List<Kategori> Kategoriler = kategoriManager.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList();
             HomeModel.BlogYazısı = BlogYazilari;
             HomeModel.Paket = Paketler;
+            HomeModel.Kategoriler = Kategoriler;
+
             return View(HomeModel);
         }
         public ActionResult Danisanlarim()
@@ -67,7 +70,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         }
         public ActionResult Blog()
         {
-            List<BlogYazısı> BlogYazilari = blogYazısıManager.ListQueryable().Where(x => x.DanisanPaylasimi == false && x.IsDraft == false).OrderByDescending(x => x.ModifiedOn).ToList();
+            List<BlogYazısı> BlogYazilari = blogYazısıManager.ListQueryable().Where(x => x.DanisanPaylasimi == false && x.TabakPaylasimi == false && x.IsDraft == false).OrderByDescending(x => x.ModifiedOn).ToList();
             List<Paket> Paketler = paketManager.List();
             HomeModel.BlogYazısı = BlogYazilari;
             HomeModel.Paket = Paketler;
@@ -84,7 +87,16 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             {
                 return HttpNotFound();
             }
-            return View("Index", kate.BlogYazıları.OrderByDescending(x => x.ModifiedOn).ToList());
+            List<Paket> Paketler = paketManager.List();
+            List<Kategori> Kategoriler = kategoriManager.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList();
+            HomeModel.BlogYazısı = kate.BlogYazıları;
+            HomeModel.Paket = Paketler;
+            //HomeModel.kategori = kate;
+            HomeModel.Kategoriler = Kategoriler;
+            return View("Index", HomeModel);
+
+            //return View("Index", kate.HomeViewModel.BlogYazısı.OrderByDescending(x => x.ModifiedOn).ToList());
+
         }
         public ActionResult ShowProfile()
         {

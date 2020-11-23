@@ -1,4 +1,5 @@
 ﻿using DiyetisyenGultenManav.Entities;
+using DiyetisyenGultenManav.Entities.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -158,36 +159,36 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
                 Konu = "konu",
                 Mesaj = "mesaj",
                 Zaman = DateTime.Now
-        };
-        OdemeBildirimi odemeBildirimi = new OdemeBildirimi()
-        {
-            IsimSoyisim = "1",
-            BankaIsmi = "1",
-            YatirilanMiktar = "1",
-            TelefonNo = "1",
-            EkAciklamalar = "1",
-            IsNotification = false,
-            IsPay = false,
-            IsOkey = false,
-            CreatedOn = DateTime.Now,
-            ModifiedOn = DateTime.Now.AddMinutes(10),
-            ModifiedUsername = "gazihandemir"
-        };
-        OdemeBildirimi odemeBildirimi2 = new OdemeBildirimi()
-        {
-            IsimSoyisim = "1",
-            BankaIsmi = "1",
-            YatirilanMiktar = "1",
-            TelefonNo = "1",
-            EkAciklamalar = "1",
-            IsNotification = false,
-            IsPay = false,
-            IsOkey = false,
-            CreatedOn = DateTime.Now,
-            ModifiedOn = DateTime.Now.AddMinutes(10),
-            ModifiedUsername = "gazihandemir"
-        };
-        context.Kullanıcılar.Add(gazi);
+            };
+            OdemeBildirimi odemeBildirimi = new OdemeBildirimi()
+            {
+                IsimSoyisim = "1",
+                BankaIsmi = "1",
+                YatirilanMiktar = "1",
+                TelefonNo = "1",
+                EkAciklamalar = "1",
+                IsNotification = false,
+                IsPay = false,
+                IsOkey = false,
+                CreatedOn = DateTime.Now,
+                ModifiedOn = DateTime.Now.AddMinutes(10),
+                ModifiedUsername = "gazihandemir"
+            };
+            OdemeBildirimi odemeBildirimi2 = new OdemeBildirimi()
+            {
+                IsimSoyisim = "1",
+                BankaIsmi = "1",
+                YatirilanMiktar = "1",
+                TelefonNo = "1",
+                EkAciklamalar = "1",
+                IsNotification = false,
+                IsPay = false,
+                IsOkey = false,
+                CreatedOn = DateTime.Now,
+                ModifiedOn = DateTime.Now.AddMinutes(10),
+                ModifiedUsername = "gazihandemir"
+            };
+            context.Kullanıcılar.Add(gazi);
             context.Kullanıcılar.Add(gulten);
             context.Paketler.Add(paket);
             context.PaketTalepleri.Add(paketTalebi);
@@ -198,7 +199,7 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
             gulten.OdemeBildirimi.Add(odemeBildirimi2);
             context.SaveChanges();
             // Kullanıcılar fakedata ile diet yazmak
-            for (int i = 0; i< 8; i++)
+            for (int i = 0; i < 8; i++)
             {
                 Kullanıcı user = new Kullanıcı()
                 {
@@ -228,53 +229,53 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
                     ModifiedOn = DateTime.Now.AddMinutes(5),
                     ModifiedUsername = $"user{i}"
                 };
-        Diet diet = new Diet()
-        {
-            Title = $"diyet{i}",
-            Description = "3 günlük diyet",
-            DiyetSabah = "sabah",
-            DiyetAraBir = "ara bir",
-            DiyetOglen = "öglen",
-            DiyetAraIki = "iki",
-            DiyetAksam = "aksam",
-            DiyetGece = "gece",
-            IsNew = true,
-            DiyetOlcum = "olcum",
-            DiyetKilo = "50",
-            DiyetBmi = "35",
-            DiyetFat = "48",
-            DiyetMusc = "23",
-            DiyetBmh = "1500",
-            DiyetVf = "9",
-            DiyetEkAciklamalar = "ek",
-            DiyetBaslangic = DateTime.Now,
-            DiyetBitis = DateTime.Now.AddDays(3),
-            CreatedOn = DateTime.Now,
-            ModifiedOn = DateTime.Now.AddMinutes(10),
-            ModifiedUsername = "gazihandemir"
-        };
-        OdemeBildirimi odemeBildirimiUsers = new OdemeBildirimi()
-        {
-            IsimSoyisim = $"user{i}",
-            BankaIsmi = $"user{i}",
-            YatirilanMiktar = $"user{i}",
-            TelefonNo = $"user{i}",
-            EkAciklamalar = $"user{i}",
-            IsNotification = false,
-            IsPay = false,
-            IsOkey = false,
-            CreatedOn = DateTime.Now,
-            ModifiedOn = DateTime.Now.AddMinutes(10),
-            ModifiedUsername = "gazihandemir"
-        };
-        context.Kullanıcılar.Add(user);
+                Diet diet = new Diet()
+                {
+                    Title = $"diyet{i}",
+                    Description = "3 günlük diyet",
+                    DiyetSabah = "sabah",
+                    DiyetAraBir = "ara bir",
+                    DiyetOglen = "öglen",
+                    DiyetAraIki = "iki",
+                    DiyetAksam = "aksam",
+                    DiyetGece = "gece",
+                    IsNew = true,
+                    DiyetOlcum = "olcum",
+                    DiyetKilo = "50",
+                    DiyetBmi = "35",
+                    DiyetFat = "48",
+                    DiyetMusc = "23",
+                    DiyetBmh = "1500",
+                    DiyetVf = "9",
+                    DiyetEkAciklamalar = "ek",
+                    DiyetBaslangic = DateTime.Now,
+                    DiyetBitis = DateTime.Now.AddDays(3),
+                    CreatedOn = DateTime.Now,
+                    ModifiedOn = DateTime.Now.AddMinutes(10),
+                    ModifiedUsername = "gazihandemir"
+                };
+                OdemeBildirimi odemeBildirimiUsers = new OdemeBildirimi()
+                {
+                    IsimSoyisim = $"user{i}",
+                    BankaIsmi = $"user{i}",
+                    YatirilanMiktar = $"user{i}",
+                    TelefonNo = $"user{i}",
+                    EkAciklamalar = $"user{i}",
+                    IsNotification = false,
+                    IsPay = false,
+                    IsOkey = false,
+                    CreatedOn = DateTime.Now,
+                    ModifiedOn = DateTime.Now.AddMinutes(10),
+                    ModifiedUsername = "gazihandemir"
+                };
+                context.Kullanıcılar.Add(user);
                 user.Dietler.Add(diet);
                 user.OdemeBildirimi.Add(odemeBildirimiUsers);
             }
-    context.SaveChanges();
+            context.SaveChanges();
             List<Kullanıcı> kullanıcıList = context.Kullanıcılar.ToList();
             // FakeData ile kategori ekleme
-            for (int i = 0; i< 10; i++)
+            for (int i = 0; i < 10; i++)
             {
                 Kategori kat = new Kategori()
                 {
@@ -284,35 +285,37 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
                     ModifiedOn = DateTime.Now,
                     ModifiedUsername = "gazihandemir"
                 };
-    context.Kategoriler.Add(kat);
+                context.Kategoriler.Add(kat);
                 // FakeData ile blogyazısı eklemek
-                for (int k = 0; k<FakeData.NumberData.GetNumber(2, 3); k++)
+                for (int k = 0; k < FakeData.NumberData.GetNumber(2, 3); k++)
                 {
                     Kullanıcı owner = kullanıcıList[FakeData.NumberData.GetNumber(0, kullanıcıList.Count - 1)];
-    BlogYazısı blogYazısı = new BlogYazısı()
-    {
-        Title = FakeData.TextData.GetAlphabetical(FakeData.NumberData.GetNumber(5, 25)),
-        ParagrafBir = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
-        ParagrafIki = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
-        ParagrafUc = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
-        ParagrafDort = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
-        ParagrafBes = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
-        ParagrafAlti = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
-        ParagrafYedi = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
-        ParagrafSekiz = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
-        Kategori = kat,
-        IsDraft = false,
-        DanisanPaylasimi = false,
-        Owner = owner,
-        Picture = "user.jpg",
-        CreatedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now.AddYears(+1)),
-        ModifiedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now.AddYears(+1)),
-        ModifiedUsername = owner.Username
-    };
-    // kategorinin blog yazızına kendi oluşturdugumuz blogyazısını eklemek...
-    kat.BlogYazıları.Add(blogYazısı);
+                    BlogYazısı blogYazısı = new BlogYazısı()
+                    {
+                        Title = FakeData.TextData.GetAlphabetical(FakeData.NumberData.GetNumber(5, 25)),
+                        ParagrafBir = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
+                        ParagrafIki = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
+                        ParagrafUc = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
+                        ParagrafDort = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
+                        ParagrafBes = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
+                        ParagrafAlti = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
+                        ParagrafYedi = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
+                        ParagrafSekiz = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
+                        Kategori = kat,
+                        IsDraft = false,
+                        DanisanPaylasimi = false,
+                        TabakPaylasimi = false,
+                        Owner = owner,
+                        Picture = "user.jpg",
+                        CreatedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now.AddYears(+1)),
+                        ModifiedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now.AddYears(+1)),
+                        ModifiedUsername = owner.Username
+                    };
+                    // kategorinin blog yazızına kendi oluşturdugumuz blogyazısını eklemek...
+                    kat.BlogYazıları.Add(blogYazısı);
+                
                     // FakeData ile Yorumları eklemek
-                    for (int j = 0; j<FakeData.NumberData.GetNumber(3, 5); j++)
+                    for (int j = 0; j < FakeData.NumberData.GetNumber(3, 5); j++)
                     {
                         Yorum yorum = new Yorum()
                         {
@@ -322,8 +325,8 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
                             ModifiedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now.AddYears(+1)),
                             ModifiedUsername = owner.Username
                         };
-    // Blog yazısına fake data ile yorum eklemek
-    blogYazısı.Yorumlar.Add(yorum);
+                        // Blog yazısına fake data ile yorum eklemek
+                        blogYazısı.Yorumlar.Add(yorum);
                     }
                 }
             }

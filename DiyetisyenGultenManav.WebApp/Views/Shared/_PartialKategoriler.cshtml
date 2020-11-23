@@ -1,9 +1,13 @@
 ﻿@using DiyetisyenGultenManav.BusinessLayer
 @using DiyetisyenGultenManav.Entities
+@using DiyetisyenGultenManav.Entities.ValueObjects
+@model HomeViewModel
 @{
+   
 
     KategoriManager CM = new KategoriManager();
     List<Kategori> KategoriList = CM.List();
+
 
 }
 <p style="font-size:24px; text-align:center"><b>Kategoriler</b></p>
@@ -11,8 +15,8 @@
     <a href="@Url.Action("Index","Home")" class="list-group-item list-group-item-action">
         <span class="fa fa-th-list mr-2"></span>Tümü
     </a>
-    @foreach (Kategori kate in KategoriList)
-    {
+    @foreach (var kate in Model.Kategoriler)
+        {
         <a href="/Home/ByKategori/@kate.Id" title;="@kate.Description" class="list-group-item list-group-item-action">
             <span class="fa fa-th-list mr-2"></span> @kate.Title
         </a>
