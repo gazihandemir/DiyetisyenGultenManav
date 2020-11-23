@@ -56,24 +56,30 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         {
             List<BlogYazısı> BlogYazilari = blogYazısıManager.ListQueryable().Where(x => x.DanisanPaylasimi == true && x.IsDraft == false).OrderByDescending(x => x.ModifiedOn).ToList();
             List<Paket> Paketler = paketManager.List();
+            List<Kategori> Kategoriler = kategoriManager.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList();
             HomeModel.BlogYazısı = BlogYazilari;
             HomeModel.Paket = Paketler;
+            HomeModel.Kategoriler = Kategoriler;
             return View("Blog", HomeModel);
         }
         public ActionResult Tabaklar()
         {
             List<BlogYazısı> BlogYazilari = blogYazısıManager.ListQueryable().Where(x => x.TabakPaylasimi == true && x.IsDraft == false).OrderByDescending(x => x.ModifiedOn).ToList();
             List<Paket> Paketler = paketManager.List();
+            List<Kategori> Kategoriler = kategoriManager.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList();
             HomeModel.BlogYazısı = BlogYazilari;
             HomeModel.Paket = Paketler;
+            HomeModel.Kategoriler = Kategoriler;
             return View("Blog", HomeModel);
         }
         public ActionResult Blog()
         {
             List<BlogYazısı> BlogYazilari = blogYazısıManager.ListQueryable().Where(x => x.DanisanPaylasimi == false && x.TabakPaylasimi == false && x.IsDraft == false).OrderByDescending(x => x.ModifiedOn).ToList();
             List<Paket> Paketler = paketManager.List();
+            List<Kategori> Kategoriler = kategoriManager.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList();
             HomeModel.BlogYazısı = BlogYazilari;
             HomeModel.Paket = Paketler;
+            HomeModel.Kategoriler = Kategoriler;
             return View(HomeModel);
         }
         public ActionResult ByKategori(int? id)

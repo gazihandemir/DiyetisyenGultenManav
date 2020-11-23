@@ -7,8 +7,10 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DiyetisyenGultenManav.BusinessLayer;
+using DiyetisyenGultenManav.BusinessLayer.Results;
 using DiyetisyenGultenManav.Entities;
 using DiyetisyenGultenManav.WebApp.Models;
+using DiyetisyenGultenManav.WebApp.ViewModels;
 
 namespace DiyetisyenGultenManav.WebApp.Controllers
 {
@@ -101,19 +103,19 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             ModelState.Remove("ModifiedUsername");
             if (ModelState.IsValid)
             {
-                BlogYazısı db_blog = blogYazısıManager.Find(x => x.Id == blogYazısı.Id);
-                db_blog.IsDraft = blogYazısı.IsDraft;
-                db_blog.KategoriId = blogYazısı.KategoriId;
-                db_blog.ParagrafBir = blogYazısı.ParagrafBir;
-                db_blog.ParagrafIki = blogYazısı.ParagrafIki;
-                db_blog.ParagrafUc = blogYazısı.ParagrafUc;
-                db_blog.ParagrafDort = blogYazısı.ParagrafDort;
-                db_blog.ParagrafBes = blogYazısı.ParagrafBes;
-                db_blog.ParagrafAlti = blogYazısı.ParagrafAlti;
-                db_blog.ParagrafYedi = blogYazısı.ParagrafYedi;
-                db_blog.ParagrafSekiz = blogYazısı.ParagrafSekiz;
-                db_blog.Title = blogYazısı.Title;
-                db_blog.DanisanPaylasimi = blogYazısı.DanisanPaylasimi;
+                //BlogYazısı db_blog = blogYazısıManager.Find(x => x.Id == blogYazısı.Id);
+                //db_blog.IsDraft = blogYazısı.IsDraft;
+                //db_blog.KategoriId = blogYazısı.KategoriId;
+                //db_blog.ParagrafBir = blogYazısı.ParagrafBir;
+                //db_blog.ParagrafIki = blogYazısı.ParagrafIki;
+                //db_blog.ParagrafUc = blogYazısı.ParagrafUc;
+                //db_blog.ParagrafDort = blogYazısı.ParagrafDort;
+                //db_blog.ParagrafBes = blogYazısı.ParagrafBes;
+                //db_blog.ParagrafAlti = blogYazısı.ParagrafAlti;
+                //db_blog.ParagrafYedi = blogYazısı.ParagrafYedi;
+                //db_blog.ParagrafSekiz = blogYazısı.ParagrafSekiz;
+                //db_blog.Title = blogYazısı.Title;
+                //db_blog.DanisanPaylasimi = blogYazısı.DanisanPaylasimi;
                 if (blogImage != null && (
               blogImage.ContentType == "image/jpeg" ||
               blogImage.ContentType == "image/jpg" ||
@@ -123,13 +125,24 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                     string filename = $"blog_gazi{guid}.{blogImage.ContentType.Split('/')[1]}";
                     blogImage.SaveAs(Server.MapPath($"~/ImageBlog/{filename}"));
                     blogYazısı.Picture = filename;
-                    db_blog.Picture = filename;
+                    //db_blog.Picture = filename;
                 }
-                blogYazısıManager.Update(db_blog);
+                BusinessLayerResult<BlogYazısı> res = blogYazısıManager.UpdateBlogYazisi(blogYazısı);
+                if (res.Errors.Count > 0)
+                {
+                    ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                    {
+                        Items = res.Errors,
+                        Title="Blog Yazısı Güncellenemedi",
+                        RedirectingUrl="/BlogYazısı/Edit"
+                    };
+                    return View("Error", ErrNotifyObj);
+                }
+                //blogYazısıManager.Update(db_blog);
                 return RedirectToAction("Index");
             }
             ViewBag.KategoriId = new SelectList(kategoriManager.List(), "Id", "Title", blogYazısı.KategoriId);
-            return View(blogYazısı);
+            return View();
         }
         public ActionResult Delete(int? id)
         {

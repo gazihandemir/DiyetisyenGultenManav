@@ -13,5 +13,9 @@
         userCouldNotUpdated = 157,
         UserCouldNotRemove = 158,
         userCouldNotInserted = 159,
+        // Blog Yazısı 
+        BlogYazisiTitleAlreadyExists = 201,
+        BlogYazisiCouldNotUpdated = 202,
+        BlogYazısıIsNotFound = 203,
     }
 }
