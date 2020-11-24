@@ -22,5 +22,23 @@ namespace DiyetisyenGultenManav.BusinessLayer
             }
             return res;
         }
+        public BusinessLayerResult<Contact> GetRemoveById(int? id)
+        {
+            BusinessLayerResult<Contact> res = new BusinessLayerResult<Contact>();
+            Contact db_contact = Find(x => x.ID == id);
+            if (db_contact != null)
+            {
+                if (Delete(db_contact) == 0)
+                {
+                    res.AddError(ErrorMessageCode.ContactCouldNotRemove, "Blog Yazısı Silinemedi.");
+                    return res;
+                }
+            }
+            else
+            {
+                res.AddError(ErrorMessageCode.ContactIsNotFound, "Kullanıcı Bulunamadı.");
+            }
+            return res;
+        }
     }
 }

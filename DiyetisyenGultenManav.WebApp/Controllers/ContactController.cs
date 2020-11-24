@@ -50,7 +50,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 {
                     Items = res.Errors,
                     Title = "Paket Detayı Bulunamadı",
-                    RedirectingUrl = "/Paket/Index"
+                    RedirectingUrl = "/Contact/Index"
                 };
                 return View("Error", ErrNotifyObj);
             }
@@ -121,16 +121,30 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         // GET: Contact/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            /*     if (id == null)
+                 {
+                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                 }
+                 Contact contact = contactManager.Find(x => x.ID == id);
+                 if (contact == null)
+                 {
+                     return HttpNotFound();
+                 }*/
+            BusinessLayerResult<Contact> res = contactManager.GetContactById(id);
+            if (res.Errors.Count > 0)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                {
+                    Items = res.Errors,
+                    Title = "Blog Yazısı Bulunamadı",
+                    RedirectingUrl = "/BlogYazısı/Index",
+                    IsRedirecting = true,
+                    RedirectingTimeout = 1000
+
+                };
+                return View("Error", ErrNotifyObj);
             }
-            Contact contact = contactManager.Find(x => x.ID == id);
-            if (contact == null)
-            {
-                return HttpNotFound();
-            }
-            return View(contact);
+            return View(res.Result);
         }
 
         // POST: Contact/Delete/5
@@ -138,8 +152,19 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Contact contact = contactManager.Find(x => x.ID == id);
-            contactManager.Delete(contact);
+            //Contact contact = contactManager.Find(x => x.ID == id);
+            //contactManager.Delete(contact);
+            BusinessLayerResult<Contact> res = contactManager.GetRemoveById(id);
+            if (res.Errors.Count > 0)
+            {
+                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                {
+                    Items = res.Errors,
+                    Title = "Contact Silinemedi",
+                    RedirectingUrl = "/Contact/Index"
+                };
+                return View("Error", ErrNotifyObj);
+            }
             return RedirectToAction("Index");
         }
     }

@@ -37,6 +37,6 @@
         PaketIsNotInserted = 504,
         // Contact
         ContactIsNotFound = 601,
-
+        ContactCouldNotRemove = 602,
     }
 }
