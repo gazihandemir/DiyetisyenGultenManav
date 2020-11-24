@@ -28,7 +28,25 @@ namespace DiyetisyenGultenManav.BusinessLayer
             res.Result = Find(x => x.Id == id);
             if (res.Result == null)
             {
-                res.AddError(ErrorMessageCode.OdemeBildirimiIsNotFound, "Blog Yazısı Bulunamadı");
+                res.AddError(ErrorMessageCode.OdemeBildirimiIsNotFound, "Ödeme Bildirimi Bulunamadı");
+            }
+            return res;
+        }
+        public BusinessLayerResult<OdemeBildirimi> GetRemoveById(int? id)
+        {
+            BusinessLayerResult<OdemeBildirimi> res = new BusinessLayerResult<OdemeBildirimi>();
+            OdemeBildirimi db_odeme = Find(x => x.Id == id);
+            if (db_odeme != null)
+            {
+                if (Delete(db_odeme) == 0)
+                {
+                    res.AddError(ErrorMessageCode.OdemeBildirimiCouldNotRemove, "Ödeme Bildirimi Silinemedi.");
+                    return res;
+                }
+            }
+            else
+            {
+                res.AddError(ErrorMessageCode.OdemeBildirimiIsNotFound, "Ödeme Bildirimi Bulunamadı.");
             }
             return res;
         }

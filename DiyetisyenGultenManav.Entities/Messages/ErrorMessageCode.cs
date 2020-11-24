@@ -43,5 +43,6 @@
         ContactIsNotInserted = 605,
         // Ödeme Bildirimi
         OdemeBildirimiIsNotFound = 701,
+        OdemeBildirimiCouldNotRemove = 702,
     }
 }

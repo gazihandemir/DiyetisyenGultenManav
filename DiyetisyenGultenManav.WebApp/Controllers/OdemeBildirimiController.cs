@@ -172,16 +172,30 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         // GET: OdemeBildirimi/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            /*    if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                OdemeBildirimi odemeBildirimi = odemeBildirimiManager.Find(x => x.Id == id);
+                if (odemeBildirimi == null)
+                {
+                    return HttpNotFound();
+                }
+            */
+            BusinessLayerResult<OdemeBildirimi> res = odemeBildirimiManager.GetOdemeBildirimiById(id);
+            if (res.Errors.Count > 0)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                {
+                    Items = res.Errors,
+                    Title = "Ödeme Bildirimi Bulunamadı",
+                    RedirectingUrl = "/OdemeBildirimi/Index",
+                    IsRedirecting = true,
+                    RedirectingTimeout = 1000
+                };
+                return View("Error", ErrNotifyObj);
             }
-            OdemeBildirimi odemeBildirimi = odemeBildirimiManager.Find(x => x.Id == id);
-            if (odemeBildirimi == null)
-            {
-                return HttpNotFound();
-            }
-            return View(odemeBildirimi);
+            return View(res.Result);
         }
 
         // POST: OdemeBildirimi/Delete/5
@@ -189,8 +203,20 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            OdemeBildirimi odemeBildirimi = odemeBildirimiManager.Find(x => x.Id == id);
-            odemeBildirimiManager.Delete(odemeBildirimi);
+            //OdemeBildirimi odemeBildirimi = odemeBildirimiManager.Find(x => x.Id == id);
+            //odemeBildirimiManager.Delete(odemeBildirimi);
+
+            BusinessLayerResult<OdemeBildirimi> res = odemeBildirimiManager.GetRemoveById(id);
+            if (res.Errors.Count > 0)
+            {
+                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                {
+                    Items = res.Errors,
+                    Title = "Ödeme Bildirimi Silinemedi",
+                    RedirectingUrl = "/OdemeBildirimi/Index"
+                };
+                return View("Error", ErrNotifyObj);
+            }
             return RedirectToAction("Index");
         }
     }
