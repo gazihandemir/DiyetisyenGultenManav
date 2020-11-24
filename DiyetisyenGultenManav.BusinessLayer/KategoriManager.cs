@@ -18,12 +18,13 @@ namespace DiyetisyenGultenManav.BusinessLayer
             res.Result = Find(x => x.Id == id);
             if (res.Result == null)
             {
-                res.AddError(ErrorMessageCode.KategoriIsNotFound, "Kategori Bulunamadı");
+                res.AddError(ErrorMessageCode.KategoriIsNotFound,"Kategori Bulunamadı");
             }
             return res;
         }
+        
         // Kategori silme kod çözümü
-        /*    public override int Delete(Kategori kategori) 
+          public override int Delete(Kategori kategori) 
           {
               // Kategori ile ilişkili blog yazılarının silinmesi gerekiyor.
               BlogYazısıManager blogYazısıManager = new BlogYazısıManager();
@@ -38,7 +39,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
                   blogYazısıManager.Delete(blog);
               }
               return base.Delete(kategori);
-          }
+        } /* 
           //     private DataAccessLayer.EntityFramework.Repository<Kategori> repo_kategori = new DataAccessLayer.EntityFramework.Repository<Kategori>();
                 public List<Kategori> GetKategoriler()
                   {

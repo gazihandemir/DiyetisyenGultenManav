@@ -107,16 +107,27 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
 
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            /*      if (id == null)
+                  {
+                      return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                  }
+                  Kategori kategori = kategoriManager.Find(x => x.Id == id.Value);
+                  if (kategori == null)
+                  {
+                      return HttpNotFound();
+                  } */
+            BusinessLayerResult<Kategori> res = kategoriManager.GetKategoriById(id);
+            if (res.Errors.Count > 0)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                {
+                    Items = res.Errors,
+                    Title = "Blog Yazısı Oluşturulamadı.",
+                    RedirectingUrl = "/Kategori/Index"
+                };
+                return View("Error", ErrNotifyObj);
             }
-            Kategori kategori = kategoriManager.Find(x => x.Id == id.Value);
-            if (kategori == null)
-            {
-                return HttpNotFound();
-            }
-            return View(kategori);
+            return View(res.Result);
         }
 
         // POST: Kategori/Delete/5
