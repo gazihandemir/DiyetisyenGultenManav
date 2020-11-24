@@ -23,5 +23,7 @@
         // Diet
         DietIsNotFound = 301,
         DietCouldNotRemove = 302,
+        WriteAnewDiet = 303,
+        DietCouldNotUpdated = 304,
     }
 }

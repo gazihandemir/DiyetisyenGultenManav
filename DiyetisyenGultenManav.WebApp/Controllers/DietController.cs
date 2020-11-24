@@ -109,16 +109,29 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         // GET: Diet/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            //Diet diet = dietManager.Find(x => x.Id == id);
+
+            BusinessLayerResult<Diet> res = dietManager.GetDietById(id);
+            if (res.Errors.Count > 0)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                {
+                    Items = res.Errors,
+                    Title = "Blog Yazısı Bulunamadı",
+                    RedirectingUrl = "/BlogYazısı/Index"
+                };
+                return View("Error", ErrNotifyObj);
             }
-            Diet diet = dietManager.Find(x => x.Id == id);
-            if (diet == null)
-            {
-                return HttpNotFound();
-            }
-            return View(diet);
+            return View(res.Result);
+            /*       if (id == null)
+          {
+              return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+          }
+          if (diet == null)
+          {
+              return HttpNotFound();
+          }
+   */
         }
 
         // POST: Diet/Edit/5
@@ -131,30 +144,42 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             ModelState.Remove("ModifiedUsername");
             if (ModelState.IsValid)
             {
-                Diet db_diet = dietManager.Find(x => x.Id == diet.Id);
-                db_diet.Title = diet.Title;
-                db_diet.DiyetSabah = diet.DiyetSabah;
-                db_diet.DiyetAraBir = diet.DiyetAraBir;
-                db_diet.DiyetOglen = diet.DiyetOglen;
-                db_diet.DiyetAraIki = diet.DiyetAraIki;
-                db_diet.DiyetAksam = diet.DiyetAksam;
-                db_diet.DiyetGece = diet.DiyetGece;
-                db_diet.Description = diet.Description;
-                db_diet.DiyetKilo = diet.DiyetKilo;
-                db_diet.DiyetBmi = diet.DiyetBmi;
-                db_diet.DiyetFat = diet.DiyetFat;
-                db_diet.DiyetMusc = diet.DiyetMusc;
-                db_diet.DiyetBmh = diet.DiyetBmh;
-                db_diet.DiyetVf = diet.DiyetVf;
-                db_diet.DiyetOlcum = diet.DiyetOlcum;
-                db_diet.DiyetBaslangic = diet.DiyetBaslangic;
-                db_diet.DiyetBitis = diet.DiyetBitis;
-                db_diet.DiyetEkAciklamalar = diet.DiyetEkAciklamalar;
-                db_diet.IsNew = diet.IsNew;
-                dietManager.Update(db_diet);
+                /*        Diet db_diet = dietManager.Find(x => x.Id == diet.Id);
+                    db_diet.Title = diet.Title;
+                      db_diet.DiyetSabah = diet.DiyetSabah;
+                      db_diet.DiyetAraBir = diet.DiyetAraBir;
+                      db_diet.DiyetOglen = diet.DiyetOglen;
+                      db_diet.DiyetAraIki = diet.DiyetAraIki;
+                      db_diet.DiyetAksam = diet.DiyetAksam;
+                      db_diet.DiyetGece = diet.DiyetGece;
+                      db_diet.Description = diet.Description;
+                      db_diet.DiyetKilo = diet.DiyetKilo;
+                      db_diet.DiyetBmi = diet.DiyetBmi;
+                      db_diet.DiyetFat = diet.DiyetFat;
+                      db_diet.DiyetMusc = diet.DiyetMusc;
+                      db_diet.DiyetBmh = diet.DiyetBmh;
+                      db_diet.DiyetVf = diet.DiyetVf;
+                      db_diet.DiyetOlcum = diet.DiyetOlcum;
+                      db_diet.DiyetBaslangic = diet.DiyetBaslangic;
+                      db_diet.DiyetBitis = diet.DiyetBitis;
+                      db_diet.DiyetEkAciklamalar = diet.DiyetEkAciklamalar;
+                      db_diet.IsNew = diet.IsNew;
+              
+                dietManager.Update(db_diet);  */
+                BusinessLayerResult<Diet> res = dietManager.UpdateDiet(diet);
+                if (res.Errors.Count > 0)
+                {
+                    ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                    {
+                        Items = res.Errors,
+                        Title = "Diyet Güncellenemedi",
+                        RedirectingUrl = "/Diet/AllDiet"
+                    };
+                    return View("Error", ErrNotifyObj);
+                }
                 return RedirectToAction("AllDiet");
             }
-            return View(diet);
+            return View();
         }
 
         // GET: Diet/Delete/5

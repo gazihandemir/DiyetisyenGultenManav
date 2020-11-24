@@ -54,7 +54,6 @@ namespace DiyetisyenGultenManav.BusinessLayer
                 return res;
             }
             res.Result = Find(x => x.Id == data.Id);
-            res.Result.IsDraft = data.IsDraft;
             res.Result.KategoriId = data.KategoriId;
             res.Result.ParagrafBir = data.ParagrafBir;
             res.Result.ParagrafIki = data.ParagrafIki;

@@ -40,5 +40,44 @@ namespace DiyetisyenGultenManav.BusinessLayer
             }
             return res;
         }
+        public BusinessLayerResult<Diet> UpdateDiet(Diet data)
+        {
+            BusinessLayerResult<Diet> res = new BusinessLayerResult<Diet>();
+            Diet db_diet = Find(x => x.Id != data.Id && x.Owner == data.Owner);
+            /*    if (db_diet != null && db_diet.Id != data.Id)
+                {
+                    if (db_diet.Owner == data.Owner && db_diet.)
+                    {
+                        res.AddError(ErrorMessageCode.WriteAnewDiet, "Yeni Diyet Yaz");
+                    }
+                }*/
+
+            res.Result = Find(x => x.Id == data.Id);
+            res.Result.Title = data.Title;
+            res.Result.DiyetSabah = data.DiyetSabah;
+            res.Result.DiyetAraBir = data.DiyetAraBir;
+            res.Result.DiyetOglen = data.DiyetOglen;
+            res.Result.DiyetAraIki = data.DiyetAraIki;
+            res.Result.DiyetAksam = data.DiyetAksam;
+            res.Result.DiyetGece = data.DiyetGece;
+            res.Result.Description = data.Description;
+            res.Result.DiyetKilo = data.DiyetKilo;
+            res.Result.DiyetBmi = data.DiyetBmi;
+            res.Result.DiyetFat = data.DiyetFat;
+            res.Result.DiyetMusc = data.DiyetMusc;
+            res.Result.DiyetBmh = data.DiyetBmh;
+            res.Result.DiyetVf = data.DiyetVf;
+            res.Result.DiyetOlcum = data.DiyetOlcum;
+            res.Result.DiyetBaslangic = data.DiyetBaslangic;
+            res.Result.DiyetBitis = data.DiyetBitis;
+            res.Result.DiyetEkAciklamalar = data.DiyetEkAciklamalar;
+            res.Result.IsNew = data.IsNew;
+            if (base.Update(res.Result) == 0) // Güncelleniyor.
+            {
+                res.AddError(ErrorMessageCode.DietCouldNotUpdated, "Diyet Güncellenemedi.");
+            }
+            return res;
+
+        }
     }
 }
