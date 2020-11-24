@@ -32,7 +32,6 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 //return View(blogYazısı.ToList());
                 return View(blogYazısıManager.ListQueryable().OrderByDescending(x => x.ModifiedOn));
             }
-
         }
         public ActionResult Details(int? id)
         {
@@ -47,7 +46,6 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 };
                 return View("Errror", ErrNotifyObj);
             }
-
             return View(res.Result);
             /*  if (id == null)
           {
@@ -104,17 +102,31 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         }
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             BlogYazısı blogYazısı = blogYazısıManager.Find(x => x.Id == id);
-            if (blogYazısı == null)
+            BusinessLayerResult<BlogYazısı> res = blogYazısıManager.GetBlogYazısıById(id);
+            if (res.Errors.Count > 0)
             {
-                return HttpNotFound();
+                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                {
+                    Items = res.Errors,
+                    Title = "Blog Yazısı Bulunamadı",
+                    RedirectingUrl = "/BlogYazısı/Index"
+                };
+                return View("Error", ErrNotifyObj);
             }
+
             ViewBag.KategoriId = new SelectList(kategoriManager.List(), "Id", "Title", blogYazısı.KategoriId);
-            return View(blogYazısı);
+            return View(res.Result);
+
+            /*    if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                if (blogYazısı == null)
+                {
+                    return HttpNotFound();
+                }
+            */
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -156,7 +168,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                     {
                         Items = res.Errors,
                         Title = "Blog Yazısı Güncellenemedi",
-                        RedirectingUrl = "/BlogYazısı/Edit"
+                        RedirectingUrl = "/BlogYazısı/Index"
                     };
                     return View("Error", ErrNotifyObj);
                 }

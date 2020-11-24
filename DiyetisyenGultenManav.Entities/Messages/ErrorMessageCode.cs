@@ -20,5 +20,7 @@
         BlogYazısıTitleAlreadyExists = 204,
         BlogYazısıIsNotInserted = 205,
         BlogYazısıCouldNotRemove = 206,
+        // Diet
+        DietIsNotFound = 301,
     }
 }
