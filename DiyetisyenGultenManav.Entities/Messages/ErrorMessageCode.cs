@@ -26,5 +26,7 @@
         WriteAnewDiet = 303,
         DietCouldNotUpdated = 304,
         DietIsNotInserted = 305,
+        // Kategori
+        KategoriIsNotFound = 401,
     }
 }

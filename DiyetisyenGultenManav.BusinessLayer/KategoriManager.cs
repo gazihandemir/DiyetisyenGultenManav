@@ -1,5 +1,7 @@
 ﻿using DiyetisyenGultenManav.BusinessLayer.Abstract;
+using DiyetisyenGultenManav.BusinessLayer.Results;
 using DiyetisyenGultenManav.Entities;
+using DiyetisyenGultenManav.Entities.Messages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,16 @@ namespace DiyetisyenGultenManav.BusinessLayer
 {
     public class KategoriManager : ManagerBase<Kategori>
     {
+        public BusinessLayerResult<Kategori> GetKategoriById(int? id)
+        {
+            BusinessLayerResult<Kategori> res = new BusinessLayerResult<Kategori>();
+            res.Result = Find(x => x.Id == id);
+            if (res.Result == null)
+            {
+                res.AddError(ErrorMessageCode.KategoriIsNotFound, "Kategori Bulunamadı");
+            }
+            return res;
+        }
         // Kategori silme kod çözümü
         /*    public override int Delete(Kategori kategori) 
           {
