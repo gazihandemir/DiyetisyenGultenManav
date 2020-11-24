@@ -10,6 +10,7 @@ using DiyetisyenGultenManav.BusinessLayer;
 using DiyetisyenGultenManav.BusinessLayer.Results;
 using DiyetisyenGultenManav.Entities;
 using DiyetisyenGultenManav.WebApp.Models;
+using DiyetisyenGultenManav.WebApp.ViewModels;
 
 namespace DiyetisyenGultenManav.WebApp.Controllers
 {
@@ -62,16 +63,28 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         // GET: OdemeBildirimi/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            /*  if (id == null)
+              {
+                  return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+              }
+              OdemeBildirimi odemeBildirimi = odemeBildirimiManager.Find(x => x.Id == id);
+              if (odemeBildirimi == null)
+              {
+                  return HttpNotFound();
+              } */
+
+            BusinessLayerResult<OdemeBildirimi> res = odemeBildirimiManager.GetOdemeBildirimiById(id);
+            if (res.Errors.Count > 0)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                {
+                    Items = res.Errors,
+                    Title = "Ödeme Bildirimi Detayı Bulunamadı",
+                    RedirectingUrl = "/OdemeBildirimi/Index"
+                };
+                return View("Error", ErrNotifyObj);
             }
-            OdemeBildirimi odemeBildirimi = odemeBildirimiManager.Find(x => x.Id == id);
-            if (odemeBildirimi == null)
-            {
-                return HttpNotFound();
-            }
-            return View(odemeBildirimi);
+            return View(res.Result);
         }
 
         // GET: OdemeBildirimi/Create

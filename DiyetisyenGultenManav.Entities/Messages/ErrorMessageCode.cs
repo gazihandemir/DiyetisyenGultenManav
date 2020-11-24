@@ -41,5 +41,7 @@
         ContactCouldNotUpdated = 603,
         ContactMesajAlreadyExists = 604,
         ContactIsNotInserted = 605,
+        // Ödeme Bildirimi
+        OdemeBildirimiIsNotFound = 701,
     }
 }
