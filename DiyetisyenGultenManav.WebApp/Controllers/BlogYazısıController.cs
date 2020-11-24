@@ -44,7 +44,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                     Title = "Blog Yazısı Detayı Bulunamadı",
                     RedirectingUrl = "/BlogYazısı/Index"
                 };
-                return View("Errror", ErrNotifyObj);
+                return View("Error", ErrNotifyObj);
             }
             return View(res.Result);
             /*  if (id == null)

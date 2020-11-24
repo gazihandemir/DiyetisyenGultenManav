@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DiyetisyenGultenManav.BusinessLayer;
+using DiyetisyenGultenManav.BusinessLayer.Results;
 using DiyetisyenGultenManav.Entities;
 using DiyetisyenGultenManav.WebApp.Models;
-
+using DiyetisyenGultenManav.WebApp.ViewModels;
 namespace DiyetisyenGultenManav.WebApp.Controllers
 {
     public class DietController : Controller
@@ -60,25 +59,34 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
         }
         // GET: Diet/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
+            //Diet diet = dietManager.Find(x => x.Id == id);
+            BusinessLayerResult<Diet> res = dietManager.GetDietById(id);
+            if (res.Errors.Count > 0)
+            {
+                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                {
+                    Items = res.Errors,
+                    Title = "Diyet Detayı Bulunamadı",
+                    RedirectingUrl = "/Diet/Index"
+                };
+                return View("Error", ErrNotifyObj);
+            }
+            return View(res.Result);
+           /* if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Diet diet = dietManager.Find(x => x.Id == id);
             if (diet == null)
             {
                 return HttpNotFound();
-            }
-            return View(diet);
+            }*/
         }
-
         // GET: Diet/Create
         public ActionResult Create()
         {
             ViewBag.KullanıcıId = new SelectList(kullanıcıManager.List(), "Id", "Username");
-
             return View();
         }
         // POST: Diet/Create
@@ -152,16 +160,30 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         // GET: Diet/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            //Diet diet = dietManager.Find(x => x.Id == id);
+            BusinessLayerResult<Diet> res = dietManager.GetDietById(id);
+            if (res.Errors.Count > 0)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                {
+                    Items = res.Errors,
+                    Title = "Diet Bulunamadı",
+                    RedirectingUrl = "/Diet/Index",
+                    IsRedirecting = true,
+                    RedirectingTimeout = 1000
+                };
+                return View("Error", ErrNotifyObj);
             }
-            Diet diet = dietManager.Find(x => x.Id == id);
-            if (diet == null)
-            {
-                return HttpNotFound();
-            }
-            return View(diet);
+            return View(res.Result);
+            /*       if (id == null)
+       {
+           return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+       }
+       if (diet == null)
+       {
+           return HttpNotFound();
+       }
+*/
         }
 
         // POST: Diet/Delete/5
@@ -170,7 +192,20 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Diet diet = dietManager.Find(x => x.Id == id);
-            dietManager.Delete(diet);
+            BusinessLayerResult<Diet> res = dietManager.GetRemoveById(id);
+            if (res.Errors.Count > 0)
+            {
+                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                {
+                    Items = res.Errors,
+                    Title = "Diet silinemedi.",
+                    RedirectingUrl = "/Diet/Index",
+                    IsRedirecting = true,
+                    RedirectingTimeout = 1000
+                };
+                return View("Error", ErrNotifyObj);
+            }
+            //dietManager.Delete(diet);
             return RedirectToAction("AllDiet");
         }
     }

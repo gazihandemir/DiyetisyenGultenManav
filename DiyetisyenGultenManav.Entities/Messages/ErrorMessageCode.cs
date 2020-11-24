@@ -22,5 +22,6 @@
         BlogYazısıCouldNotRemove = 206,
         // Diet
         DietIsNotFound = 301,
+        DietCouldNotRemove = 302,
     }
 }
