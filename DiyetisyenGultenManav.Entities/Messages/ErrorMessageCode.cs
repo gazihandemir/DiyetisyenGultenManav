@@ -28,5 +28,7 @@
         DietIsNotInserted = 305,
         // Kategori
         KategoriIsNotFound = 401,
+        KategoriTitleAlreadyExists = 402,
+        KategoriCouldNotUpdated = 403,
     }
 }

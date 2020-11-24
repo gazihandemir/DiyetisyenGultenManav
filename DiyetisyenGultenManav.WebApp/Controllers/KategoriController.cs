@@ -74,16 +74,28 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         // GET: Kategori/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            /*      if (id == null)
+                  {
+                      return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                  }
+                  Kategori kategori = kategoriManager.Find(x => x.Id == id.Value);
+                  if (kategori == null)
+                  {
+                      return HttpNotFound();
+                  }
+            */
+            BusinessLayerResult<Kategori> res = kategoriManager.GetKategoriById(id);
+            if (res.Errors.Count > 0)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                {
+                    Items = res.Errors,
+                    Title = "Blog Yazısı Bulunamadı",
+                    RedirectingUrl = "/BlogYazısı/Index"
+                };
+                return View("Error", ErrNotifyObj);
             }
-            Kategori kategori = kategoriManager.Find(x => x.Id == id.Value);
-            if (kategori == null)
-            {
-                return HttpNotFound();
-            }
-            return View(kategori);
+            return View(res.Result);
         }
 
 
@@ -96,13 +108,25 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             ModelState.Remove("ModifiedUsername");
             if (ModelState.IsValid)
             {
-                Kategori kat = kategoriManager.Find(x => x.Id == kategori.Id);
-                kat.Title = kategori.Title;
-                kat.Description = kategori.Description;
-                kategoriManager.Update(kat);
+                /*   Kategori kat = kategoriManager.Find(x => x.Id == kategori.Id);
+                   kat.Title = kategori.Title;
+                   kat.Description = kategori.Description;
+                   kategoriManager.Update(kat);
+                */
+                BusinessLayerResult<Kategori> res = kategoriManager.UpdateKategori(kategori);
+                if (res.Errors.Count > 0)
+                {
+                    ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                    {
+                        Items = res.Errors,
+                        Title = "Kategoi Güncellenemedi.",
+                        RedirectingUrl = "/Kategori/Index"
+                    };
+                    return View("Error", ErrNotifyObj);
+                }
                 return RedirectToAction("Index");
             }
-            return View(kategori);
+            return View();
         }
 
         public ActionResult Delete(int? id)
