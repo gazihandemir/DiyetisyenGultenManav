@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DiyetisyenGultenManav.BusinessLayer
 {
-   public class PaketManager : ManagerBase<Paket>
+    public class PaketManager : ManagerBase<Paket>
     {
         public BusinessLayerResult<Paket> GetPaketById(int? id)
         {
@@ -39,6 +39,42 @@ namespace DiyetisyenGultenManav.BusinessLayer
                 res.AddError(ErrorMessageCode.PaketIsNotFound, "Paket Bulunamadı.");
             }
 
+            return res;
+        }
+        public BusinessLayerResult<Paket> UpdatePaket(Paket data)
+        {
+            BusinessLayerResult<Paket> res = new BusinessLayerResult<Paket>();
+            Paket db_paket = Find(x => x.Id == data.Id);
+            /*   if (db_paket != null && db_paket.Id == data.Id) 
+                {
+                    if (true)
+                    {
+
+                    }
+                }
+            */
+            res.Result = Find(x => x.Id == data.Id);
+            res.Result.Isim = data.Isim;
+            res.Result.Fiyat = data.Fiyat;
+            res.Result.Süresi = data.Süresi;
+
+            res.Result.OzellikBirRed = data.OzellikBirRed;
+            res.Result.OzellikBir = data.OzellikBir;
+
+            res.Result.OzellikIkiRed = data.OzellikIkiRed;
+            res.Result.OzellikIki = data.OzellikIki;
+
+            res.Result.OzellikUcRed = data.OzellikUcRed;
+            res.Result.OzellikUc = data.OzellikUc;
+
+            res.Result.Renk = data.Renk;
+            res.Result.RenkButton = data.RenkButton;
+
+            res.Result.Aciklama = data.Aciklama;
+            if (base.Update(res.Result) == 0)
+            {
+                res.AddError(ErrorMessageCode.PaketCouldNotUpdated, "Paket Güncellenemedi");
+            }
             return res;
         }
     }

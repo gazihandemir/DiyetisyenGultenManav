@@ -83,16 +83,28 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         // GET: Paket/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            /*   if (id == null)
+               {
+                   return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+               }
+               Paket paket = paketManager.Find(x => x.Id == id);
+               if (paket == null)
+               {
+                   return HttpNotFound();
+               }
+            */
+            BusinessLayerResult<Paket> res = paketManager.GetPaketById(id);
+            if (res.Errors.Count > 0)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                {
+                    Items = res.Errors,
+                    Title = "Paket Bulunamadı",
+                    RedirectingUrl = "/Paket/Index"
+                };
+                return View("Error", ErrNotifyObj);
             }
-            Paket paket = paketManager.Find(x => x.Id == id);
-            if (paket == null)
-            {
-                return HttpNotFound();
-            }
-            return View(paket);
+            return View(res.Result);
         }
 
         // POST: Paket/Edit/5
@@ -107,29 +119,40 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             ModelState.Remove("ModifiedUsername");
             if (ModelState.IsValid)
             {
-                Paket db_paket = paketManager.Find(x => x.Id == paket.Id);
-                db_paket.Isim = paket.Isim;
-                db_paket.Fiyat = paket.Fiyat;
-                db_paket.Süresi = paket.Süresi;
+                /*   Paket db_paket = paketManager.Find(x => x.Id == paket.Id);
+                   db_paket.Isim = paket.Isim;
+                   db_paket.Fiyat = paket.Fiyat;
+                   db_paket.Süresi = paket.Süresi;
 
-                db_paket.OzellikBirRed = paket.OzellikBirRed;
-                db_paket.OzellikBir = paket.OzellikBir;
+                   db_paket.OzellikBirRed = paket.OzellikBirRed;
+                   db_paket.OzellikBir = paket.OzellikBir;
 
-                db_paket.OzellikIkiRed = paket.OzellikIkiRed;
-                db_paket.OzellikIki = paket.OzellikIki;
+                   db_paket.OzellikIkiRed = paket.OzellikIkiRed;
+                   db_paket.OzellikIki = paket.OzellikIki;
 
-                db_paket.OzellikUcRed = paket.OzellikUcRed;
-                db_paket.OzellikUc = paket.OzellikUc;
+                   db_paket.OzellikUcRed = paket.OzellikUcRed;
+                   db_paket.OzellikUc = paket.OzellikUc;
 
-                db_paket.Renk = paket.Renk;
-                db_paket.RenkButton = paket.RenkButton;
+                   db_paket.Renk = paket.Renk;
+                   db_paket.RenkButton = paket.RenkButton;
 
-                db_paket.Aciklama = paket.Aciklama;
-                paketManager.Update(db_paket);
-
+                   db_paket.Aciklama = paket.Aciklama;
+                   paketManager.Update(db_paket);
+                */
+                BusinessLayerResult<Paket> res = paketManager.UpdatePaket(paket);
+                if (res.Errors.Count > 0)
+                {
+                    ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                    {
+                        Items = res.Errors,
+                        Title = "Paket Güncellenemedi",
+                        RedirectingUrl = "/Paket/Index"
+                    };
+                    return View("Error", ErrNotifyObj);
+                }
                 return RedirectToAction("Index");
             }
-            return View(paket);
+            return View();
         }
 
         // GET: Paket/Delete/5

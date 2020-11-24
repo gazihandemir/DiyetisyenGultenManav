@@ -34,5 +34,6 @@
         // Paket
         PaketIsNotFound = 501,
         PaketCouldNotRemove = 502,
+        PaketCouldNotUpdated = 503,
     }
 }
