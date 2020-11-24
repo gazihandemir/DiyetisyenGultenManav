@@ -7,7 +7,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DiyetisyenGultenManav.BusinessLayer;
+using DiyetisyenGultenManav.BusinessLayer.Results;
 using DiyetisyenGultenManav.Entities;
+using DiyetisyenGultenManav.WebApp.ViewModels;
 
 namespace DiyetisyenGultenManav.WebApp.Controllers
 {
@@ -30,16 +32,27 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         // GET: Paket/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            /*   if (id == null)
+               {
+                   return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+               }
+               Paket paket = paketManager.Find(x => x.Id == id);
+               if (paket == null)
+               {
+                   return HttpNotFound();
+               } */
+            BusinessLayerResult<Paket> res = paketManager.GetPaketById(id);
+            if (res.Errors.Count > 0)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                {
+                    Items = res.Errors,
+                    Title = "Paket Detayı Bulunamadı",
+                    RedirectingUrl = "/Paket/Index"
+                };
+                return View("Error", ErrNotifyObj);
             }
-            Paket paket = paketManager.Find(x => x.Id == id);
-            if (paket == null)
-            {
-                return HttpNotFound();
-            }
-            return View(paket);
+            return View(res.Result);
         }
 
         // GET: Paket/Create

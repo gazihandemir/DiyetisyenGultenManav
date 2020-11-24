@@ -31,5 +31,7 @@
         KategoriTitleAlreadyExists = 402,
         KategoriCouldNotUpdated = 403,
         KategoriIsNotInserted = 404,
+        // Paket
+        PaketIsNotFound = 501,
     }
 }
