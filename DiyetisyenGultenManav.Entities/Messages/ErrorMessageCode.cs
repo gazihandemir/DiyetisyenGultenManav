@@ -33,5 +33,6 @@
         KategoriIsNotInserted = 404,
         // Paket
         PaketIsNotFound = 501,
+        PaketCouldNotRemove = 502,
     }
 }

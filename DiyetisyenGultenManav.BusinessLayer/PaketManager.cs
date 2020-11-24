@@ -22,5 +22,24 @@ namespace DiyetisyenGultenManav.BusinessLayer
             }
             return res;
         }
+        public BusinessLayerResult<Paket> GetRemoveById(int? id)
+        {
+            BusinessLayerResult<Paket> res = new BusinessLayerResult<Paket>();
+            Paket db_paket = Find(x => x.Id == id);
+            if (db_paket != null)
+            {
+                if (Delete(db_paket) == 0)
+                {
+                    res.AddError(ErrorMessageCode.PaketCouldNotRemove, "Paket Silinemedi.");
+                    return res;
+                }
+            }
+            else
+            {
+                res.AddError(ErrorMessageCode.PaketIsNotFound, "Paket Bulunamadı.");
+            }
+
+            return res;
+        }
     }
 }

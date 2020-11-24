@@ -135,16 +135,31 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         // GET: Paket/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            /*   if (id == null)
+               {
+                   return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+               }
+               Paket paket = paketManager.Find(x => x.Id == id);
+               if (paket == null)
+               {
+                   return HttpNotFound();
+               }
+            */
+            BusinessLayerResult<Paket> res = paketManager.GetPaketById(id);
+            if (res.Errors.Count > 0)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                {
+                    Items = res.Errors,
+                    Title = "Paket Bulunamadı",
+                    RedirectingUrl = "/Paket/Index",
+                    IsRedirecting = true,
+                    RedirectingTimeout = 1000
+
+                };
+                return View("Error", ErrNotifyObj);
             }
-            Paket paket = paketManager.Find(x => x.Id == id);
-            if (paket == null)
-            {
-                return HttpNotFound();
-            }
-            return View(paket);
+            return View(res.Result);
         }
 
         // POST: Paket/Delete/5
@@ -152,8 +167,19 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Paket paket = paketManager.Find(x => x.Id == id);
-            paketManager.Delete(paket);
+            //   Paket paket = paketManager.Find(x => x.Id == id);
+            // paketManager.Delete(paket);
+            BusinessLayerResult<Paket> res = paketManager.GetRemoveById(id);
+            if (res.Errors.Count > 0)
+            {
+                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                {
+                    Items = res.Errors,
+                    Title = "Paket Silinemedi",
+                    RedirectingUrl = "/Paket/Index"
+                };
+                return View("Error", ErrNotifyObj);
+            }
             return RedirectToAction("Index");
         }
 
