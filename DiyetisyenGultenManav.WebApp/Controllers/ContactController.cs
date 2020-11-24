@@ -83,16 +83,27 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         // GET: Contact/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            /*     if (id == null)
+                 {
+                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                 }
+                 Contact contact = contactManager.Find(x => x.ID == id);
+                 if (contact == null)
+                 {
+                     return HttpNotFound();
+                 }*/
+            BusinessLayerResult<Contact> res = contactManager.GetContactById(id);
+            if (res.Errors.Count > 0)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                {
+                    Items = res.Errors,
+                    Title = "Contact Bulunamadı",
+                    RedirectingUrl = "/Contact/Index"
+                };
+                return View("Error", ErrNotifyObj);
             }
-            Contact contact = contactManager.Find(x => x.ID == id);
-            if (contact == null)
-            {
-                return HttpNotFound();
-            }
-            return View(contact);
+            return View(res.Result);
         }
 
         // POST: Contact/Edit/5
@@ -104,18 +115,30 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                Contact db_contact = contactManager.Find(x => x.ID == contact.ID);
-                db_contact.ID = contact.ID;
-                db_contact.IsimSoyisim = contact.IsimSoyisim;
-                db_contact.TelefonNumarasi = contact.TelefonNumarasi;
-                db_contact.Email = contact.Email;
-                db_contact.Konu = contact.Konu;
-                db_contact.Mesaj = contact.Mesaj;
-                db_contact.Zaman = db_contact.Zaman;
-                contactManager.Update(db_contact);
+                /*   Contact db_contact = contactManager.Find(x => x.ID == contact.ID);
+                   db_contact.ID = contact.ID;
+                   db_contact.IsimSoyisim = contact.IsimSoyisim;
+                   db_contact.TelefonNumarasi = contact.TelefonNumarasi;
+                   db_contact.Email = contact.Email;
+                   db_contact.Konu = contact.Konu;
+                   db_contact.Mesaj = contact.Mesaj;
+                   db_contact.Zaman = db_contact.Zaman;
+                   contactManager.Update(db_contact);
+                   return RedirectToAction("Index");*/
+                BusinessLayerResult<Contact> res = contactManager.UpdateContact(contact);
+                if (res.Errors.Count > 0)
+                {
+                    ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                    {
+                        Items = res.Errors,
+                        Title = "Contact  Güncellenemedi",
+                        RedirectingUrl = "/Contact/Index"
+                    };
+                    return View("Error", ErrNotifyObj);
+                }
                 return RedirectToAction("Index");
             }
-            return View(contact);
+            return View();
         }
 
         // GET: Contact/Delete/5
@@ -136,8 +159,8 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 ErrorViewModel ErrNotifyObj = new ErrorViewModel()
                 {
                     Items = res.Errors,
-                    Title = "Blog Yazısı Bulunamadı",
-                    RedirectingUrl = "/BlogYazısı/Index",
+                    Title = "Contact Bulunamadı",
+                    RedirectingUrl = "/Contact/Index",
                     IsRedirecting = true,
                     RedirectingTimeout = 1000
 

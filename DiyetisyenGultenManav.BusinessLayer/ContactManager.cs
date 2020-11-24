@@ -40,5 +40,29 @@ namespace DiyetisyenGultenManav.BusinessLayer
             }
             return res;
         }
+        public BusinessLayerResult<Contact> UpdateContact(Contact data)
+        {
+            BusinessLayerResult<Contact> res = new BusinessLayerResult<Contact>();
+            Contact db_contact = Find(x => x.ID == data.ID);
+            /*       if (true)
+                   {
+
+                   }
+            */
+            res.Result = Find(x => x.ID == data.ID);
+            res.Result.ID = data.ID;
+            res.Result.IsimSoyisim = data.IsimSoyisim;
+            res.Result.TelefonNumarasi = data.TelefonNumarasi;
+            res.Result.Email = data.Email;
+            res.Result.Konu = data.Konu;
+            res.Result.Mesaj = data.Mesaj;
+            res.Result.Zaman = db_contact.Zaman;
+            if (base.Update(res.Result) == 0) // Blog yazısı güncelleniyor.
+            {
+                res.AddError(ErrorMessageCode.ContactCouldNotUpdated, "Contact Güncellenemedi.");
+            }
+            return res;
+
+        }
     }
 }

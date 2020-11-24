@@ -38,5 +38,6 @@
         // Contact
         ContactIsNotFound = 601,
         ContactCouldNotRemove = 602,
+        ContactCouldNotUpdated = 603,
     }
 }
