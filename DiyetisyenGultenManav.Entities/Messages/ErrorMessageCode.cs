@@ -39,5 +39,7 @@
         ContactIsNotFound = 601,
         ContactCouldNotRemove = 602,
         ContactCouldNotUpdated = 603,
+        ContactMesajAlreadyExists = 604,
+        ContactIsNotInserted = 605,
     }
 }

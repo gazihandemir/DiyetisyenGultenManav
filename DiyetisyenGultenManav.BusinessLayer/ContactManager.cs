@@ -46,7 +46,6 @@ namespace DiyetisyenGultenManav.BusinessLayer
             Contact db_contact = Find(x => x.ID == data.ID);
             /*       if (true)
                    {
-
                    }
             */
             res.Result = Find(x => x.ID == data.ID);
@@ -63,6 +62,26 @@ namespace DiyetisyenGultenManav.BusinessLayer
             }
             return res;
 
+        }
+        public BusinessLayerResult<Contact> CreateContact(Contact data)
+        {
+            BusinessLayerResult<Contact> res = new BusinessLayerResult<Contact>();
+            Contact db_contact = Find(x => x.ID == data.ID);
+            if (db_contact != null)
+            {
+                if (db_contact.Mesaj == data.Mesaj)
+                {
+                    res.AddError(ErrorMessageCode.ContactMesajAlreadyExists, "İletişim Mesajı 1 kez gönderilebilir.");
+                }
+            }
+            else
+            {
+                if (base.Insert(res.Result) == 0)
+                {
+                    res.AddError(ErrorMessageCode.ContactIsNotInserted, "Contact eklenemedi");
+                }
+            }
+            return res;
         }
     }
 }

@@ -72,12 +72,23 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                contact.Zaman = DateTime.Now;
-                contactManager.Insert(contact);
+                //contact.Zaman = DateTime.Now;
+                //contactManager.Insert(contact);
+                BusinessLayerResult<Contact> res = contactManager.CreateContact(contact);
+                if (res.Errors.Count > 0)
+                {
+                    ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                    {
+                        Items = res.Errors,
+                        Title = "İletişim Oluşturulamadı.",
+                        RedirectingUrl = "/Home/Index"
+                    };
+                    return View("Error", ErrNotifyObj);
+                }
+                //blogYazısıManager.Insert(blogYazısı);
                 return RedirectToAction("Index");
             }
-
-            return View(contact);
+            return View();
         }
 
         // GET: Contact/Edit/5
