@@ -77,5 +77,16 @@ namespace DiyetisyenGultenManav.BusinessLayer
             }
             return res;
         }
+        public BusinessLayerResult<Paket> CreatePaket(Paket data)
+        {
+            BusinessLayerResult<Paket> res = new BusinessLayerResult<Paket>();
+            Paket db_paket = Find(x => x.Id == data.Id);
+            res.Result = data;
+            if (base.Insert(res.Result) == 0)
+            {
+                res.AddError(ErrorMessageCode.PaketIsNotInserted, "Paket Eklenemedi");
+            }
+            return res;
+        }
     }
 }
