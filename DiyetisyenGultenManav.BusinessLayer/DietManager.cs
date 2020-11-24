@@ -79,5 +79,25 @@ namespace DiyetisyenGultenManav.BusinessLayer
             return res;
 
         }
+        public BusinessLayerResult<Diet> CreateDiet(Diet data)
+        {
+            BusinessLayerResult<Diet> res = new BusinessLayerResult<Diet>();
+            Diet db_diet = Find(x => x.Id == data.Id);
+            res.Result = data;
+            /*        if (db_diet != null)
+                    {
+                        if (true)
+                        {
+
+                        }
+                    }
+            */
+            if (base.Insert(res.Result) == 0)
+            {
+                res.AddError(ErrorMessageCode.DietIsNotInserted, "Diyet Eklenemedi");
+            }
+            return res;
+
+        }
     }
 }

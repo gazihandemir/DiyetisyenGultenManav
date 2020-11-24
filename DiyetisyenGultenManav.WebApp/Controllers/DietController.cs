@@ -99,12 +99,23 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             ModelState.Remove("ModifiedUsername");
             if (ModelState.IsValid)
             {
-                dietManager.Insert(diet);
+                //dietManager.Insert(diet);
+                BusinessLayerResult<Diet> res = dietManager.CreateDiet(diet);
+                if (res.Errors.Count > 0)
+                {
+                    ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                    {
+                        Items = res.Errors,
+                        Title = "Diet Oluşturulamadı.",
+                        RedirectingUrl = "/Diet/AllIndex"
+                    };
+                    return View("Error", ErrNotifyObj);
+                }
                 return RedirectToAction("AllDiet");
             }
             ViewBag.KullanıcıId = new SelectList(kullanıcıManager.List(), "Id", "Username");
             //         diet.Owner = ViewBag.KullanıcıId;
-            return View(diet);
+            return View();
         }
         // GET: Diet/Edit/5
         public ActionResult Edit(int? id)

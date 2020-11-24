@@ -25,5 +25,6 @@
         DietCouldNotRemove = 302,
         WriteAnewDiet = 303,
         DietCouldNotUpdated = 304,
+        DietIsNotInserted = 305,
     }
 }
