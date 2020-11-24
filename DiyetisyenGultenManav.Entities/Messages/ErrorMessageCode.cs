@@ -17,5 +17,8 @@
         BlogYazisiTitleAlreadyExists = 201,
         BlogYazisiCouldNotUpdated = 202,
         BlogYazısıIsNotFound = 203,
+        BlogYazısıTitleAlreadyExists = 204,
+        BlogYazısıIsNotInserted = 205,
+        BlogYazısıCouldNotRemove = 206,
     }
 }

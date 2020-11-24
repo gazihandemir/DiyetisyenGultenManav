@@ -12,14 +12,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
 {
     public class BlogYazısıManager : ManagerBase<BlogYazısı>
     {
-        public BusinessLayerResult<BlogYazısı> GetBlogYazısıByTitle(string Ara)
-        {
-            BusinessLayerResult<BlogYazısı> res = new BusinessLayerResult<BlogYazısı>();
-            res.Result = Find(x => x.Title == Ara);
-                //.Where(x => x.Title.Contains(Ara) || Ara == null).OrderByDescending(x => x.ModifiedOn);
-            return res;
-        }
-        public BusinessLayerResult<BlogYazısı> GetBlogYazısıById(int id)
+        public BusinessLayerResult<BlogYazısı> GetBlogYazısıById(int? id)
         {
             BusinessLayerResult<BlogYazısı> res = new BusinessLayerResult<BlogYazısı>();
             res.Result = Find(x => x.Id == id);
@@ -27,6 +20,25 @@ namespace DiyetisyenGultenManav.BusinessLayer
             {
                 res.AddError(ErrorMessageCode.BlogYazısıIsNotFound, "Blog Yazısı Bulunamadı");
             }
+            return res;
+        }
+        public BusinessLayerResult<BlogYazısı> GetRemoveById(int? id)
+        {
+            BusinessLayerResult<BlogYazısı> res = new BusinessLayerResult<BlogYazısı>();
+            BlogYazısı db_blog = Find(x => x.Id == id);
+            if (db_blog != null)
+            {
+                if (Delete(db_blog) == 0)
+                {
+                    res.AddError(ErrorMessageCode.BlogYazısıCouldNotRemove, "Blog Yazısı Silinemedi.");
+                    return res;
+                }
+            }
+            else
+            {
+                res.AddError(ErrorMessageCode.BlogYazısıIsNotFound, "Kullanıcı Bulunamadı.");
+            }
+       
             return res;
         }
         public BusinessLayerResult<BlogYazısı> UpdateBlogYazisi(BlogYazısı data)
@@ -53,6 +65,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
             res.Result.ParagrafYedi = data.ParagrafYedi;
             res.Result.ParagrafSekiz = data.ParagrafSekiz;
             res.Result.Title = data.Title;
+            res.Result.IsDraft = data.IsDraft;
             res.Result.DanisanPaylasimi = data.DanisanPaylasimi;
             res.Result.TabakPaylasimi = data.DanisanPaylasimi;
             if (string.IsNullOrEmpty(data.Picture) == false)
@@ -65,18 +78,44 @@ namespace DiyetisyenGultenManav.BusinessLayer
             }
             return res;
         }
-
-
-        /*  private DataAccessLayer.EntityFramework.Repository<BlogYazısı> repo_blogYazısı = new DataAccessLayer.EntityFramework.Repository<BlogYazısı>();
-       
-                public List<BlogYazısı> getAllBlogYazısı()
+        public BusinessLayerResult<BlogYazısı> CreateBlogYazisi(BlogYazısı data)
+        {
+            BlogYazısı db_blog = Find(x => x.Title == data.Title);
+            BusinessLayerResult<BlogYazısı> res = new BusinessLayerResult<BlogYazısı>();
+            res.Result = data;
+            if (db_blog != null)
+            {
+                if (db_blog.Title == data.Title)
                 {
-                    return repo_blogYazısı.List();
+                    res.AddError(ErrorMessageCode.BlogYazısıTitleAlreadyExists, "Blog Yazısının başlığı kayıtlı");
                 }
-                public IQueryable<BlogYazısı> getAllBlogYazısıQueryable()
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(data.Picture) == false)
                 {
-                    return repo_blogYazısı.ListQueryable();
+                    res.Result.Picture = data.Picture;
                 }
-        */
+                if (base.Insert(res.Result) == 0)
+                {
+                    res.AddError(ErrorMessageCode.BlogYazısıIsNotInserted, "Kullanıcı eklenemedi");
+                }
+            }
+            return res;
+        }
+
     }
+    /*  private DataAccessLayer.EntityFramework.Repository<BlogYazısı> repo_blogYazısı = new DataAccessLayer.EntityFramework.Repository<BlogYazısı>();
+
+            public List<BlogYazısı> getAllBlogYazısı()
+            {
+                return repo_blogYazısı.List();
+            }
+            public IQueryable<BlogYazısı> getAllBlogYazısıQueryable()
+            {
+                return repo_blogYazısı.ListQueryable();
+            }
+    */
 }
+
+

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
@@ -37,16 +36,28 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         }
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            BusinessLayerResult<BlogYazısı> res = blogYazısıManager.GetBlogYazısıById(id);
+            if (res.Errors.Count > 0)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                {
+                    Items = res.Errors,
+                    Title = "Blog Yazısı Detayı Bulunamadı",
+                    RedirectingUrl = "/BlogYazısı/Index"
+                };
+                return View("Errror", ErrNotifyObj);
             }
-            BlogYazısı blogYazısı = blogYazısıManager.Find(x => x.Id == id);
-            if (blogYazısı == null)
-            {
-                return HttpNotFound();
-            }
-            return View(blogYazısı);
+
+            return View(res.Result);
+            /*  if (id == null)
+          {
+              return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+          }
+          BlogYazısı blogYazısı = blogYazısıManager.Find(x => x.Id == id);
+          if (blogYazısı == null)
+          {
+              return HttpNotFound();
+          } */
         }
         public ActionResult Create()
         {
@@ -74,11 +85,22 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                     blogYazısı.Picture = filename;
                 }
                 blogYazısı.Owner = CurrentSession.User;
-                blogYazısıManager.Insert(blogYazısı);
+                BusinessLayerResult<BlogYazısı> res = blogYazısıManager.CreateBlogYazisi(blogYazısı);
+                if (res.Errors.Count > 0)
+                {
+                    ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                    {
+                        Items = res.Errors,
+                        Title = "Blog Yazısı Oluşturulamadı.",
+                        RedirectingUrl = "/BlogYazısı/Index"
+                    };
+                    return View("Error", ErrNotifyObj);
+                }
+                //blogYazısıManager.Insert(blogYazısı);
                 return RedirectToAction("Index");
             }
             ViewBag.KategoriId = new SelectList(kategoriManager.List(), "Id", "Title", blogYazısı.KategoriId);
-            return View(blogYazısı);
+            return View();
         }
         public ActionResult Edit(int? id)
         {
@@ -133,8 +155,8 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                     ErrorViewModel ErrNotifyObj = new ErrorViewModel()
                     {
                         Items = res.Errors,
-                        Title="Blog Yazısı Güncellenemedi",
-                        RedirectingUrl="/BlogYazısı/Edit"
+                        Title = "Blog Yazısı Güncellenemedi",
+                        RedirectingUrl = "/BlogYazısı/Edit"
                     };
                     return View("Error", ErrNotifyObj);
                 }
@@ -146,7 +168,21 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         }
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            BusinessLayerResult<BlogYazısı> res = blogYazısıManager.GetBlogYazısıById(id);
+            if (res.Errors.Count > 0)
+            {
+                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                {
+                    Items = res.Errors,
+                    Title = "Blog Yazısı Bulunamadı",
+                    RedirectingUrl = "/BlogYazısı/Index",
+                    IsRedirecting = true,
+                    RedirectingTimeout = 1000
+
+                };
+                return View("Error", ErrNotifyObj);
+            }
+            return View(res.Result);         /*  if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -154,19 +190,38 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             if (blogYazısı == null)
             {
                 return HttpNotFound();
-            }
-            return View(blogYazısı);
+            } */
         }
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int? id)
         {
-            BlogYazısı blogYazısı = blogYazısıManager.Find(x => x.Id == id);
-            if (blogYazısı.Picture != null)
+            BusinessLayerResult<BlogYazısı> resFind = blogYazısıManager.GetBlogYazısıById(id);
+            if (resFind.Result.Picture != null)
             {
-                System.IO.File.Delete(Server.MapPath($"~/ImageBlog/{blogYazısı.Picture}")); // klasörden fotoğraf silme
+                System.IO.File.Delete(Server.MapPath($"~/ImageBlog/{resFind.Result.Picture}")); // klasörden fotoğraf silme
             }
-            blogYazısıManager.Delete(blogYazısı);
+            if (resFind.Errors.Count > 0)
+            {
+                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                {
+                    Items = resFind.Errors,
+                    Title = "Blog Yazısı Bulunamadı",
+                    RedirectingUrl = "/BlogYazısı/Index"
+                };
+                return View("Error", ErrNotifyObj);
+            }
+            BusinessLayerResult<BlogYazısı> res = blogYazısıManager.GetRemoveById(id);
+            if (res.Errors.Count > 0)
+            {
+                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                {
+                    Items = res.Errors,
+                    Title = "Blog Yazısı Silinemedi",
+                    RedirectingUrl = "/BlogYazısı/Index"
+                };
+                return View("Error", ErrNotifyObj);
+            }
             return RedirectToAction("Index");
         }
     }
