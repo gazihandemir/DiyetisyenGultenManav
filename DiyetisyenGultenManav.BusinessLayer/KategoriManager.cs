@@ -45,6 +45,27 @@ namespace DiyetisyenGultenManav.BusinessLayer
 
             return res;
         }
+        public BusinessLayerResult<Kategori> CreateKategori(Kategori data)
+        {
+            BusinessLayerResult<Kategori> res = new BusinessLayerResult<Kategori>();
+            Kategori db_kategori = Find(x => x.Title == data.Title);
+            res.Result = data;
+            if (db_kategori != null)
+            {
+                if (db_kategori.Title == data.Title)
+                {
+                    res.AddError(ErrorMessageCode.KategoriTitleAlreadyExists, "Kategori Başlığı kayıtlı");
+                }
+            }
+            else
+            {
+                if (base.Insert(res.Result) == 0)
+                {
+                    res.AddError(ErrorMessageCode.KategoriIsNotInserted, "Kategori Eklenemedi");
+                }
+            }
+            return res;
+        }
         // Kategori silme kod çözümü
         public override int Delete(Kategori kategori)
         {

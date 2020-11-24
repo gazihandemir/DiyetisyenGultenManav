@@ -63,14 +63,22 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             ModelState.Remove("ModifiedOn");
             ModelState.Remove("ModifiedUsername");
             if (ModelState.IsValid)
-            {
-                kategoriManager.Insert(kategori);
+            {                //kategoriManager.Insert(kategori);
+                BusinessLayerResult<Kategori> res = kategoriManager.CreateKategori(kategori);
+                if (res.Errors.Count > 0)
+                {
+                    ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                    {
+                        Items = res.Errors,
+                        Title = "Blog Yazısı Oluşturulamadı.",
+                        RedirectingUrl = "/BlogYazısı/Index"
+                    };
+                    return View("Error", ErrNotifyObj);
+                }
                 return RedirectToAction("Index");
             }
-
-            return View(kategori);
+            return View();
         }
-
         // GET: Kategori/Edit/5
         public ActionResult Edit(int? id)
         {

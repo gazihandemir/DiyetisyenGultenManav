@@ -30,5 +30,6 @@
         KategoriIsNotFound = 401,
         KategoriTitleAlreadyExists = 402,
         KategoriCouldNotUpdated = 403,
+        KategoriIsNotInserted = 404,
     }
 }
