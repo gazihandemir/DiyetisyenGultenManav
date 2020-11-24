@@ -16,10 +16,9 @@
         // Blog Yazısı 
         BlogYazisiTitleAlreadyExists = 201,
         BlogYazisiCouldNotUpdated = 202,
-        BlogYazısıIsNotFound = 203,
-        BlogYazısıTitleAlreadyExists = 204,
-        BlogYazısıIsNotInserted = 205,
-        BlogYazısıCouldNotRemove = 206,
+        BlogYazısıTitleAlreadyExists = 203,
+        BlogYazısıIsNotInserted = 204,
+        BlogYazısıCouldNotRemove = 205,
         // Diet
         DietIsNotFound = 301,
         DietCouldNotRemove = 302,
@@ -36,5 +35,8 @@
         PaketCouldNotRemove = 502,
         PaketCouldNotUpdated = 503,
         PaketIsNotInserted = 504,
+        // Contact
+        ContactIsNotFound = 601,
+
     }
 }
