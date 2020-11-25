@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using DiyetisyenGultenManav.BusinessLayer;
 using DiyetisyenGultenManav.BusinessLayer.Results;
 using DiyetisyenGultenManav.Entities;
+using DiyetisyenGultenManav.WebApp.Models;
 using DiyetisyenGultenManav.WebApp.ViewModels;
 
 namespace DiyetisyenGultenManav.WebApp.Controllers
@@ -65,6 +66,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             if (ModelState.IsValid)
             {                //kategoriManager.Insert(kategori);
                 BusinessLayerResult<Kategori> res = kategoriManager.CreateKategori(kategori);
+                CacheHelper.RemoveKategorilerFromCache();
                 if (res.Errors.Count > 0)
                 {
                     ErrorViewModel ErrNotifyObj = new ErrorViewModel()
@@ -169,6 +171,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         {
             Kategori kategori = kategoriManager.Find(x => x.Id == id);
             kategoriManager.Delete(kategori);
+            CacheHelper.RemoveKategorilerFromCache();
             return RedirectToAction("Index");
         }
     }

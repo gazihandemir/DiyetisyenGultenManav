@@ -3,6 +3,7 @@ using DiyetisyenGultenManav.BusinessLayer.Results;
 using DiyetisyenGultenManav.Entities;
 using DiyetisyenGultenManav.Entities.Messages;
 using DiyetisyenGultenManav.Entities.ValueObjects;
+using DiyetisyenGultenManav.WebApp.Models;
 using DiyetisyenGultenManav.WebApp.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -106,8 +107,8 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         }
         public ActionResult ShowProfile()
         {
-            Kullanıcı currentUser = Session["login"] as Kullanıcı;
-            BusinessLayerResult<Kullanıcı> res = kullanıcıManager.GetUserById(currentUser.Id);
+            //Kullanıcı currentUser = Session["login"] as Kullanıcı;
+            BusinessLayerResult<Kullanıcı> res = kullanıcıManager.GetUserById(/*currentUser*/CurrentSession.User.Id);
             if (res.Errors.Count > 0)
             {
                 ErrorViewModel ErrNotifyObj = new ErrorViewModel()
@@ -123,8 +124,8 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         }
         public ActionResult EditProfile()
         {
-            Kullanıcı currentUser = Session["login"] as Kullanıcı;
-            BusinessLayerResult<Kullanıcı> res = kullanıcıManager.GetUserById(currentUser.Id);
+            //Kullanıcı currentUser = Session["login"] as Kullanıcı;
+            BusinessLayerResult<Kullanıcı> res = kullanıcıManager.GetUserById(/*currentUser*/CurrentSession.User.Id);
             if (res.Errors.Count > 0)
             {
                 ErrorViewModel ErrNotifyObj = new ErrorViewModel()
@@ -171,15 +172,16 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                     };
                     return View("Error", ErrNotifyObj);
                 }
-                Session["login"] = res.Result;
+                //Session["login"] = res.Result;
+                CurrentSession.Set<Kullanıcı>("login", res.Result);
                 return RedirectToAction("ShowProfile");
             }
             return View();
         }
         public ActionResult RemoveProfile()
         {
-            Kullanıcı currentUser = Session["login"] as Kullanıcı;
-            BusinessLayerResult<Kullanıcı> res = kullanıcıManager.RemoveUserById(currentUser.Id);
+            //Kullanıcı currentUser = Session["login"] as Kullanıcı;
+            BusinessLayerResult<Kullanıcı> res = kullanıcıManager.RemoveUserById(/*currentUser*/CurrentSession.User.Id);
             if (res.Errors.Count > 0)
             {
                 ErrorViewModel ErrNotifyObj = new ErrorViewModel()
@@ -213,7 +215,8 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
 
                     return View(model);
                 }
-                Session["login"] = res.Result;   // session'a kullanıcı bilgi saklama
+                //Session["login"] = res.Result;   // session'a kullanıcı bilgi saklama
+                CurrentSession.Set<Kullanıcı>("login", res.Result);
                 return RedirectToAction("Index"); // Yönlendirme
             }
             return View(model);

@@ -1,5 +1,6 @@
 ﻿using DiyetisyenGultenManav.Common;
 using DiyetisyenGultenManav.Entities;
+using DiyetisyenGultenManav.WebApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +12,21 @@ namespace DiyetisyenGultenManav.WebApp.Init
     {
         public string GetCurrentUsername()
         {
-            if (HttpContext.Current.Session["login"] != null)
+            /*  if (HttpContext.Current.Session["login"] != null)
+              {
+                  Kullanıcı user = HttpContext.Current.Session["login"] as Kullanıcı;
+                  return user.Username;
+              }
+            */
+            Kullanıcı kullanıcı = CurrentSession.User;
+            if (kullanıcı != null)
             {
-                Kullanıcı user = HttpContext.Current.Session["login"] as Kullanıcı;
-                return user.Username;
+                return kullanıcı.Username;
             }
-            return "system";
+            else
+            {
+                return "system";
+            }
         }
     }
 }

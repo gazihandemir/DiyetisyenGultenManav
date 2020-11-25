@@ -59,7 +59,8 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         }
         public ActionResult Create()
         {
-            ViewBag.KategoriId = new SelectList(kategoriManager.List(), "Id", "Title");
+            //ViewBag.KategoriId = new SelectList(kategoriManager.List(), "Id", "Title");
+            ViewBag.KategoriId = new SelectList(CacheHelper.GetKategorilerFromCache(), "Id", "Title");
             return View();
         }
         [HttpPost]
@@ -97,7 +98,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 //blogYazısıManager.Insert(blogYazısı);
                 return RedirectToAction("Index");
             }
-            ViewBag.KategoriId = new SelectList(kategoriManager.List(), "Id", "Title", blogYazısı.KategoriId);
+            ViewBag.KategoriId = new SelectList(CacheHelper.GetKategorilerFromCache(), "Id", "Title", blogYazısı.KategoriId);
             return View();
         }
         public ActionResult Edit(int? id)
@@ -115,7 +116,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 return View("Error", ErrNotifyObj);
             }
 
-            ViewBag.KategoriId = new SelectList(kategoriManager.List(), "Id", "Title", blogYazısı.KategoriId);
+            ViewBag.KategoriId = new SelectList(CacheHelper.GetKategorilerFromCache(), "Id", "Title", blogYazısı.KategoriId);
             return View(res.Result);
 
             /*    if (id == null)
@@ -175,7 +176,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 //blogYazısıManager.Update(db_blog);
                 return RedirectToAction("Index");
             }
-            ViewBag.KategoriId = new SelectList(kategoriManager.List(), "Id", "Title", blogYazısı.KategoriId);
+            ViewBag.KategoriId = new SelectList(CacheHelper.GetKategorilerFromCache(), "Id", "Title", blogYazısı.KategoriId);
             return View();
         }
         public ActionResult Delete(int? id)
