@@ -18,7 +18,9 @@
         BlogYazisiCouldNotUpdated = 202,
         BlogYazısıTitleAlreadyExists = 203,
         OdemeBildirimiIsNotInserted = 204,
-        BlogYazısıCouldNotRemove = 205,
+        BlogYazısıCouldNotRemove = 205, 
+        BlogYazısıIsNotFound = 206,
+
         // Diet
         DietIsNotFound = 301,
         DietCouldNotRemove = 302,
@@ -47,5 +49,7 @@
         OdemeBildirimiAdminCouldNotUpdated = 703,
         OdemeBildirimiUserCouldNotUpdated = 704,
         OdemeBildirimiIdAlreadyExists = 705,
+        // Paket Talebi
+        PaketTalebiIsNotFound = 801,
     }
 }

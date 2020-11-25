@@ -18,7 +18,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
             res.Result = Find(x => x.Id == id);
             if (res.Result == null)
             {
-                res.AddError(ErrorMessageCode.ContactIsNotFound, "Blog Yazısı Bulunamadı");
+                res.AddError(ErrorMessageCode.BlogYazısıIsNotFound, "Blog Yazısı Bulunamadı");
             }
             return res;
         }

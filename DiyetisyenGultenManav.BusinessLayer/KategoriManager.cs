@@ -82,7 +82,8 @@ namespace DiyetisyenGultenManav.BusinessLayer
                 blogYazısıManager.Delete(blog);
             }
             return base.Delete(kategori);
-        } /* 
+        } 
+        /* 
           //     private DataAccessLayer.EntityFramework.Repository<Kategori> repo_kategori = new DataAccessLayer.EntityFramework.Repository<Kategori>();
                 public List<Kategori> GetKategoriler()
                   {

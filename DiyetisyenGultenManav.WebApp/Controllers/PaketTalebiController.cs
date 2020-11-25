@@ -7,8 +7,10 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DiyetisyenGultenManav.BusinessLayer;
+using DiyetisyenGultenManav.BusinessLayer.Results;
 using DiyetisyenGultenManav.Entities;
 using DiyetisyenGultenManav.WebApp.Data;
+using DiyetisyenGultenManav.WebApp.ViewModels;
 
 namespace DiyetisyenGultenManav.WebApp.Controllers
 {
@@ -25,16 +27,27 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         // GET: PaketTalebi/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            /*   if (id == null)
+               {
+                   return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+               }
+               PaketTalebi paketTalebi = paketTalebiManager.Find(x => x.Id == id);
+               if (paketTalebi == null)
+               {
+                   return HttpNotFound();
+               }*/
+            BusinessLayerResult<PaketTalebi> res = paketTalebiManager.GetPaketTalebiById(id);
+            if (res.Errors.Count > 0)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                {
+                    Items = res.Errors,
+                    Title = "Paket Talebi Detayı Bulunamadı",
+                    RedirectingUrl = "/PaketTalebi/Index"
+                };
+                return View("Error", ErrNotifyObj);
             }
-            PaketTalebi paketTalebi = paketTalebiManager.Find(x => x.Id == id);
-            if (paketTalebi == null)
-            {
-                return HttpNotFound();
-            }
-            return View(paketTalebi);
+            return View(res.Result);
         }
 
         // GET: PaketTalebi/Create
