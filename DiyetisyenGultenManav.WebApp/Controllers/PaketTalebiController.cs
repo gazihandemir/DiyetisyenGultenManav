@@ -65,11 +65,22 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             ModelState.Remove("ModifiedUsername");
             if (ModelState.IsValid)
             {
-                paketTalebiManager.Insert(paketTalebi);
-                return RedirectToAction("Index");
+                //paketTalebiManager.Insert(paketTalebi);
+                BusinessLayerResult<PaketTalebi> res = paketTalebiManager.CreatePaketTalebi(paketTalebi);
+                if (res.Errors.Count > 0)
+                {
+                    ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                    {
+                        Items = res.Errors,
+                        Title = "Paket Talebi Oluşturulamadı.",
+                        RedirectingUrl = "Home/Index"
+                    };
+                    return View("Error", ErrNotifyObj);
+                }
+                return RedirectToAction("Index","Home");
             }
 
-            return View(paketTalebi);
+            return View();
         }
 
         // GET: PaketTalebi/Edit/5

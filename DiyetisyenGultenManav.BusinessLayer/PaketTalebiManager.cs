@@ -64,5 +64,25 @@ namespace DiyetisyenGultenManav.BusinessLayer
             return res;
 
         }
+        public BusinessLayerResult<PaketTalebi> CreatePaketTalebi(PaketTalebi data)
+        {
+            PaketTalebi db_paketTalebi = Find(x => x.EkAciklamalar == data.EkAciklamalar);
+            BusinessLayerResult<PaketTalebi> res = new BusinessLayerResult<PaketTalebi>();
+            res.Result = data;
+            if (db_paketTalebi != null)
+            {
+                if (db_paketTalebi.EkAciklamalar == data.EkAciklamalar)
+                {
+                    res.AddError(ErrorMessageCode.PaketTalebiEkAciklamalarAlreadyExists, "Ek Açıklama 1 kez yazılabilir.");
+                }
+            }
+
+            if (base.Insert(res.Result) == 0)
+            {
+                res.AddError(ErrorMessageCode.PaketTalebiIsNotInserted, "Paket Talebi eklenemedi");
+            }
+            return res;
+
+        }
     }
 }

@@ -54,5 +54,6 @@
         PaketTalebiCouldNotRemove = 802,
         PaketTalebiEkAciklamalarAlreadyExists = 803,
         PaketTalebiCouldNotUpdated = 804,
+        PaketTalebiIsNotInserted = 805,
     }
 }
