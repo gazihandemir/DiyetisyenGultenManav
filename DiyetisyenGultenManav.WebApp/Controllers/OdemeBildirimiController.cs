@@ -38,11 +38,23 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             ModelState.Remove("ModifiedUsername");
             if (ModelState.IsValid)
             {
-                odemeBildirimi.Owner = CurrentSession.User;
-                odemeBildirimi.IsNotification = true;
-                odemeBildirimi.IsPay = false;
-                odemeBildirimi.IsOkey = false;
-                odemeBildirimiManager.Insert(odemeBildirimi);
+                /*  odemeBildirimi.Owner = CurrentSession.User;
+                  odemeBildirimi.IsNotification = true;
+                  odemeBildirimi.IsPay = false;
+                  odemeBildirimi.IsOkey = false;
+                  odemeBildirimiManager.Insert(odemeBildirimi);
+                */
+                BusinessLayerResult<OdemeBildirimi> res = odemeBildirimiManager.CreateOdemeBildirimiOwner(odemeBildirimi, CurrentSession.User);
+                if (res.Errors.Count > 0)
+                {
+                    ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                    {
+                        Items = res.Errors,
+                        Title = "Ödeme Bildirimi  Oluşturulamadı.",
+                        RedirectingUrl = "/OdemeBildirimi/IndexOdemeBildirimiOwner"
+                    };
+                    return View("Error", ErrNotifyObj);
+                }
                 return RedirectToAction("IndexOdemeBildirimiOwner");
             }
             return View(odemeBildirimi);
@@ -105,35 +117,19 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             {
                 //  odemeBildirimiManager.Insert(odemeBildirimi);
                 BusinessLayerResult<OdemeBildirimi> res = odemeBildirimiManager.CreateOdemeBildirimi(odemeBildirimi);
-                if (CurrentSession.User.IsAdmin)
+
+                if (res.Errors.Count > 0)
                 {
-                    if (res.Errors.Count > 0)
+                    ErrorViewModel ErrNotifyObj = new ErrorViewModel()
                     {
-                        ErrorViewModel ErrNotifyObj = new ErrorViewModel()
-                        {
-                            Items = res.Errors,
-                            Title = "Ödeme Bildirimi  Oluşturulamadı.",
-                            RedirectingUrl = "/OdemeBildirimi/Index"
-                        };
-                        return View("Error", ErrNotifyObj);
-                    }
-                    return RedirectToAction("Index");
+                        Items = res.Errors,
+                        Title = "Ödeme Bildirimi  Oluşturulamadı.",
+                        RedirectingUrl = "/OdemeBildirimi/Index"
+                    };
+                    return View("Error", ErrNotifyObj);
                 }
-                else
-                {
-                    if (res.Errors.Count > 0)
-                    {
-                        ErrorViewModel ErrNotifyObj = new ErrorViewModel()
-                        {
-                            Items = res.Errors,
-                            Title = "Ödeme Bildirimi Oluşturulamadı.",
-                            RedirectingUrl = "/OdemeBildirimi/IndexOdemeBildirimiOwner"
-                        };
-                        return View("Error", ErrNotifyObj);
-                    }
-                    return RedirectToAction("IndexOdemeBildirimiOwner");
-                }
-               
+                return RedirectToAction("Index");
+
             }
             ViewBag.KullanıcıId = new SelectList(kullanıcıManager.List(), "Id", "Username");
             odemeBildirimi.Owner = ViewBag.KullanıcıId;

@@ -52,10 +52,10 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
             if (obj is EntityBase)
             {
                 EntityBase o = obj as EntityBase;
- 
+
                 o.ModifiedOn = DateTime.Now;
-              //  o.ModifiedUsername = "system"; // TODO : işlem yapan kullanıcı adı yazılmalı.
-              o.ModifiedUsername = App.Common.GetCurrentUsername(); 
+                //  o.ModifiedUsername = "system"; // TODO : işlem yapan kullanıcı adı yazılmalı.
+                o.ModifiedUsername = App.Common.GetCurrentUsername();
 
             }
             return Save();

@@ -91,6 +91,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
         {
             OdemeBildirimi db_odeme = Find(x => x.Id == data.Id);
             BusinessLayerResult<OdemeBildirimi> res = new BusinessLayerResult<OdemeBildirimi>();
+            res.Result = data;
             if (db_odeme != null)
             {
                 if (db_odeme.Id == data.Id)
@@ -102,11 +103,37 @@ namespace DiyetisyenGultenManav.BusinessLayer
             {
                 if (base.Insert(res.Result) == 0)
                 {
-                    res.AddError(ErrorMessageCode.OdemeBildirimiIsNotInserted, "Kullanıcı eklenemedi");
+                    res.AddError(ErrorMessageCode.OdemeBildirimiIsNotInserted, "Ödeme Bildirimi eklenemedi");
                 }
             }
 
             return res;
+        }
+        public BusinessLayerResult<OdemeBildirimi> CreateOdemeBildirimiOwner(OdemeBildirimi data, Kullanıcı user)
+        {
+            OdemeBildirimi db_odeme = Find(x => x.Id == data.Id);
+            BusinessLayerResult<OdemeBildirimi> res = new BusinessLayerResult<OdemeBildirimi>();
+            res.Result = data;
+            if (db_odeme != null)
+            {
+                if (db_odeme.Id == data.Id)
+                {
+                    res.AddError(ErrorMessageCode.OdemeBildirimiIdAlreadyExists, "Ödeme Bildirimi ID kayıtlı");
+                }
+            }
+            else
+            {
+                data.Owner = user;
+                data.IsNotification = true;
+                data.IsPay = false;
+                data.IsOkey = false;
+                if (base.Insert(res.Result) == 0)
+                {
+                    res.AddError(ErrorMessageCode.OdemeBildirimiIsNotInserted, "Ödeme Bildirimi eklenemedi");
+                }
+            }
+            return res;
+
         }
     }
 }
