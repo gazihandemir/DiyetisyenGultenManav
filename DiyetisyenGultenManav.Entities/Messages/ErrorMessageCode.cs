@@ -17,7 +17,7 @@
         BlogYazisiTitleAlreadyExists = 201,
         BlogYazisiCouldNotUpdated = 202,
         BlogYazısıTitleAlreadyExists = 203,
-        BlogYazısıIsNotInserted = 204,
+        OdemeBildirimiIsNotInserted = 204,
         BlogYazısıCouldNotRemove = 205,
         // Diet
         DietIsNotFound = 301,
@@ -46,5 +46,6 @@
         OdemeBildirimiCouldNotRemove = 702,
         OdemeBildirimiAdminCouldNotUpdated = 703,
         OdemeBildirimiUserCouldNotUpdated = 704,
+        OdemeBildirimiIdAlreadyExists = 705,
     }
 }

@@ -97,7 +97,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
                 }
                 if (base.Insert(res.Result) == 0)
                 {
-                    res.AddError(ErrorMessageCode.BlogYazısıIsNotInserted, "Kullanıcı eklenemedi");
+                    res.AddError(ErrorMessageCode.OdemeBildirimiIsNotInserted, "Kullanıcı eklenemedi");
                 }
             }
             return res;

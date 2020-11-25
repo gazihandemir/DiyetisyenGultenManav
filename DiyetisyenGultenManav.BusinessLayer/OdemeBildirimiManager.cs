@@ -87,5 +87,26 @@ namespace DiyetisyenGultenManav.BusinessLayer
             }
             return res;
         }
+        public BusinessLayerResult<OdemeBildirimi> CreateOdemeBildirimi(OdemeBildirimi data)
+        {
+            OdemeBildirimi db_odeme = Find(x => x.Id == data.Id);
+            BusinessLayerResult<OdemeBildirimi> res = new BusinessLayerResult<OdemeBildirimi>();
+            if (db_odeme != null)
+            {
+                if (db_odeme.Id == data.Id)
+                {
+                    res.AddError(ErrorMessageCode.OdemeBildirimiIdAlreadyExists, "Ödeme Bildirimi ID kayıtlı");
+                }
+            }
+            else
+            {
+                if (base.Insert(res.Result) == 0)
+                {
+                    res.AddError(ErrorMessageCode.OdemeBildirimiIsNotInserted, "Kullanıcı eklenemedi");
+                }
+            }
+
+            return res;
+        }
     }
 }

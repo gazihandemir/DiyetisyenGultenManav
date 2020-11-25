@@ -103,9 +103,37 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             ModelState.Remove("ModifiedUsername");
             if (ModelState.IsValid)
             {
-                odemeBildirimiManager.Insert(odemeBildirimi);
-
-                return RedirectToAction("Index");
+                //  odemeBildirimiManager.Insert(odemeBildirimi);
+                BusinessLayerResult<OdemeBildirimi> res = odemeBildirimiManager.CreateOdemeBildirimi(odemeBildirimi);
+                if (CurrentSession.User.IsAdmin)
+                {
+                    if (res.Errors.Count > 0)
+                    {
+                        ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                        {
+                            Items = res.Errors,
+                            Title = "Ödeme Bildirimi  Oluşturulamadı.",
+                            RedirectingUrl = "/OdemeBildirimi/Index"
+                        };
+                        return View("Error", ErrNotifyObj);
+                    }
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    if (res.Errors.Count > 0)
+                    {
+                        ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                        {
+                            Items = res.Errors,
+                            Title = "Ödeme Bildirimi Oluşturulamadı.",
+                            RedirectingUrl = "/OdemeBildirimi/IndexOdemeBildirimiOwner"
+                        };
+                        return View("Error", ErrNotifyObj);
+                    }
+                    return RedirectToAction("IndexOdemeBildirimiOwner");
+                }
+               
             }
             ViewBag.KullanıcıId = new SelectList(kullanıcıManager.List(), "Id", "Username");
             odemeBildirimi.Owner = ViewBag.KullanıcıId;
