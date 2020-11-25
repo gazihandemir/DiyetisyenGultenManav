@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DiyetisyenGultenManav.BusinessLayer
 {
-   public class PaketTalebiManager : ManagerBase<PaketTalebi>
+    public class PaketTalebiManager : ManagerBase<PaketTalebi>
     {
         public BusinessLayerResult<PaketTalebi> GetPaketTalebiById(int? id)
         {
@@ -20,6 +20,25 @@ namespace DiyetisyenGultenManav.BusinessLayer
             {
                 res.AddError(ErrorMessageCode.PaketTalebiIsNotFound, "Paket Talebi Bulunamadı");
             }
+            return res;
+        }
+        public BusinessLayerResult<PaketTalebi> GetRemoveById(int id)
+        {
+            BusinessLayerResult<PaketTalebi> res = new BusinessLayerResult<PaketTalebi>();
+            PaketTalebi db_paketTalebi = Find(x => x.Id == id);
+            if (db_paketTalebi != null)
+            {
+                if (Delete(db_paketTalebi) == 0)
+                {
+                    res.AddError(ErrorMessageCode.PaketTalebiCouldNotRemove, "Paket Talebi Silinemedi.");
+                    return res;
+                }
+            }
+            else
+            {
+                res.AddError(ErrorMessageCode.PaketTalebiIsNotFound, "Paket Talebi Bulunamadı.");
+            }
+
             return res;
         }
     }

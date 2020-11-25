@@ -111,16 +111,30 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         // GET: PaketTalebi/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            /*  if (id == null)
+              {
+                  return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+              }
+              PaketTalebi paketTalebi = paketTalebiManager.Find(x => x.Id == id);
+              if (paketTalebi == null)
+              {
+                  return HttpNotFound();
+              }*/
+            BusinessLayerResult<PaketTalebi> res = paketTalebiManager.GetPaketTalebiById(id);
+            if (res.Errors.Count > 0)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                {
+                    Items = res.Errors,
+                    Title = "Paket Talebi Bulunamadı",
+                    RedirectingUrl = "/PaketTalebi/Index",
+                    IsRedirecting = true,
+                    RedirectingTimeout = 3000
+
+                };
+                return View("Error", ErrNotifyObj);
             }
-            PaketTalebi paketTalebi = paketTalebiManager.Find(x => x.Id == id);
-            if (paketTalebi == null)
-            {
-                return HttpNotFound();
-            }
-            return View(paketTalebi);
+            return View(res.Result);
         }
 
         // POST: PaketTalebi/Delete/5
@@ -128,8 +142,20 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            PaketTalebi paketTalebi = paketTalebiManager.Find(x => x.Id == id);
-            paketTalebiManager.Delete(paketTalebi);
+            //PaketTalebi paketTalebi = paketTalebiManager.Find(x => x.Id == id);
+            //paketTalebiManager.Delete(paketTalebi);
+            BusinessLayerResult<PaketTalebi> res = paketTalebiManager.GetRemoveById(id);
+
+            if (res.Errors.Count > 0)
+            {
+                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                {
+                    Items = res.Errors,
+                    Title = "Paket Talebi Silinemedi",
+                    RedirectingUrl = "/PaketTalebi/Index"
+                };
+                return View("Error", ErrNotifyObj);
+            }
             return RedirectToAction("Index");
         }
     }
