@@ -51,5 +51,8 @@
         OdemeBildirimiIdAlreadyExists = 705,
         // Paket Talebi
         PaketTalebiIsNotFound = 801,
+        PaketTalebiCouldNotRemove = 802,
+        PaketTalebiEkAciklamalarAlreadyExists = 803,
+        PaketTalebiCouldNotUpdated = 804,
     }
 }

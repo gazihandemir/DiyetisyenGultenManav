@@ -75,16 +75,28 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         // GET: PaketTalebi/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            /*  if (id == null)
+              {
+                  return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+              }
+              PaketTalebi paketTalebi = paketTalebiManager.Find(x => x.Id == id);
+              if (paketTalebi == null)
+              {
+                  return HttpNotFound();
+              }*/
+            BusinessLayerResult<PaketTalebi> res = paketTalebiManager.GetPaketTalebiById(id);
+            if (res.Errors.Count > 0)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                {
+                    Items = res.Errors,
+                    Title = "Paket Talebi Bulunamadı",
+                    RedirectingUrl = "/PaketTalebi/Index"
+                };
+                return View("Error", ErrNotifyObj);
             }
-            PaketTalebi paketTalebi = paketTalebiManager.Find(x => x.Id == id);
-            if (paketTalebi == null)
-            {
-                return HttpNotFound();
-            }
-            return View(paketTalebi);
+
+            return View(res.Result);
         }
 
 
@@ -97,15 +109,26 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             ModelState.Remove("ModifiedUsername");
             if (ModelState.IsValid)
             {
-                PaketTalebi db_paketTalebi = paketTalebiManager.Find(x => x.Id == paketTalebi.Id);
-                db_paketTalebi.IsimSoyisim = paketTalebi.IsimSoyisim;
-                db_paketTalebi.TelefonNo = paketTalebi.TelefonNo;
-                db_paketTalebi.Program = paketTalebi.Program;
-                db_paketTalebi.EkAciklamalar = paketTalebi.EkAciklamalar;
-                paketTalebiManager.Update(db_paketTalebi);
+                /*     PaketTalebi db_paketTalebi = paketTalebiManager.Find(x => x.Id == paketTalebi.Id);
+                     db_paketTalebi.IsimSoyisim = paketTalebi.IsimSoyisim;
+                     db_paketTalebi.TelefonNo = paketTalebi.TelefonNo;
+                     db_paketTalebi.Program = paketTalebi.Program;
+                     db_paketTalebi.EkAciklamalar = paketTalebi.EkAciklamalar;
+                     paketTalebiManager.Update(db_paketTalebi);*/
+                BusinessLayerResult<PaketTalebi> res = paketTalebiManager.UpdatePaketTalebi(paketTalebi);
+                if (res.Errors.Count > 0)
+                {
+                    ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                    {
+                        Items = res.Errors,
+                        Title = "Paket Talebi Güncellenemedi",
+                        RedirectingUrl = "/PaketTalebi/Index"
+                    };
+                    return View("Error", ErrNotifyObj);
+                }
                 return RedirectToAction("Index");
             }
-            return View(paketTalebi);
+            return View();
         }
 
         // GET: PaketTalebi/Delete/5
