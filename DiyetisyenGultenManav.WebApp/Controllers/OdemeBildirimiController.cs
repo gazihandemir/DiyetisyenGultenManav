@@ -93,7 +93,6 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             ViewBag.KullanıcıId = new SelectList(kullanıcıManager.List(), "Id", "Username");
             return View();
         }
-
         // POST: OdemeBildirimi/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -116,18 +115,44 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         // GET: OdemeBildirimi/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            /*  if (id == null)
+              {
+                  return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+              }
+              OdemeBildirimi odemeBildirimi = odemeBildirimiManager.Find(x => x.Id == id);
+              if (odemeBildirimi == null)
+              {
+                  return HttpNotFound();
+              }*/
+            BusinessLayerResult<OdemeBildirimi> res = odemeBildirimiManager.GetOdemeBildirimiById(id);
+            if (CurrentSession.User.IsAdmin)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (res.Errors.Count > 0)
+                {
+                    ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                    {
+                        Items = res.Errors,
+                        Title = "Ödeme Bildirimi Bulunamadı",
+                        RedirectingUrl = "/OdemeBildirimi/Index"
+                    };
+                    return View("Error", ErrNotifyObj);
+                }
             }
-            OdemeBildirimi odemeBildirimi = odemeBildirimiManager.Find(x => x.Id == id);
-            if (odemeBildirimi == null)
+            else
             {
-                return HttpNotFound();
+                if (res.Errors.Count > 0)
+                {
+                    ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                    {
+                        Items = res.Errors,
+                        Title = "Ödeme Bildirimi Bulunamadı",
+                        RedirectingUrl = "/OdemeBildirimi/IndexOdemeBildirimiOwner"
+                    };
+                    return View("Error", ErrNotifyObj);
+                }
             }
-            return View(odemeBildirimi);
+            return View(res.Result);
         }
-
         // POST: OdemeBildirimi/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -141,34 +166,61 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             ModelState.Remove("IsOkey");
             if (ModelState.IsValid)
             {
-                OdemeBildirimi db_odeme = odemeBildirimiManager.Find(x => x.Id == odemeBildirimi.Id);
-                db_odeme.IsimSoyisim = odemeBildirimi.IsimSoyisim;
-                db_odeme.BankaIsmi = odemeBildirimi.BankaIsmi;
-                db_odeme.YatirilanMiktar = odemeBildirimi.YatirilanMiktar;
-                db_odeme.TelefonNo = odemeBildirimi.TelefonNo;
-                db_odeme.EkAciklamalar = odemeBildirimi.EkAciklamalar;
+                /*      OdemeBildirimi db_odeme = odemeBildirimiManager.Find(x => x.Id == odemeBildirimi.Id);
+                      db_odeme.IsimSoyisim = odemeBildirimi.IsimSoyisim;
+                      db_odeme.BankaIsmi = odemeBildirimi.BankaIsmi;
+                      db_odeme.YatirilanMiktar = odemeBildirimi.YatirilanMiktar;
+                      db_odeme.TelefonNo = odemeBildirimi.TelefonNo;
+                      db_odeme.EkAciklamalar = odemeBildirimi.EkAciklamalar;
+                      if (CurrentSession.User.IsAdmin)
+                      {
+                          db_odeme.IsNotification = odemeBildirimi.IsNotification;
+                          db_odeme.IsPay = odemeBildirimi.IsPay;
+                          db_odeme.IsOkey = odemeBildirimi.IsOkey; 
+                          odemeBildirimiManager.Update(db_odeme);
+                          return RedirectToAction("Index");
+                      }
+                      else
+                      {
+                          db_odeme.IsNotification = db_odeme.IsNotification;
+                          db_odeme.IsPay = db_odeme.IsPay;
+                          db_odeme.IsOkey = db_odeme.IsOkey;
+                          odemeBildirimiManager.Update(db_odeme);
+                          return RedirectToAction("IndexOdemeBildirimiOwner");
+                      }
+                */
+                BusinessLayerResult<OdemeBildirimi> res = odemeBildirimiManager.UpdateOdemeBildirimi(odemeBildirimi, CurrentSession.User.IsAdmin);
                 if (CurrentSession.User.IsAdmin)
                 {
-                    db_odeme.IsNotification = odemeBildirimi.IsNotification;
-                    db_odeme.IsPay = odemeBildirimi.IsPay;
-                    db_odeme.IsOkey = odemeBildirimi.IsOkey; 
-                    odemeBildirimiManager.Update(db_odeme);
+                    if (res.Errors.Count > 0)
+                    {
+                        ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                        {
+                            Items = res.Errors,
+                            Title = "Ödeme Bildirimi Güncellenemedi",
+                            RedirectingUrl = "/OdemeBildirimi/Index"
+                        };
+                        return View("Error", ErrNotifyObj);
+                    }
                     return RedirectToAction("Index");
                 }
                 else
                 {
-                    db_odeme.IsNotification = db_odeme.IsNotification;
-                    db_odeme.IsPay = db_odeme.IsPay;
-                    db_odeme.IsOkey = db_odeme.IsOkey;
-                    odemeBildirimiManager.Update(db_odeme);
+                    if (res.Errors.Count > 0)
+                    {
+                        ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                        {
+                            Items = res.Errors,
+                            Title = "Ödeme Bildirimi Güncellenemedi",
+                            RedirectingUrl = "/OdemeBildirimi/IndexOdemeBildirimiOwner"
+                        };
+                        return View("Error", ErrNotifyObj);
+                    }
                     return RedirectToAction("IndexOdemeBildirimiOwner");
                 }
-
-
             }
-            return View(odemeBildirimi);
+            return View();
         }
-
         // GET: OdemeBildirimi/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -197,7 +249,6 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View(res.Result);
         }
-
         // POST: OdemeBildirimi/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -205,7 +256,6 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         {
             //OdemeBildirimi odemeBildirimi = odemeBildirimiManager.Find(x => x.Id == id);
             //odemeBildirimiManager.Delete(odemeBildirimi);
-
             BusinessLayerResult<OdemeBildirimi> res = odemeBildirimiManager.GetRemoveById(id);
             if (res.Errors.Count > 0)
             {

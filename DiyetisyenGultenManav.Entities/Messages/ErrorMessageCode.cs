@@ -44,5 +44,7 @@
         // Ödeme Bildirimi
         OdemeBildirimiIsNotFound = 701,
         OdemeBildirimiCouldNotRemove = 702,
+        OdemeBildirimiAdminCouldNotUpdated = 703,
+        OdemeBildirimiUserCouldNotUpdated = 704,
     }
 }

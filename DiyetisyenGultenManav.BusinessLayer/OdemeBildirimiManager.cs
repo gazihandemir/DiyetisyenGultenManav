@@ -50,5 +50,42 @@ namespace DiyetisyenGultenManav.BusinessLayer
             }
             return res;
         }
+        public BusinessLayerResult<OdemeBildirimi> UpdateOdemeBildirimi(OdemeBildirimi data, Boolean isAdmin)
+        {
+            OdemeBildirimi db_odeme = Find(x => x.Id == data.Id);
+            BusinessLayerResult<OdemeBildirimi> res = new BusinessLayerResult<OdemeBildirimi>();
+            if (db_odeme != null)
+            {
+
+            }
+
+            res.Result = db_odeme;
+            res.Result.IsimSoyisim = data.IsimSoyisim;
+            res.Result.BankaIsmi = data.BankaIsmi;
+            res.Result.YatirilanMiktar = data.YatirilanMiktar;
+            res.Result.TelefonNo = data.TelefonNo;
+            res.Result.EkAciklamalar = data.EkAciklamalar;
+            if (isAdmin)
+            {
+                res.Result.IsNotification = data.IsNotification;
+                res.Result.IsPay = data.IsPay;
+                res.Result.IsOkey = data.IsOkey;
+                if (base.Update(res.Result) == 0)
+                {
+                    res.AddError(ErrorMessageCode.OdemeBildirimiAdminCouldNotUpdated, "Ödeme Bildirimi (Admin) Güncellenemedi.");
+                }
+            }
+            else
+            {
+                res.Result.IsNotification = res.Result.IsNotification;
+                res.Result.IsPay = res.Result.IsPay;
+                res.Result.IsOkey = res.Result.IsOkey;
+                if (base.Update(res.Result) == 0)
+                {
+                    res.AddError(ErrorMessageCode.OdemeBildirimiUserCouldNotUpdated, "Ödeme Bildirimi (Kullanıcı) Güncellenemedi.");
+                }
+            }
+            return res;
+        }
     }
 }
