@@ -34,11 +34,11 @@
                 i++;
                 <div class="col mb-4">
                     <div class="card ">
-                        <img src="~/ImageBlog/@blogYazısı.Picture" class="card-img-top kücükResim" >
+                        <img src="~/ImageBlog/@blogYazısı.Picture" class="card-img-top kücükResim">
                         <div class="card-body">
                             <h5 class="card-title">
-                                  @blogYazısı.Title
-                                </h5>
+                                @blogYazısı.Title
+                            </h5>
                             <p class="card-text">
                                 @if (string.IsNullOrEmpty(blogYazısı.ParagrafBir) == false && blogYazısı.ParagrafBir.Length > 60)
                                 {
@@ -48,6 +48,13 @@
                                 {
                                     @blogYazısı.ParagrafBir
                                 }
+                            </p>
+                            <p class="card-text text-bottom-left">
+                                <small class="text-muted">
+                                    <i style="color: #3498db;font-size: 12px;">Görüntülenme sayısı</i> <br />
+                                    <i class="fa fa-eye mr-1" style="color: #3498db;font-size: 20px;"></i>
+                                    <span style="color: #3498db;">41230</span>
+                                </small>
                             </p>
                             <p class="card-text text-right">
                                 <small class="text-muted">
@@ -60,29 +67,26 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="ratings">
-                                        @*<button class="btn btn-default btn-sm" type="button" data-liked="false" data-note-id="@blogYazısı.Id">
-                                                <i class="fa fa-star-o like-star mr-1"></i>&nbsp;
-                                                <span class="like-count">@blogYazısı.LikeCount</span>
-                                            </button>*@
                                         <button class="btn btn-default btn-sm " data-toggle="modal"
                                                 data-target="#modal_comment" data-blog-id="@blogYazısı.Id">
                                             <i class="fa fa-comment mr-1" style="color: #3498db;"></i>
                                             <span style="color: #3498db;">@blogYazısı.Yorumlar.Count</span>
                                         </button>
+                                        <small class="btn btn-default btn-sm " data-toggle="modal"
+                                               data-target="#modal_comment" data-blog-id="@blogYazısı.Id">
+                                            <i class="fa fa-eye mr-1" style="color: #3498db;"></i>
+                                            <b style="color: #3498db;font-size: 16px;">412310</b>
+                                        </small>
                                     </div>
                                 </div>
                                 <div class="col-md-6 text-right">
                                     @Bootstrap.LinkButton("/Home/BlogYazisiDetails/" + blogYazısı.Id, "outline-info", "btn-sm", "Details", string.Empty, "Detay")
                                 </div>
-                                @*<div class="col-md-6 text-right">
-                                        <a href="#" data-toggle="modal" data-target="#modal_notedetail"
-                                           data-note-id="@blogYazısı.Id" class="btn btn-default">Detay <i class="fa fa-info-circle ml-2"></i></a>
-                                    </div>*@
                             </div>
                         </div>
                     </div>
                 </div>
-                if (i == 9)
+                if (i == 6)
                 {
                     break;
                 }

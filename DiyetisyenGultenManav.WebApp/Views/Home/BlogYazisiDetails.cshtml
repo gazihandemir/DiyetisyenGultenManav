@@ -1,6 +1,11 @@
 ﻿@model DiyetisyenGultenManav.Entities.ValueObjects.BlogDetailViewModel
+@using DiyetisyenGultenManav.Entities
+@using DiyetisyenGultenManav.WebApp.Models
 @{
     ViewBag.Title = "Blog Yazısı";
+}
+@{
+    Kullanıcı kullanıcı = CurrentSession.User;
 }
 <style>
     .resim {
@@ -54,19 +59,43 @@
             <p>@Model.BlogYazısı.ParagrafSekiz</p>
             <p></p>
             <hr>
-
-            <!-- Comments Form -->
-            <div class="card my-4">
-                <h5 class="card-header">Leave a Comment:</h5>
-                <div class="card-body">
-                    <form>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
+            @if (kullanıcı != null)
+            {
+                using (Html.BeginForm("BlogYazisiDetails", "Home", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <!-- Comments Form -->
+                    <div class="card my-4">
+                        <h5 class="card-header">Yorum Bırak:</h5>
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group">
+                                    @Html.TextBox("yorumtxt", null, new { @class = "form-control col-md-12  text-left", placeholder = "Yorumunuzu yazınız", size = "50" })
+                                </div>
+                                <div class="col-md-12 text-right">
+                                    <button type="submit" class="btn btn-primary" >Yorum Yap</button>
+                                </div>
+                            </form>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="card my-4">
+                    <h5 class="card-header">Yorum Bırak:</h5>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <text><h3>Yorum Yapmak İçin Lütfen Giriş Yapınız</h3></text>                            </div>
+                            <div class="col-md-12 text-right">
+                                <button type="submit" class="btn btn-primary" disabled>Yorum Yap</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </div>
+            }
+
             <hr />
             @foreach (var yorumlar in Model.Yorum)
             {<!-- Single Comment -->

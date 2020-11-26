@@ -66,7 +66,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
             res.Result.Title = data.Title;
             res.Result.IsDraft = data.IsDraft;
             res.Result.DanisanPaylasimi = data.DanisanPaylasimi;
-            res.Result.TabakPaylasimi = data.DanisanPaylasimi;
+            res.Result.TabakPaylasimi = data.TabakPaylasimi;
             if (string.IsNullOrEmpty(data.Picture) == false)
             {
                 res.Result.Picture = data.Picture;

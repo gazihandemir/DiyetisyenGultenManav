@@ -22,7 +22,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         private YorumManager yorumManager = new YorumManager();
         private HomeViewModel HomeModel = new HomeViewModel();
         private BlogDetailViewModel BlogDetailModel = new BlogDetailViewModel();
-
+        // GET
         public ActionResult BlogYazisiDetails(int? id)
         {
             if (id == null)
@@ -40,13 +40,24 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View(BlogDetailModel);
         }
+        [HttpPost]
+        public ActionResult BlogYazisiDetails(int id, FormCollection frm)
+        {
+            string yorumtxt = Convert.ToString(frm["yorumtxt"].ToString());
+
+            BlogYazısı blogYazısı = blogYazısıManager.Find(x => x.Id == id);
+            Yorum yorum = new Yorum();
+            yorum.Text = yorumtxt;
+            yorum.BlogYazısı = blogYazısı;
+            yorum.Owner = CurrentSession.User;
+            blogYazısı.Yorumlar.Add(yorum);
+            BlogDetailModel.BlogYazısı = blogYazısı;
+            BlogDetailModel.Yorum = blogYazısı.Yorumlar;
+            return View(BlogDetailModel);
+        }
         public ActionResult About()
         {
             return View();
-        }
-        public ActionResult btnKirmizi()
-        {
-            return RedirectToAction("/Home/Login");
         }
         // GET: Home
         public ActionResult Index()
@@ -88,7 +99,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             HomeModel.BlogYazısı = BlogYazilari;
             HomeModel.Paket = Paketler;
             HomeModel.Kategoriler = Kategoriler;
-            return View(HomeModel);
+            return View("Blog", HomeModel);
         }
         public ActionResult ByKategori(int? id)
         {
