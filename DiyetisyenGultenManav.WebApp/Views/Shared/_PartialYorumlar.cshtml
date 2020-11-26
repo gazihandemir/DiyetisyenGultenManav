@@ -13,7 +13,7 @@
         <div class="media-body">
             <div>
                 <h5 class="mt-0">Media heading</h5>
-                <span id="yorum_text_@item.Id" contenteditable="false">
+                <span id="yorum_text_@item.Id" contenteditable="false" class="editable">
                     @item.Text
                 </span>
                 @if (kullanıcı != null && kullanıcı.Id == item.Owner.Id)

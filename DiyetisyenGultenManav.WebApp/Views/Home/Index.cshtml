@@ -108,6 +108,7 @@
 @Bootstrap.ModalPopup(id: "modal_comment", title: "Yorumlar")
 <script>
     $(function () {
+        var noteid = -1;
         var modalCommentBodyId = "#modal_comment_body";
         $('#modal_comment').on('show.bs.modal', function (e) {
             var btn = $(e.relatedTarget);
@@ -126,7 +127,9 @@
                 var btnSpan = button.find("span")
                 btnSpan.removeClass("fa-edit");
                 btnSpan.addClass("fa-check");
+                $(spanid).addClass("editable");
                 $(spanid).attr("contenteditable", true);
+                $(spanid).focus();
             }
             else {
                 button.data("edit-mode", false);
@@ -135,7 +138,25 @@
                 var btnSpan = button.find("span")
                 btnSpan.addClass("fa-edit");
                 btnSpan.removeClass("fa-check");
+                $(spanid).removeClass("editable");
                 $(spanid).attr("contenteditable", false);
+                var txt = $(spanid).text();
+                $.ajax({
+                    method: "POST",
+                    url: "/Yorum/Edit/" + yorumid,
+                    data: { text: txt }
+                }).done(function (data) {
+
+                    if (data.result) {
+                        // yorumlar partial tekrar yüklenir
+                        $(modalCommentBodyId).load("/Yorum/ShowNoteComments/" + noteid);
+
+                    } else {
+                        alert("Yorum Güncellenemedi");
+                    }
+                }).fail(function () {
+                    alert("Sunucu ile Bağlantı kurulamadı.");
+                });
             }
         }
     }

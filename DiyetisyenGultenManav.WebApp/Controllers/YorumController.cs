@@ -13,6 +13,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
     public class YorumController : Controller
     {
         private BlogYazısıManager blogYazısıManager = new BlogYazısıManager();
+        private YorumManager yorumManager = new YorumManager();
         public ActionResult ShowNoteComments(int? id) 
         {
             if (id == null)
@@ -25,6 +26,27 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 return HttpNotFound();
             }
             return PartialView("_PartialYorumlar",blogYazısı.Yorumlar);
+        }
+        [HttpPost]
+        public ActionResult Edit(int? id,string text)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Yorum yorum = yorumManager.Find(x => x.Id == id);
+            if (yorum == null)
+            {
+                return new HttpNotFoundResult();
+            }
+            yorum.Text = text;
+            if (yorumManager.Update(yorum) > 0)
+            {
+                return Json(new { result = true }, JsonRequestBehavior.AllowGet);
+            }
+            return Json(new { result = false }, JsonRequestBehavior.AllowGet);
+
+
         }
     }
 }
