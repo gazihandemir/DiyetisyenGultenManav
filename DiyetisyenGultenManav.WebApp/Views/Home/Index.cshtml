@@ -107,9 +107,9 @@
 }
 @Bootstrap.ModalPopup(id: "modal_comment", title: "Yorumlar")
 <script>
+    var noteid = -1;
+    var modalCommentBodyId = "#modal_comment_body";
     $(function () {
-        var noteid = -1;
-        var modalCommentBodyId = "#modal_comment_body";
         $('#modal_comment').on('show.bs.modal', function (e) {
             var btn = $(e.relatedTarget);
             noteid = btn.data("blog-id");
@@ -172,6 +172,23 @@
                     $(modalCommentBodyId).load("/Yorum/ShowNoteComments/" + noteid);
                 } else {
                     alert("Yorum Silinemedi");
+                }
+            }).fail(function () {
+                alert("Sunucu İle bağlantı kurulamadı.");
+            });
+        } else if (e == "new_clicked") {
+            var txt = $("#new_yorum_text").val();
+            $.ajax({
+                method: "POST",
+                url: "/Yorum/Create/",
+                data: { "text": txt, "noteid": noteid }
+            }).done(function (data) {
+
+                if (data.result) {
+                    // yorumlar partial tekrar yüklenir
+                    $(modalCommentBodyId).load("/Yorum/ShowNoteComments/" + noteid);
+                } else {
+                    alert("Yorum Eklenemedi");
                 }
             }).fail(function () {
                 alert("Sunucu İle bağlantı kurulamadı.");

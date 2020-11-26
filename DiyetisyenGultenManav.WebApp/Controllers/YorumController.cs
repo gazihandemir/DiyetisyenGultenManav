@@ -1,5 +1,6 @@
 ﻿using DiyetisyenGultenManav.BusinessLayer;
 using DiyetisyenGultenManav.Entities;
+using DiyetisyenGultenManav.WebApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -60,6 +61,32 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             if (yorumManager.Delete(yorum) > 0)
             {
                 return Json(new { result = true }, JsonRequestBehavior.AllowGet);
+            }
+            return Json(new { result = false }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public ActionResult Create(Yorum yorum,int? noteid)
+        {
+            ModelState.Remove("CreatedOn");
+            ModelState.Remove("ModifiedOn");
+            ModelState.Remove("ModifiedUsername");
+            if (ModelState.IsValid)
+            {
+                if (noteid == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                BlogYazısı blogYazısı = blogYazısıManager.Find(x => x.Id == noteid);
+                if (blogYazısı == null)
+                {
+                    return new HttpNotFoundResult();
+                }
+                yorum.BlogYazısı = blogYazısı;
+                yorum.Owner = CurrentSession.User;
+                if (yorumManager.Insert(yorum) > 0)
+                {
+                    return Json(new { result = true }, JsonRequestBehavior.AllowGet);
+                }
             }
             return Json(new { result = false }, JsonRequestBehavior.AllowGet);
         }

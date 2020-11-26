@@ -13,7 +13,7 @@
         <div class="media-body">
             <div>
                 <h5 class="mt-0">Media heading</h5>
-                <span id="yorum_text_@item.Id" contenteditable="false" >
+                <span id="yorum_text_@item.Id" contenteditable="false">
                     @item.Text
                 </span>
                 @if (kullanıcı != null && kullanıcı.Id == item.Owner.Id)
@@ -31,9 +31,29 @@
                 }
                 <br />
                 <small>
-                    <span class="fa fa-times">@item.ModifiedOn</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="fa fa-clock-o">@item.ModifiedOn</span> &nbsp;&nbsp;&nbsp;&nbsp;
                     <span class="fa fa-user">@item.Owner.Username</span>
                 </small>
+            </div>
+        </div>
+    </div>
+}
+@if (kullanıcı != null)
+{
+    <div class="row">
+        <div class=col-md-12>
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class=col-md-12>
+            <div class="input-group">
+                <input type="text" id="new_yorum_text" class="form-control" placeholder="Yorumunuz" />
+                <span class="input-group-btn">
+                    <button class="btn btn-success" type="button" onclick="doYorum(this, 'new_clicked', -1);">
+                        <span class="fa fa-times"></span> Gönder
+                    </button>
+                </span>
             </div>
         </div>
     </div>
