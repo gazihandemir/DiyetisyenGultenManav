@@ -6,40 +6,75 @@
 }
 @foreach (Yorum item in Model)
 {
-
+    <hr />
     <div class="media">
-        <i class="mr-3 fa fa-comment"></i>
-        @*<img class="mr-3" src="..." alt="Generic placeholder image">*@
+        <div class="media-left media-top">
+            <div class="media-object">
+                @* <i class="fa fa-comment-o"></i>*@
+                <img src="~/images/user.png" width="30" height="30" class="rounded-circle img-thumbnail" />
+            </div>
+        </div>
         <div class="media-body">
-            <div>
-                <h5 class="mt-0">Media heading</h5>
-                <span id="yorum_text_@item.Id" contenteditable="false">
-                    @item.Text
-                </span>
-                @if ((item.Owner != null) && (kullanıcı != null && kullanıcı.Id == item.Owner.Id) || (kullanıcı != null && kullanıcı.IsAdmin == true))
-                {
-                    <span class="pull-right">
-                        <button type="button" class="btn btn-warning btn-sm" data-edit-mode="false"
-                                onclick="doYorum(this,'edit_clicked',@item.Id,'#yorum_text_@item.Id');">
-                            <span class="fa fa-edit"></span>
-                        </button>
-                        <button type="button" class="btn btn-danger btn-sm"
-                                onclick="doYorum(this,'delete_clicked',@item.Id);">
-                            <span class="fa fa-trash"></span>
-                        </button>
+            <div class="mb-3">
+                <div class="row">
+                    <div class="col-md-8">
+                        <small class="text-muted ml-2">
+                            <span>@item.Owner.Username</span>
+                            <span class="mx-2"></span>
+                            <span>@item.ModifiedOn</span>
+                        </small>
+                    </div>
+                    <div class="col-md-4 text-lg-right">
+                        @if ((item.Owner != null) && (kullanıcı != null && kullanıcı.Id == item.Owner.Id) || (kullanıcı != null && kullanıcı.IsAdmin == true))
+                        {
+                            <button type="button" class="btn btn-warning btn-sm" data-edit-mode="false"
+                                    onclick="doYorum(this,'edit_clicked',@item.Id,'#yorum_text_@item.Id');">
+                                <i class="fa fa-edit"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger btn-sm"
+                                    onclick="doYorum(this,'delete_clicked',@item.Id);">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        }
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <span id="yorum_text_@item.Id" contenteditable="false">
+                        <i class="fa fa fa-comment-o mr-2"></i>
+                        @item.Text
                     </span>
-                }
-                <br />
-                @if (item.Owner != null)
-                {
-                    <small>
-                        <span class="fa fa-clock-o">@item.ModifiedOn</span> &nbsp;&nbsp;&nbsp;&nbsp;
-                        <span class="fa fa-user">@item.Owner.Username</span>
-                    </small>
-                }
+                </div>
             </div>
         </div>
     </div>
+    @*<h5 class="mt-0">Media heading</h5>
+        <span id="yorum_text_@item.Id" contenteditable="false">
+            @item.Text
+        </span>
+        @if ((item.Owner != null) && (kullanıcı != null && kullanıcı.Id == item.Owner.Id) || (kullanıcı != null && kullanıcı.IsAdmin == true))
+        {
+            <span class="pull-right">
+                <button type="button" class="btn btn-warning btn-sm" data-edit-mode="false"
+                        onclick="doYorum(this,'edit_clicked',@item.Id,'#yorum_text_@item.Id');">
+                    <span class="fa fa-edit"></span>
+                </button>
+                <button type="button" class="btn btn-danger btn-sm"
+                        onclick="doYorum(this,'delete_clicked',@item.Id);">
+                    <span class="fa fa-trash"></span>
+                </button>
+            </span>
+        }
+        <br />
+        @if (item.Owner != null)
+        {
+
+            <small>
+                <span class="fa fa-clock-o">@item.ModifiedOn</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="fa fa-user">@item.Owner.Username</span>
+            </small>
+        }*@
+
+
 }
 @if (kullanıcı != null)
 {
@@ -53,8 +88,8 @@
             <div class="input-group">
                 <input type="text" id="new_yorum_text" class="form-control" placeholder="Yorumunuz" />
                 <span class="input-group-btn">
-                    <button class="btn btn-success" type="button" onclick="doYorum(this, 'new_clicked', -1);">
-                        <span class="fa fa-times"></span> Gönder
+                    <button class="btn btn-outline-success" type="button" onclick="doYorum(this, 'new_clicked', -1);">
+                        <span class="fa fa-send mr-2"></span> Gönder
                     </button>
                 </span>
             </div>
