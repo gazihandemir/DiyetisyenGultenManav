@@ -19,7 +19,10 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         private KategoriManager kategoriManager = new KategoriManager();
         private KullanıcıManager kullanıcıManager = new KullanıcıManager();
         private PaketManager paketManager = new PaketManager();
-        HomeViewModel HomeModel = new HomeViewModel();
+        private YorumManager yorumManager = new YorumManager();
+        private HomeViewModel HomeModel = new HomeViewModel();
+        private BlogDetailViewModel BlogDetailModel = new BlogDetailViewModel();
+
         public ActionResult BlogYazisiDetails(int? id)
         {
             if (id == null)
@@ -27,11 +30,15 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
             }
             BlogYazısı blogYazısı = blogYazısıManager.Find(x => x.Id == id);
+
+            BlogDetailModel.BlogYazısı = blogYazısı;
+            BlogDetailModel.Yorum = blogYazısı.Yorumlar;
+
             if (blogYazısı == null)
             {
                 return HttpNotFound();
             }
-            return View(blogYazısı);
+            return View(BlogDetailModel);
         }
         public ActionResult About()
         {

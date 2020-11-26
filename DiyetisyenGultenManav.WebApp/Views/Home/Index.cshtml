@@ -34,12 +34,11 @@
                 i++;
                 <div class="col mb-4">
                     <div class="card ">
-                        <img src="~/ImageBlog/@blogYazısı.Picture" class="card-img-top kücükResim" alt="@blogYazısı.Title">
+                        <img src="~/ImageBlog/@blogYazısı.Picture" class="card-img-top kücükResim" >
                         <div class="card-body">
-                            @*<h5 class="card-title">
-                                    <a href="#" data-target="#modal_notedetail" data-toggle="modal"
-                                       data-note-id="@note.Id"> @note.Title</a>
-                                </h5>*@
+                            <h5 class="card-title">
+                                  @blogYazısı.Title
+                                </h5>
                             <p class="card-text">
                                 @if (string.IsNullOrEmpty(blogYazısı.ParagrafBir) == false && blogYazısı.ParagrafBir.Length > 60)
                                 {

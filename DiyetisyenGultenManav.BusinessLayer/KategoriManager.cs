@@ -71,13 +71,14 @@ namespace DiyetisyenGultenManav.BusinessLayer
         {
             // Kategori ile ilişkili blog yazılarının silinmesi gerekiyor.
             BlogYazısıManager blogYazısıManager = new BlogYazısıManager();
+            YorumManager yorumManager = new YorumManager();
             // YorumManager yorumManager = new YorumManager();
             foreach (BlogYazısı blog in kategori.BlogYazıları.ToList())
             {
                 // Blog yazısı ile ilişkili verileri silme
                 foreach (Yorum yorum in blog.Yorumlar.ToList())
                 {
-                    //yorumManager.Delete(yorum);
+                    yorumManager.Delete(yorum);
                 }
                 blogYazısıManager.Delete(blog);
             }

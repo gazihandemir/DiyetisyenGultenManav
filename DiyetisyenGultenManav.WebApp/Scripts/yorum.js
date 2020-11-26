@@ -17,7 +17,7 @@ function doYorum(btn, e, yorumid, spanid) {
             button.addClass("btn-success");
             var btnSpan = button.find("span")
             btnSpan.removeClass("fa-edit");
-            btnSpan.addClass("fa-check");
+            btnSpan.addClass("fa-check-circle-o");
             $(spanid).addClass("editable");
             $(spanid).attr("contenteditable", true);
             $(spanid).focus();
@@ -28,7 +28,7 @@ function doYorum(btn, e, yorumid, spanid) {
             button.removeClass("btn-success");
             var btnSpan = button.find("span")
             btnSpan.addClass("fa-edit");
-            btnSpan.removeClass("fa-check");
+            btnSpan.removeClass("fa-check-circle-o");
             $(spanid).removeClass("editable");
             $(spanid).attr("contenteditable", false);
             var txt = $(spanid).text();

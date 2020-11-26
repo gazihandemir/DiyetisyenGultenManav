@@ -102,6 +102,15 @@ namespace DiyetisyenGultenManav.BusinessLayer
             }
             return res;
         }
+        public override int Delete(BlogYazısı blogYazısı)
+        {
+            YorumManager yorumManager = new YorumManager();
+            foreach (Yorum yorum in blogYazısı.Yorumlar.ToList())
+            {
+                yorumManager.Delete(yorum);
+            }
+            return base.Delete(blogYazısı);
+        }
 
     }
     /*  private DataAccessLayer.EntityFramework.Repository<BlogYazısı> repo_blogYazısı = new DataAccessLayer.EntityFramework.Repository<BlogYazısı>();

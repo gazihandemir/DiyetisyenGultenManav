@@ -54,6 +54,7 @@
     <Compile Include="Paket.cs" />
     <Compile Include="PaketTalebi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValueObjects\BlogDetailViewModel.cs" />
     <Compile Include="ValueObjects\HomeViewModel.cs" />
     <Compile Include="ValueObjects\LoginViewModel.cs" />
     <Compile Include="ValueObjects\RegisterViewModel.cs" />

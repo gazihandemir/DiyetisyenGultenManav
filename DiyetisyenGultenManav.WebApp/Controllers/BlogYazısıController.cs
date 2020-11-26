@@ -227,18 +227,22 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 };
                 return View("Error", ErrNotifyObj);
             }
-            BusinessLayerResult<BlogYazısı> res = blogYazısıManager.GetRemoveById(id);
-            if (res.Errors.Count > 0)
-            {
-                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
-                {
-                    Items = res.Errors,
-                    Title = "Blog Yazısı Silinemedi",
-                    RedirectingUrl = "/BlogYazısı/Index"
-                };
-                return View("Error", ErrNotifyObj);
-            }
+            BlogYazısı blogYazısı = blogYazısıManager.Find(x => x.Id == id);
+            blogYazısıManager.Delete(blogYazısı);
             return RedirectToAction("Index");
+
+            //BusinessLayerResult<BlogYazısı> res = blogYazısıManager.GetRemoveById(id);
+            //if (res.Errors.Count > 0)
+            //{
+            //    ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+            //    {
+            //        Items = res.Errors,
+            //        Title = "Blog Yazısı Silinemedi",
+            //        RedirectingUrl = "/BlogYazısı/Index"
+            //    };
+            //    return View("Error", ErrNotifyObj);
+            //}
+            //return RedirectToAction("Index");
         }
     }
 }
