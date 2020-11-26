@@ -16,7 +16,7 @@
                 <span id="yorum_text_@item.Id" contenteditable="false">
                     @item.Text
                 </span>
-                @if (kullanıcı != null && kullanıcı.Id == item.Owner.Id)
+                @if ((item.Owner != null) && (kullanıcı != null && kullanıcı.Id == item.Owner.Id) || (kullanıcı != null && kullanıcı.IsAdmin == true))
                 {
                     <span class="pull-right">
                         <button type="button" class="btn btn-warning btn-sm" data-edit-mode="false"
@@ -30,10 +30,13 @@
                     </span>
                 }
                 <br />
-                <small>
-                    <span class="fa fa-clock-o">@item.ModifiedOn</span> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <span class="fa fa-user">@item.Owner.Username</span>
-                </small>
+                @if (item.Owner != null)
+                {
+                    <small>
+                        <span class="fa fa-clock-o">@item.ModifiedOn</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="fa fa-user">@item.Owner.Username</span>
+                    </small>
+                }
             </div>
         </div>
     </div>

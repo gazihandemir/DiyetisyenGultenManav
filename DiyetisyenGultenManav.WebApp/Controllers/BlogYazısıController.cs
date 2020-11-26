@@ -19,10 +19,13 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         KategoriManager kategoriManager = new KategoriManager();
         public ActionResult Index(string Ara)
         {
-            var blogYazısı = blogYazısıManager.ListQueryable().Include("Kategori").Include("Owner")
-                  .Where(x => x.Owner.Id == CurrentSession.User.Id).OrderByDescending(x => x.ModifiedOn);
-            var blogYazısıAra = blogYazısıManager.ListQueryable().Include("Kategori").Include("Owner")
-                .Where(x => x.Owner.Id == CurrentSession.User.Id && x.Title.Contains(Ara) || Ara == null).OrderByDescending(x => x.ModifiedOn);
+            //var blogYazısı = blogYazısıManager.ListQueryable().Include("Kategori").Include("Owner")
+            //      .Where(x => x.Owner.Id == CurrentSession.User.Id).OrderByDescending(x => x.ModifiedOn); // ASLA SİLME
+            //var blogYazısıAra = blogYazısıManager.ListQueryable().Include("Kategori").Include("Owner")
+            //    .Where(x => x.Owner.Id == CurrentSession.User.Id && x.Title.Contains(Ara) || Ara == null).OrderByDescending(x => x.ModifiedOn);
+            var blogYazısı = blogYazısıManager.ListQueryable().OrderByDescending(x => x.ModifiedOn);
+            var blogYazısıAra = blogYazısıManager.ListQueryable()
+              .Where(x =>x.Title.Contains(Ara) || Ara == null).OrderByDescending(x => x.ModifiedOn);
             if (Ara != null)
             {
                 return View(blogYazısıAra.ToList());
