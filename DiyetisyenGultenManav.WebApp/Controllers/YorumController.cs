@@ -14,21 +14,21 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
     {
         private BlogYazısıManager blogYazısıManager = new BlogYazısıManager();
         private YorumManager yorumManager = new YorumManager();
-        public ActionResult ShowNoteComments(int? id) 
+        public ActionResult ShowNoteComments(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BlogYazısı blogYazısı = blogYazısıManager.ListQueryable().Include("Yorumlar").FirstOrDefault(x => x.Id == id); 
+            BlogYazısı blogYazısı = blogYazısıManager.ListQueryable().Include("Yorumlar").FirstOrDefault(x => x.Id == id);
             if (blogYazısı == null)
             {
                 return HttpNotFound();
             }
-            return PartialView("_PartialYorumlar",blogYazısı.Yorumlar);
+            return PartialView("_PartialYorumlar", blogYazısı.Yorumlar);
         }
         [HttpPost]
-        public ActionResult Edit(int? id,string text)
+        public ActionResult Edit(int? id, string text)
         {
             if (id == null)
             {
@@ -45,8 +45,23 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 return Json(new { result = true }, JsonRequestBehavior.AllowGet);
             }
             return Json(new { result = false }, JsonRequestBehavior.AllowGet);
-
-
+        }
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Yorum yorum = yorumManager.Find(x => x.Id == id);
+            if (yorum == null)
+            {
+                return new HttpNotFoundResult();
+            }
+            if (yorumManager.Delete(yorum) > 0)
+            {
+                return Json(new { result = true }, JsonRequestBehavior.AllowGet);
+            }
+            return Json(new { result = false }, JsonRequestBehavior.AllowGet);
         }
     }
 }

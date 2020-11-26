@@ -13,17 +13,18 @@
         <div class="media-body">
             <div>
                 <h5 class="mt-0">Media heading</h5>
-                <span id="yorum_text_@item.Id" contenteditable="false" class="editable">
+                <span id="yorum_text_@item.Id" contenteditable="false" >
                     @item.Text
                 </span>
                 @if (kullanıcı != null && kullanıcı.Id == item.Owner.Id)
                 {
                     <span class="pull-right">
-                        <button type="button" class="btn btn-warning btn-sm" data-edit-mode="false" 
+                        <button type="button" class="btn btn-warning btn-sm" data-edit-mode="false"
                                 onclick="doYorum(this,'edit_clicked',@item.Id,'#yorum_text_@item.Id');">
                             <span class="fa fa-edit"></span>
                         </button>
-                        <button type="button" class="btn btn-danger btn-sm">
+                        <button type="button" class="btn btn-danger btn-sm"
+                                onclick="doYorum(this,'delete_clicked',@item.Id);">
                             <span class="fa fa-trash"></span>
                         </button>
                     </span>

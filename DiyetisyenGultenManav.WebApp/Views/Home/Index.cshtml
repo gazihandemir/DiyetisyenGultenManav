@@ -159,5 +159,23 @@
                 });
             }
         }
+        else if (e == "delete_clicked") {
+            var dialog_result = confirm("Yorum Silinsin mi ? ");
+            if (!dialog_result) return false;
+            $.ajax({
+                method: "GET",
+                url: "/Yorum/Delete/" + yorumid
+            }).done(function (data) {
+
+                if (data.result) {
+                    // yorumlar partial tekrar yüklenir
+                    $(modalCommentBodyId).load("/Yorum/ShowNoteComments/" + noteid);
+                } else {
+                    alert("Yorum Silinemedi");
+                }
+            }).fail(function () {
+                alert("Sunucu İle bağlantı kurulamadı.");
+            });
+        }
     }
 </script>
