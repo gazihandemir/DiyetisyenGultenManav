@@ -37,9 +37,9 @@
                         <img src="~/ImageBlog/@blogYazısı.Picture" class="card-img-top kücükResim" alt="@blogYazısı.Title">
                         <div class="card-body">
                             @*<h5 class="card-title">
-                                <a href="#" data-target="#modal_notedetail" data-toggle="modal"
-                                   data-note-id="@note.Id"> @note.Title</a>
-                            </h5>*@
+                                    <a href="#" data-target="#modal_notedetail" data-toggle="modal"
+                                       data-note-id="@note.Id"> @note.Title</a>
+                                </h5>*@
                             <p class="card-text">
                                 @if (string.IsNullOrEmpty(blogYazısı.ParagrafBir) == false && blogYazısı.ParagrafBir.Length > 60)
                                 {
@@ -58,27 +58,28 @@
                             </p>
                         </div>
                         <div class="card-footer">
-                            @Bootstrap.LinkButton("/Home/BlogYazisiDetails/" + blogYazısı.Id, "outline-info", "btn-sm", "Details", string.Empty, "Detay")
-                            @*<div class="row">
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="ratings">
-                                        <button class="btn btn-default btn-sm" type="button" data-liked="false" data-note-id="@note.Id">
-                                            <i class="fa fa-star-o like-star mr-1"></i>&nbsp;
-                                            <span class="like-count">@note.LikeCount</span>
-                                        </button>
+                                        @*<button class="btn btn-default btn-sm" type="button" data-liked="false" data-note-id="@blogYazısı.Id">
+                    <i class="fa fa-star-o like-star mr-1"></i>&nbsp;
+                    <span class="like-count">@blogYazısı.LikeCount</span>
+                </button>*@
                                         <button class="btn btn-default btn-sm " data-toggle="modal"
-                                                data-target="#modal_comment" data-note-id="@note.Id">
-                                            <i class="fa fa-comment mr-1"></i>
-                                            <span>@note.Comments.Count</span>
+                                                data-target="#modal_comment" data-note-id="@blogYazısı.Id">
+                                            <i class="fa fa-comment mr-1" style="        color: #3498db;"></i>
+                                            <span style="        color: #3498db;">@blogYazısı.Yorumlar.Count</span>
                                         </button>
-
                                     </div>
                                 </div>
                                 <div class="col-md-6 text-right">
-                                    <a href="#" data-toggle="modal" data-target="#modal_notedetail"
-                                       data-note-id="@note.Id" class="btn btn-default">Detay <i class="fa fa-info-circle ml-2"></i></a>
+                                    @Bootstrap.LinkButton("/Home/BlogYazisiDetails/" + blogYazısı.Id, "outline-info", "btn-sm", "Details", string.Empty, "Detay")
                                 </div>
-                            </div>*@
+                                @*<div class="col-md-6 text-right">
+            <a href="#" data-toggle="modal" data-target="#modal_notedetail"
+               data-note-id="@blogYazısı.Id" class="btn btn-default">Detay <i class="fa fa-info-circle ml-2"></i></a>
+        </div>*@
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -104,3 +105,4 @@
 @section footer{
     @Html.Partial("_PartialFooter")
 }
+@Bootstrap.ModalPopup(id: "modal_comment", title: "Yorumlar")
