@@ -62,13 +62,13 @@
                                 <div class="col-md-6">
                                     <div class="ratings">
                                         @*<button class="btn btn-default btn-sm" type="button" data-liked="false" data-note-id="@blogYazısı.Id">
-                    <i class="fa fa-star-o like-star mr-1"></i>&nbsp;
-                    <span class="like-count">@blogYazısı.LikeCount</span>
-                </button>*@
+                                                <i class="fa fa-star-o like-star mr-1"></i>&nbsp;
+                                                <span class="like-count">@blogYazısı.LikeCount</span>
+                                            </button>*@
                                         <button class="btn btn-default btn-sm " data-toggle="modal"
                                                 data-target="#modal_comment" data-note-id="@blogYazısı.Id">
-                                            <i class="fa fa-comment mr-1" style="        color: #3498db;"></i>
-                                            <span style="        color: #3498db;">@blogYazısı.Yorumlar.Count</span>
+                                            <i class="fa fa-comment mr-1" style="color: #3498db;"></i>
+                                            <span style="color: #3498db;">@blogYazısı.Yorumlar.Count</span>
                                         </button>
                                     </div>
                                 </div>
@@ -76,14 +76,14 @@
                                     @Bootstrap.LinkButton("/Home/BlogYazisiDetails/" + blogYazısı.Id, "outline-info", "btn-sm", "Details", string.Empty, "Detay")
                                 </div>
                                 @*<div class="col-md-6 text-right">
-            <a href="#" data-toggle="modal" data-target="#modal_notedetail"
-               data-note-id="@blogYazısı.Id" class="btn btn-default">Detay <i class="fa fa-info-circle ml-2"></i></a>
-        </div>*@
+                                        <a href="#" data-toggle="modal" data-target="#modal_notedetail"
+                                           data-note-id="@blogYazısı.Id" class="btn btn-default">Detay <i class="fa fa-info-circle ml-2"></i></a>
+                                    </div>*@
                             </div>
                         </div>
                     </div>
                 </div>
-                if (i == Model.BlogYazısı.Count)
+                if (i == 9)
                 {
                     break;
                 }
@@ -106,3 +106,13 @@
     @Html.Partial("_PartialFooter")
 }
 @Bootstrap.ModalPopup(id: "modal_comment", title: "Yorumlar")
+<script>
+    $(function () {
+        var modalCommentBodyId = "#modal_comment_body";
+        $('#modal_comment').on('show.bs.modal', function (e) {
+            var btn = $(e.relatedTarget);
+            noteid = btn.data("note-id");
+            $(modalCommentBodyId).load("/Yorum/ShowNoteComments/" + noteid);
+        });
+    });
+</script>

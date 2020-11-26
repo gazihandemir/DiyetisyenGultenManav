@@ -1,0 +1,38 @@
+﻿@using DiyetisyenGultenManav.Entities
+@using DiyetisyenGultenManav.WebApp.Models
+@model List<Yorum>
+@{
+    Kullanıcı kullanıcı = CurrentSession.User;
+}
+@foreach (Yorum item in Model)
+{
+
+    <div class="media">
+        <i class="mr-3 fa fa-comment"></i>
+        @*<img class="mr-3" src="..." alt="Generic placeholder image">*@
+        <div class="media-body">
+            <div>
+                <h5 class="mt-0">Media heading</h5>
+                <span>
+                    @item.Text
+                </span>
+                @if (kullanıcı != null && kullanıcı.Id == item.Owner.Id)
+                {
+                    <span class="pull-right">
+                        <button type="button" class="btn btn-warning btn-sm">
+                            <span class="fa fa-edit"></span>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm">
+                            <span class="fa fa-trash"></span>
+                        </button>
+                    </span>
+                }
+                <br />
+                <small>
+                    <span class="fa fa-times">@item.ModifiedOn</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="fa fa-user">@item.Owner.Username</span>
+                </small>
+            </div>
+        </div>
+    </div>
+}

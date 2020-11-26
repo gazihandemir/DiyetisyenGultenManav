@@ -307,6 +307,7 @@
     <Compile Include="Controllers\OdemeBildirimiController.cs" />
     <Compile Include="Controllers\PaketController.cs" />
     <Compile Include="Controllers\PaketTalebiController.cs" />
+    <Compile Include="Controllers\YorumController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -399,6 +400,7 @@
     <Content Include="Views\Contact\Details.cshtml" />
     <Content Include="Views\Contact\Edit.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Shared\_PartialYorumlar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -410,6 +412,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
     <Folder Include="ImageBlog\" />
+    <Folder Include="Views\Yorum\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
