@@ -20,7 +20,7 @@
         OdemeBildirimiIsNotInserted = 204,
         BlogYazısıCouldNotRemove = 205, 
         BlogYazısıIsNotFound = 206,
-
+        BlogYazisiSayiCouldNotUpdated = 207,
         // Diet
         DietIsNotFound = 301,
         DietCouldNotRemove = 302,

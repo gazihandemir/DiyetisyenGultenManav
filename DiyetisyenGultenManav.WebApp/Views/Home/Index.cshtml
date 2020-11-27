@@ -40,21 +40,14 @@
                                 @blogYazısı.Title
                             </h5>
                             <p class="card-text">
-                                @if (string.IsNullOrEmpty(blogYazısı.ParagrafBir) == false && blogYazısı.ParagrafBir.Length > 60)
+                                @if (string.IsNullOrEmpty(blogYazısı.ParagrafBir) == false && blogYazısı.ParagrafBir.Length > 40)
                                 {
-                                    @(blogYazısı.ParagrafBir.Substring(0, 60) + "...")
+                                    @(blogYazısı.ParagrafBir.Substring(0, 40) + "...")
                                 }
                                 else
                                 {
                                     @blogYazısı.ParagrafBir
                                 }
-                            </p>
-                            <p class="card-text text-bottom-left">
-                                <small class="text-muted">
-                                    <i style="color: #3498db;font-size: 12px;">Görüntülenme sayısı</i> <br />
-                                    <i class="fa fa-eye mr-1" style="color: #3498db;font-size: 20px;"></i>
-                                    <span style="color: #3498db;">41230</span>
-                                </small>
                             </p>
                             <p class="card-text text-right">
                                 <small class="text-muted">
@@ -72,10 +65,9 @@
                                             <i class="fa fa-comment mr-1" style="color: #3498db;"></i>
                                             <span style="color: #3498db;">@blogYazısı.Yorumlar.Count</span>
                                         </button>
-                                        <small class="btn btn-default btn-sm " data-toggle="modal"
-                                               data-target="#modal_comment" data-blog-id="@blogYazısı.Id">
+                                        <small class="btn btn-default btn-sm">
                                             <i class="fa fa-eye mr-1" style="color: #3498db;"></i>
-                                            <b style="color: #3498db;font-size: 16px;">412310</b>
+                                            <b style="color: #3498db;font-size: 16px;">@blogYazısı.GörüntülenmeSayisi</b>
                                         </small>
                                     </div>
                                 </div>

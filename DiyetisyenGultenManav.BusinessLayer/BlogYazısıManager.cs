@@ -38,7 +38,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
             {
                 res.AddError(ErrorMessageCode.ContactIsNotFound, "Kullanıcı Bulunamadı.");
             }
-       
+
             return res;
         }
         public BusinessLayerResult<BlogYazısı> UpdateBlogYazisi(BlogYazısı data)
@@ -102,6 +102,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
             }
             return res;
         }
+
         public override int Delete(BlogYazısı blogYazısı)
         {
             YorumManager yorumManager = new YorumManager();

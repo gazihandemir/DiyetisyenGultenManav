@@ -307,13 +307,14 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
                         TabakPaylasimi = false,
                         Owner = owner,
                         Picture = "user.jpg",
+                        GörüntülenmeSayisi = FakeData.NumberData.GetNumber(1, 9),
                         CreatedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now.AddYears(+1)),
                         ModifiedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now.AddYears(+1)),
                         ModifiedUsername = owner.Username
                     };
                     // kategorinin blog yazızına kendi oluşturdugumuz blogyazısını eklemek...
                     kat.BlogYazıları.Add(blogYazısı);
-                
+
                     // FakeData ile Yorumları eklemek
                     for (int j = 0; j < FakeData.NumberData.GetNumber(3, 5); j++)
                     {
@@ -327,6 +328,11 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
                         };
                         // Blog yazısına fake data ile yorum eklemek
                         blogYazısı.Yorumlar.Add(yorum);
+                    }
+                    for (int m = 0; m < blogYazısı.GörüntülenmeSayisi; m++)
+                    {
+                        Görüntülenme görüntülenme = new Görüntülenme();
+                        blogYazısı.Görüntülenmeler.Add(görüntülenme);
                     }
                 }
             }

@@ -22,7 +22,8 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         private YorumManager yorumManager = new YorumManager();
         private HomeViewModel HomeModel = new HomeViewModel();
         private BlogDetailViewModel BlogDetailModel = new BlogDetailViewModel();
-        // GET
+
+        [HttpGet]
         public ActionResult BlogYazisiDetails(int? id)
         {
             if (id == null)
@@ -30,7 +31,6 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
             }
             BlogYazısı blogYazısı = blogYazısıManager.Find(x => x.Id == id);
-
             BlogDetailModel.BlogYazısı = blogYazısı;
             BlogDetailModel.Yorum = blogYazısı.Yorumlar;
 

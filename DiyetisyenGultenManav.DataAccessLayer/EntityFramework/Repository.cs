@@ -54,6 +54,7 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
                 EntityBase o = obj as EntityBase;
 
                 o.ModifiedOn = DateTime.Now;
+
                 //  o.ModifiedUsername = "system"; // TODO : işlem yapan kullanıcı adı yazılmalı.
                 o.ModifiedUsername = App.Common.GetCurrentUsername();
 
