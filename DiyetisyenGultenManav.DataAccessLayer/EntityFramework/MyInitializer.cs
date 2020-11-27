@@ -281,6 +281,7 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
                 {
                     Title = FakeData.PlaceData.GetStreetName(),
                     Description = FakeData.PlaceData.GetAddress(),
+                    Icon="list",
                     CreatedOn = DateTime.Now,
                     ModifiedOn = DateTime.Now,
                     ModifiedUsername = "gazihandemir"

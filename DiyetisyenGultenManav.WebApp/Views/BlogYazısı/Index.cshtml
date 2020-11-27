@@ -3,8 +3,8 @@
 @{
     ViewBag.Title = "BLOG YAZILARIM";
 }
-<link href="~/Content/new-login-style.css" rel="stylesheet" />
-
+@*<link href="~/Content/new-login-style.css" rel="stylesheet" />*@
+<link href="~/Content/blogstyle.css" rel="stylesheet" />
 <div class="login-block mr-0 ">
     <div class=" row pl-5 pt-3 mr-0">
         <div class="col-md-12">
@@ -115,12 +115,77 @@
             </table>
         </div>
     </div>
-    <div class="col-md-6 text-center">
-        <h3>
-            Laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue cras ut metus a risus iaculis scelerisque eu ac ante fusce non varius purus aenean nec magna felis fusce vestibulum.
-            <br />  <b>açıklama konulacak</b>
-        </h3>
+    @*<div class="col-md-6">
+            <h3>
+                <b>Arama : </b>  Blog Yazısının Başlığına Göre yapılır.
+            </h3>
+            <ul>
+                <b>Blog Yazıları Sayfasında : </b>
+                <li>Kategori</li>
+                <li>Başlık</li>
+                <li>Birinci Parafraf</li>
+                <li>Taslak Olup Olmadığı</li>
+                <li>Danışan Paylaşımı Olup Olmadığı</li>
+                <li>Yemek Tabağı Paylaşımı Olup Olmadığı</li>
+                <li>Resiminin Kaydedildiği İsimi</li>
+                görelibiriz.
+            </ul>
+            <p>
+                Blog Yazısı Oluşturmak İçin Yeni Blog Yazısı Ekle Butonuna Basınız. <br />
+                Blog Yazılarının Yorumlarını Görebilmek İçin Yeşil Renkli Yorum İkonuna Basınız.<br />
+                &emsp; - Yorumları silebilir Düzenleyebilir ve Yeni Yorum Yapabilirsiniz.<br />
+                Blog Yazılarını Düzenlemek İçin Sarı Renkli Düzenleme İkonuna Basınız. <br />
+                Blog Yazısının Detayına Bakmak İçin Mavi Renkli Detay İkonuna Basınız. <br />
+                Blog Yazısını Silmek için Kırmızı Renkli Çöp Kutusu İkonuna Basınız. <br />
+
+            </p>
+            <hr />
+            <p>
+                Beklenmedik Bir Durum Halinde  İletişime geçiniz : Gazihand@gmail.com
+            </p>
+        </div>*@
+    <div class="col-md-12 text-right">
+        <p>
+            <button class="btn btn-outline-warning" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Sayfa Açıklaması</button>
+        </p>
+        <div class="row">
+            <div class="col">
+                <div class="collapse multi-collapse" id="multiCollapseExample1">
+                    <div class="card card-body text-left login-block pl-4">
+                        <h3>
+                            <b>Arama : </b>  Blog Yazısının Başlığına Göre yapılır.
+                        </h3>
+                        <ul>
+                            <b>Blog Yazıları Sayfasında : </b>
+                            <li>Kategori</li>
+                            <li>Başlık</li>
+                            <li>Birinci Parafraf</li>
+                            <li>Taslak Olup Olmadığı</li>
+                            <li>Danışan Paylaşımı Olup Olmadığı</li>
+                            <li>Yemek Tabağı Paylaşımı Olup Olmadığı</li>
+                            <li>Resiminin Kaydedildiği İsimi</li>
+                            görelibiriz.
+                        </ul>
+                        <p>
+                            Blog Yazısı Oluşturmak İçin Yeni Blog Yazısı Ekle Butonuna Basınız. <br />
+                            Blog Yazılarının Yorumlarını Görebilmek İçin Yeşil Renkli Yorum İkonuna Basınız.<br />
+                            &emsp; - Yorumları silebilir Düzenleyebilir ve Yeni Yorum Yapabilirsiniz.<br />
+                            Blog Yazılarını Düzenlemek İçin Sarı Renkli Düzenleme İkonuna Basınız. <br />
+                            Blog Yazısının Detayına Bakmak İçin Mavi Renkli Detay İkonuna Basınız. <br />
+                            Blog Yazısını Silmek için Kırmızı Renkli Çöp Kutusu İkonuna Basınız. <br />
+
+                        </p>
+                        <hr />
+                        <p>
+                            Beklenmedik Bir Durum Halinde  İletişime geçiniz : Gazihand@gmail.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+
 @Bootstrap.ModalPopup(id: "modal_comment", title: "Yorumlar")
 <script src="~/Scripts/yorum.js"></script>

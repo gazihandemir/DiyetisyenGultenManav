@@ -2,23 +2,19 @@
 @using DiyetisyenGultenManav.Entities
 @using DiyetisyenGultenManav.Entities.ValueObjects
 @model HomeViewModel
-@{
-   
-
-    KategoriManager CM = new KategoriManager();
-    List<Kategori> KategoriList = CM.List();
-
-
-}
+@*@{
+           KategoriManager CM = new KategoriManager();
+        List<Kategori> KategoriList = CM.List();
+    }*@
 <p style="font-size:24px; text-align:center"><b>Kategoriler</b></p>
 <div class="list-group">
     <a href="@Url.Action("Index","Home")" class="list-group-item list-group-item-action">
         <span class="fa fa-th-list mr-2"></span>Tümü
     </a>
     @foreach (var kate in Model.Kategoriler)
-        {
+    {
         <a href="/Home/ByKategori/@kate.Id" title;="@kate.Description" class="list-group-item list-group-item-action">
-            <span class="fa fa-th-list mr-2"></span> @kate.Title
+            <span class="fa fa-@kate.Icon mr-2"></span> @kate.Title
         </a>
     }
 

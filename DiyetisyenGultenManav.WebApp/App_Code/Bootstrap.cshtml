@@ -24,17 +24,17 @@
         <i class="fa fa-@icon"></i> @text
     </button>
 }
-@helper LinkMenu(string url = "", string icon = "", string text = "")
+@helper LinkMenu(string url = "", string icon = "", string text = "",string iconRengi="",string iconBoyutu="")
 {
-    <a class="nav-link" href="@url">
-        <i class="fa fa-@icon @(string.IsNullOrEmpty(text) ? "" :"mr-2")">
+    <a class="nav-link" href="@url" style="color:@iconRengi" >
+        <i class="fa fa-@icon @(string.IsNullOrEmpty(text) ? "" :"mr-0") text-center" style="color:@iconRengi;font-size:@iconBoyutu">
         </i>@text
     </a>
 }
-@helper DropdownLinkMenu(string url = "", string icon = "", string text = "")
+@helper DropdownLinkMenu(string url = "", string icon = "", string text = "",string iconRengi="")
 {
 
-    <a class="dropdown-item" href="@url">
+    <a class="dropdown-item" href="@url" style="color:@iconRengi;">
         <i class="fa fa-@icon @(string.IsNullOrEmpty(text) ? "" :"mr-2")">
         </i>@text
     </a>
