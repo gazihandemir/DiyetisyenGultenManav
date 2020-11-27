@@ -49,5 +49,10 @@ namespace DiyetisyenGultenManav.DataAccessLayer.MySql
         {
             throw new NotImplementedException();
         }
+
+        public int UpdateGörüntülenme(T obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

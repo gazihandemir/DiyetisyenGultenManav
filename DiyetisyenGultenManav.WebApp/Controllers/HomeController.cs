@@ -31,6 +31,8 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
             }
             BlogYazısı blogYazısı = blogYazısıManager.Find(x => x.Id == id);
+            blogYazısı.GörüntülenmeSayisi++;
+            blogYazısıManager.UpdateGörüntülenme(blogYazısı);
             BlogDetailModel.BlogYazısı = blogYazısı;
             BlogDetailModel.Yorum = blogYazısı.Yorumlar;
 

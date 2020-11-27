@@ -33,7 +33,7 @@
             {
                 i++;
                 <div class="col mb-4">
-                    <div class="card ">
+                    <div class="card" data-note-id="@blogYazısı.Id">
                         <img src="~/ImageBlog/@blogYazısı.Picture" class="card-img-top kücükResim">
                         <div class="card-body">
                             <h5 class="card-title">
@@ -49,6 +49,12 @@
                                     @blogYazısı.ParagrafBir
                                 }
                             </p>
+                            <p class="card-text text-left">
+                                <small class="btn btn-default btn-sm">
+                                    <i class="fa fa-eye mr-1" style="color: #3498db;font-size: 16px;"></i>
+                                    <b style="color: #3498db;font-size: 18px;">@blogYazısı.GörüntülenmeSayisi </b><i style="color: #3498db;font-size: 14px;">görüntülenme</i>
+                                </small>
+                            </p>
                             <p class="card-text text-right">
                                 <small class="text-muted">
                                     <i class="fa fa-user mr-2"></i>@blogYazısı.Owner.Username<br />
@@ -62,16 +68,14 @@
                                     <div class="ratings">
                                         <button class="btn btn-default btn-sm " data-toggle="modal"
                                                 data-target="#modal_comment" data-blog-id="@blogYazısı.Id">
-                                            <i class="fa fa-comment mr-1" style="color: #3498db;"></i>
-                                            <span style="color: #3498db;">@blogYazısı.Yorumlar.Count</span>
+                                            <i class="fa fa-comments mr-1" style="color: #3498db;font-size: 20px;"></i>
+                                            <b style="color: #3498db;font-size: 18px;">@blogYazısı.Yorumlar.Count</b> <i style="color: #3498db;font-size: 14px;">yorum</i>
                                         </button>
-                                        <small class="btn btn-default btn-sm">
-                                            <i class="fa fa-eye mr-1" style="color: #3498db;"></i>
-                                            <b style="color: #3498db;font-size: 16px;">@blogYazısı.GörüntülenmeSayisi</b>
-                                        </small>
+
                                     </div>
                                 </div>
                                 <div class="col-md-6 text-right">
+
                                     @Bootstrap.LinkButton("/Home/BlogYazisiDetails/" + blogYazısı.Id, "outline-info", "btn-sm", "Details", string.Empty, "Detay")
                                 </div>
                             </div>
@@ -102,3 +106,12 @@
 }
 @Bootstrap.ModalPopup(id: "modal_comment", title: "Yorumlar")
 <script src="~/Scripts/yorum.js"></script>
+<script>
+    $(function () {
+        var noteids = [];
+        $("div[data-note-id]").each(function (i, e) {
+            noteids.push($(e).data("note-id"));
+        });
+        console.log(noteids);
+    });
+</script>

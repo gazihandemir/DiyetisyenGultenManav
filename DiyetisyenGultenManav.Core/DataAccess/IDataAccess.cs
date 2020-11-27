@@ -14,6 +14,7 @@ namespace DiyetisyenGultenManav.Core.DataAccess
         List<T> List(Expression<Func<T, bool>> where);
         int Insert(T obj);
         int Update(T obj);
+        int UpdateGörüntülenme(T obj);
         int Delete(T obj);
         int Save();
         IQueryable<T> ListQueryable();

@@ -58,6 +58,17 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
                 //  o.ModifiedUsername = "system"; // TODO : işlem yapan kullanıcı adı yazılmalı.
                 o.ModifiedUsername = App.Common.GetCurrentUsername();
 
+
+            }
+            return Save();
+        }
+        public int UpdateGörüntülenme(T obj)
+        {
+            if (obj is BlogYazısı)
+            {
+                BlogYazısı blog = obj as BlogYazısı;
+                
+
             }
             return Save();
         }

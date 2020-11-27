@@ -13,7 +13,7 @@ namespace DiyetisyenGultenManav.BusinessLayer.Abstract
     {
         private Repository<T> repo = new Repository<T>();
 
-       public virtual int Delete(T obj)
+        public virtual int Delete(T obj)
         {
             return repo.Delete(obj);
         }
@@ -51,6 +51,10 @@ namespace DiyetisyenGultenManav.BusinessLayer.Abstract
         public virtual int Update(T obj)
         {
             return repo.Update(obj);
+        }
+        public virtual int UpdateGörüntülenme(T obj)
+        {
+            return repo.UpdateGörüntülenme(obj);
         }
     }
 }
