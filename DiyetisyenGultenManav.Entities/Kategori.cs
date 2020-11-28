@@ -17,7 +17,7 @@ namespace DiyetisyenGultenManav.Entities
         public string Title { get; set; }
         [DisplayName("Açıklama"),StringLength(160, ErrorMessage = "{0} alanı max. {1} karakter içermeli.")]
         public string Description { get; set; }
-        [DisplayName("Kategori İcon"), StringLength(40, ErrorMessage = "{0} alanı max. {1} karakter içermeli.")]
+        [DisplayName("İkon"), StringLength(40, ErrorMessage = "{0} alanı max. {1} karakter içermeli.")]
         public string Icon { get; set; }
 
         public virtual List<BlogYazısı> BlogYazıları { get; set; }
