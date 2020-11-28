@@ -109,6 +109,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(OdemeBildirimi odemeBildirimi)
         {
+           
             ModelState.Remove("CreatedOn");
             ModelState.Remove("ModifiedOn");
             ModelState.Remove("ModifiedUsername");
@@ -130,9 +131,22 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 return RedirectToAction("Index");
 
             }
-            ViewBag.KullanıcıId = new SelectList(kullanıcıManager.List(), "Id", "Username");
-            odemeBildirimi.Owner = ViewBag.KullanıcıId;
-            return View(odemeBildirimi);
+            else
+            {
+                BusinessLayerResult<OdemeBildirimi> res = new BusinessLayerResult<OdemeBildirimi>();
+                ErrorViewModel ErrNotifyObj2 = new ErrorViewModel()
+                {
+                    Items = res.Errors,
+                    Title="Ödeme Bildirimi Oluşturulamadı Lütfen Oluştururken Bütün Alanları Doldurmaya Dikkat edin ! ",
+                    RedirectingUrl= "/OdemeBildirimi/Index",
+                    IsRedirecting=true,
+                };
+                return View("Error", ErrNotifyObj2);
+            }
+            //ViewBag.KullanıcıId = new SelectList(kullanıcıManager.List(), "Id", "Username");
+            //   ViewBag.KullanıcıId = "bos";
+            // odemeBildirimi.Owner = ViewBag.KullanıcıId;
+
         }
 
         // GET: OdemeBildirimi/Edit/5
@@ -286,7 +300,9 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 {
                     Items = res.Errors,
                     Title = "Ödeme Bildirimi Silinemedi",
-                    RedirectingUrl = "/OdemeBildirimi/Index"
+                    RedirectingUrl = "/OdemeBildirimi/Index",
+                    IsRedirecting = true,
+                    RedirectingTimeout=1000,
                 };
                 return View("Error", ErrNotifyObj);
             }

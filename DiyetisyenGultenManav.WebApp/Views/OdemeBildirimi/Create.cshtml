@@ -3,13 +3,22 @@
 @{
     ViewBag.Title = "ÖDEME BİLDİRİMİ OLUŞTUR";
 }
-<link href="~/Content/new-login-style-odeme.css" rel="stylesheet" />
 <style>
-    .vertical-strech {
-        height: 100vh;
+    .sayfaArkaPlan {
+        /*background: #DE6262;*/ /* fallback for old browsers */
+        /*background: -webkit-linear-gradient(to right, #FFB88C, #DE6262);*/ /* Chrome 10-25, Safari 5.1-6 */
+        /*background: linear-gradient(to right, #FFB88C, #DE6262);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        /*        background-color: rgba(222, 98, 98, 0.5);*/
+        background: rgba(222, 98, 98, 0.7);
+        background: -webkit-linear-gradient(to right, rgba(255,184,140,0.8), rgba(222, 98, 98, 0.7));
+        background: linear-gradient(to right, rgba(255,184,140,0.8), rgba(222, 98, 98, 0.7));
+        min-height: 1000px;
+        height: 100%;
+        min-width: 100%;
     }
 </style>
-<div class="login-block pl-5 pt-3 mr-0 vertical-strech">
+<link href="~/Content/validation-summary.css" rel="stylesheet" />
+<div class="sayfaArkaPlan pl-5 pt-3 mr-0">
     <div class="row pl-5 pt-3 mr-0">
         <div class="col-md-12">
             <p class="display-4 text-center font-weight-bold">
@@ -77,7 +86,10 @@
                             @Html.EditorFor(model => model.IsOkey)
                         </div>
                     </div>
-                </div>
+                </div>if (true)
+                {
+
+                }
                 <div class="form-group row">
                     @Html.LabelFor(model => model.KullanıcıId, "KullanıcıId", htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
                     @Html.DropDownList("KullanıcıId", null, htmlAttributes: new { @class = "form-control col-md-10" })
