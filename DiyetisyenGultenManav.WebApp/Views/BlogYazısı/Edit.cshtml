@@ -3,9 +3,22 @@
 @{
     ViewBag.Title = "BLOG YAZISI DÜZENLE";
 }
-<link href="~/Content/new-login-style.css" rel="stylesheet" />
-
-<div class="login-block pl-5 pt-3 mr-0 ">
+<style>
+    .sayfaArkaPlan {
+        /*background: #DE6262;*/ /* fallback for old browsers */
+        /*background: -webkit-linear-gradient(to right, #FFB88C, #DE6262);*/ /* Chrome 10-25, Safari 5.1-6 */
+        /*background: linear-gradient(to right, #FFB88C, #DE6262);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        /*        background-color: rgba(222, 98, 98, 0.5);*/
+        background: rgba(222, 98, 98, 0.7);
+        background: -webkit-linear-gradient(to right, rgba(255,184,140,0.8), rgba(222, 98, 98, 0.7));
+        background: linear-gradient(to right, rgba(255,184,140,0.8), rgba(222, 98, 98, 0.7));
+        min-height: 1000px;
+        height: 100%;
+        min-width: 100%;
+    }
+</style>
+<link href="~/Content/validation-summary.css" rel="stylesheet" />
+<div class="sayfaArkaPlan pl-5 pt-3 mr-0 ">
     <div class="row pl-5 pt-3 mr-0">
         <div class="col-md-12">
             <p class="display-4 text-center font-weight-bold">
@@ -113,7 +126,7 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-md-12 pr-0 text-right">
-                        <button class="btn btn-outline-warning pull-left" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Sayfa Açıklaması</button>
+                        <button class="btn btn-outline-light pull-left" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Sayfa Açıklaması</button>
                         @Bootstrap.LinkButton("/BlogYazısı/Index", "secondary", string.Empty,
                   string.Empty, "arrow-left", "Geri Dön !")
                         @Bootstrap.Button("success", string.Empty, "submit", "save", "Kaydet")
@@ -124,12 +137,12 @@
     </div>
     <div class="col-md-12 text-right">
         @*<p>
-            <button class="btn btn-outline-dark" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Sayfa Açıklaması</button>
-        </p>*@
+                <button class="btn btn-outline-dark" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Sayfa Açıklaması</button>
+            </p>*@
         <div class="row">
             <div class="col">
                 <div class="collapse multi-collapse" id="multiCollapseExample1">
-                    <div class="card card-body text-left login-block pl-4">
+                    <div class="card card-body text-left sayfaArkaPlan pl-4" style="min-height:100%;">
                         <ul>
                             <b>Blog Yazılarını Düzenleme Sayfasında : </b>
                             <li>Başlık</li>
@@ -192,63 +205,63 @@
         </div>
     </div>
 </div>
-    @*<div class="col-md-6">
-            <ul>
-                <b>Blog Yazılarını Düzenleme Sayfasında : </b>
-                <li>Başlık</li>
-                <li>Birinci Paragraf</li>
-                <li>İkinci Paragraf</li>
-                <li>Üçüncü Paragraf</li>
-                <li>Dördüncü Paragraf</li>
-                <li>Beşinci İnce Yazı</li>
-                <li>Altıncı Paragraf</li>
-                <li>Yedinci Paragraf</li>
-                <li>Sekizinci Paragraf</li>
-                <li>Profil Fotoğrafı</li>
-                <li>Blog Yazısı Kategorisi</li>
-                <li>Taslak</li>
-                <li>Danışan Paylaşımı</li>
-                <li>Tabak Paylaşımı</li>
-                düzenleyebiliriz.
-            </ul>
-            <h3>Sayfa Düzenini Aşağıdan İnceleyip Ona Göre Blog Yazısı Paylaşınız.</h3>
-            <hr />
-            <h1 class="mt-4">Başlık</h1> <br />
+@*<div class="col-md-6">
+        <ul>
+            <b>Blog Yazılarını Düzenleme Sayfasında : </b>
+            <li>Başlık</li>
+            <li>Birinci Paragraf</li>
+            <li>İkinci Paragraf</li>
+            <li>Üçüncü Paragraf</li>
+            <li>Dördüncü Paragraf</li>
+            <li>Beşinci İnce Yazı</li>
+            <li>Altıncı Paragraf</li>
+            <li>Yedinci Paragraf</li>
+            <li>Sekizinci Paragraf</li>
+            <li>Profil Fotoğrafı</li>
+            <li>Blog Yazısı Kategorisi</li>
+            <li>Taslak</li>
+            <li>Danışan Paylaşımı</li>
+            <li>Tabak Paylaşımı</li>
+            düzenleyebiliriz.
+        </ul>
+        <h3>Sayfa Düzenini Aşağıdan İnceleyip Ona Göre Blog Yazısı Paylaşınız.</h3>
+        <hr />
+        <h1 class="mt-4">Başlık</h1> <br />
 
-            <p class="lead">
-                <i class="fa fa-user mr-2"></i>Blog Yazısını Paylaşanan Kişinin İsmi&emsp;
-                <i class="fa fa-clock-o mr-2"></i>dd.MM.yy HH:mm
-            </p>
-            <hr>
-            <p>RESİM</p>
-            <hr>
-            <p class="lead">Birinci Paragraf</p>
+        <p class="lead">
+            <i class="fa fa-user mr-2"></i>Blog Yazısını Paylaşanan Kişinin İsmi&emsp;
+            <i class="fa fa-clock-o mr-2"></i>dd.MM.yy HH:mm
+        </p>
+        <hr>
+        <p>RESİM</p>
+        <hr>
+        <p class="lead">Birinci Paragraf</p>
 
-            <p>İkinci Paragraf</p>
+        <p>İkinci Paragraf</p>
 
-            <p>Üçüncü Paragraf</p>
+        <p>Üçüncü Paragraf</p>
 
-            <blockquote class="blockquote">
-                <p class="mb-0">Dördüncü Paragraf</p>
+        <blockquote class="blockquote">
+            <p class="mb-0">Dördüncü Paragraf</p>
 
-                <footer class="blockquote-footer">
-                    Beşinci İnce Yazı
-                </footer>
-            </blockquote>
-            <p>Altıncı Paragraf</p>
+            <footer class="blockquote-footer">
+                Beşinci İnce Yazı
+            </footer>
+        </blockquote>
+        <p>Altıncı Paragraf</p>
 
-            <p>Yedinci Paragraf</p>
+        <p>Yedinci Paragraf</p>
 
-            <p>Sekizinci Paragraf</p>
-            <hr />
-            <p>
-                Düzenlendiğiniz Blog Yazısını Kaydetmek İçin  Kaydet Butonuna Tıklayınız.<br />
-                Blog Yazıları Sayfasına Dönmek İçin Geri Dön Butonuna Tıklayınız.<br />
-            </p>
-            <hr />
-            <p>
-                Beklenmedik Bir Durum Halinde  İletişime geçiniz : Gazihand@gmail.com
-            </p>
-        </div>*@
+        <p>Sekizinci Paragraf</p>
+        <hr />
+        <p>
+            Düzenlendiğiniz Blog Yazısını Kaydetmek İçin  Kaydet Butonuna Tıklayınız.<br />
+            Blog Yazıları Sayfasına Dönmek İçin Geri Dön Butonuna Tıklayınız.<br />
+        </p>
+        <hr />
+        <p>
+            Beklenmedik Bir Durum Halinde  İletişime geçiniz : Gazihand@gmail.com
+        </p>
+    </div>*@
 
 

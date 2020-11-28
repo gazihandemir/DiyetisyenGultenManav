@@ -1,9 +1,15 @@
 ﻿@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
 
-.login-block {
-    background: #DE6262; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #FFB88C, #DE6262); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #FFB88C, #DE6262); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    min-height: 100%;
+.sayfaArkaPlan {
+    /*background: #DE6262;*/ /* fallback for old browsers */
+    /*background: -webkit-linear-gradient(to right, #FFB88C, #DE6262);*/ /* Chrome 10-25, Safari 5.1-6 */
+    /*background: linear-gradient(to right, #FFB88C, #DE6262);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /*        background-color: rgba(222, 98, 98, 0.5);*/
+    background: rgba(222, 98, 98, 0.7);
+    background: -webkit-linear-gradient(to right, rgba(255,184,140,0.8), rgba(222, 98, 98, 0.7));
+    background: linear-gradient(to right, rgba(255,184,140,0.8), rgba(222, 98, 98, 0.7));
+    min-height: 1000px;
+    height: 100%;
     min-width: 100%;
+    /*  Sayfa açıklaması için style="min-height:100%;"*/
 }
