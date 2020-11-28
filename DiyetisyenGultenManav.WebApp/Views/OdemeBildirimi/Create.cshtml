@@ -60,7 +60,7 @@
 
                 <div class="form-group row">
                     @Html.LabelFor(model => model.EkAciklamalar, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.EditorFor(model => model.EkAciklamalar, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                    @Html.TextAreaFor(model => model.EkAciklamalar, 4, 140, new { htmlAttributes = new { @class = "form-control col-md-10" } })
                 </div>
 
                 <div class="form-group row">
@@ -96,18 +96,80 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-md-12 pr-0 text-right">
+                        <button class="btn btn-outline-light pull-left" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Sayfa Açıklaması</button>
                         @Bootstrap.LinkButton("/OdemeBildirimi/Index", "secondary", string.Empty,
-                  string.Empty, "arrow-left", "Geri Dön !")
-                        @Bootstrap.Button("success", string.Empty, "submit", "save", "Create")
+                  string.Empty, "arrow-left", " Geri Dön")
+                        @Bootstrap.Button("success", string.Empty, "submit", "plus-circle", " Oluştur")
                     </div>
                 </div>
             }
         </div>
     </div>
-    <div class="col-md-6 text-center">
-        <h3>
-            Laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue cras ut metus a risus iaculis scelerisque eu ac ante fusce non varius purus aenean nec magna felis fusce vestibulum.
-            <br />  <b>açıklama konulacak</b>
-        </h3>
+    <div class="col-md-12 text-right">
+        @*<p>
+                <button class="btn btn-outline-dark" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Sayfa Açıklaması</button>
+            </p>*@
+        <div class="row">
+            <div class="col">
+                <div class="collapse multi-collapse" id="multiCollapseExample1">
+                    <div class="card card-body text-left sayfaArkaPlan pl-4" style="min-height:100%;">
+                        <ul>
+                            <b>Ödeme Bildirimi Oluştur Sayfasında : </b>
+                            <li>İsim Soyisim*</li>
+                            <li>Banka İsmi*</li>
+                            <li>Yatırılan Miktar*</li>
+                            <li>Cep Telefonu*</li>
+                            <li>Açıklama*</li>
+                            <li>Bildirildi,Ödendi,Onaylandı</li>
+                            Öğeleri İle Oluşturabilirsiniz.
+                        </ul>
+                        <hr />
+                        <p>
+                            Burada Kullanıcı oluşturmadı yada bir şekilde oluşturamadığı ödeme bildirimi Diyetisyen tarafından oluşturulur. <br />
+                        </p>
+                        <hr />
+                        <p>
+                        <p>
+                            <b>Normal düzen şu şekildedir</b>
+                            <ol>
+                                <li>
+                                    Kullanıcı Ödeme Bildirimi Yapar.
+                                    <ul>
+                                        <li>İsim Soyisim Yazar.</li>
+                                        <li>Gönderdiği Banka İsmini Yazar.</li>
+                                        <li>Yatırdığı Miktarı Yazar.</li>
+                                        <li>Şahsi Cep Telefon Numarasını Yazar.</li>
+                                        <li>Açıklama Yazar.</li>
+                                        &emsp; ve Ödeme Bildirimi Oluşturur.
+                                    </ul>
+                                </li>
+                                <li>
+                                    Ödeme Bildirimi Oluşturulduğu Zaman Bildirildi  <i class="fa fa-check text-success"></i> olur.
+                                </li>
+                                <li>
+                                    Diyetisyen Ödemeyi Kontrol Eder ve Ödendi kısmını <i class="fa fa-check text-success"></i> yapar.
+                                </li>
+                                <li>
+                                    Diyetisyen işlemi Onaylıyor ise Onaylandı kısmını <i class="fa fa-check text-success"></i> yapar.
+                                </li>
+                            </ol>
+
+
+                        </p>
+                        </p>
+                        <hr />
+                        <p>
+                            Diyetisyen Ödeme Bildirim Oluşturmak İçin  Oluştur Butonuna Tıklayınız.<br />
+                            Ödeme Bildirimleri Sayfasına Dönmek İçin Geri Dön Butonuna Tıklayınız.<br />
+                        </p>
+                        <hr />
+                        <p>
+                            Beklenmedik Bir Durum Halinde  İletişime geçiniz : Gazihand@gmail.com
+                        </p>
+                        <hr />
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

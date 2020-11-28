@@ -3,13 +3,22 @@
 @{
     ViewBag.Title = "ÖDEME BİLDİRİMİ OLUŞTUR";
 }
-<link href="~/Content/new-login-style-odeme.css" rel="stylesheet" />
 <style>
-    .vertical-strech {
-        height: 100vh;
+    .sayfaArkaPlan {
+        /*background: #DE6262;*/ /* fallback for old browsers */
+        /*background: -webkit-linear-gradient(to right, #FFB88C, #DE6262);*/ /* Chrome 10-25, Safari 5.1-6 */
+        /*background: linear-gradient(to right, #FFB88C, #DE6262);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        /*        background-color: rgba(222, 98, 98, 0.5);*/
+        background: rgba(222, 98, 98, 0.7);
+        background: -webkit-linear-gradient(to right, rgba(255,184,140,0.8), rgba(222, 98, 98, 0.7));
+        background: linear-gradient(to right, rgba(255,184,140,0.8), rgba(222, 98, 98, 0.7));
+        min-height: 1000px;
+        height: 100%;
+        min-width: 100%;
     }
 </style>
-<div class="login-block pl-5 pt-3 mr-0 vertical-strech">
+<link href="~/Content/validation-summary.css" rel="stylesheet" />
+<div class="sayfaArkaPlan pl-5 pt-3 mr-0 ">
     <div class="row pl-5 pt-3 mr-0">
         <div class="col-md-12">
             <p class="display-4 text-center font-weight-bold">
@@ -31,49 +40,93 @@
 
                 <div class="form-group row">
                     @Html.LabelFor(model => model.IsimSoyisim, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.EditorFor(model => model.IsimSoyisim, new { htmlAttributes = new { @class = "form-control col-md-4" } })
+                    @Html.EditorFor(model => model.IsimSoyisim, new { htmlAttributes = new { @class = "form-control col-md-10" } })
                 </div>
 
                 <div class="form-group row">
                     @Html.LabelFor(model => model.BankaIsmi, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.EditorFor(model => model.BankaIsmi, new { htmlAttributes = new { @class = "form-control col-md-5" } })
+                    @Html.EditorFor(model => model.BankaIsmi, new { htmlAttributes = new { @class = "form-control col-md-10" } })
                 </div>
 
                 <div class="form-group row">
                     @Html.LabelFor(model => model.YatirilanMiktar, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.EditorFor(model => model.YatirilanMiktar, new { htmlAttributes = new { @class = "form-control col-md-6" } })
+                    @Html.EditorFor(model => model.YatirilanMiktar, new { htmlAttributes = new { @class = "form-control col-md-10" } })
                 </div>
 
                 <div class="form-group row">
                     @Html.LabelFor(model => model.TelefonNo, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.EditorFor(model => model.TelefonNo, new { htmlAttributes = new { @class = "form-control col-md-7" } })
+                    @Html.EditorFor(model => model.TelefonNo, new { htmlAttributes = new { @class = "form-control col-md-10" } })
                 </div>
-
 
                 <div class="form-group row">
                     @Html.LabelFor(model => model.EkAciklamalar, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.TextAreaFor(model => model.EkAciklamalar,4,110, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                    @Html.TextAreaFor(model => model.EkAciklamalar, 4, 140, new { htmlAttributes = new { @class = "form-control col-md-10" } })
                 </div>
                 <div class="form-group row">
                     <div class="col-md-12 pr-0 text-right">
+                        <button class="btn btn-outline-light pull-left" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Sayfa Açıklaması</button>
                         @Bootstrap.LinkButton("/OdemeBildirimi/Index", "secondary", string.Empty,
-                  string.Empty, "arrow-left", "Geri Dön !")
-                        @Bootstrap.Button("success", string.Empty, "submit", "save", "Create")
+                  string.Empty, "arrow-left", " Geri Dön")
+                        @Bootstrap.Button("success", string.Empty, "submit", "plus-circle", " Oluştur")
                     </div>
                 </div>
-                <div class="form-group row text-center">
-                    <p>
-                        Laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue cras ut metus a risus iaculis scelerisque eu ac ante fusce non varius purus aenean nec magna felis fusce vestibulum.
-                    </p>
-                </div>
-
             }
         </div>
     </div>
-    <div class="col-md-6 text-center">
-        <h3>
-            Laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue cras ut metus a risus iaculis scelerisque eu ac ante fusce non varius purus aenean nec magna felis fusce vestibulum.
-            <br />  <b>açıklama konulacak</b>
-        </h3>
+    <div class="col-md-12 text-right">
+        @*<p>
+                <button class="btn btn-outline-dark" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Sayfa Açıklaması</button>
+            </p>*@
+        <div class="row">
+            <div class="col">
+                <div class="collapse multi-collapse" id="multiCollapseExample1">
+                    <div class="card card-body text-left sayfaArkaPlan pl-4" style="min-height:100%;">
+                        <ul>
+                            <b>Ödeme Bildirimi Oluştur Sayfasında : </b>
+                            <li>İsim Soyisim*</li>
+                            <li>Banka İsmi*</li>
+                            <li>Yatırılan Miktar*</li>
+                            <li>Cep Telefonu*</li>
+                            <li>Açıklama*</li>
+                            Öğeleri İle Oluşturabilirsiniz.
+                        </ul>
+                        <hr />
+                        <p>
+                        <p>
+                            <ol>
+                                <li>
+                                    Kullanıcı Ödeme Bildirimi Yapar.
+                                    <ul>
+                                        <li>İsim Soyisim Yazar.</li>
+                                        <li>Gönderdiği Banka İsmini Yazar.</li>
+                                        <li>Yatırdığı Miktarı Yazar.</li>
+                                        <li>Şahsi Cep Telefon Numarasını Yazar.</li>
+                                        <li>Açıklama Yazar.</li>
+                                        &emsp; ve Ödeme Bildirimi Oluşturur.
+                                    </ul>
+                                </li>
+                                <li>
+                                    Ödeme Bildirimi Oluşturulduğu Zaman Bildirildi  <i class="fa fa-check text-success"></i> olur.
+                                </li>
+                                <li>
+                                    Diyetisyen işlemi Onaylıyor ise Onaylandı kısmını <i class="fa fa-check text-success"></i> yapar.
+                                </li>
+                            </ol>
+                        </p>
+                        </p>
+                        <hr />
+                        <p>
+                            Ödeme Bildirim Oluşturmak İçin  Oluştur Butonuna Tıklayınız.<br />
+                            Ödeme Bildirimleri Sayfasına Dönmek İçin Geri Dön Butonuna Tıklayınız.<br />
+                        </p>
+                        <hr />
+                        <p>
+                            Beklenmedik Bir Durum Halinde  İletişime geçiniz : Gazihand@gmail.com
+                        </p>
+                        <hr />
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
