@@ -38,6 +38,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
             res.Result = Find(x => x.Id == data.Id);
             res.Result.Title = data.Title;
             res.Result.Description = data.Description;
+            res.Result.Icon = data.Icon;
             if (base.Update(res.Result)==0)
             {
                 res.AddError(ErrorMessageCode.KategoriCouldNotUpdated, "Kategori Güncellenemedi.");
