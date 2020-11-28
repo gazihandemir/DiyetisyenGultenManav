@@ -64,14 +64,13 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         {
             if (Ara != null)
             {
-                return View(odemeBildirimiManager.ListQueryable().Where(x => x.Owner.Username.Contains(Ara) || Ara == null));
+                return View(odemeBildirimiManager.ListQueryable().Where(x => x.Owner.Username.Contains(Ara) || Ara == null).OrderByDescending(x => x.ModifiedOn));
             }
             else
             {
-                return View(odemeBildirimiManager.List());
+                return View(odemeBildirimiManager.List().OrderByDescending(x => x.ModifiedOn));
             }
         }
-
         // GET: OdemeBildirimi/Details/5
         public ActionResult Details(int? id)
         {
