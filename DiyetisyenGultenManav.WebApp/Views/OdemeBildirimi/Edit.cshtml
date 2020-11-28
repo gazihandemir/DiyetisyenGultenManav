@@ -4,13 +4,22 @@
 @{
     ViewBag.Title = "ÖDEME BİLDİRİMİ DÜZENLE";
 }
-<link href="~/Content/new-login-style-odeme.css" rel="stylesheet" />
 <style>
-    .vertical-strech {
-        height: 100vh;
+    .sayfaArkaPlan {
+        /*background: #DE6262;*/ /* fallback for old browsers */
+        /*background: -webkit-linear-gradient(to right, #FFB88C, #DE6262);*/ /* Chrome 10-25, Safari 5.1-6 */
+        /*background: linear-gradient(to right, #FFB88C, #DE6262);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        /*        background-color: rgba(222, 98, 98, 0.5);*/
+        background: rgba(222, 98, 98, 0.7);
+        background: -webkit-linear-gradient(to right, rgba(255,184,140,0.8), rgba(222, 98, 98, 0.7));
+        background: linear-gradient(to right, rgba(255,184,140,0.8), rgba(222, 98, 98, 0.7));
+        min-height: 1000px;
+        height: 100%;
+        min-width: 100%;
     }
 </style>
-<div class="login-block pl-5 pt-3 mr-0 vertical-strech">
+<link href="~/Content/validation-summary.css" rel="stylesheet" />
+<div class="sayfaArkaPlan pl-5 pt-3 mr-0">
     <div class="row pl-5 pt-3 mr-0">
         <div class="col-md-12">
             <p class="display-4 text-center font-weight-bold">
@@ -89,6 +98,8 @@
 
                 <div class="form-group row">
                     <div class="col-md-12 pr-0 text-right">
+                        <button class="btn btn-outline-light pull-left" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Sayfa Açıklaması</button>
+
                         @if (Model.Owner.IsAdmin == false)
                         {
                             @Bootstrap.LinkButton("/OdemeBildirimi/IndexOdemeBildirimiOwner", "secondary", string.Empty,
@@ -106,10 +117,35 @@
             }
         </div>
     </div>
-    <div class="col-md-6 text-center">
-        <h3>
-            Laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue cras ut metus a risus iaculis scelerisque eu ac ante fusce non varius purus aenean nec magna felis fusce vestibulum.
-            <br />  <b>açıklama konulacak</b>
-        </h3>
+    <div class="col-md-12 text-right">
+        @*<p>
+                <button class="btn btn-outline-dark" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Sayfa Açıklaması</button>
+            </p>*@
+        <div class="row">
+            <div class="col">
+                <div class="collapse multi-collapse" id="multiCollapseExample1">
+                    <div class="card card-body text-left sayfaArkaPlan pl-4" style="min-height:100%;">
+                        <ul>
+                            <b>Ödeme Bildirimi Düzenleme Sayfasında : </b>
+                            <li>İsim Soyisim*</li>
+                            <li>Banka İsmi*</li>
+                            <li>Yatırılan Miktar*</li>
+                            <li>Cep telefonu*</li>
+                            <li>Açıklama</li>
+                            düzenleyebiliriz.
+                        </ul>
+                        <hr />
+                        <p>
+                            Düzenlendiğiniz Ödeme Bildirimini Kaydetmek İçin  Kaydet Butonuna Tıklayınız.<br />
+                        </p>
+                        <hr />
+                        <p>
+                            Beklenmedik Bir Durum Halinde  İletişime geçiniz : Gazihand@gmail.com
+                        </p>
+                        <hr />
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
