@@ -159,7 +159,10 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
                 Email = "eposta@gmail.com",
                 Konu = "konu",
                 Mesaj = "mesaj",
-                Zaman = DateTime.Now
+                Zaman = DateTime.Now,
+                CreatedOn = DateTime.Now,
+                ModifiedOn = DateTime.Now.AddMinutes(10),
+                ModifiedUsername = "gazihandemir"
             };
             OdemeBildirimi odemeBildirimi = new OdemeBildirimi()
             {
@@ -194,6 +197,7 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
             context.Paketler.Add(paket);
             context.PaketTalepleri.Add(paketTalebi);
             context.Contactlar.Add(contact);
+
             gazi.Dietler.Add(gazininDieti);
             gulten.Dietler.Add(gulteninDieti);
             gazi.OdemeBildirimi.Add(odemeBildirimi);
@@ -282,7 +286,7 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
                 {
                     Title = FakeData.PlaceData.GetStreetName(),
                     Description = FakeData.PlaceData.GetAddress(),
-                    Icon="list",
+                    Icon = "list",
                     CreatedOn = DateTime.Now,
                     ModifiedOn = DateTime.Now,
                     ModifiedUsername = "gazihandemir"

@@ -14,6 +14,7 @@
             position: absolute;
         }
 </style>
+<link href="~/Content/validation-summary.css" rel="stylesheet" />
 <link href="~/Content/contactOlustur.css" rel="stylesheet" />
 <div class="contact">
     <div class="row">
@@ -42,7 +43,11 @@
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
-
+                <div class=" form-group row">
+                    <div class="col-md-12 pr-0">
+                        @Html.ValidationSummary(false)
+                    </div>
+                </div>
                 <div class="contact-form">
                     <div class="form-group">
                         <div class="col-sm-10">
@@ -71,33 +76,34 @@
                     </div>
                     <div class="form-group">
                         <div class=" col-sm-12 text-right">
-                            @Bootstrap.Button("outline-info", string.Empty, "submit", "", " Gönder")
+                            @Bootstrap.Button("outline-info", string.Empty, "submit", string.Empty, " Gönder")
                         </div>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <div class="col-md-6 col-sm-12">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3184.4588960790807!2d35.30202681529679!3d37.04654617989864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDAyJzQ3LjYiTiAzNcKwMTgnMTUuMiJF!5e0!3m2!1str!2str!4v1604733830198!5m2!1str!2str" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                    </div>
-                    <div class="col-md-6 col-sm-12 mt-5">
-                        <p style="color: #ff9b00; font-size:20px;">
-                            <i class="fa fa-map-marker" style="color: #ff9b00; width:50px;"></i>
-                            Guzelyalı Mah. 81126 Sokak. <br />
-                            Çukurova Tv Karşısı. Kahve Deryası üstü. <br />
-                            A2 Blok Kat:2 Daire:8 (Turgut Özal Bulvarı)
-                            01170 Adana
-                        </p>
-                        <hr style="border-top: 5px dotted #ff9b00;" />
-                        <p style="color: #ff9b00; font-size:30px;">
-                            <i class="fa fa-phone" style="color: #ff9b00; width:50px;"></i>
-                            <b>0538 372 87 97</b> <br />
-                            <i class="fa fa-instagram" style="color: #ff9b00; width:50px;"></i>
-                            <b><a href="https://www.instagram.com/dytgultenmanav/" target="_blank" style="color: #ff9b00;"> dytgultenmanav</a> </b>
-                        </p>
-
-                    </div>
-                </div>
             }
+            <div class="form-group row">
+                <div class="col-md-6 col-sm-12">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3184.4588960790807!2d35.30202681529679!3d37.04654617989864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDAyJzQ3LjYiTiAzNcKwMTgnMTUuMiJF!5e0!3m2!1str!2str!4v1604733830198!5m2!1str!2str" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </div>
+                <div class="col-md-6 col-sm-12 mt-5">
+                    <p style="color: #ff9b00; font-size:20px;">
+                        <i class="fa fa-map-marker" style="color: #ff9b00; width:50px;"></i>
+                        Guzelyalı Mah. 81126 Sokak. <br />
+                        Çukurova Tv Karşısı. Kahve Deryası üstü. <br />
+                        A2 Blok Kat:2 Daire:8 (Turgut Özal Bulvarı)
+                        01170 Adana
+                    </p>
+                    <hr style="border-top: 5px dotted #ff9b00;" />
+                    <p style="color: #ff9b00; font-size:30px;">
+                        <i class="fa fa-phone" style="color: #ff9b00; width:50px;"></i>
+                        <b>0538 372 87 97</b> <br />
+                        <i class="fa fa-instagram" style="color: #ff9b00; width:50px;"></i>
+                        <b><a href="https://www.instagram.com/dytgultenmanav/" target="_blank" style="color: #ff9b00;"> dytgultenmanav</a> </b>
+                    </p>
+
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

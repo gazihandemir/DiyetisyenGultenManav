@@ -3,36 +3,48 @@
 @{
     ViewBag.Title = "Profiliniz";
 }
-<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<style>
+    .sayfaArkaPlan {
+        /*background: #DE6262;*/ /* fallback for old browsers */
+        /*background: -webkit-linear-gradient(to right, #FFB88C, #DE6262);*/ /* Chrome 10-25, Safari 5.1-6 */
+        /*background: linear-gradient(to right, #FFB88C, #DE6262);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        /*        background-color: rgba(222, 98, 98, 0.5);*/
+        background: rgba(222, 98, 98, 0.7);
+        background: -webkit-linear-gradient(to right, rgba(255,184,140,0.8), rgba(222, 98, 98, 0.7));
+        background: linear-gradient(to right, rgba(255,184,140,0.8), rgba(222, 98, 98, 0.7));
+        min-height: 1000px;
+        height: 100%;
+        min-width: 100%;
+    }
+</style>
 
-<div class="row pl-5 pt-5">
-    <div class="col-md-12">
-        <p class="display-4 border-bottom">
-            <b> Kullanıcı Hesabı</b>
-        </p>
+<div class="sayfaArkaPlan mr-3">
+    <div class="row pl-5 pt-5 mr-3">
+        <div class="col-md-12">
+            <p class="display-4 border-bottom">
+                <b> Kullanıcı Hesabı</b>
+            </p>
+        </div>
+    </div>
+
+    <div class="row p-5 mr-0">
+        <div class="col-md-2">
+            <img src="~/Images/@Model.ProfileImageFileName" class="rounded-circle img-thumbnail" width="256" height="256" />
+        </div>
+        <div class="col-md-10 mb-4">
+            <h2><b>@(Model.Name + " "+ Model.Surname)</b></h2> <br /><br />
+            <p style="font-size:24px;">
+                <i class="fa fa-id-badge" style="font-size:30px;"></i> &emsp; @Model.Username<br /><br />
+                <i class="fa  fa-envelope" style="font-size:30px;"></i>  &emsp;@Model.Email <br /><br />
+                <i class="fa fa-mobile" style="font-size:40px;"></i> &emsp; @Model.TelefonNumarası <br /><br />
+                <i class="fa  fa-birthday-cake" style="font-size:30px;"></i> &emsp; @Model.DogumTarihi <br /><br />
+                <b>Boy</b> &emsp; @Model.Boy <br /><br />
+                <b>Kilo </b>&emsp; @Model.Kilo <br /><br />
+                <i class="fa fa-briefcase" style="font-size:30px;"></i> &emsp; @Model.Meslek <br /><br />
+                <i class="fa fa-home" style="font-size:30px;"></i> &emsp; @Model.Sehir <br /><br />
+            </p>
+
+            <br />
+        </div>
     </div>
 </div>
-
-<div class="row p-5">
-    <div class="col-md-2">
-        <img src="~/Images/@Model.ProfileImageFileName" class="rounded-circle img-thumbnail" width="256" height="256" />
-    </div>
-    <div class="col-md-10 mb-4">
-        <h3>@(Model.Name + " "+ Model.Surname)</h3>
-            
-        <p>
-            <b>@Html.DisplayNameFor(model => model.Username) : </b>@Model.Username<br />
-            <b>@Html.DisplayNameFor(model => model.Email) : </b>@Model.Email <br />
-            <b>@Html.DisplayNameFor(model => model.TelefonNumarası) : </b>@Model.TelefonNumarası <br />
-            <b>@Html.DisplayNameFor(model => model.DogumTarihi) : </b>@Model.DogumTarihi <br />
-            <b>@Html.DisplayNameFor(model => model.Boy) : </b>@Model.Boy <br />
-            <b>@Html.DisplayNameFor(model => model.Kilo) : </b>@Model.Kilo <br />
-            <b>@Html.DisplayNameFor(model => model.Meslek) : </b>@Model.Meslek <br />
-            <b>@Html.DisplayNameFor(model => model.Sehir) : </b>@Model.Sehir <br />
-        </p>
-        
-        <br />
-    </div>
-</div>
-<script src="~/Scripts/bootstrap.min.js"></script>
-<script src="~/Scripts/jquery-3.5.1.min.js"></script>

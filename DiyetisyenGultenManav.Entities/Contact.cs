@@ -11,10 +11,8 @@ namespace DiyetisyenGultenManav.Entities
 {
     [Table("İletisim")]
 
-    public class Contact
+    public class Contact : EntityBase
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
         [DisplayName("İsim Soyisim"), Required(ErrorMessage = "{0} alanı gereklidir."),
             StringLength(50, ErrorMessage = "{0} alanı max. {1} karakter içermeli.")]
         public string IsimSoyisim { get; set; }

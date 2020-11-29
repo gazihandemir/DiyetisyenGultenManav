@@ -63,12 +63,13 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         }
 
         // POST: Contact/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Contact contact)
         {
+            ModelState.Remove("CreatedOn");
+            ModelState.Remove("ModifiedOn");
+            ModelState.Remove("ModifiedUsername");
             if (ModelState.IsValid)
             {
                 //contact.Zaman = DateTime.Now;
@@ -85,9 +86,9 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                     return View("Error", ErrNotifyObj);
                 }
                 //blogYazısıManager.Insert(blogYazısı);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
-            return View();
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: Contact/Edit/5
@@ -117,12 +118,14 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         }
 
         // POST: Contact/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Contact contact)
         {
+            ModelState.Remove("CreatedOn");
+            ModelState.Remove("ModifiedOn");
+            ModelState.Remove("ModifiedUsername");
             if (ModelState.IsValid)
             {
                 /*   Contact db_contact = contactManager.Find(x => x.ID == contact.ID);
@@ -150,7 +153,6 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View();
         }
-
         // GET: Contact/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -179,7 +181,6 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View(res.Result);
         }
-
         // POST: Contact/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

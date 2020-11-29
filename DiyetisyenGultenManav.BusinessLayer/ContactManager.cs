@@ -15,7 +15,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
         public BusinessLayerResult<Contact> GetContactById(int? id)
         {
             BusinessLayerResult<Contact> res = new BusinessLayerResult<Contact>();
-            res.Result = Find(x => x.ID == id);
+            res.Result = Find(x => x.Id == id);
             if (res.Result == null)
             {
                 res.AddError(ErrorMessageCode.ContactIsNotFound, "Blog Yazısı Bulunamadı");
@@ -25,7 +25,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
         public BusinessLayerResult<Contact> GetRemoveById(int? id)
         {
             BusinessLayerResult<Contact> res = new BusinessLayerResult<Contact>();
-            Contact db_contact = Find(x => x.ID == id);
+            Contact db_contact = Find(x => x.Id == id);
             if (db_contact != null)
             {
                 if (Delete(db_contact) == 0)
@@ -43,13 +43,13 @@ namespace DiyetisyenGultenManav.BusinessLayer
         public BusinessLayerResult<Contact> UpdateContact(Contact data)
         {
             BusinessLayerResult<Contact> res = new BusinessLayerResult<Contact>();
-            Contact db_contact = Find(x => x.ID == data.ID);
+            Contact db_contact = Find(x => x.Id == data.Id);
             /*       if (true)
                    {
                    }
             */
-            res.Result = Find(x => x.ID == data.ID);
-            res.Result.ID = data.ID;
+            res.Result = Find(x => x.Id == data.Id);
+            res.Result.Id = data.Id;
             res.Result.IsimSoyisim = data.IsimSoyisim;
             res.Result.TelefonNumarasi = data.TelefonNumarasi;
             res.Result.Email = data.Email;
@@ -66,7 +66,9 @@ namespace DiyetisyenGultenManav.BusinessLayer
         public BusinessLayerResult<Contact> CreateContact(Contact data)
         {
             BusinessLayerResult<Contact> res = new BusinessLayerResult<Contact>();
-            Contact db_contact = Find(x => x.ID == data.ID);
+            Contact db_contact = Find(x => x.Id == data.Id);
+            res.Result = data;
+            res.Result.Zaman = DateTime.Now;
             if (db_contact != null)
             {
                 if (db_contact.Mesaj == data.Mesaj)
