@@ -3,10 +3,23 @@
 @{
     ViewBag.Title = "DİYET DÜZENLE";
 }
-    <link href="~/Content/new-login-style-kategori.css" rel="stylesheet" />
+<style>
+    .sayfaArkaPlan {
+        /*background: #DE6262;*/ /* fallback for old browsers */
+        /*background: -webkit-linear-gradient(to right, #FFB88C, #DE6262);*/ /* Chrome 10-25, Safari 5.1-6 */
+        /*background: linear-gradient(to right, #FFB88C, #DE6262);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        /*        background-color: rgba(222, 98, 98, 0.5);*/
+        background: rgba(222, 98, 98, 0.7);
+        background: -webkit-linear-gradient(to top, rgba(169, 223, 191,0.8), rgba( 52, 152, 219, 0.7));
+        background: linear-gradient(to top, rgba(169, 223, 191,0.8), rgba( 52, 152, 219,0.7));
+        min-height: 2000px;
+        height: 100%;
+        min-width: 100%;
+    }
+</style>
 <link href="~/Content/validation-summary.css" rel="stylesheet" />
 
-<div class="login-block pl-5 pt-3 mr-0">
+<div class="sayfaArkaPlan pl-5 pt-3 mr-0">
     <div class="row pl-5 pt-3 mr-0">
         <div class="col-md-12">
             <p class="display-4 text-center font-weight-bold">
@@ -30,65 +43,63 @@
 
                 <div class="form-group row">
                     @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control col-md-10", placeholder = "Başlık Giriniz" } })
                 </div>
-
                 <div class="form-group row">
                     @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control col-md-10", placeholder = "Açıklama Giriniz" } })
                 </div>
-
                 <div class="form-group row">
                     @Html.LabelFor(model => model.DiyetSabah, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.TextAreaFor(model => model.DiyetSabah, 4, 30, new { @class = "form-control col-md-10 " })
+                    @Html.TextAreaFor(model => model.DiyetSabah, 4, 30, new { @class = "form-control col-md-10 ", placeholder = "Danışan kahvaltıda ne yer?" })
                 </div>
                 <div class="form-group row">
                     @Html.LabelFor(model => model.DiyetAraBir, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.TextAreaFor(model => model.DiyetAraBir, 3, 30, new { @class = "form-control col-md-10 " })
+                    @Html.TextAreaFor(model => model.DiyetAraBir, 3, 30, new { @class = "form-control col-md-10 ", placeholder = "Birinci Ara" })
                 </div>
                 <div class="form-group row">
                     @Html.LabelFor(model => model.DiyetOglen, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.TextAreaFor(model => model.DiyetOglen, 4, 30, new { @class = "form-control col-md-10 " })
+                    @Html.TextAreaFor(model => model.DiyetOglen, 4, 30, new { @class = "form-control col-md-10 ", placeholder = "Danışan Öğlen ne yer?" })
                 </div>
                 <div class="form-group row">
                     @Html.LabelFor(model => model.DiyetAraIki, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.TextAreaFor(model => model.DiyetAraIki, 3, 30, new { @class = "form-control col-md-10 " })
+                    @Html.TextAreaFor(model => model.DiyetAraIki, 3, 30, new { @class = "form-control col-md-10 ", placeholder = "Dört Gözle Beklenen İkinci Ara " })
                 </div>
                 <div class="form-group row">
                     @Html.LabelFor(model => model.DiyetAksam, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.TextAreaFor(model => model.DiyetAksam, 4, 30, new { @class = "form-control col-md-10 " })
+                    @Html.TextAreaFor(model => model.DiyetAksam, 4, 30, new { @class = "form-control col-md-10 ", placeholder = "Danışan Akşam ne yer?" })
                 </div>
                 <div class="form-group row">
                     @Html.LabelFor(model => model.DiyetGece, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.TextAreaFor(model => model.DiyetGece, 4, 30, new { @class = "form-control col-md-10 " })
+                    @Html.TextAreaFor(model => model.DiyetGece, 4, 30, new { @class = "form-control col-md-10 ", placeholder = "Danışan Gece ne yer?" })
                 </div>
                 <div class="form-group row">
                     @Html.LabelFor(model => model.DiyetKilo, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.EditorFor(model => model.DiyetKilo, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                    @Html.EditorFor(model => model.DiyetKilo, new { htmlAttributes = new { @class = "form-control col-md-10", placeholder = "Danışanın Kilosunu yazınız" } })
                 </div>
                 <div class="form-group row">
                     @Html.LabelFor(model => model.DiyetBmi, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.EditorFor(model => model.DiyetBmi, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                    @Html.EditorFor(model => model.DiyetBmi, new { htmlAttributes = new { @class = "form-control col-md-10", placeholder = "Danışanın Vücut Kitle İndeksini yazınız" } })
                 </div>
                 <div class="form-group row">
                     @Html.LabelFor(model => model.DiyetFat, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.EditorFor(model => model.DiyetFat, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                    @Html.EditorFor(model => model.DiyetFat, new { htmlAttributes = new { @class = "form-control col-md-10", placeholder = "Danışanın Yağ Oranını yazınız" } })
                 </div>
                 <div class="form-group row">
                     @Html.LabelFor(model => model.DiyetMusc, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.EditorFor(model => model.DiyetMusc, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                    @Html.EditorFor(model => model.DiyetMusc, new { htmlAttributes = new { @class = "form-control col-md-10", placeholder = "Danışanın Kas Oranını yazınız" } })
                 </div>
                 <div class="form-group row">
                     @Html.LabelFor(model => model.DiyetBmh, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.EditorFor(model => model.DiyetBmh, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                    @Html.EditorFor(model => model.DiyetBmh, new { htmlAttributes = new { @class = "form-control col-md-10", placeholder = "Danışanın Bazal Metabolizma Hızını yazınız" } })
                 </div>
                 <div class="form-group row">
                     @Html.LabelFor(model => model.DiyetVf, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.EditorFor(model => model.DiyetVf, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                    @Html.EditorFor(model => model.DiyetVf, new { htmlAttributes = new { @class = "form-control col-md-10", placeholder = "Danışanın İç Yağlanma Oranını yazınız" } })
                 </div>
                 <div class="form-group row">
                     @Html.LabelFor(model => model.DiyetOlcum, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.EditorFor(model => model.DiyetOlcum, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                    @Html.EditorFor(model => model.DiyetOlcum, new { htmlAttributes = new { @class = "form-control col-md-10", placeholder = "Danışanın Vücut Ölçülerini yazınız" } })
                 </div>
                 <div class="form-group row">
                     @Html.LabelFor(model => model.DiyetBaslangic, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
@@ -100,7 +111,7 @@
                 </div>
                 <div class="form-group row">
                     @Html.LabelFor(model => model.DiyetEkAciklamalar, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.TextAreaFor(model => model.DiyetEkAciklamalar, 5, 30, new { @class = "form-control col-md-10 " })
+                    @Html.TextAreaFor(model => model.DiyetEkAciklamalar, 5, 30, new { @class = "form-control col-md-10 ", placeholder = "Danışanın Ek Açıklamasını  yazınız" })
                 </div>
                 <div class="form-group row">
                     @Html.LabelFor(model => model.IsNew, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
@@ -112,6 +123,7 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-md-12 pr-0 text-right">
+                        <button class="btn btn-outline-danger pull-left" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Sayfa Açıklaması</button>
                         @Bootstrap.LinkButton("/Diet/AllDiet", "secondary", string.Empty,
                   string.Empty, "arrow-left", "Geri Dön !")
                         @Bootstrap.Button("success", string.Empty, "submit", "save", "Kaydet")
@@ -120,10 +132,54 @@
             }
         </div>
     </div>
-    <div class="col-md-6 text-center">
-        <h3>
-            Laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue cras ut metus a risus iaculis scelerisque eu ac ante fusce non varius purus aenean nec magna felis fusce vestibulum.
-            <br />  <b>açıklama konulacak</b>
-        </h3>
+    <div class="col-md-12 text-right">
+        @*<p>
+                <button class="btn btn-outline-dark" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Sayfa Açıklaması</button>
+            </p>*@
+        <div class="row">
+            <div class="col">
+                <div class="collapse multi-collapse" id="multiCollapseExample1">
+                    <div class="card card-body text-left sayfaArkaPlan pl-4" style="min-height:100%;">
+                        <ul>
+                            <b>Diyet Ekle Sayfasında : </b>
+                            <li>Başlık</li>
+                            <li>Açıklama</li>
+                            <li>Diyetin Sabah Öğünü</li>
+                            <li>Diyetin Birinci Ara Öğünü</li>
+                            <li>Diyetin Öğlen Öğünü</li>
+                            <li>Diyetin İkinci Ara Öğünü</li>
+                            <li>Diyetin Akşam Öğünü</li>
+                            <li>Diyetin Gece Öğünü</li>
+                            <li>Danışan Kilosu</li>
+                            <li>Danışan Vücut Kitle İndexi (BMI)</li>
+                            <li>Danışan Yağ Oranı (FAT)</li>
+                            <li>Danışan Kas Oranı (MUSC)</li>
+                            <li>Danışan Bazal Metabolizma Hızı (BMH)</li>
+                            <li>Danışan Karın İçi Yağlanma (VF)</li>
+                            <li>Danışan Vücut Ölçümleri</li>
+                            <li>Diyetin Başlangıç Tarihi</li>
+                            <li>Diyetin Bitiş Tarihi</li>
+                            <li>Ek Açıklama</li>
+                            <li>Yeni Diyet Olup olmadığı.</li>
+                            öğeleri ile Diyet Düzenleyebilirsiniz.
+                        </ul>
+                        <hr />
+                        <h3>Danışanım hangilerini görür ?</h3>
+                        Yazdığınız Diyetin Sadece Öğünlerini Danışanınız görebilir.<br />
+                        Diğer yazdıklarınız sizin takibiniz içindir.
+                        <hr />
+                        <p>
+                            Oluşturduğunuz Diyeti düzenlemek İçin Kaydet Butonuna Tıklayınız.<br />
+                            Bütün Diyetler Sayfasına Dönmek İçin Geri Dön Butonuna Tıklayınız.<br />
+                        </p>
+                        <hr />
+                        <p>
+                            Beklenmedik Bir Durum Halinde  İletişime geçiniz : Gazihand@gmail.com
+                        </p>
+                        <hr />
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

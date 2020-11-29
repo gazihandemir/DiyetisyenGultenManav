@@ -44,7 +44,7 @@ namespace DiyetisyenGultenManav.Entities
         Required(ErrorMessage = "{0} alanı gereklidir."),
             StringLength(400, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
         public string DiyetGece{ get; set; }
-        [DisplayName("Kullanıcı ID")]
+        [DisplayName("Kullanıcı")]
         public int KullanıcıId { get; set; }
         [DisplayName("Yeni mi")]
         public bool IsNew { get; set; }

@@ -27,6 +27,7 @@
         WriteAnewDiet = 303,
         DietCouldNotUpdated = 304,
         DietIsNotInserted = 305,
+        DietİsnewNotUpdated = 306,
         // Kategori
         KategoriIsNotFound = 401,
         KategoriTitleAlreadyExists = 402,

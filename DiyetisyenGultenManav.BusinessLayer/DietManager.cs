@@ -98,17 +98,19 @@ namespace DiyetisyenGultenManav.BusinessLayer
             {
                 res.AddError(ErrorMessageCode.DietIsNotInserted, "Diyet Eklenemedi");
             }
-            string diyetler = res.Result.Owner.Dietler[0].Title.ToString();
+           //  string diyetler = res.Result.Owner.Dietler[0].Title.ToString(); // kontrol amaçlı
             for (int i = 0; i < res.Result.Owner.Dietler.Count - 1; i++)
             {
                 if (res.Result.Owner.Dietler[i] != null)
                 {
                     res.Result.Owner.Dietler[i].IsNew = false;
-                    bool gazi = res.Result.Owner.Dietler[i].IsNew;
-                    base.Update(res.Result);
-
+                //    bool gazi = res.Result.Owner.Dietler[i].IsNew; // kontrol amaçlı 
+                    if (base.Update(res.Result) == 0)
+                    {
+                        res.AddError(ErrorMessageCode.DietİsnewNotUpdated, "Eski Diyetlerin Düzenlenemedi");
+                    }
                 }
-         
+
             }
 
             return res;
