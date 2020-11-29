@@ -3,13 +3,21 @@
 @{
     ViewBag.Title = "YENİ DİYETLER";
 }
-<link href="~/Content/new-login-style-kategori.css" rel="stylesheet" />
 <style>
-    .vertical-strech {
-        height: 100vh;
+    .sayfaArkaPlan {
+        /*background: #DE6262;*/ /* fallback for old browsers */
+        /*background: -webkit-linear-gradient(to right, #FFB88C, #DE6262);*/ /* Chrome 10-25, Safari 5.1-6 */
+        /*background: linear-gradient(to right, #FFB88C, #DE6262);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        /*        background-color: rgba(222, 98, 98, 0.5);*/
+        background: rgba(222, 98, 98, 0.7);
+        background: -webkit-linear-gradient(to left, rgba(169, 223, 191,0.8), rgba( 52, 152, 219, 0.7));
+        background: linear-gradient(to left, rgba(169, 223, 191,0.8), rgba( 52, 152, 219 ,0.7));
+        min-height: 1500px;
+        height: 100%;
+        min-width: 100%;
     }
 </style>
-<div class="login-block mr-0">
+<div class="sayfaArkaPlan mr-0">
     <div class=" row pl-5 pt-3 mr-0">
         <div class="col-md-12">
             <p class="display-4 text-center font-weight-bold">
@@ -51,6 +59,12 @@
                     <th>
                         @Html.DisplayNameFor(model => model.DiyetAksam)
                     </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DiyetBaslangic)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DiyetBitis)
+                    </th>
                     @*<th>
                             @Html.DisplayNameFor(model => model.CreatedOn)
                         </th>
@@ -69,64 +83,253 @@
 
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Owner.Username)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Title)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Description)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DiyetSabah)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DiyetOglen)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DiyetAksam)
-                        </td>
-                        @*<td>
-                                @Html.DisplayFor(modelItem => item.CreatedOn)
+                    if (DateTime.Now >= item.DiyetBitis)
+                    {
+                        <tr style="color:red;">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Owner.Username)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.ModifiedOn)
+                                @Html.DisplayFor(modelItem => item.Title)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.ModifiedUsername)
-                            </td>*@
-                        <td>
-                            @if (item.IsNew)
-                            {
-                                <i class="fa fa-check text-warning"></i>
-                            }
-                            else
-                            {
-                                <i class="fa fa-times text-danger"></i>
-                            }
-                        </td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DiyetSabah)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DiyetOglen)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DiyetAksam)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DiyetBaslangic)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DiyetBitis)
+                            </td>
+                            @*
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CreatedOn)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ModifiedOn)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ModifiedUsername)
+                                </td>*@
+                            <td>
+                                @if (item.IsNew)
+                                {
+                                    <i class="fa fa-check text-primary"></i>
+                                }
+                                else
+                                {
+                                    <i class="fa fa-times text-danger"></i>
+                                }
+                            </td>
+                            <td width="150" class="text-right">
+                                @Bootstrap.LinkButton("/Diet/Edit/" + @item.Id, "warning", "btn-sm", "Edit", "edit", string.Empty)
+                                @Bootstrap.LinkButton("/Diet/Details/" + @item.Id, "info", "btn-sm", "Details", "search", string.Empty)
+                                @Bootstrap.LinkButton("/Diet/Delete/" + @item.Id, "danger", "btn-sm", "Delete", "trash", string.Empty)
 
-                        <td width="150" class="text-right">
-                            @Bootstrap.LinkButton("/Diet/Edit/" + @item.Id, "warning", "btn-sm", "Edit", "edit", string.Empty)
-                            @Bootstrap.LinkButton("/Diet/Details/" + @item.Id, "info", "btn-sm", "Details", "search", string.Empty)
-                            @Bootstrap.LinkButton("/Diet/Delete/" + @item.Id, "danger", "btn-sm", "Delete", "trash", string.Empty)
+                                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                            </td>
+                        </tr>
+                    }
+                    else if (DateTime.Now >= item.DiyetBitis.AddHours(-12))
+                    {
+                        <tr style="color:yellow;">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Owner.Username)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Title)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DiyetSabah)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DiyetOglen)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DiyetAksam)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DiyetBaslangic)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DiyetBitis)
+                            </td>
+                            @*
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CreatedOn)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ModifiedOn)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ModifiedUsername)
+                                </td>*@
+                            <td>
+                                @if (item.IsNew)
+                                {
+                                    <i class="fa fa-check text-primary"></i>
+                                }
+                                else
+                                {
+                                    <i class="fa fa-times text-danger"></i>
+                                }
+                            </td>
+                            <td width="150" class="text-right">
+                                @Bootstrap.LinkButton("/Diet/Edit/" + @item.Id, "warning", "btn-sm", "Edit", "edit", string.Empty)
+                                @Bootstrap.LinkButton("/Diet/Details/" + @item.Id, "info", "btn-sm", "Details", "search", string.Empty)
+                                @Bootstrap.LinkButton("/Diet/Delete/" + @item.Id, "danger", "btn-sm", "Delete", "trash", string.Empty)
 
-                            @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
-                        </td>
-                    </tr>
+                                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Owner.Username)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Title)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DiyetSabah)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DiyetOglen)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DiyetAksam)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DiyetBaslangic)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DiyetBitis)
+                            </td>
+                            @*
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CreatedOn)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ModifiedOn)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ModifiedUsername)
+                                </td>*@
+                            <td>
+                                @if (item.IsNew)
+                                {
+                                    <i class="fa fa-check text-primary"></i>
+                                }
+                                else
+                                {
+                                    <i class="fa fa-times text-danger"></i>
+                                }
+                            </td>
+                            <td width="150" class="text-right">
+                                @Bootstrap.LinkButton("/Diet/Edit/" + @item.Id, "warning", "btn-sm", "Edit", "edit", string.Empty)
+                                @Bootstrap.LinkButton("/Diet/Details/" + @item.Id, "info", "btn-sm", "Details", "search", string.Empty)
+                                @Bootstrap.LinkButton("/Diet/Delete/" + @item.Id, "danger", "btn-sm", "Delete", "trash", string.Empty)
 
+                                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                            </td>
+                        </tr>
+                    }
                 }
             </table>
         </div>
     </div>
-    <div class="col-md-6 text-center">
-        <h3>
-            Laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue cras ut metus a risus iaculis scelerisque eu ac ante fusce non varius purus aenean nec magna felis fusce vestibulum.
-            <br />  <b>açıklama konulacak</b>
-        </h3>
+    <div class="col-md-12 text-right">
+        <p>
+            <button class="btn btn-outline-danger" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Sayfa Açıklaması</button>
+        </p>
+        <div class="row">
+            <div class="col">
+                <div class="collapse multi-collapse" id="multiCollapseExample1">
+                    <div class="card card-body text-left sayfaArkaPlan pl-4" style="min-height:100%;">
+                        <h3>
+                            <b>Arama : </b>  Yeni Diyetlerde Kullanıcı Adına Göre yapılır.
+                        </h3>
+                        <ul>
+                            <b>Yeni Diyetler Sayfasında </b>
+                            <li>Başlık</li>
+                            <li>Açıklama</li>
+                            <li>Sabah</li>
+                            <li>Öğlen</li>
+                            <li>Akşam </li>
+                            <li>Diyetin yeni olup olmadığını</li>
+                            görelibiriz.
+                            <br />
+                            <b>daha fazlası için dataya tıklayınız.</b>
+                        </ul>
+                        <hr />
+                        <div class="alert alert-danger" style="width:30%;">
+                            <p>Diyet Süresi Bittiği Zaman Kırmızı Görünür.</p>
+                        </div>
+                        <hr />
+                        <div class="alert alert-warning" style="width:30%;">
+                            <p>Diyetin Bitimine 12 saat veya 12 saatten az var ise Sarı Gözükür.</p>
+                        </div>
+                        <hr />
+                        <p>
+                            Yeni Bir Diyet Yazacağınız zaman ilk önce eski diyeti <b>Bütün Diyetler</b> sayfasından düzenleyiniz.<br />
+                            <b>Eski Diyeti</b>    Yeni mi ? <i class="fa fa-times text-danger"></i> yapınız. <br />
+                            Yeni Diyetinizi Yazınız. <i class="fa fa-check text-primary"></i>
+                        </p>
+                        <hr />
+                        <p>
+                            Diyet Oluşturmak İçin Yeni Blog Yazısı Ekle Butonuna Basınız. <br />
+                            Diyetleri Düzenlemek İçin Sarı Renkli Düzenleme İkonuna Basınız. <br />
+                            Diyetin Detayına Bakmak İçin Mavi Renkli Detay İkonuna Basınız. <br />
+                            <ul>
+                                <li>Kilo</li>
+                                <li>Vücut Kitle İndexi (BMI)</li>
+                                <li>Yağ Oranı (FAT)</li>
+                                <li>Kas Oranı (MUSC)</li>
+                                <li>Bazal Metabolizma Hızı (BMH)</li>
+                                <li>Karın İçi Yağlanma (VF)</li>
+                                <li>Ölçüm</li>
+                                <li>Diyetin Başlangıç Tarihi</li>
+                                <li>Diyetin Bitiş Tarihi</li>
+                                <li>Ek Açıklama</li>
+                                &emsp;  Diyetin Detayında ek olarak bu parametreler vardır.
+                                <br />
+                                &emsp;  Her diyet yazdığınızda üstteki parametreleride yazarsınız.
+                                <br />
+                                &emsp;  Bu yüzden detayına bakabilirsiniz.
+                            </ul>
+                            Diyeti Silmek için Kırmızı Renkli Çöp Kutusu İkonuna Basınız. <br />
+                        </p>
+                        <hr />
+                        <p>
+                            Beklenmedik Bir Durum Halinde  İletişime geçiniz : Gazihand@gmail.com
+                        </p>
+                        <hr />
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

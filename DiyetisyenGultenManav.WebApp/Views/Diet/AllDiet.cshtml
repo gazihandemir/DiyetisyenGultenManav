@@ -2,7 +2,6 @@
 @{
     ViewBag.Title = "BÜTÜN DİYETLER";
 }
-<link href="~/Content/new-login-style-kategori.css" rel="stylesheet" />
 <style>
     .sayfaArkaPlan {
         /*background: #DE6262;*/ /* fallback for old browsers */
@@ -10,8 +9,8 @@
         /*background: linear-gradient(to right, #FFB88C, #DE6262);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         /*        background-color: rgba(222, 98, 98, 0.5);*/
         background: rgba(222, 98, 98, 0.7);
-        background: -webkit-linear-gradient(to left, rgba(169, 223, 191,0.8), rgba( 34, 153, 84, 0.7));
-        background: linear-gradient(to left, rgba(169, 223, 191,0.8), rgba( 34, 153, 84, 0.7));
+        background: -webkit-linear-gradient(to left, rgba(169, 223, 191,0.8), rgba( 52, 152, 219, 0.7));
+        background: linear-gradient(to left, rgba(169, 223, 191,0.8), rgba( 52, 152, 219,0.7));
         min-height: 1500px;
         height: 100%;
         min-width: 100%;
@@ -59,6 +58,12 @@
                     <th>
                         @Html.DisplayNameFor(model => model.DiyetAksam)
                     </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DiyetBaslangic)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DiyetBitis)
+                    </th>
                     @*<th>
                             @Html.DisplayNameFor(model => model.CreatedOn)
                         </th>
@@ -95,7 +100,14 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.DiyetAksam)
                         </td>
-                        @*<td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DiyetBaslangic)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DiyetBitis)
+                        </td>
+                        @*
+                            <td>
                                 @Html.DisplayFor(modelItem => item.CreatedOn)
                             </td>
                             <td>
@@ -124,6 +136,8 @@
                                 @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
                         </td>
                     </tr>
+
+
                 }
 
             </table>

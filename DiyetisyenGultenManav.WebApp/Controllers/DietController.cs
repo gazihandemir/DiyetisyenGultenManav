@@ -21,18 +21,18 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         {
             if (Ara != null)
             {
-                return View(dietManager.ListQueryable().Where(x => x.Owner.Username.Contains(Ara) || Ara == null));
+                return View(dietManager.ListQueryable().Where(x => x.Owner.Username.Contains(Ara) || Ara == null).OrderBy(x => x.DiyetBitis));
             }
             else
             {
-                return View(dietManager.List());
+                return View(dietManager.List().OrderBy(x => x.DiyetBitis));
             }
         }
 
         public ActionResult NewDiet(string Ara)
         {
-            var diet = dietManager.ListQueryable().Where(x => x.IsNew == true).OrderByDescending(x => x.ModifiedOn);
-            var AraDiet = dietManager.ListQueryable().Where(x => x.IsNew == true && x.Owner.Username.Contains(Ara) || Ara == null).OrderByDescending(x => x.ModifiedOn);
+            var diet = dietManager.ListQueryable().Where(x => x.IsNew == true).OrderBy(x => x.DiyetBitis);
+            var AraDiet = dietManager.ListQueryable().Where(x => x.IsNew == true && x.Owner.Username.Contains(Ara) || Ara == null).OrderBy(x => x.DiyetBitis);
             if (Ara != null)
             {
                 return View(AraDiet.ToList());
@@ -41,6 +41,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             {
                 return View(diet.ToList());
             }
+            
         }
         // GET: Diet
         public ActionResult Index()
