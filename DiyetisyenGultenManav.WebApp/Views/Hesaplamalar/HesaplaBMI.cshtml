@@ -1,19 +1,25 @@
 ﻿@{
     ViewBag.Title = "Beden Kitle İndeksi Hesaplama / BKİ Hesaplama";
 }
-<link href="~/Content/new-login-style-kullanici.css" rel="stylesheet" />
 <style>
-    .sayfaDüzeniPaketTalebi {
+    .sayfaArkaPlan {
+        /*background: #DE6262;*/ /* fallback for old browsers */
+        /*background: -webkit-linear-gradient(to right, #FFB88C, #DE6262);*/ /* Chrome 10-25, Safari 5.1-6 */
+        /*background: linear-gradient(to right, #FFB88C, #DE6262);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        /*        background-color: rgba(222, 98, 98, 0.5);*/
+        background: rgba(215, 189, 226, 0.7);
+        background: -webkit-linear-gradient(to right, rgba(174, 214, 241,0.8), rgba(52, 152, 219, 0.7));
+        background: linear-gradient(to right, rgba(174, 214, 241,0.8), rgba(52, 152, 219, 0.7));
+        min-height: 2000px;
         height: 100%;
-        min-height: 1000px;
+        min-width: 100%;
     }
-
     .list-group a {
         background-color: #aed6f1;
         font-size: 20px;
     }
 </style>
-<div class="login-block  pl-5 pt-3 mr-0 sayfaDüzeniPaketTalebi">
+<div class="sayfaArkaPlan  pl-5 pt-3 mr-0 ">
     @*<div class="row pl-5 pt-3 mr-0">
         <div class="col-md-12">s
             <p class="display-4 text-center font-weight-bold">
@@ -21,7 +27,7 @@
             </p>
         </div>
     </div>*@
-    <div class="row m-3 ">
+    <div class="row mr-3 ">
         @Html.Partial("_PartialHesaplamalarMenu")
         <div class="row pl-5 pt-3 mr-0 col-md-9">
             <div class="col-md-9">
