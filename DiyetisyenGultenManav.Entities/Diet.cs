@@ -86,7 +86,6 @@ namespace DiyetisyenGultenManav.Entities
         [DisplayName("Diyetin Bitiş Tarihi"),
          Required(ErrorMessage = "{0} alanı gereklidir.")]
         public DateTime DiyetBitis { get; set; }
-
         public virtual Kullanıcı Owner { get; set; }
     }
 }

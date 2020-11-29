@@ -3,14 +3,21 @@
 @{
     ViewBag.Title = "PAKET TALEPLERİ";
 }
-<link href="~/Content/new-login-style-kategori.css" rel="stylesheet" />
 <style>
-    .sayfaDüzeniPaketTalebi{
-        height:100%;
-        min-height:1000px;
+    .sayfaArkaPlan {
+        /*background: #DE6262;*/ /* fallback for old browsers */
+        /*background: -webkit-linear-gradient(to right, #FFB88C, #DE6262);*/ /* Chrome 10-25, Safari 5.1-6 */
+        /*background: linear-gradient(to right, #FFB88C, #DE6262);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        /*        background-color: rgba(222, 98, 98, 0.5);*/
+        background: rgba(215, 189, 226, 0.7);
+        background: -webkit-linear-gradient(to right, rgba(215,189,226,0.8), rgba(155, 89, 182, 0.7));
+        background: linear-gradient(to right, rgba(215,189,226,0.8), rgba(155, 89, 182, 0.7));
+        min-height: 1000px;
+        height: 100%;
+        min-width: 100%;
     }
 </style>
-<div class="login-block  pl-5 pt-3 mr-0 sayfaDüzeniPaketTalebi">
+<div class="sayfaArkaPlan mr-0 ">
     <div class=" row pl-5 pt-3 mr-0">
         <div class="col-md-12">
             <p class="display-4 text-center font-weight-bold">
@@ -41,7 +48,7 @@
                         @Html.DisplayNameFor(model => model.TelefonNo)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Program)
+                        @Html.DisplayNameFor(model => model.Program.Isim)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.EkAciklamalar)
@@ -59,7 +66,7 @@
                             @Html.DisplayFor(modelItem => item.TelefonNo)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Program)
+                            @Html.DisplayFor(modelItem => item.Program.Isim)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.EkAciklamalar)

@@ -144,13 +144,14 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
             {
                 IsimSoyisim = "1",
                 TelefonNo = "1",
-                Program = "1",
+                Program = paket,
                 EkAciklamalar = "aciklama",
                 CreatedOn = DateTime.Now,
                 ModifiedOn = DateTime.Now.AddMinutes(10),
                 ModifiedUsername = "gazihandemir"
 
             };
+            paket.PaketTalepleri.Add(paketTalebi);
             Contact contact = new Contact()
             {
                 IsimSoyisim = "isim soyisim",

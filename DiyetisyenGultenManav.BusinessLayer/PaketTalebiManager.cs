@@ -55,7 +55,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
             res.Result = db_paketTalebi;
             res.Result.IsimSoyisim = data.IsimSoyisim;
             res.Result.TelefonNo = data.TelefonNo;
-            res.Result.Program = data.Program;
+            //res.Result.Program = data.Program;
             res.Result.EkAciklamalar = data.EkAciklamalar;
             if (base.Update(res.Result) == 0) // blog Yazısı Güncelleniyor.
             {

@@ -241,75 +241,75 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View(model);
         }
-        public ActionResult Register()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Register(RegisterViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                BusinessLayerResult<Kullanıcı> res = kullanıcıManager.RegisterUser(model);
-                if (res.Errors.Count > 0)
-                {
-                    res.Errors.ForEach(x => ModelState.AddModelError(" ", x.Message));
-                    return View(model);
-                }
-                OkViewModel notifyObj = new OkViewModel()
-                {
-                    Header = "Yönlendirliyorsunuz..",
-                    Title = "Kayıt Başarılı",
-                    RedirectingUrl = "/Home/Login",
-                };
-                notifyObj.Items.Add("Lütfen e-posta adresinize gönderdiğimiz aktivasyon link'ine tıklayarak hesabınızı aktive ediniz." +
-                    "Hesabınızı aktive etmeden sitemizden yararlanamazsınız !");
-                return View("Ok", notifyObj);
-            }
-            return View(model);
-            /*   if (ModelState.IsValid)
-            {
-                  if (model.Username == "aaa")
-                  {
-                      ModelState.AddModelError("", "Kullanıcı Adı kullanılıyor");
-                  }
-                  if (model.Email == "aaa@aa.com")
-                  {
-                      ModelState.AddModelError("", "e-posta adresi  kullanılıyor");
-                  }
-              }
-             foreach (var item in ModelState)
-              {
-                  if (item.Value.Errors.Count > 0)
-                  {
-                      return View(model);
-                  }
-              }
-          */
-        }
-        public ActionResult UserActivate(Guid id)
-        {
-            BusinessLayerResult<Kullanıcı> res = kullanıcıManager.ActivateUser(id);
-            if (res.Errors.Count > 0)
-            {
-                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
-                {
-                    Title = "Geçersiz İşlem",
-                    RedirectingUrl = "/Home/Index",
-                    Items = res.Errors
+        //public ActionResult Register()
+        //{
+        //    return View();
+        //}
+        //[HttpPost]
+        //public ActionResult Register(RegisterViewModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        BusinessLayerResult<Kullanıcı> res = kullanıcıManager.RegisterUser(model);
+        //        if (res.Errors.Count > 0)
+        //        {
+        //            res.Errors.ForEach(x => ModelState.AddModelError(" ", x.Message));
+        //            return View(model);
+        //        }
+        //        OkViewModel notifyObj = new OkViewModel()
+        //        {
+        //            Header = "Yönlendirliyorsunuz..",
+        //            Title = "Kayıt Başarılı",
+        //            RedirectingUrl = "/Home/Login",
+        //        };
+        //        notifyObj.Items.Add("Lütfen e-posta adresinize gönderdiğimiz aktivasyon link'ine tıklayarak hesabınızı aktive ediniz." +
+        //            "Hesabınızı aktive etmeden sitemizden yararlanamazsınız !");
+        //        return View("Ok", notifyObj);
+        //    }
+        //    return View(model);
+        //    /*   if (ModelState.IsValid)
+        //    {
+        //          if (model.Username == "aaa")
+        //          {
+        //              ModelState.AddModelError("", "Kullanıcı Adı kullanılıyor");
+        //          }
+        //          if (model.Email == "aaa@aa.com")
+        //          {
+        //              ModelState.AddModelError("", "e-posta adresi  kullanılıyor");
+        //          }
+        //      }
+        //     foreach (var item in ModelState)
+        //      {
+        //          if (item.Value.Errors.Count > 0)
+        //          {
+        //              return View(model);
+        //          }
+        //      }
+        //  */
+        //}
+        //public ActionResult UserActivate(Guid id)
+        //{
+        //    BusinessLayerResult<Kullanıcı> res = kullanıcıManager.ActivateUser(id);
+        //    if (res.Errors.Count > 0)
+        //    {
+        //        ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+        //        {
+        //            Title = "Geçersiz İşlem",
+        //            RedirectingUrl = "/Home/Index",
+        //            Items = res.Errors
 
-                };
-                return View("Error", ErrNotifyObj);
-                //TempData["errors"] = res.Errors;
-            }
-            OkViewModel OkNotifyObj = new OkViewModel()
-            {
-                Title = "Hesap Aktifleştirildi ! ",
-                RedirectingUrl = "/Home/Login"
-            };
-            OkNotifyObj.Items.Add("Hesabınız aktifleştirildi. Artık Sitemizden Faydalanabilirsiniz.");
-            return View("Ok", OkNotifyObj);
-        }
+        //        };
+        //        return View("Error", ErrNotifyObj);
+        //        //TempData["errors"] = res.Errors;
+        //    }
+        //    OkViewModel OkNotifyObj = new OkViewModel()
+        //    {
+        //        Title = "Hesap Aktifleştirildi ! ",
+        //        RedirectingUrl = "/Home/Login"
+        //    };
+        //    OkNotifyObj.Items.Add("Hesabınız aktifleştirildi. Artık Sitemizden Faydalanabilirsiniz.");
+        //    return View("Ok", OkNotifyObj);
+        //}
         public ActionResult Logout()
         {
             Session.Clear();

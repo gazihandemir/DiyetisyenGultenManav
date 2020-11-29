@@ -57,6 +57,11 @@ namespace DiyetisyenGultenManav.Entities
            Required(ErrorMessage = "{0} alanı gereklidir."),
                StringLength(500, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
         public string Aciklama { get; set; }
+        public virtual List<PaketTalebi> PaketTalepleri{ get; set; }
+        public Paket()
+        {
+            PaketTalepleri = new List<PaketTalebi>();
+        }
 
     }
 }

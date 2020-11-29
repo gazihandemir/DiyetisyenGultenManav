@@ -16,6 +16,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
     public class PaketTalebiController : Controller
     {
         PaketTalebiManager paketTalebiManager = new PaketTalebiManager();
+        PaketManager paketManager = new PaketManager();
 
         // GET: PaketTalebi
         public ActionResult Index(string Ara)
@@ -52,9 +53,10 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         // GET: PaketTalebi/Create
         public ActionResult Create()
         {
+            ViewBag.PaketId = new SelectList(paketManager.List(), "Id", "Isim");
+
             return View();
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(PaketTalebi paketTalebi)
@@ -78,8 +80,8 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 }
                 return RedirectToAction("Index","Home");
             }
-
-            return View();
+            ViewBag.PaketId = new SelectList(paketManager.List(), "Id", "Isim",paketTalebi.PaketId);
+            return View(paketTalebi);
         }
 
         // GET: PaketTalebi/Edit/5
@@ -108,8 +110,6 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
 
             return View(res.Result);
         }
-
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(PaketTalebi paketTalebi)
@@ -140,7 +140,6 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View();
         }
-
         // GET: PaketTalebi/Delete/5
         public ActionResult Delete(int? id)
         {

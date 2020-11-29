@@ -1,113 +1,113 @@
 ﻿@using DiyetisyenGultenManav.WebApp.Models
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
-        <img src="~/images/avakadoiletisim.png" width="48" height="48" class="d-inline-block align-top" alt="">
-        <a href="/Home/Index" class="navbar-brand" style="font-size: 24px;color: #d5f5e3;"><b>Diyetisyen</b><i class="fa  fa-heartbeat" style="font-size:12px;color:greenyellow;"></i><b> Gülten Manav</b></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                @if (CurrentSession.User != null)
-                {
-                    <li class="nav-item dropdown">
-                        <a href="/BlogYazısı/Index" class="dropdown-toggle nav-link " data-toggle="dropdown"
-                           role="button" aria-haspopup="true" aria-expanded="false" style="color: #f5cba7"> 
-                            <i class="fa fa-wrench mr-1"></i>Yönetim
-                        </a>
-                        <div class="dropdown-menu">
-                            @Bootstrap.DropdownDivider()
-                            @Bootstrap.DropdownLinkMenu("/BlogYazısı/Create", "plus-circle", " Blog Yazısı Ekle", "pink")
-                            @Bootstrap.DropdownLinkMenu("/BlogYazısı/Index", "paw", " Blog Yazılarım", "pink")
-                            @Bootstrap.DropdownDivider()
-                            @Bootstrap.DropdownLinkMenu("/Kategori/Create", "plus-circle", " Kategori Ekle", "purple")
-                            @Bootstrap.DropdownLinkMenu("/Kategori/Index", "list-alt", " Kategoriler", "purple")
-                            @Bootstrap.DropdownDivider()
-                            @Bootstrap.DropdownLinkMenu("/OdemeBildirimi/CreateOdemeBildirimiOwner", "try", " Ödeme Bildirimi Yap", "#154360")
-                            @Bootstrap.DropdownLinkMenu("/OdemeBildirimi/IndexOdemeBildirimiOwner", "list", " Ödeme Bildirimlerim", "#154360")
-                            @Bootstrap.DropdownLinkMenu("/OdemeBildirimi/Index", "th-list", " Ödeme Bildirimi Sayfası", "#154360")
-                            @Bootstrap.DropdownDivider()
-                            @Bootstrap.DropdownLinkMenu("/Diet/Create", "plus-circle", " Diyet Ekle", "#186a3b")
-                            @Bootstrap.DropdownLinkMenu("/Diet/AllDiet", "sort-alpha-asc", " Tüm Diyetler", "#186a3b")
-                            @Bootstrap.DropdownLinkMenu("/Diet/NewDiet", "yoast", " Yeni Diyetler", "#186a3b")
-                            @Bootstrap.DropdownLinkMenu("/Diet/Index", "github-alt", " Diyetim", "#186a3b")
-                            @Bootstrap.DropdownDivider()
-                            @Bootstrap.DropdownLinkMenu("/Kullanıcı/Create", "user-plus", " Kullanıcı Ekle", "#3498db")
-                            @Bootstrap.DropdownLinkMenu("/Kullanıcı/Index", "users", " Kullanıcılar", "#3498db")
-                            @Bootstrap.DropdownDivider()
-                            @Bootstrap.DropdownLinkMenu("/Paket/Create", "plus-circle", "Paket Oluştur", "#d35400")
-                            @Bootstrap.DropdownLinkMenu("/Paket/Index", "paypal", " Paketler", "#d35400")
-                            @Bootstrap.DropdownDivider()
-                            @Bootstrap.DropdownLinkMenu("/PaketTalebi/Create", "handshake-o", "Paket Talebi Oluştur", "#b9770e")
-                            @Bootstrap.DropdownLinkMenu("/PaketTalebi/Index", "list", "Paket Talepleri", "#b9770e")
-                            @Bootstrap.DropdownDivider()
-                            @Bootstrap.DropdownLinkMenu("/Contact/Index", "envira", "İletişime Geçenler", "#1abc9c")
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+    <img src="~/images/avakadoiletisim.png" width="48" height="48" class="d-inline-block align-top" alt="">
+    <a href="/Home/Index" class="navbar-brand" style="font-size: 24px;color: #d5f5e3;"><b>Diyetisyen</b><i class="fa  fa-heartbeat" style="font-size:12px;color:greenyellow;"></i><b> Gülten Manav</b></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            @if (CurrentSession.User != null)
+            {
+                <li class="nav-item dropdown">
+                    <a href="/BlogYazısı/Index" class="dropdown-toggle nav-link " data-toggle="dropdown"
+                       role="button" aria-haspopup="true" aria-expanded="false" style="color: #f5cba7">
+                        <i class="fa fa-wrench mr-1"></i>Yönetim
+                    </a>
+                    <div class="dropdown-menu">
+                        @Bootstrap.DropdownDivider()
+                        @Bootstrap.DropdownLinkMenu("/BlogYazısı/Create", "plus-circle", " Blog Yazısı Ekle", "pink")
+                        @Bootstrap.DropdownLinkMenu("/BlogYazısı/Index", "paw", " Blog Yazılarım", "pink")
+                        @Bootstrap.DropdownDivider()
+                        @Bootstrap.DropdownLinkMenu("/Kategori/Create", "plus-circle", " Kategori Ekle", "purple")
+                        @Bootstrap.DropdownLinkMenu("/Kategori/Index", "list-alt", " Kategoriler", "purple")
+                        @Bootstrap.DropdownDivider()
+                        @Bootstrap.DropdownLinkMenu("/OdemeBildirimi/CreateOdemeBildirimiOwner", "try", " Ödeme Bildirimi Yap", "#154360")
+                        @Bootstrap.DropdownLinkMenu("/OdemeBildirimi/IndexOdemeBildirimiOwner", "list", " Ödeme Bildirimlerim", "#154360")
+                        @Bootstrap.DropdownLinkMenu("/OdemeBildirimi/Index", "th-list", " Ödeme Bildirimi Sayfası", "#154360")
+                        @Bootstrap.DropdownDivider()
+                        @Bootstrap.DropdownLinkMenu("/Diet/Create", "plus-circle", " Diyet Ekle", "#186a3b")
+                        @Bootstrap.DropdownLinkMenu("/Diet/AllDiet", "sort-alpha-asc", " Tüm Diyetler", "#186a3b")
+                        @Bootstrap.DropdownLinkMenu("/Diet/NewDiet", "yoast", " Yeni Diyetler", "#186a3b")
+                        @Bootstrap.DropdownLinkMenu("/Diet/Index", "github-alt", " Diyetim", "#186a3b")
+                        @Bootstrap.DropdownDivider()
+                        @Bootstrap.DropdownLinkMenu("/Kullanıcı/Create", "user-plus", " Kullanıcı Ekle", "#3498db")
+                        @Bootstrap.DropdownLinkMenu("/Kullanıcı/Index", "users", " Kullanıcılar", "#3498db")
+                        @Bootstrap.DropdownDivider()
+                        @Bootstrap.DropdownLinkMenu("/Paket/Create", "plus-circle", "Paket Oluştur", "#d35400")
+                        @Bootstrap.DropdownLinkMenu("/Paket/Index", "paypal", " Paketler", "#d35400")
+                        @Bootstrap.DropdownDivider()
+                        @Bootstrap.DropdownLinkMenu("/PaketTalebi/Create", "handshake-o", "Paket Talebi Oluştur", "#b9770e")
+                        @Bootstrap.DropdownLinkMenu("/PaketTalebi/Index", "list", "Paket Talepleri", "#b9770e")
+                        @Bootstrap.DropdownDivider()
+                        @Bootstrap.DropdownLinkMenu("/Contact/Index", "envira", "İletişime Geçenler", "#1abc9c")
 
-                            @if (CurrentSession.User.IsAdmin)
-                            {
+                        @if (CurrentSession.User.IsAdmin)
+                        {
 
-                            }
-                        </div>
-                    </li>
-                }
-                <li class="nav-item">
-                    @Bootstrap.LinkMenu("/Home/Blog", "paw", " Blog", "pink", "14px")
+                        }
+                    </div>
                 </li>
-                &emsp;
+            }
+            <li class="nav-item">
+                @Bootstrap.LinkMenu("/Home/Blog", "paw", " Blog", "pink", "14px")
+            </li>
+            &emsp;
+            <li class="nav-item">
+                @Bootstrap.LinkMenu("/Home/Danisanlarim", "signal", " Başarılar", "#f1c40f", "14px")
+            </li>
+            &emsp;
+            <li class="nav-item">
+                @Bootstrap.LinkMenu("/Home/Tabaklar", "cutlery", " Sizden Gelenler", "#ec7063 ", "14px")
+            </li>
+            &emsp;
+            <li class="nav-item">
+                @Bootstrap.LinkMenu("/Home/About", "user-md", " Hakkımda", "#9b59b6", "16px")
+            </li>
+            &emsp;
+            @*<li class="nav-item">
+                    @Bootstrap.LinkMenu("/Home/Index#princing", "th-list", "Paketler")
+                </li>*@
+            <li class="nav-item">
+                @Bootstrap.LinkMenu("/Contact/Create", "envira", " Bana Ulaşın", "#1abc9c", "14px")
+            </li>
+            &emsp;
+            <li class="nav-item">
+                @Bootstrap.LinkMenu("/Hesaplamalar/HesaplaBMI", "calculator", " Hesaplamalar", "#d35400", "14px")
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            @if (CurrentSession.User == null)
+            {
                 <li class="nav-item">
-                    @Bootstrap.LinkMenu("/Home/Danisanlarim", "signal", " Başarılar", "#f1c40f", "14px")
-                </li>
-                &emsp;
-                <li class="nav-item">
-                    @Bootstrap.LinkMenu("/Home/Tabaklar", "cutlery", " Sizden Gelenler", "#ec7063 ", "14px")
-                </li>
-                &emsp;
-                <li class="nav-item">
-                    @Bootstrap.LinkMenu("/Home/About", "user-md", " Hakkımda", "#9b59b6", "16px")
-                </li>
-                &emsp;
-                @*<li class="nav-item">
-            @Bootstrap.LinkMenu("/Home/Index#princing", "th-list", "Paketler")
-        </li>*@
-                <li class="nav-item">
-                    @Bootstrap.LinkMenu("/Contact/Create", "envira", " Bana Ulaşın", "#1abc9c", "14px")
-                </li>
-                &emsp;
-                <li class="nav-item">
-                    @Bootstrap.LinkMenu("/Hesaplamalar/HesaplaBMI", "calculator", " Hesaplamalar", "#d35400", "14px")
-                </li>
-            </ul>
-            <ul class="navbar-nav">
-                @if (CurrentSession.User == null)
-                {
-                <li class="nav-item">
-                   
+
                     @Bootstrap.LinkMenu("/Home/Login", "sign-in", " Giriş", "#3498db")
                 </li>
-                    <li class="nav-item">
+                @*<li class="nav-item">
                         @Bootstrap.LinkMenu("/Home/Register", "user", " Üye Ol", "#3498db")
-                    </li>
-                }
-                else
-                {
-                    <li class="nav-item dropdown">
-                        <a href="/home/ShowProfile" class="dropdown-toggle nav-link" data-toggle="dropdown"
-                           role="button" aria-haspopup="true" aria-expanded="false" style="color:#3498db;">
-                            <i class="fa fa-user mr-2"></i>@CurrentSession.User.Username
-                        </a>
-                        <div class="dropdown-menu">
-                            @Bootstrap.DropdownLinkMenu("/Home/ShowProfile", "user", " Profili Göster", "#1f618d")
-                            @Bootstrap.DropdownDivider()
-                            @Bootstrap.DropdownLinkMenu("/Home/EditProfile", "edit", " Profili Düzenle", "#f4d03f")
-                            @*<a href="/Home/DeleteProfile" class="dropdown-item" style="color: #c0392b;"
+                    </li>*@
+            }
+            else
+            {
+                <li class="nav-item dropdown">
+                    <a href="/home/ShowProfile" class="dropdown-toggle nav-link" data-toggle="dropdown"
+                       role="button" aria-haspopup="true" aria-expanded="false" style="color:#3498db;">
+                        <i class="fa fa-user mr-2"></i>@CurrentSession.User.Username
+                    </a>
+                    <div class="dropdown-menu">
+                        @Bootstrap.DropdownLinkMenu("/Home/ShowProfile", "user", " Profili Göster", "#1f618d")
+                        @Bootstrap.DropdownDivider()
+                        @Bootstrap.DropdownLinkMenu("/Home/EditProfile", "edit", " Profili Düzenle", "#f4d03f")
+                        @*<a href="/Home/DeleteProfile" class="dropdown-item" style="color: #c0392b;"
                                onclick="return confirm('Hesabınızı silmek istediğinize emin misiniz ?')">
                                 <i class="fa fa-trash mr-2"></i>Profili Sil
                             </a>*@
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        @Bootstrap.LinkMenu("/Home/Logout", "sign-out", " Çıkış", "#3498db")
-                    </li>
-                }
-            </ul>
-        </div>
-    </nav>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    @Bootstrap.LinkMenu("/Home/Logout", "sign-out", " Çıkış", "#3498db")
+                </li>
+            }
+        </ul>
+    </div>
+</nav>
