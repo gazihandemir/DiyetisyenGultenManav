@@ -12,6 +12,7 @@ namespace DiyetisyenGultenManav.BusinessLayer
 {
     public class DietManager : ManagerBase<Diet>
     {
+        KullanıcıManager kullanıcıManager = new KullanıcıManager();
         public BusinessLayerResult<Diet> GetDietById(int? id)
         {
             BusinessLayerResult<Diet> res = new BusinessLayerResult<Diet>();
@@ -82,20 +83,34 @@ namespace DiyetisyenGultenManav.BusinessLayer
         public BusinessLayerResult<Diet> CreateDiet(Diet data)
         {
             BusinessLayerResult<Diet> res = new BusinessLayerResult<Diet>();
-            Diet db_diet = Find(x => x.Id == data.Id);
+            //Diet db_diet = Find(x => x.Id == data.Id);
+            //int idgelen = data.Owner.Id;
+            //Kullanıcı db_kullanıcı = kullanıcıManager.Find(x => x.Id == idgelen);
             res.Result = data;
-            /*        if (db_diet != null)
-                    {
-                        if (true)
-                        {
+            //if (db_diet != null)
+            //    {
+            //        if (true)
+            //        {
 
-                        }
-                    }
-            */
+            //        }
+            //    }
             if (base.Insert(res.Result) == 0)
             {
                 res.AddError(ErrorMessageCode.DietIsNotInserted, "Diyet Eklenemedi");
             }
+            string diyetler = res.Result.Owner.Dietler[0].Title.ToString();
+            for (int i = 0; i < res.Result.Owner.Dietler.Count - 1; i++)
+            {
+                if (res.Result.Owner.Dietler[i] != null)
+                {
+                    res.Result.Owner.Dietler[i].IsNew = false;
+                    bool gazi = res.Result.Owner.Dietler[i].IsNew;
+                    base.Update(res.Result);
+
+                }
+         
+            }
+
             return res;
 
         }

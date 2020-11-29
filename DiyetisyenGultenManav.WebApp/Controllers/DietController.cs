@@ -116,7 +116,8 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             ViewBag.KullanıcıId = new SelectList(kullanıcıManager.List(), "Id", "Username");
             //         diet.Owner = ViewBag.KullanıcıId;
-            return View();
+            //string gazihan = diet.Owner.Username.ToString();
+            return View(diet);
         }
         // GET: Diet/Edit/5
         public ActionResult Edit(int? id)
