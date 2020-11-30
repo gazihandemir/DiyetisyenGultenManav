@@ -305,12 +305,14 @@
     <Compile Include="Controllers\DietController.cs" />
     <Compile Include="Controllers\HesaplamalarController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KahveController.cs" />
     <Compile Include="Controllers\KategoriController.cs" />
     <Compile Include="Controllers\KullanıcıController.cs" />
     <Compile Include="Controllers\OdemeBildirimiController.cs" />
     <Compile Include="Controllers\PaketController.cs" />
     <Compile Include="Controllers\PaketTalebiController.cs" />
     <Compile Include="Controllers\YorumController.cs" />
+    <Compile Include="Data\DiyetisyenGultenManavWebAppContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -404,6 +406,11 @@
     <Content Include="Views\Contact\Edit.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Shared\_PartialYorumlar.cshtml" />
+    <Content Include="Views\Kahve\Create.cshtml" />
+    <Content Include="Views\Kahve\Delete.cshtml" />
+    <Content Include="Views\Kahve\Details.cshtml" />
+    <Content Include="Views\Kahve\Edit.cshtml" />
+    <Content Include="Views\Kahve\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -413,7 +420,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Data\" />
     <Folder Include="ImageBlog\" />
     <Folder Include="Views\Yorum\" />
   </ItemGroup>

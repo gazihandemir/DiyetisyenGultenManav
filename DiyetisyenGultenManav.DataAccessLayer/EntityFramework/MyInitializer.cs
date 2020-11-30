@@ -192,6 +192,24 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
                 ModifiedOn = DateTime.Now.AddMinutes(10),
                 ModifiedUsername = "gazihandemir"
             };
+            Kahve kahve = new Kahve()
+            {
+                // BİR
+                ArkaPlanRengi = "1",
+                Ikon = "1",
+                IkonRengi = "1",
+                IkonBoyutu = "1",
+                Sayi = "1",
+                SayiRengi = "1",
+                SayiBoyutu = "1",
+                Yazi = "1",
+                YaziRengi = "1",
+                YaziBoyutu = "1",
+                CreatedOn = DateTime.Now,
+                ModifiedOn = DateTime.Now.AddMinutes(10),
+                ModifiedUsername = "gazihandemir"
+            };
+            context.Kahve.Add(kahve);
             context.Kullanıcılar.Add(gazi);
             context.Kullanıcılar.Add(gulten);
             context.Paketler.Add(paket);

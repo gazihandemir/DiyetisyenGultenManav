@@ -1,0 +1,98 @@
+﻿@model DiyetisyenGultenManav.Entities.Kahve
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Kahve</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ArkaPlanRengi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArkaPlanRengi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ikon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ikon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IkonRengi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IkonRengi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IkonBoyutu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IkonBoyutu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sayi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sayi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SayiRengi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SayiRengi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SayiBoyutu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SayiBoyutu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Yazi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yazi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YaziRengi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YaziRengi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YaziBoyutu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YaziBoyutu)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

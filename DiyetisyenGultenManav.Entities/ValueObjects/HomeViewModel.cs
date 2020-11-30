@@ -10,8 +10,8 @@ namespace DiyetisyenGultenManav.Entities.ValueObjects
     {
         public List<BlogYazısı> BlogYazısı { get; set; }
         public List<Paket> Paket { get; set; }
-        //public Kategori kategori { get; set; }
         public List<Kategori> Kategoriler { get; set; }
+        public List<Kahve> Kahveler { get; set; }
 
     }
 }

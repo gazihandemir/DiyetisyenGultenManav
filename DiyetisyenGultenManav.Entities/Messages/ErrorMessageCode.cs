@@ -56,5 +56,11 @@
         PaketTalebiEkAciklamalarAlreadyExists = 803,
         PaketTalebiCouldNotUpdated = 804,
         PaketTalebiIsNotInserted = 805,
+        // Kahve
+        KahveIsNotFound = 901,
+        KahveCouldNotRemove = 902,
+        KahveYaziAlreadyExists = 903,
+        KahveCouldNotUpdated = 904,
+        KahveIsNotInserted = 905,
     }
 }
