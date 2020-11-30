@@ -20,6 +20,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         private KullanıcıManager kullanıcıManager = new KullanıcıManager();
         private PaketManager paketManager = new PaketManager();
         private YorumManager yorumManager = new YorumManager();
+        private KahveManager kahveManager = new KahveManager();
         private HomeViewModel HomeModel = new HomeViewModel();
         private BlogDetailViewModel BlogDetailModel = new BlogDetailViewModel();
 
@@ -67,11 +68,11 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             List<BlogYazısı> BlogYazilari = blogYazısıManager.ListQueryable().Where(x => x.DanisanPaylasimi == false && x.IsDraft == false).OrderByDescending(x => x.ModifiedOn).ToList();
             List<Paket> Paketler = paketManager.List();
             List<Kategori> Kategoriler = kategoriManager.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList();
-            List<Kahve> kahveler = new List<Kahve>();
+            List<Kahve> kahveler = kahveManager.ListQueryable().OrderBy(x => x.CreatedOn).ToList();
             HomeModel.BlogYazısı = BlogYazilari;
             HomeModel.Paket = Paketler;
             HomeModel.Kategoriler = Kategoriler;
-
+            HomeModel.Kahveler = kahveler;
             return View(HomeModel);
         }
         public ActionResult Danisanlarim()
@@ -79,9 +80,11 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             List<BlogYazısı> BlogYazilari = blogYazısıManager.ListQueryable().Where(x => x.DanisanPaylasimi == true && x.IsDraft == false).OrderByDescending(x => x.ModifiedOn).ToList();
             List<Paket> Paketler = paketManager.List();
             List<Kategori> Kategoriler = kategoriManager.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList();
+            List<Kahve> kahveler = kahveManager.ListQueryable().OrderBy(x => x.CreatedOn).ToList();
             HomeModel.BlogYazısı = BlogYazilari;
             HomeModel.Paket = Paketler;
             HomeModel.Kategoriler = Kategoriler;
+            HomeModel.Kahveler = kahveler;
             return View("Blog", HomeModel);
         }
         public ActionResult Tabaklar()
@@ -89,9 +92,11 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             List<BlogYazısı> BlogYazilari = blogYazısıManager.ListQueryable().Where(x => x.TabakPaylasimi == true && x.IsDraft == false).OrderByDescending(x => x.ModifiedOn).ToList();
             List<Paket> Paketler = paketManager.List();
             List<Kategori> Kategoriler = kategoriManager.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList();
+            List<Kahve> kahveler = kahveManager.ListQueryable().OrderBy(x => x.CreatedOn).ToList();
             HomeModel.BlogYazısı = BlogYazilari;
             HomeModel.Paket = Paketler;
             HomeModel.Kategoriler = Kategoriler;
+            HomeModel.Kahveler = kahveler;
             return View("Blog", HomeModel);
         }
         public ActionResult Blog()
@@ -99,9 +104,11 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             List<BlogYazısı> BlogYazilari = blogYazısıManager.ListQueryable().Where(x => x.DanisanPaylasimi == false && x.TabakPaylasimi == false && x.IsDraft == false).OrderByDescending(x => x.ModifiedOn).ToList();
             List<Paket> Paketler = paketManager.List();
             List<Kategori> Kategoriler = kategoriManager.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList();
+            List<Kahve> kahveler = kahveManager.ListQueryable().OrderBy(x => x.CreatedOn).ToList();
             HomeModel.BlogYazısı = BlogYazilari;
             HomeModel.Paket = Paketler;
             HomeModel.Kategoriler = Kategoriler;
+            HomeModel.Kahveler = kahveler;
             return View("Blog", HomeModel);
         }
         public ActionResult ByKategori(int? id)

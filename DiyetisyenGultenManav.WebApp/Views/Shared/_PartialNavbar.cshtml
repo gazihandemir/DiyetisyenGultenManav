@@ -68,8 +68,8 @@
             </li>
             &emsp;
             @*<li class="nav-item">
-                    @Bootstrap.LinkMenu("/Home/Index#princing", "th-list", "Paketler")
-                </li>*@
+                @Bootstrap.LinkMenu("/Home/Index#princing", "th-list", "Paketler")
+            </li>*@
             <li class="nav-item">
                 @Bootstrap.LinkMenu("/Contact/Create", "envira", " Bana Ulaşın", "#1abc9c", "14px")
             </li>
@@ -78,6 +78,10 @@
                 @Bootstrap.LinkMenu("/Hesaplamalar/HesaplaBMI", "calculator", " Hesaplamalar", "#d35400", "14px")
             </li>
         </ul>
+        <ul class="navbar-nav pull-left">
+            <li><a href="https://www.instagram.com/dytgultenmanav/" target="_blank" class="fa fa-instagram" style="font-size:30px;color:hotpink;"></a></li> &nbsp; &nbsp;
+            <li><a href="https://web.whatsapp.com/send?phone=905383728797&text=Merhaba Size İnternet Sitenizden Ulaşıyorum!" target="_blank" class="fa fa-whatsapp" style="font-size:30px;color:green;"></a></li>
+        </ul> &emsp; &emsp; &emsp;
         <ul class="navbar-nav">
             @if (CurrentSession.User == null)
             {
@@ -86,8 +90,9 @@
                     @Bootstrap.LinkMenu("/Home/Login", "sign-in", " Giriş", "#3498db")
                 </li>
                 @*<li class="nav-item">
-                        @Bootstrap.LinkMenu("/Home/Register", "user", " Üye Ol", "#3498db")
-                    </li>*@
+                    @Bootstrap.LinkMenu("/Home/Register", "user", " Üye Ol", "#3498db")
+                </li>*@
+
             }
             else
             {
@@ -101,9 +106,9 @@
                         @Bootstrap.DropdownDivider()
                         @Bootstrap.DropdownLinkMenu("/Home/EditProfile", "edit", " Profili Düzenle", "#f4d03f")
                         @*<a href="/Home/DeleteProfile" class="dropdown-item" style="color: #c0392b;"
-                               onclick="return confirm('Hesabınızı silmek istediğinize emin misiniz ?')">
-                                <i class="fa fa-trash mr-2"></i>Profili Sil
-                            </a>*@
+                           onclick="return confirm('Hesabınızı silmek istediğinize emin misiniz ?')">
+                            <i class="fa fa-trash mr-2"></i>Profili Sil
+                        </a>*@
                     </div>
                 </li>
                 <li class="nav-item">

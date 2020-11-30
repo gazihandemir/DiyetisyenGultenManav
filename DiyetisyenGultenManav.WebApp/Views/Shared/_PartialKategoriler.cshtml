@@ -6,9 +6,15 @@
            KategoriManager CM = new KategoriManager();
         List<Kategori> KategoriList = CM.List();
     }*@
+
+
+<br />
 <p style="font-size:24px; text-align:center"><b>Kategoriler</b></p>
 <div class="list-group">
-    <a href="@Url.Action("Index","Home")" class="list-group-item list-group-item-action">
+    <a href="/Home/Index#princing" class="list-group-item list-group-item-action" style="background-color:lightblue;">
+        <span class="fa fa-gift mr-2" style="font-size:21px;color:hotpink;"></span><b>Paketler</b>
+    </a>
+    <a href="@Url.Action("Index","Home")" class="list-group-item list-group-item-action" style="background-color:  #ecf0f1;">
         <span class="fa fa-th-list mr-2"></span>Tümü
     </a>
     @foreach (var kate in Model.Kategoriler)

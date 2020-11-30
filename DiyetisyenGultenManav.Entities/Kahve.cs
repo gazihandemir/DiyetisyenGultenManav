@@ -15,23 +15,23 @@ namespace DiyetisyenGultenManav.Entities
         // Birinci
         [DisplayName("Arka Plan Rengi")]
         public string ArkaPlanRengi{ get; set; }
-        [DisplayName("Birinci İkon")]
+        [DisplayName("İkon")]
         public string Ikon { get; set; }
-        [DisplayName("Birinci İkon Rengi")]
+        [DisplayName("İkon Rengi")]
         public string IkonRengi { get; set; }
-        [DisplayName("Birinci İkon Boyutu")]
+        [DisplayName("İkon Boyutu")]
         public string IkonBoyutu { get; set; }
-        [DisplayName("Birinci Sayi")]
+        [DisplayName("Sayi")]
         public string Sayi { get; set; }
-        [DisplayName("Birinci Sayi Rengi")]
+        [DisplayName("Sayi Rengi")]
         public string SayiRengi { get; set; }
-        [DisplayName("Birinci Sayi Boyutu")]
+        [DisplayName("Sayi Boyutu")]
         public string SayiBoyutu { get; set; }
-        [DisplayName("Birinci Yazı")]
+        [DisplayName("Yazı")]
         public string Yazi { get; set; }
-        [DisplayName("Birinci Yazı Rengi")]
+        [DisplayName("Yazı Rengi")]
         public string YaziRengi { get; set; }
-        [DisplayName("Birinci Yazı Boyutu")]
+        [DisplayName("Yazı Boyutu")]
         public string YaziBoyutu { get; set; }
     }
 }
