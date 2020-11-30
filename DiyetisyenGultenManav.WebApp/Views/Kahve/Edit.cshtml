@@ -1,109 +1,103 @@
 ﻿@model DiyetisyenGultenManav.Entities.Kahve
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Kahve Düzenle";
 }
-
-<h2>Edit</h2>
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Kahve</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ArkaPlanRengi, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ArkaPlanRengi, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ArkaPlanRengi, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Ikon, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Ikon, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Ikon, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.IkonRengi, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.IkonRengi, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.IkonRengi, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.IkonBoyutu, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.IkonBoyutu, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.IkonBoyutu, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Sayi, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Sayi, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Sayi, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.SayiRengi, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SayiRengi, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SayiRengi, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.SayiBoyutu, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SayiBoyutu, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SayiBoyutu, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Yazi, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Yazi, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Yazi, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.YaziRengi, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.YaziRengi, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.YaziRengi, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.YaziBoyutu, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.YaziBoyutu, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.YaziBoyutu, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+<style>
+    .sayfaArkaPlan {
+        /*background: #DE6262;*/ /* fallback for old browsers */
+        /*background: -webkit-linear-gradient(to right, #FFB88C, #DE6262);*/ /* Chrome 10-25, Safari 5.1-6 */
+        /*background: linear-gradient(to right, #FFB88C, #DE6262);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        /*        background-color: rgba(222, 98, 98, 0.5);*/
+        background: rgba(215, 189, 226, 0.7);
+        background: -webkit-linear-gradient(to bottom, rgba( 237, 187, 153,0.8), rgba(110, 44, 0, 0.7));
+        background: linear-gradient(to bottom, rgba( 237, 187, 153,0.8), rgba(110, 44, 0, 0.7));
+        min-height: 1000px;
+        height: 100%;
+        min-width: 100%;
+    }
+</style>
+<link href="~/Content/validation-summary.css" rel="stylesheet" />
+<div class="sayfaArkaPlan pl-5 pt-3 mr-0 ">
+    <div class="row pl-5 pt-3 mr-0">
+        <div class="col-md-12">
+            <p class="display-4 text-center font-weight-bold">
+                @ViewBag.Title
+            </p>
         </div>
     </div>
-}
+    <div class="row pl-5 mr-0">
+        <div class="col-md-10">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class=" form-group row">
+                    <div class="col-md-12 pr-0">
+                        @Html.ValidationSummary(false)
+                        @Html.HiddenFor(model => model.Id)
+                    </div>
+                </div>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.ArkaPlanRengi, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+                    @Html.EditorFor(model => model.ArkaPlanRengi, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.Ikon, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+                    @Html.EditorFor(model => model.Ikon, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.IkonRengi, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+                    @Html.EditorFor(model => model.IkonRengi, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.IkonBoyutu, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+                    @Html.EditorFor(model => model.IkonBoyutu, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.Sayi, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+                    @Html.EditorFor(model => model.Sayi, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                </div>
+
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.SayiRengi, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+                    @Html.EditorFor(model => model.SayiRengi, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.SayiBoyutu, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+                    @Html.EditorFor(model => model.SayiBoyutu, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.Yazi, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+                    @Html.EditorFor(model => model.Yazi, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.YaziRengi, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+                    @Html.EditorFor(model => model.YaziRengi, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.YaziBoyutu, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+                    @Html.EditorFor(model => model.YaziBoyutu, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-12 pr-0 text-right">
+                        @Bootstrap.LinkButton("/Kahve/Index", "secondary", string.Empty,
+                  string.Empty, "arrow-left", "Geri Dön !")
+                        @Bootstrap.Button("success", string.Empty, "submit", "save", " Kaydet")
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
 </div>

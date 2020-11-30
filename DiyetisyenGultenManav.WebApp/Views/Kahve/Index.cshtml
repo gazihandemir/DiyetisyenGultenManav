@@ -1,87 +1,115 @@
 ﻿@model IEnumerable<DiyetisyenGultenManav.Entities.Kahve>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Kahve Sayfası";
 }
+<style>
+    .sayfaArkaPlan {
+        /*background: #DE6262;*/ /* fallback for old browsers */
+        /*background: -webkit-linear-gradient(to right, #FFB88C, #DE6262);*/ /* Chrome 10-25, Safari 5.1-6 */
+        /*background: linear-gradient(to right, #FFB88C, #DE6262);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        /*        background-color: rgba(222, 98, 98, 0.5);*/
+        background: rgba(215, 189, 226, 0.7);
+        background: -webkit-linear-gradient(to bottom, rgba( 237, 187, 153,0.8), rgba(110, 44, 0, 0.7));
+        background: linear-gradient(to bottom, rgba( 237, 187, 153,0.8), rgba(110, 44, 0, 0.7));
+        min-height: 1000px;
+        height: 100%;
+        min-width: 100%;
+    }
+</style>
+<div class="sayfaArkaPlan mr-0 ">
+    <div class=" row pl-5 pt-3 mr-0">
+        <div class="col-md-12">
+            <p class="display-4 text-center font-weight-bold">
+                @ViewBag.Title
+            </p>
+        </div>
+    </div>
+    <div class="row pl-3 mr-0  ">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6 pr-0 text-left">
+                    @Bootstrap.LinkButton("/Kahve/Create", "primary", "btn-sm", string.Empty, "plus", "Yeni Kahve Ekle")
+                </div>
+            </div>
+            <br />
+            <table class="table table-hover table-striped table-sm small">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ArkaPlanRengi)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Ikon)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IkonRengi)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IkonBoyutu)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Sayi)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SayiRengi)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SayiBoyutu)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Yazi)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.YaziRengi)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.YaziBoyutu)
+                    </th>
+                    <th></th>
+                </tr>
 
-<h2>Index</h2>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ArkaPlanRengi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Ikon)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IkonRengi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IkonBoyutu)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Sayi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SayiRengi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SayiBoyutu)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Yazi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.YaziRengi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.YaziBoyutu)
+                        </td>
+                        <td width="150" class="text-right">
+                            @Bootstrap.LinkButton("/Kahve/Edit/" + item.Id, "warning", "btn-sm", "Edit", "edit", string.Empty)
+                            @Bootstrap.LinkButton("/Kahve/Details/" + item.Id, "info", "btn-sm", "Details", "search", string.Empty)
+                            @Bootstrap.LinkButton("/Kahve/Delete/" + item.Id, "danger", "btn-sm", "Delete", "trash", string.Empty)
+                        </td>
+                    </tr>
+                }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ArkaPlanRengi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ikon)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IkonRengi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IkonBoyutu)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sayi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SayiRengi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SayiBoyutu)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Yazi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.YaziRengi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.YaziBoyutu)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ArkaPlanRengi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ikon)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IkonRengi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IkonBoyutu)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sayi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SayiRengi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SayiBoyutu)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Yazi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.YaziRengi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.YaziBoyutu)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
-</table>
+            </table>
+        </div>
+    </div>
+</div>

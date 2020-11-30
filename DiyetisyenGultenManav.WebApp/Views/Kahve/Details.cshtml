@@ -1,98 +1,125 @@
 ﻿@model DiyetisyenGultenManav.Entities.Kahve
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Kahve Detayı";
 }
+    <style>
+        .sayfaArkaPlan {
+            /*background: #DE6262;*/ /* fallback for old browsers */
+            /*background: -webkit-linear-gradient(to right, #FFB88C, #DE6262);*/ /* Chrome 10-25, Safari 5.1-6 */
+            /*background: linear-gradient(to right, #FFB88C, #DE6262);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            /*        background-color: rgba(222, 98, 98, 0.5);*/
+            background: rgba(215, 189, 226, 0.7);
+            background: -webkit-linear-gradient(to bottom, rgba( 237, 187, 153,0.8), rgba(110, 44, 0, 0.7));
+            background: linear-gradient(to bottom, rgba( 237, 187, 153,0.8), rgba(110, 44, 0, 0.7));
+            min-height: 1000px;
+            height: 100%;
+            min-width: 100%;
+        }
+    </style>
+<div class="sayfaArkaPlan pl-5 pt-3 mr-0 ">
+    <div class="row pl-5 pt-3 mr-0">
+        <div class="col-md-12">
+            <p class="display-4 text-center font-weight-bold">
+                @ViewBag.Title
+            </p>
+        </div>
+    </div>
+    <div class="row pl-3 mr-0">
+        <div class="col-md-10">
+            <div>
+                <dl class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ArkaPlanRengi)
+                    </dt>
 
-<h2>Details</h2>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.ArkaPlanRengi)
+                    </dd>
 
-<div>
-    <h4>Kahve</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ArkaPlanRengi)
-        </dt>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Ikon)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ArkaPlanRengi)
-        </dd>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.Ikon)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Ikon)
-        </dt>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.IkonRengi)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ikon)
-        </dd>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.IkonRengi)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IkonRengi)
-        </dt>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.IkonBoyutu)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.IkonRengi)
-        </dd>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.IkonBoyutu)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IkonBoyutu)
-        </dt>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Sayi)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.IkonBoyutu)
-        </dd>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.Sayi)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Sayi)
-        </dt>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.SayiRengi)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Sayi)
-        </dd>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.SayiRengi)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SayiRengi)
-        </dt>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.SayiBoyutu)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.SayiRengi)
-        </dd>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.SayiBoyutu)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SayiBoyutu)
-        </dt>
+                    <dt class="col-md-3">
 
-        <dd>
-            @Html.DisplayFor(model => model.SayiBoyutu)
-        </dd>
+                        @Html.DisplayNameFor(model => model.Yazi)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Yazi)
-        </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.Yazi)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Yazi)
-        </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.YaziRengi)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.YaziRengi)
-        </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.YaziRengi)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.YaziRengi)
-        </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.YaziBoyutu)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.YaziBoyutu)
-        </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.YaziBoyutu)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="col-md-10 pl-3">
+            <p>
+                @Bootstrap.LinkButton("/Kahve/Index", "secondary", string.Empty,
+               string.Empty, "arrow-left", "Geri Dön!")
+                @Bootstrap.LinkButton("/Kahve/Edit/" + Model.Id, "warning", string.Empty,
+               string.Empty, "edit", "Düzenle")
 
-        <dd>
-            @Html.DisplayFor(model => model.YaziBoyutu)
-        </dd>
-
-    </dl>
+            </p>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
