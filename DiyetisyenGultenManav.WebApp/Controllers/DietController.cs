@@ -7,16 +7,19 @@ using System.Web.Mvc;
 using DiyetisyenGultenManav.BusinessLayer;
 using DiyetisyenGultenManav.BusinessLayer.Results;
 using DiyetisyenGultenManav.Entities;
+using DiyetisyenGultenManav.WebApp.Filters;
 using DiyetisyenGultenManav.WebApp.Models;
 using DiyetisyenGultenManav.WebApp.ViewModels;
 namespace DiyetisyenGultenManav.WebApp.Controllers
 {
+    [Auth]
+    [Exc]
+
     public class DietController : Controller
     {
         DietManager dietManager = new DietManager();
         KullanıcıManager kullanıcıManager = new KullanıcıManager();
-
-        // GET : ALL diet
+        [AuthAdmin]
         public ActionResult AllDiet(string Ara)
         {
             if (Ara != null)
@@ -28,7 +31,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 return View(dietManager.List().OrderBy(x => x.DiyetBitis));
             }
         }
-
+        [AuthAdmin]
         public ActionResult NewDiet(string Ara)
         {
             var diet = dietManager.ListQueryable().Where(x => x.IsNew == true).OrderBy(x => x.DiyetBitis);
@@ -43,7 +46,6 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             
         }
-        // GET: Diet
         public ActionResult Index()
         {
             var diet = dietManager.ListQueryable().Include("Owner").
@@ -59,7 +61,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 return View();
             }
         }
-        // GET: Diet/Details/5
+        [AuthAdmin]
         public ActionResult Details(int id)
         {
             //Diet diet = dietManager.Find(x => x.Id == id);
@@ -84,14 +86,14 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 return HttpNotFound();
             }*/
         }
-        // GET: Diet/Create
+        [AuthAdmin]
         public ActionResult Create()
         {
             ViewBag.KullanıcıId = new SelectList(kullanıcıManager.List(), "Id", "Username");
             return View();
         }
-        // POST: Diet/Create
         [HttpPost]
+        [AuthAdmin]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Diet diet)
         {
@@ -119,7 +121,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             //string gazihan = diet.Owner.Username.ToString();
             return View(diet);
         }
-        // GET: Diet/Edit/5
+        [AuthAdmin]
         public ActionResult Edit(int? id)
         {
             //Diet diet = dietManager.Find(x => x.Id == id);
@@ -146,8 +148,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
           }
    */
         }
-
-        // POST: Diet/Edit/5
+        [AuthAdmin]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Diet diet)
@@ -194,8 +195,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View();
         }
-
-        // GET: Diet/Delete/5
+        [AuthAdmin]
         public ActionResult Delete(int? id)
         {
             //Diet diet = dietManager.Find(x => x.Id == id);
@@ -223,8 +223,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
        }
 */
         }
-
-        // POST: Diet/Delete/5
+        [AuthAdmin]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

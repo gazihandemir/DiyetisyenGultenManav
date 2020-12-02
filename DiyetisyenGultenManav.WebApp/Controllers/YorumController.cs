@@ -1,5 +1,6 @@
 ﻿using DiyetisyenGultenManav.BusinessLayer;
 using DiyetisyenGultenManav.Entities;
+using DiyetisyenGultenManav.WebApp.Filters;
 using DiyetisyenGultenManav.WebApp.Models;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,8 @@ using System.Web.Mvc;
 
 namespace DiyetisyenGultenManav.WebApp.Controllers
 {
+    [Auth]
+    [Exc]
     public class YorumController : Controller
     {
         private BlogYazısıManager blogYazısıManager = new BlogYazısıManager();

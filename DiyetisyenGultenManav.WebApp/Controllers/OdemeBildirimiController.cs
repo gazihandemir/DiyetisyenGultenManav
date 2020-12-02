@@ -9,22 +9,23 @@ using System.Web.Mvc;
 using DiyetisyenGultenManav.BusinessLayer;
 using DiyetisyenGultenManav.BusinessLayer.Results;
 using DiyetisyenGultenManav.Entities;
+using DiyetisyenGultenManav.WebApp.Filters;
 using DiyetisyenGultenManav.WebApp.Models;
 using DiyetisyenGultenManav.WebApp.ViewModels;
 
 namespace DiyetisyenGultenManav.WebApp.Controllers
 {
+    [Auth]
+    [Exc]
     public class OdemeBildirimiController : Controller
     {
         OdemeBildirimiManager odemeBildirimiManager = new OdemeBildirimiManager();
         KullanıcıManager kullanıcıManager = new KullanıcıManager();
-        // GET : IndexOdemeBildirimiOwner
         public ActionResult IndexOdemeBildirimiOwner()
         {
             var Owner = odemeBildirimiManager.ListQueryable().Include("Owner").Where(x => x.Owner.Id == CurrentSession.User.Id).OrderByDescending(x => x.ModifiedOn);
             return View(Owner.ToList());
         }
-        // GET : CreateOdemeBildirimiOwner
         public ActionResult CreateOdemeBildirimiOwner()
         {
             return View();
@@ -59,7 +60,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View(odemeBildirimi);
         }
-        // GET: OdemeBildirimi
+        [AuthAdmin]
         public ActionResult Index(string Ara)
         {
             if (Ara != null)
@@ -71,7 +72,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 return View(odemeBildirimiManager.List().OrderByDescending(x => x.ModifiedOn));
             }
         }
-        // GET: OdemeBildirimi/Details/5
+        [AuthAdmin]
         public ActionResult Details(int? id)
         {
             /*  if (id == null)
@@ -97,15 +98,14 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View(res.Result);
         }
-
-        // GET: OdemeBildirimi/Create
+        [AuthAdmin]
         public ActionResult Create()
         {
             ViewBag.KullanıcıId = new SelectList(kullanıcıManager.List(), "Id", "Username");
             return View();
         }
-        // POST: OdemeBildirimi/Create
         [HttpPost]
+        [AuthAdmin]
         [ValidateAntiForgeryToken]
         public ActionResult Create(OdemeBildirimi odemeBildirimi)
         {
@@ -148,8 +148,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             // odemeBildirimi.Owner = ViewBag.KullanıcıId;
 
         }
-
-        // GET: OdemeBildirimi/Edit/5
+        [AuthAdmin]
         public ActionResult Edit(int? id)
         {
             /*  if (id == null)
@@ -190,8 +189,8 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View(res.Result);
         }
-        // POST: OdemeBildirimi/Edit/5
         [HttpPost]
+        [AuthAdmin]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(OdemeBildirimi odemeBildirimi)
         {
@@ -258,7 +257,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View();
         }
-        // GET: OdemeBildirimi/Delete/5
+        [AuthAdmin]
         public ActionResult Delete(int? id)
         {
             /*    if (id == null)
@@ -286,7 +285,6 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View(res.Result);
         }
-        // POST: OdemeBildirimi/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

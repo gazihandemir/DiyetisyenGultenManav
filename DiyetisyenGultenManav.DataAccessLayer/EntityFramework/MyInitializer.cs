@@ -353,11 +353,6 @@ namespace DiyetisyenGultenManav.DataAccessLayer.EntityFramework
                         // Blog yazısına fake data ile yorum eklemek
                         blogYazısı.Yorumlar.Add(yorum);
                     }
-                    for (int m = 0; m < blogYazısı.GörüntülenmeSayisi; m++)
-                    {
-                        Görüntülenme görüntülenme = new Görüntülenme();
-                        blogYazısı.Görüntülenmeler.Add(görüntülenme);
-                    }
                 }
             }
             context.SaveChanges();

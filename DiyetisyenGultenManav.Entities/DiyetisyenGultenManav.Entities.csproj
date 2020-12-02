@@ -46,7 +46,6 @@
     <Compile Include="Contact.cs" />
     <Compile Include="Diet.cs" />
     <Compile Include="EntityBase.cs" />
-    <Compile Include="Görüntülenme.cs" />
     <Compile Include="Kahve.cs" />
     <Compile Include="Kategori.cs" />
     <Compile Include="Kullanıcı.cs" />

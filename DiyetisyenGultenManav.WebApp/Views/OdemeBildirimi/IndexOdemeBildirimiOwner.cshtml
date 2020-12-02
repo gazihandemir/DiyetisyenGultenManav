@@ -54,7 +54,6 @@
                     <th>
                         @Html.DisplayNameFor(model => model.IsOkey)
                     </th>
-                    <th></th>
                 </tr>
 
                 @foreach (var item in Model)
@@ -95,9 +94,7 @@
                                 <i class="fa fa-times text-danger"></i>
                             }
                         </td>
-                        <td>
-                            @Bootstrap.LinkButton("/OdemeBildirimi/Edit/" + item.Id, "warning", "btn-sm", "Edit", "edit", string.Empty)
-                        </td>
+                       
                     </tr>
                 }
 

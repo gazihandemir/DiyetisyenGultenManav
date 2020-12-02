@@ -8,7 +8,7 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta name="author" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+@*<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">*@
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <style>
     .kücükResim {
@@ -18,11 +18,11 @@
     }
 </style>
 <div class="row m-3 ">
-    <div class="col-md-2">
+    <div class="col-md-2 col-sm-12">
         @Html.Partial("_PartialKategoriler")
 
     </div>
-    <div class="col-md-10">
+    <div class="col-md-10 col-sm-0">
         @Html.Partial("_PartialCarousel")
         <!--Blog-->
         <div class="row row row-cols-1 row-cols-md-3 ">

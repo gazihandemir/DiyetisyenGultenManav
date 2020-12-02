@@ -62,12 +62,10 @@ StringLength(2000, ErrorMessage = "{0} alanı max. {1} karakter olmalıdır.")]
         public int KategoriId { get; set; }
         public virtual Kullanıcı Owner { get; set; }
         public virtual List<Yorum> Yorumlar { get; set; }
-        public virtual List<Görüntülenme> Görüntülenmeler { get; set; }
         public virtual Kategori Kategori { get; set; }
         public BlogYazısı()
         {
             Yorumlar = new List<Yorum>();
-            Görüntülenmeler = new List<Görüntülenme>();
         }
     }
 }

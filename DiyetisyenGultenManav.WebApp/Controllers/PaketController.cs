@@ -9,10 +9,14 @@ using System.Web.Mvc;
 using DiyetisyenGultenManav.BusinessLayer;
 using DiyetisyenGultenManav.BusinessLayer.Results;
 using DiyetisyenGultenManav.Entities;
+using DiyetisyenGultenManav.WebApp.Filters;
 using DiyetisyenGultenManav.WebApp.ViewModels;
 
 namespace DiyetisyenGultenManav.WebApp.Controllers
 {
+    [Auth]
+    [AuthAdmin]
+    [Exc]
     public class PaketController : Controller
     {
         PaketManager paketManager = new PaketManager();

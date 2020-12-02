@@ -3,6 +3,7 @@ using DiyetisyenGultenManav.BusinessLayer.Results;
 using DiyetisyenGultenManav.Entities;
 using DiyetisyenGultenManav.Entities.Messages;
 using DiyetisyenGultenManav.Entities.ValueObjects;
+using DiyetisyenGultenManav.WebApp.Filters;
 using DiyetisyenGultenManav.WebApp.Models;
 using DiyetisyenGultenManav.WebApp.ViewModels;
 using System;
@@ -13,6 +14,8 @@ using System.Web.Mvc;
 
 namespace DiyetisyenGultenManav.WebApp.Controllers
 {
+    [Exc]
+
     public class HomeController : Controller
     {
         private BlogYazısıManager blogYazısıManager = new BlogYazısıManager();
@@ -124,15 +127,17 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             List<Paket> Paketler = paketManager.List();
             List<Kategori> Kategoriler = kategoriManager.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList();
+            List<Kahve> kahveler = kahveManager.ListQueryable().OrderBy(x => x.CreatedOn).ToList();
             HomeModel.BlogYazısı = kate.BlogYazıları;
             HomeModel.Paket = Paketler;
-            //HomeModel.kategori = kate;
             HomeModel.Kategoriler = Kategoriler;
+            HomeModel.Kahveler = kahveler;
             return View("Index", HomeModel);
 
             //return View("Index", kate.HomeViewModel.BlogYazısı.OrderByDescending(x => x.ModifiedOn).ToList());
 
         }
+        [Auth]
         public ActionResult ShowProfile()
         {
             //Kullanıcı currentUser = Session["login"] as Kullanıcı;
@@ -150,6 +155,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View(res.Result);
         }
+        [Auth]
         public ActionResult EditProfile()
         {
             //Kullanıcı currentUser = Session["login"] as Kullanıcı;
@@ -166,6 +172,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View(res.Result);
         }
+        [Auth]
         [HttpPost]
         public ActionResult EditProfile(Kullanıcı model, HttpPostedFileBase ProfileImage)
         {
@@ -206,23 +213,23 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View();
         }
-        public ActionResult RemoveProfile()
-        {
-            //Kullanıcı currentUser = Session["login"] as Kullanıcı;
-            BusinessLayerResult<Kullanıcı> res = kullanıcıManager.RemoveUserById(/*currentUser*/CurrentSession.User.Id);
-            if (res.Errors.Count > 0)
-            {
-                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
-                {
-                    Items = res.Errors,
-                    Title = "Profil Silinemedi",
-                    RedirectingUrl = "/Home/ShowProfile"
-                };
-                return View("Error", ErrNotifyObj);
-            }
-            Session.Clear();
-            return RedirectToAction("Index");
-        }
+        //public ActionResult RemoveProfile()
+        //{
+        //    //Kullanıcı currentUser = Session["login"] as Kullanıcı;
+        //    BusinessLayerResult<Kullanıcı> res = kullanıcıManager.RemoveUserById(/*currentUser*/CurrentSession.User.Id);
+        //    if (res.Errors.Count > 0)
+        //    {
+        //        ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+        //        {
+        //            Items = res.Errors,
+        //            Title = "Profil Silinemedi",
+        //            RedirectingUrl = "/Home/ShowProfile"
+        //        };
+        //        return View("Error", ErrNotifyObj);
+        //    }
+        //    Session.Clear();
+        //    return RedirectToAction("Index");
+        //}
         public ActionResult Login()
         {
             return View();
@@ -248,6 +255,14 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 return RedirectToAction("Index"); // Yönlendirme
             }
             return View(model);
+        }
+        public ActionResult AccessDenied()
+        {
+            return View();
+        }
+        public ActionResult HasError()
+        {
+            return View();
         }
         //public ActionResult Register()
         //{

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DiyetisyenGultenManav.WebApp.Filters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,6 +7,8 @@ using System.Web.Mvc;
 
 namespace DiyetisyenGultenManav.WebApp.Controllers
 {
+    [Exc]
+
     public class HesaplamalarController : Controller
     {
         // GET: Hesaplamalar

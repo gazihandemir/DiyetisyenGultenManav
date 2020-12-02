@@ -9,15 +9,19 @@ using System.Web.Mvc;
 using DiyetisyenGultenManav.BusinessLayer;
 using DiyetisyenGultenManav.BusinessLayer.Results;
 using DiyetisyenGultenManav.Entities;
+using DiyetisyenGultenManav.WebApp.Filters;
 using DiyetisyenGultenManav.WebApp.Models;
 using DiyetisyenGultenManav.WebApp.ViewModels;
 
 namespace DiyetisyenGultenManav.WebApp.Controllers
 {
+    [Auth]
+    [AuthAdmin]
+    [Exc]
+
     public class KategoriController : Controller
     {
         private KategoriManager kategoriManager = new KategoriManager();
-
         public ActionResult Index(string Ara)
         {
             return View(kategoriManager.ListQueryable().Where(x => x.Title.Contains(Ara) || Ara == null));

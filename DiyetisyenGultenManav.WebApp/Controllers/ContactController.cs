@@ -9,14 +9,18 @@ using System.Web.Mvc;
 using DiyetisyenGultenManav.BusinessLayer;
 using DiyetisyenGultenManav.BusinessLayer.Results;
 using DiyetisyenGultenManav.Entities;
+using DiyetisyenGultenManav.WebApp.Filters;
 using DiyetisyenGultenManav.WebApp.ViewModels;
 
 namespace DiyetisyenGultenManav.WebApp.Controllers
 {
+    [Exc]
+
     public class ContactController : Controller
     {
         ContactManager contactManager = new ContactManager();
-        // GET: Contact
+        [Auth]
+        [AuthAdmin]
         public ActionResult Index(string Ara)
         {
             if (Ara != null)
@@ -28,8 +32,8 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                 return View(contactManager.ListQueryable().OrderByDescending(x => x.Zaman));
             }
         }
-
-        // GET: Contact/Details/5
+        [Auth]
+        [AuthAdmin]
         public ActionResult Details(int? id)
         {
             /*    if (id == null)
@@ -55,14 +59,10 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View(res.Result);
         }
-
-        // GET: Contact/Create
         public ActionResult Create()
         {
             return View();
         }
-
-        // POST: Contact/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Contact contact)
@@ -90,8 +90,8 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
-
-        // GET: Contact/Edit/5
+        [Auth]
+        [AuthAdmin]
         public ActionResult Edit(int? id)
         {
             /*     if (id == null)
@@ -116,10 +116,9 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View(res.Result);
         }
-
-        // POST: Contact/Edit/5
-
+        [Auth]
         [HttpPost]
+        [AuthAdmin]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Contact contact)
         {
@@ -153,7 +152,8 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View();
         }
-        // GET: Contact/Delete/5
+        [Auth]
+        [AuthAdmin]
         public ActionResult Delete(int? id)
         {
             /*     if (id == null)
@@ -181,7 +181,8 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View(res.Result);
         }
-        // POST: Contact/Delete/5
+        [Auth]
+        [AuthAdmin]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

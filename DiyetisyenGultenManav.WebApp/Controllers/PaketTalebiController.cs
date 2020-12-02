@@ -9,22 +9,25 @@ using System.Web.Mvc;
 using DiyetisyenGultenManav.BusinessLayer;
 using DiyetisyenGultenManav.BusinessLayer.Results;
 using DiyetisyenGultenManav.Entities;
+using DiyetisyenGultenManav.WebApp.Filters;
 using DiyetisyenGultenManav.WebApp.ViewModels;
 
 namespace DiyetisyenGultenManav.WebApp.Controllers
 {
+    [Exc]
+
     public class PaketTalebiController : Controller
     {
         PaketTalebiManager paketTalebiManager = new PaketTalebiManager();
         PaketManager paketManager = new PaketManager();
-
-        // GET: PaketTalebi
+        [Auth]
+        [AuthAdmin]
         public ActionResult Index(string Ara)
         {
             return View(paketTalebiManager.ListQueryable().Where(x => x.IsimSoyisim.Contains(Ara) || Ara == null));
         }
-
-        // GET: PaketTalebi/Details/5
+        [Auth]
+        [AuthAdmin]
         public ActionResult Details(int? id)
         {
             /*   if (id == null)
@@ -49,8 +52,6 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View(res.Result);
         }
-
-        // GET: PaketTalebi/Create
         public ActionResult Create()
         {
             ViewBag.PaketId = new SelectList(paketManager.List(), "Id", "Isim");
@@ -83,8 +84,8 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             ViewBag.PaketId = new SelectList(paketManager.List(), "Id", "Isim",paketTalebi.PaketId);
             return View(paketTalebi);
         }
-
-        // GET: PaketTalebi/Edit/5
+        [Auth]
+        [AuthAdmin]
         public ActionResult Edit(int? id)
         {
             /*  if (id == null)
@@ -110,6 +111,8 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
 
             return View(res.Result);
         }
+        [Auth]
+        [AuthAdmin]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(PaketTalebi paketTalebi)
@@ -140,7 +143,8 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View();
         }
-        // GET: PaketTalebi/Delete/5
+        [Auth]
+        [AuthAdmin]
         public ActionResult Delete(int? id)
         {
             /*  if (id == null)
@@ -168,8 +172,8 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             }
             return View(res.Result);
         }
-
-        // POST: PaketTalebi/Delete/5
+        [Auth]
+        [AuthAdmin]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
