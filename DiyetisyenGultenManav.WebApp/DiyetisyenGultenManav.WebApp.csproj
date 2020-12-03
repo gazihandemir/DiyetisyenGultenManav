@@ -132,6 +132,7 @@
     <Content Include="Content\errorpagestyle.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\footer2Style.css" />
     <Content Include="Content\kahve.css" />
     <Content Include="Content\new-login-style-diyet.css" />
     <Content Include="Content\new-login-style-kategori.css" />
@@ -414,6 +415,8 @@
     <Content Include="Views\Kahve\Index.cshtml" />
     <Content Include="Views\Home\AccessDenied.cshtml" />
     <Content Include="Views\Home\HasError.cshtml" />
+    <Content Include="Views\Shared\_LayoutMobile.cshtml" />
+    <Content Include="Views\Home\_PartialCarouselMobile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

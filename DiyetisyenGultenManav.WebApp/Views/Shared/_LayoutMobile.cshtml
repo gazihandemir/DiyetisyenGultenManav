@@ -28,19 +28,15 @@
     </style>
 </head>
 <body class="body">
-
     @Html.Partial("_PartialNavbar")
-    <div class="container-fluid" >
+    <div class="container img-fluid">
         @RenderBody()
     </div>
     <div class="container-fluid">
-        @RenderSection("stat", required: false)
         @RenderSection("princing", required: false)
         @RenderSection("map", required: false)
         @RenderSection("footer", required: false)
     </div>
-
-
 </body>
 </html> @*<script>
         $(document).ready(function () {
