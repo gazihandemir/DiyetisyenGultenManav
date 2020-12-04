@@ -2,29 +2,54 @@
 @model HomeViewModel
 
 <link href="~/Content/kahve.css" rel="stylesheet" />
-
-<section class="stat" id="stats" @*style="background-color:@kahve.ArkaPlanRengi"*@>
+@if (Request.Browser.IsMobileDevice)
+{
+<section class="stat" id="stats" style="background-color: #f2f4f4;">
     <div class="content-box col-md-12 col-sm-12">
         <br><br>
         <div class="container">
             <div class="row text-center">
                 @foreach (var kahve in Model.Kahveler)
                 {
-    <div class="col-md-3">
-        <!--View-->
+<div class="col-md-3 col-sm-3">
+    <!--View-->
 
-        <div class="stat-items">
-            <i class="fa @kahve.Ikon" style="color:@kahve.IkonRengi;font-size:@(kahve.IkonBoyutu)px;"></i>
-            <h2>
-                <b class="counter text-center" style="color:@kahve.SayiRengi;font-size:@(kahve.SayiBoyutu)px;">@kahve.Sayi</b>
-            </h2>
-            <p style="color:@kahve.YaziRengi;font-size:@(kahve.YaziBoyutu)px;">@kahve.Yazi</p>
-        </div>
-    </div>}
+    <div class="stat-items text-center">
+        <i class="fa @kahve.Ikon" style="color:@kahve.IkonRengi;font-size:@(kahve.IkonBoyutu)px/2;"></i>
+        <h2>
+            <b class="counter text-center" style="color:@kahve.SayiRengi;font-size:@(kahve.SayiBoyutu)px/2;">@kahve.Sayi</b>
+        </h2>
+        <p style="color:@kahve.YaziRengi;font-size:@(kahve.YaziBoyutu)px/2;">@kahve.Yazi</p>
+    </div>
+</div>}
             </div>
         </div>
     </div>
-</section>
+</section> }
+ else
+{
+<section class="stat" id="stats" style="background-color: #f2f4f4;">
+    <div class="content-box col-md-12 col-sm-12">
+        <br><br>
+        <div class="container">
+            <div class="row text-center">
+                @foreach (var kahve in Model.Kahveler)
+                {
+<div class="col-md-3 col-sm-3">
+    <!--View-->
+
+    <div class="stat-items text-center">
+        <i class="fa @kahve.Ikon" style="color:@kahve.IkonRengi;font-size:@(kahve.IkonBoyutu)px;"></i>
+        <h2>
+            <b class="counter text-center" style="color:@kahve.SayiRengi;font-size:@(kahve.SayiBoyutu)px;">@kahve.Sayi</b>
+        </h2>
+        <p style="color:@kahve.YaziRengi;font-size:@(kahve.YaziBoyutu)px;">@kahve.Yazi</p>
+    </div>
+</div>}
+            </div>
+        </div>
+    </div>
+</section>}
 @*<script src="~/Scripts/jquery-3.5.1.min.js"></script>
     <script src="~/Scripts/popper.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script> *@
