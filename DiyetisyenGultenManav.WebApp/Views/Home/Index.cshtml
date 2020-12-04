@@ -50,6 +50,7 @@
                 i++;
                 <div class="col mb-4">
                     <div class="card" data-note-id="@blogYazısı.Id">
+
                         <img src="~/ImageBlog/@blogYazısı.Picture" class="card-img-top kücükResim">
                         <div class="card-body">
                             <h5 class="card-title">
@@ -107,10 +108,19 @@
         </div>
     </div>
 </div>
-
-@section princing{
-    @Html.Partial("_PartialPrincing")
+@if (Request.Browser.IsMobileDevice)
+{
+    @section princing{
+        @Html.Partial("_PartialPrincingMobile")
+    }
 }
+else
+{
+    @section princing{
+        @Html.Partial("_PartialPrincing")
+    }
+}
+
 @section stat{
     @Html.Partial("_PartialKahve")
 }

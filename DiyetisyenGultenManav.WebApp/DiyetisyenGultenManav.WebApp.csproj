@@ -417,6 +417,7 @@
     <Content Include="Views\Home\HasError.cshtml" />
     <Content Include="Views\Shared\_LayoutMobile.cshtml" />
     <Content Include="Views\Home\_PartialCarouselMobile.cshtml" />
+    <Content Include="Views\Shared\_PartialPrincingMobile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
