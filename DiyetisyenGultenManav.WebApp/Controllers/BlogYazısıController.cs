@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -29,7 +30,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
             //    .Where(x => x.Owner.Id == CurrentSession.User.Id && x.Title.Contains(Ara) || Ara == null).OrderByDescending(x => x.ModifiedOn);
             var blogYazısı = blogYazısıManager.ListQueryable().OrderByDescending(x => x.ModifiedOn);
             var blogYazısıAra = blogYazısıManager.ListQueryable()
-              .Where(x =>x.Title.Contains(Ara) || Ara == null).OrderByDescending(x => x.ModifiedOn);
+              .Where(x => x.Title.Contains(Ara) || Ara == null).OrderByDescending(x => x.ModifiedOn);
             if (Ara != null)
             {
                 return View(blogYazısıAra.ToList());
@@ -84,7 +85,8 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                blogImage.ContentType == "image/jpeg" ||
                blogImage.ContentType == "image/jpg" ||
                blogImage.ContentType == "image/png"))
-                {
+                {                   
+
                     Guid guid = Guid.NewGuid();
                     string filename = $"blog_{guid}.{blogImage.ContentType.Split('/')[1]}";
                     blogImage.SaveAs(Server.MapPath($"~/ImageBlog/{filename}"));

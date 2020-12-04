@@ -10,6 +10,7 @@ using DiyetisyenGultenManav.BusinessLayer;
 using DiyetisyenGultenManav.BusinessLayer.Results;
 using DiyetisyenGultenManav.Entities;
 using DiyetisyenGultenManav.WebApp.Filters;
+using DiyetisyenGultenManav.WebApp.ViewModels;
 
 namespace DiyetisyenGultenManav.WebApp.Controllers
 {
@@ -126,6 +127,21 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Kullanıcı kullanıcı = kullanıcıManager.Find(x => x.Id == id);
+            BusinessLayerResult<Kullanıcı> resFind = kullanıcıManager.GetUserById(id);
+            if (resFind.Result.ProfileImageFileName != null)
+            {
+                System.IO.File.Delete(Server.MapPath($"~/ImageProfil/{resFind.Result.ProfileImageFileName}")); // klasörden fotoğraf silme
+            }
+            if (resFind.Errors.Count > 0)
+            {
+                ErrorViewModel ErrNotifyObj = new ErrorViewModel()
+                {
+                    Items = resFind.Errors,
+                    Title = "Blog Yazısı Bulunamadı",
+                    RedirectingUrl = "/BlogYazısı/Index"
+                };
+                return View("Error", ErrNotifyObj);
+            }
             kullanıcıManager.Delete(kullanıcı);
             return RedirectToAction("Index");
         }

@@ -19,6 +19,12 @@
         background-color: #aed6f1;
         font-size: 20px;
     }
+    .resim {
+        object-fit: fill;
+        margin-right: 20px;
+        width: 100%;
+        height: 150px;
+    }
 </style>
 <div class="sayfaArkaPlan  pl-5 pt-3 mr-0 ">
     <div class="row mr-3 ">
@@ -26,7 +32,15 @@
         <div class="row pl-5 pt-3 mr-0 col-md-9">
             <div class="col-md-9">
                 <p>
-                    <img src="~/images/kardiyo.png" alt="" />
+                    @if (Request.Browser.IsMobileDevice)
+                    {
+                        <img  src="~/images/kardiyo.png" alt="" class="resim" />
+
+                    }
+                    else
+                    {
+                        <img src="~/images/kardiyo.png" alt="" />
+                    }
                 </p>
                 <p>
                     Koşmak, özellikle spor yapmak ya da spor salonunda takılmakla ilgilenen biri değilseniz, dinç kalmanın harika bir yoludur. <br />

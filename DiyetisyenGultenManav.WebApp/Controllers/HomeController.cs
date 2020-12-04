@@ -193,7 +193,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
                ProfileImage.ContentType == "image/png"))
                 {
                     string filename = $"user_{model.Id}.{ProfileImage.ContentType.Split('/')[1]}";
-                    ProfileImage.SaveAs(Server.MapPath($"~/images/{filename}"));
+                    ProfileImage.SaveAs(Server.MapPath($"~/ImageProfil/{filename}"));
                     model.ProfileImageFileName = filename;
                 }
                 BusinessLayerResult<Kullanıcı> res = kullanıcıManager.UpdateProfile(model);

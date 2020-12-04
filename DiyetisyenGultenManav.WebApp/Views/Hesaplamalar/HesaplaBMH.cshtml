@@ -1,99 +1,116 @@
 ﻿@{
     ViewBag.Title = "Bazal Metabolizma Hızı Hesaplama / BMH Hesaplama";
 }
-<style>
-    .sayfaArkaPlan {
-        /*background: #DE6262;*/ /* fallback for old browsers */
-        /*background: -webkit-linear-gradient(to right, #FFB88C, #DE6262);*/ /* Chrome 10-25, Safari 5.1-6 */
-        /*background: linear-gradient(to right, #FFB88C, #DE6262);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-        /*        background-color: rgba(222, 98, 98, 0.5);*/
-        background: rgba(215, 189, 226, 0.7);
-        background: -webkit-linear-gradient(to right, rgba(174, 214, 241,0.8), rgba(52, 152, 219, 0.7));
-        background: linear-gradient(to right, rgba(174, 214, 241,0.8), rgba(52, 152, 219, 0.7));
-        min-height: 1500px;
-        height: 100%;
-        min-width: 100%;
-    }
+    <style>
+        .sayfaArkaPlan {
+            /*background: #DE6262;*/ /* fallback for old browsers */
+            /*background: -webkit-linear-gradient(to right, #FFB88C, #DE6262);*/ /* Chrome 10-25, Safari 5.1-6 */
+            /*background: linear-gradient(to right, #FFB88C, #DE6262);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            /*        background-color: rgba(222, 98, 98, 0.5);*/
+            background: rgba(215, 189, 226, 0.7);
+            background: -webkit-linear-gradient(to right, rgba(174, 214, 241,0.8), rgba(52, 152, 219, 0.7));
+            background: linear-gradient(to right, rgba(174, 214, 241,0.8), rgba(52, 152, 219, 0.7));
+            min-height: 1500px;
+            height: 100%;
+            min-width: 100%;
+        }
 
-    .list-group a {
-        background-color: #aed6f1;
-        font-size: 20px;
-    }
+        .list-group a {
+            background-color: #aed6f1;
+            font-size: 20px;
+        }
+        .resim {
+            object-fit: fill;
+            margin-right: 20px;
+            width: 100%;
+            height: 150px;
+        }
 </style>
-<div class="sayfaArkaPlan  pl-5 pt-3 mr-0 ">
-    <div class="row mr-3 ">
-        @Html.Partial("_PartialHesaplamalarMenu")
-        <div class="row pl-5 pt-3 mr-0 col-md-9">
-            <div class="col-md-9 ">
-                <div class="col-sm-0">
-                    <img src="~/images/BMH.png" alt="" />
-                </div>
-                <p>
-                    Bazal metabolizma hızı hesaplama yapmadan önce metabolizma ve bazal metabolizma kavramlarını anlamak gerekir. <br />
-                    Yaşamın sürdürülmesi ve organların işlevlerini yerine getirmesi için gerçekleşen biyokimyasal işlevlerin bütününe metabolizma denir.<br />
-                    Bazal metabolizma hızı (BMH) ise vücudun dinlenme halindeyken kullandığı enerjidir.<br />
-                </p>
-                <br />
-                <br />
-                <p>
-                    BMH cinsiyete, yaşa, vücut ağırlığına, boya, kas ve yağ miktarına, endokrin bezlerden salgılanan hormon seviyelerine ve uyku durumuna göre farklılık gösterir. <br />
-                    Bazal metabolizma Hızı (BMH) Harris-Benedict formulü ile hesaplanabilir.<br />
-                </p>
-                <p class="font-weight-bold" style="font-size:24px;">
-                    Bazal Metabolizma Hızı (BMH) Hesaplama
-                </p>
-                <hr />
-                @using (Html.BeginForm("HesaplaBMH", "Hesaplamalar", FormMethod.Post))
-                {
-                    <div class="form-group row">
-                        @Html.Label("Cinsiyet", new { @class = "col-form-label font-weight-bold col-md-3" })
-                        @Html.TextBox("BmhCinsiyet", null, new { @class = "form-control col-md-9  btn-outline-dark  text-left", required = "required", placeholder = " Örneğin : erkek yada kadın" })
-                    </div>
-                    <div class="form-group row">
-                        @Html.Label("Kilonuz", new { @class = "col-form-label font-weight-bold col-md-3" })
-                        @Html.TextBox("BmhKilo", null, new { @class = "form-control col-md-9  btn-outline-dark  text-left", type = "number", required = "required", placeholder = "Kg olarak yazılmalıdır. Örneğin 70" })
-                    </div>
-                    <div class="form-group row">
-                        @Html.Label("Boyunuz", new { @class = "col-form-label font-weight-bold col-md-3" })
-                        @Html.TextBox("BmhBoy", null, new { @class = "form-control col-md-9  btn-outline-dark  text-left", type = "number", required = "required", placeholder = "Cm olarak yazılmalıdır. Örneğin 170" })
-                    </div>
-                    <div class="form-group row">
-                        @Html.Label("Yaşınız", new { @class = "col-form-label font-weight-bold col-md-3" })
-                        @Html.TextBox("BmhYas", null, new { @class = "form-control col-md-9  btn-outline-dark  text-left", type = "number", required = "required", placeholder = "Örneğin 32" })
-                    </div>
-                    <hr />
-                    <div class="form-group row">
-                        <label class="col-form-label font-weight-bold col-md-4">Bazal Metabolizma Hızınız: (kcal) </label>
-                        @if (@ViewBag.sonuc != null)
+<div class="container-fluid">
+    <div class="sayfaArkaPlan  pl-5 pt-3 mr-0 ">
+        <div class="row mr-3 ">
+            @Html.Partial("_PartialHesaplamalarMenu")
+            <div class="row pl-5 pt-3 mr-0 col-md-9">
+                <div class="col-md-9 ">
+                    <div class="col-sm-0">
+                        @if (Request.Browser.IsMobileDevice)
                         {
-                            <div id="HesaplaBmhGidis" name="HesaplaBmhGidis" class=" col-md-8 alert alert-secondary text-center">@ViewBag.sonuc</div>
-                            <hr />
+                            <img src="~/images/BMH.png" alt="" class="resim" />
+
+                        }
+                        else
+                        {
+                            <img src="~/images/BMH.png" alt="" />
+
                         }
                     </div>
+                    <p>
+                        Bazal metabolizma hızı hesaplama yapmadan önce metabolizma ve bazal metabolizma kavramlarını anlamak gerekir. <br />
+                        Yaşamın sürdürülmesi ve organların işlevlerini yerine getirmesi için gerçekleşen biyokimyasal işlevlerin bütününe metabolizma denir.<br />
+                        Bazal metabolizma hızı (BMH) ise vücudun dinlenme halindeyken kullandığı enerjidir.<br />
+                    </p>
+                    <br />
+                    <br />
+                    <p>
+                        BMH cinsiyete, yaşa, vücut ağırlığına, boya, kas ve yağ miktarına, endokrin bezlerden salgılanan hormon seviyelerine ve uyku durumuna göre farklılık gösterir. <br />
+                        Bazal metabolizma Hızı (BMH) Harris-Benedict formulü ile hesaplanabilir.<br />
+                    </p>
+                    <p class="font-weight-bold" style="font-size:24px;">
+                        Bazal Metabolizma Hızı (BMH) Hesaplama
+                    </p>
                     <hr />
-                    <div class="form-group row">
-                        <div class="col-md-12 pr-0 text-right">
-                            <input type="submit" value="Hesapla" class="btn btn-dark text-right" />
+                    @using (Html.BeginForm("HesaplaBMH", "Hesaplamalar", FormMethod.Post))
+                    {
+                        <div class="form-group row">
+                            @Html.Label("Cinsiyet", new { @class = "col-form-label font-weight-bold col-md-3" })
+                            @Html.TextBox("BmhCinsiyet", null, new { @class = "form-control col-md-9  btn-outline-dark  text-left", required = "required", placeholder = " Örneğin : erkek yada kadın" })
                         </div>
-                    </div>
-                }
-                <hr />
-                <p>
-                    <b>  Bazal metabolizmayı hızlandırma yolları:</b>
-                    <ul>
-                        <li>Vücut ağırlığınız ideal aralıkta olsun</li>
-                        <li>Günde ortalama 8-10 bardak su için</li>
-                        <li>Ana öğünleri atlamayın ve ara öğün tüketmeye çalışın</li>
-                        <li>Az ve sık beslenin, porsiyon kontrolüne dikkat edin</li>
-                        <li>Düzenli yürüyüş veya egzersiz yapın</li>
-                        <li>Aşırı yağlı ve tuzlu besin tüketiminden kaçının</li>
-                        <li>Uyku düzeninizi ayarlayın</li>
-                    </ul>
-                </p>
-                <hr />
+                        <div class="form-group row">
+                            @Html.Label("Kilonuz", new { @class = "col-form-label font-weight-bold col-md-3" })
+                            @Html.TextBox("BmhKilo", null, new { @class = "form-control col-md-9  btn-outline-dark  text-left", type = "number", required = "required", placeholder = "Kg olarak yazılmalıdır. Örneğin 70" })
+                        </div>
+                        <div class="form-group row">
+                            @Html.Label("Boyunuz", new { @class = "col-form-label font-weight-bold col-md-3" })
+                            @Html.TextBox("BmhBoy", null, new { @class = "form-control col-md-9  btn-outline-dark  text-left", type = "number", required = "required", placeholder = "Cm olarak yazılmalıdır. Örneğin 170" })
+                        </div>
+                        <div class="form-group row">
+                            @Html.Label("Yaşınız", new { @class = "col-form-label font-weight-bold col-md-3" })
+                            @Html.TextBox("BmhYas", null, new { @class = "form-control col-md-9  btn-outline-dark  text-left", type = "number", required = "required", placeholder = "Örneğin 32" })
+                        </div>
+                        <hr />
+                        <div class="form-group row">
+                            <label class="col-form-label font-weight-bold col-md-4">Bazal Metabolizma Hızınız: (kcal) </label>
+                            @if (@ViewBag.sonuc != null)
+                            {
+                                <div id="HesaplaBmhGidis" name="HesaplaBmhGidis" class=" col-md-8 alert alert-secondary text-center">@ViewBag.sonuc</div>
+                                <hr />
+                            }
+                        </div>
+                        <hr />
+                        <div class="form-group row">
+                            <div class="col-md-12 pr-0 text-right">
+                                <input type="submit" value="Hesapla" class="btn btn-dark text-right" />
+                            </div>
+                        </div>
+                    }
+                    <hr />
+                    <p>
+                        <b>  Bazal metabolizmayı hızlandırma yolları:</b>
+                        <ul>
+                            <li>Vücut ağırlığınız ideal aralıkta olsun</li>
+                            <li>Günde ortalama 8-10 bardak su için</li>
+                            <li>Ana öğünleri atlamayın ve ara öğün tüketmeye çalışın</li>
+                            <li>Az ve sık beslenin, porsiyon kontrolüne dikkat edin</li>
+                            <li>Düzenli yürüyüş veya egzersiz yapın</li>
+                            <li>Aşırı yağlı ve tuzlu besin tüketiminden kaçının</li>
+                            <li>Uyku düzeninizi ayarlayın</li>
+                        </ul>
+                    </p>
+                    <hr />
+                </div>
             </div>
+
         </div>
 
     </div>
-
 </div>

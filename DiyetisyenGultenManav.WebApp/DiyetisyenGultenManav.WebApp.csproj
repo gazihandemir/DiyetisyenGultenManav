@@ -428,6 +428,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
     <Folder Include="ImageBlog\" />
+    <Folder Include="ImageProfil\" />
     <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Views\Yorum\" />
   </ItemGroup>
