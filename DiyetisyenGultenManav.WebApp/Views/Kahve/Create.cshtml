@@ -19,15 +19,28 @@
 </style>
 <link href="~/Content/validation-summary.css" rel="stylesheet" />
 <div class="sayfaArkaPlan pl-5 pt-3 mr-0 ">
-    <div class="row pl-5 pt-3 mr-0">
-        <div class="col-md-12">
-            <p class="display-4 text-center font-weight-bold">
-                @ViewBag.Title
-            </p>
+    @if (Request.Browser.IsMobileDevice)
+    {
+        <div class="row pl-5 pt-3 mr-0">
+            <div class="col-md-12">
+                <p class="text-center font-weight-bold">
+                    @ViewBag.Title
+                </p>
+            </div>
         </div>
-    </div>
-    <div class="row pl-5 mr-0">
-        <div class="col-md-10">
+    }
+    else
+    {
+        <div class="row pl-5 pt-3 mr-0">
+            <div class="col-md-12">
+                <p class="display-4 text-center font-weight-bold">
+                    @ViewBag.Title
+                </p>
+            </div>
+        </div>
+    }
+    <div class="row mr-0">
+        <div class="col-md-11">
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
@@ -54,7 +67,7 @@
 
                 <div class="form-group row">
                     @Html.LabelFor(model => model.IkonBoyutu, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.EditorFor(model => model.IkonBoyutu, new { htmlAttributes = new { @class = "form-control col-md-10", placeholder = "Örnek : 100"} })
+                    @Html.EditorFor(model => model.IkonBoyutu, new { htmlAttributes = new { @class = "form-control col-md-10", placeholder = "Örnek : 100" } })
                 </div>
 
                 <div class="form-group row">
@@ -89,10 +102,13 @@
                 </div>
 
                 <div class="form-group row">
-                    <div class="col-md-12 pr-0 text-right">
-                        @Bootstrap.LinkButton("/Kahve/Index", "secondary", string.Empty,
-                  string.Empty, "arrow-left", "Geri Dön")
-                        @Bootstrap.Button("success", string.Empty, "submit", "save-circle", "Oluştur")
+                    <div class="col-12 text-right">
+                        @Bootstrap.LinkButton("/BlogYazısı/Index", "secondary", string.Empty,
+                  string.Empty, "arrow-left", " Geri Dön")
+                        @Bootstrap.Button("success", string.Empty, "submit", "plus-circle", " Oluştur")
+                    </div>
+                    <div class="col-12 text-right mt-2">
+                        <button class="btn btn-outline-light " type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Sayfa Açıklaması</button>
                     </div>
                 </div>
             }

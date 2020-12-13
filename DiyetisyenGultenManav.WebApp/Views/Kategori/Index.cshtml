@@ -20,13 +20,26 @@
 </style>
 
 <div class="sayfaArkaPlan  mr-0 ">
-    <div class="row pl-4 pt-3 mr-0">
-        <div class="col-md-12">
-            <p class="display-4 text-center font-weight-bold">
-                @ViewBag.Title
-            </p>
+    @if (Request.Browser.IsMobileDevice)
+    {
+        <div class="row pl-5 pt-3 mr-0">
+            <div class="col-md-12">
+                <p class="text-center font-weight-bold">
+                    @ViewBag.Title
+                </p>
+            </div>
         </div>
-    </div>
+    }
+    else
+    {
+        <div class="row pl-5 pt-3 mr-0">
+            <div class="col-md-12">
+                <p class="display-4 text-center font-weight-bold">
+                    @ViewBag.Title
+                </p>
+            </div>
+        </div>
+    }
 
     <div class="row pl-4 mr-0">
         <div class="col-md-12">
@@ -54,44 +67,44 @@
                         @Html.DisplayNameFor(model => model.Icon)
                     </th>
                     @*<th>
-            @Html.DisplayNameFor(model => model.CreatedOn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifiedOn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifiedUsername)
-        </th>*@
+                            @Html.DisplayNameFor(model => model.CreatedOn)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModifiedOn)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModifiedUsername)
+                        </th>*@
                     <th></th>
                 </tr>
                 @foreach (var item in Model)
                 {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Icon)
-                </td>
-                @*<td>
-            @Html.DisplayFor(modelItem => item.CreatedOn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifiedOn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifiedUsername)
-        </td>*@
-                <td width="150" class="text-right">
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Icon)
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.CreatedOn)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ModifiedOn)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ModifiedUsername)
+                            </td>*@
+                        <td width="150" class="text-right">
 
-                    @Bootstrap.LinkButton("/Kategori/Edit/" + item.Id, "warning", "btn-sm", "Edit", "edit", string.Empty)
-                    @Bootstrap.LinkButton("/Kategori/Details/" + item.Id, "info", "btn-sm", "Details", "search", string.Empty)
-                    @Bootstrap.LinkButton("/Kategori/Delete/" + item.Id, "danger", "btn-sm", "Delete", "trash", string.Empty)
-                </td>
-            </tr>
+                            @Bootstrap.LinkButton("/Kategori/Edit/" + item.Id, "warning", "btn-sm", "Edit", "edit", string.Empty)
+                            @Bootstrap.LinkButton("/Kategori/Details/" + item.Id, "info", "btn-sm", "Details", "search", string.Empty)
+                            @Bootstrap.LinkButton("/Kategori/Delete/" + item.Id, "danger", "btn-sm", "Delete", "trash", string.Empty)
+                        </td>
+                    </tr>
                 }
             </table>
         </div>

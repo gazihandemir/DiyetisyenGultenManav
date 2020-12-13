@@ -68,7 +68,7 @@ namespace DiyetisyenGultenManav.WebApp.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            List<BlogYazısı> BlogYazilari = blogYazısıManager.ListQueryable().Where(x => x.DanisanPaylasimi == false && x.IsDraft == false).OrderByDescending(x => x.ModifiedOn).ToList();
+            List<BlogYazısı> BlogYazilari = blogYazısıManager.ListQueryable().Where(x => x.IsDraft == false).OrderByDescending(x => x.ModifiedOn).ToList();
             List<Paket> Paketler = paketManager.List();
             List<Kategori> Kategoriler = kategoriManager.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList();
             List<Kahve> kahveler = kahveManager.ListQueryable().OrderBy(x => x.CreatedOn).ToList();

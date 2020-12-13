@@ -17,56 +17,69 @@
             min-width: 100%;
         }
     </style>
-<div class="sayfaArkaPlan pl-5 pt-3 mr-0 ">
-    <div class="row pl-5 pt-3 mr-0">
-        <div class="col-md-12">
-            <p class="display-4 text-center font-weight-bold">
-                @ViewBag.Title
-            </p>
+    <div class="sayfaArkaPlan pl-5 pt-3 mr-0 ">
+        @if (Request.Browser.IsMobileDevice)
+        {
+            <div class="row pl-5 pt-3 mr-0">
+                <div class="col-md-12">
+                    <p class="text-center font-weight-bold">
+                        @ViewBag.Title
+                    </p>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row pl-5 pt-3 mr-0">
+                <div class="col-md-12">
+                    <p class="display-4 text-center font-weight-bold">
+                        @ViewBag.Title
+                    </p>
+                </div>
+            </div>
+        }
+        <div class="row mr-0">
+            <div class="col-md-10 col-sm-12">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class=" form-group row">
+                        <div class="col-md-12 pr-0">
+                            @Html.ValidationSummary(false)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.IsimSoyisim, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2 col-sm-2" })
+                        @Html.EditorFor(model => model.IsimSoyisim, new { htmlAttributes = new { @class = "form-control col-md-10 col-sm-10", placeholder = "Örnek : Gülten Manav" } })
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.TelefonNo, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+                        @Html.EditorFor(model => model.TelefonNo, new { htmlAttributes = new { @class = "form-control col-md-10", placeholder = "Örnek : 05539991111" } })
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.PaketId, "PaketId", htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+                        @Html.DropDownList("PaketId", null, htmlAttributes: new { @class = "form-control col-md-10" })
+                    </div>
+
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.EkAciklamalar, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
+                        @Html.EditorFor(model => model.EkAciklamalar, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                    </div>
+
+
+                    <div class="form-group row">
+                        <div class="col-md-12 pr-0 text-right">
+                            @Bootstrap.LinkButton("/Home/Index", "secondary", string.Empty,
+                      string.Empty, "arrow-left", "Geri Dön !")
+                            @Bootstrap.Button("success", string.Empty, "submit", "save", "Oluştur")
+                        </div>
+                    </div>
+                }
+
+            </div>
         </div>
     </div>
-    <div class="row pl-5 mr-0">
-        <div class="col-md-10 col-sm-12">
-            @using (Html.BeginForm())
-            {
-                @Html.AntiForgeryToken()
-
-                <div class=" form-group row">
-                    <div class="col-md-12 pr-0">
-                        @Html.ValidationSummary(false)
-                    </div>
-                </div>
-                <div class="form-group row">
-                    @Html.LabelFor(model => model.IsimSoyisim, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2 col-sm-2" })
-                    @Html.EditorFor(model => model.IsimSoyisim, new { htmlAttributes = new { @class = "form-control col-md-10 col-sm-10" ,placeholder="Örnek : Gülten Manav"} })
-                </div>
-
-                <div class="form-group row">
-                    @Html.LabelFor(model => model.TelefonNo, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.EditorFor(model => model.TelefonNo, new { htmlAttributes = new { @class = "form-control col-md-10" ,placeholder="Örnek : 05539991111"} })
-                </div>
-
-                <div class="form-group row">
-                    @Html.LabelFor(model => model.PaketId, "PaketId", htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.DropDownList("PaketId", null, htmlAttributes: new { @class = "form-control col-md-10" })
-                </div>
-
-
-                <div class="form-group row">
-                    @Html.LabelFor(model => model.EkAciklamalar, htmlAttributes: new { @class = "col-form-label font-weight-bold col-md-2" })
-                    @Html.EditorFor(model => model.EkAciklamalar, new { htmlAttributes = new { @class = "form-control col-md-10" } })
-                </div>
-
-
-                <div class="form-group row">
-                    <div class="col-md-12 pr-0 text-right">
-                        @Bootstrap.LinkButton("/Home/Index", "secondary", string.Empty,
-                  string.Empty, "arrow-left", "Geri Dön !")
-                        @Bootstrap.Button("success", string.Empty, "submit", "save", "Oluştur")
-                    </div>
-                </div>
-            }
-
-        </div>
-    </div>
-</div>

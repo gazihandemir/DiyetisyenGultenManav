@@ -17,181 +17,194 @@
             min-width: 100%;
         }
     </style>
-<div class="sayfaArkaPlan pl-5 pt-3 mr-0">
-    <div class="row pl-5 pt-3 mr-0">
-        <div class="col-md-12">
-            <p class="display-4 text-center font-weight-bold">
-                @ViewBag.Title
-            </p>
-        </div>
-    </div>
-    <div class="row pl-3 mr-0">
-        <div class="col-md-10">
-            <div>
-                <dl class="row">
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.Kategori.Title)
-                    </dt>
+    <div class="sayfaArkaPlan pl-5 pt-3 mr-0">
+        @if (Request.Browser.IsMobileDevice)
+        {
+            <div class="row pl-5 pt-3 mr-0">
+                <div class="col-md-12">
+                    <p class="text-center font-weight-bold">
+                        @ViewBag.Title
+                    </p>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row pl-5 pt-3 mr-0">
+                <div class="col-md-12">
+                    <p class="display-4 text-center font-weight-bold">
+                        @ViewBag.Title
+                    </p>
+                </div>
+            </div>
+        }
+        <div class="row pl-3 mr-0">
+            <div class="col-md-10">
+                <div>
+                    <dl class="row">
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.Kategori.Title)
+                        </dt>
 
-                    <dd class="col-md-9">
+                        <dd class="col-md-9">
 
-                        @Html.DisplayFor(model => model.Kategori.Title)
-                    </dd>
+                            @Html.DisplayFor(model => model.Kategori.Title)
+                        </dd>
 
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.Title)
-                    </dt>
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.Title)
+                        </dt>
 
-                    <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.Title)
-                    </dd>
+                        <dd class="col-md-9">
+                            @Html.DisplayFor(model => model.Title)
+                        </dd>
 
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.ParagrafBir)
-                    </dt>
-                    <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.ParagrafBir)
-                    </dd>
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.ParagrafIki)
-                    </dt>
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.ParagrafBir)
+                        </dt>
+                        <dd class="col-md-9">
+                            @Html.DisplayFor(model => model.ParagrafBir)
+                        </dd>
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.ParagrafIki)
+                        </dt>
 
-                    <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.ParagrafIki)
-                    </dd>
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.ParagrafUc)
-                    </dt>
+                        <dd class="col-md-9">
+                            @Html.DisplayFor(model => model.ParagrafIki)
+                        </dd>
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.ParagrafUc)
+                        </dt>
 
-                    <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.ParagrafUc)
-                    </dd>
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.ParagrafDort)
-                    </dt>
+                        <dd class="col-md-9">
+                            @Html.DisplayFor(model => model.ParagrafUc)
+                        </dd>
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.ParagrafDort)
+                        </dt>
 
-                    <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.ParagrafDort)
-                    </dd>
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.ParagrafBes)
-                    </dt>
+                        <dd class="col-md-9">
+                            @Html.DisplayFor(model => model.ParagrafDort)
+                        </dd>
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.ParagrafBes)
+                        </dt>
 
-                    <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.ParagrafBes)
-                    </dd>
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.ParagrafAlti)
-                    </dt>
+                        <dd class="col-md-9">
+                            @Html.DisplayFor(model => model.ParagrafBes)
+                        </dd>
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.ParagrafAlti)
+                        </dt>
 
-                    <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.ParagrafAlti)
-                    </dd>
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.ParagrafYedi)
-                    </dt>
+                        <dd class="col-md-9">
+                            @Html.DisplayFor(model => model.ParagrafAlti)
+                        </dd>
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.ParagrafYedi)
+                        </dt>
 
-                    <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.ParagrafYedi)
-                    </dd>
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.ParagrafSekiz)
-                    </dt>
+                        <dd class="col-md-9">
+                            @Html.DisplayFor(model => model.ParagrafYedi)
+                        </dd>
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.ParagrafSekiz)
+                        </dt>
 
-                    <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.ParagrafSekiz)
-                    </dd>
+                        <dd class="col-md-9">
+                            @Html.DisplayFor(model => model.ParagrafSekiz)
+                        </dd>
 
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.CreatedOn)
-                    </dt>
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.CreatedOn)
+                        </dt>
 
-                    <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.CreatedOn)
-                    </dd>
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.ModifiedOn)
-                    </dt>
+                        <dd class="col-md-9">
+                            @Html.DisplayFor(model => model.CreatedOn)
+                        </dd>
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.ModifiedOn)
+                        </dt>
 
-                    <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.ModifiedOn)
-                    </dd>
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.ModifiedUsername)
-                    </dt>
+                        <dd class="col-md-9">
+                            @Html.DisplayFor(model => model.ModifiedOn)
+                        </dd>
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.ModifiedUsername)
+                        </dt>
 
-                    <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.ModifiedUsername)
-                    </dd>
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.IsDraft)
-                    </dt>
+                        <dd class="col-md-9">
+                            @Html.DisplayFor(model => model.ModifiedUsername)
+                        </dd>
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.IsDraft)
+                        </dt>
 
-                    <dd class="col-md-9">
-                        @if (Model.IsDraft)
-                        {
-                            <i class="fa fa-check text-success"></i>
-                        }
-                        else
-                        {
-                            <i class="fa fa-times text-danger"></i>
-                        }
-                        @*  @Html.DisplayFor(model => model.IsDraft)*@
-                    </dd>
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.DanisanPaylasimi)
-                    </dt>
+                        <dd class="col-md-9">
+                            @if (Model.IsDraft)
+                            {
+                                <i class="fa fa-check text-success"></i>
+                            }
+                            else
+                            {
+                                <i class="fa fa-times text-danger"></i>
+                            }
+                            @*  @Html.DisplayFor(model => model.IsDraft)*@
+                        </dd>
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.DanisanPaylasimi)
+                        </dt>
 
-                    <dd class="col-md-9">
-                        @if (Model.DanisanPaylasimi)
-                        {
-                            <i class="fa fa-check text-success"></i>
-                        }
-                        else
-                        {
-                            <i class="fa fa-times text-danger"></i>
-                        }
-                        @*  @Html.DisplayFor(model => model.DanisanPaylasimi)*@
-                    </dd>
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.TabakPaylasimi)
-                    </dt>
+                        <dd class="col-md-9">
+                            @if (Model.DanisanPaylasimi)
+                            {
+                                <i class="fa fa-check text-success"></i>
+                            }
+                            else
+                            {
+                                <i class="fa fa-times text-danger"></i>
+                            }
+                            @*  @Html.DisplayFor(model => model.DanisanPaylasimi)*@
+                        </dd>
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.TabakPaylasimi)
+                        </dt>
 
-                    <dd class="col-md-9">
-                        @if (Model.TabakPaylasimi)
-                        {
-                            <i class="fa fa-check text-success"></i>
-                        }
-                        else
-                        {
-                            <i class="fa fa-times text-danger"></i>
-                        }
-                        @*  @Html.DisplayFor(model => model.DanisanPaylasimi)*@
-                    </dd>
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.Picture)
-                    </dt>
+                        <dd class="col-md-9">
+                            @if (Model.TabakPaylasimi)
+                            {
+                                <i class="fa fa-check text-success"></i>
+                            }
+                            else
+                            {
+                                <i class="fa fa-times text-danger"></i>
+                            }
+                            @*  @Html.DisplayFor(model => model.DanisanPaylasimi)*@
+                        </dd>
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.Picture)
+                        </dt>
 
-                    <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.Picture)
-                    </dd>
+                        <dd class="col-md-9">
+                            @Html.DisplayFor(model => model.Picture)
+                        </dd>
 
-                </dl>
+                    </dl>
+                </div>
+            </div>
+            <div class="col-md-10 pl-3 text-left">
+                <h3><b>Silmek istediğinize Emin misiniz ? </b></h3>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        @Bootstrap.LinkButton("/BlogYazısı/Index", "secondary", string.Empty,
+             string.Empty, "arrow-left", "Geri Dön!")
+                        @Bootstrap.Button("danger", string.Empty, "submit", "trash", "Sil")
+
+                    </div>
+                }
             </div>
         </div>
-        <div class="col-md-10 pl-3 text-left">
-            <h3><b>Silmek istediğinize Emin misiniz ? </b></h3>
-            @using (Html.BeginForm())
-            {
-                @Html.AntiForgeryToken()
-
-                <div class="form-actions no-color">
-                    @Bootstrap.LinkButton("/BlogYazısı/Index", "secondary", string.Empty,
-         string.Empty, "arrow-left", "Geri Dön!")
-                    @Bootstrap.Button("danger", string.Empty, "submit", "trash", "Sil")
-
-                </div>
-            }
-        </div>
     </div>
-</div>

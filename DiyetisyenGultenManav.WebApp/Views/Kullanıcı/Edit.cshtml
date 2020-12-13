@@ -19,13 +19,26 @@
 </style>
 <link href="~/Content/validation-summary.css" rel="stylesheet" />
 <div class="sayfaArkaPlan pl-5 pt-3 mr-0 ">
-    <div class="row pl-5 pt-3 mr-0">
-        <div class="col-md-12">
-            <p class="display-4 text-center font-weight-bold">
-                @ViewBag.Title
-            </p>
+    @if (Request.Browser.IsMobileDevice)
+    {
+        <div class="row pl-5 pt-3 mr-0">
+            <div class="col-md-12">
+                <p class="text-center font-weight-bold">
+                    @ViewBag.Title
+                </p>
+            </div>
         </div>
-    </div>
+    }
+    else
+    {
+        <div class="row pl-5 pt-3 mr-0">
+            <div class="col-md-12">
+                <p class="display-4 text-center font-weight-bold">
+                    @ViewBag.Title
+                </p>
+            </div>
+        </div>
+    }
     <div class="row pl-5 mr-0">
         <div class="col-md-10">
             @using (Html.BeginForm())

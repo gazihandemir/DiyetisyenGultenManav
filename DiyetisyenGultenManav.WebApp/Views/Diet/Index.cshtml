@@ -6,12 +6,20 @@
     .resim {
         object-fit: fill;
         margin-right: 20px;
+        width:100%;
+        height:100%;
+        max-height: 1000px;
+        min-width: 800px;
+    }
+    .resimMobile {
+        object-fit: fill;
+        align-content:center;
         width: 100%;
         height: 100%;
-        max-height: 1000px;
-        min-height: 800px;
-    }
+        max-height: 250px;
+        min-width: 175px;
 
+    }
     .sayfaArkaPlan {
         /*background: #DE6262;*/ /* fallback for old browsers */
         /*background: -webkit-linear-gradient(to right, #FFB88C, #DE6262);*/ /* Chrome 10-25, Safari 5.1-6 */
@@ -25,38 +33,72 @@
         min-width: 100%;
     }
 </style>
-<div class="sayfaArkaPlan pl-5 pt-5 mr-0">
+<div class="sayfaArkaPlan pl-2 pt-5 container">
     <div class="row">
-        <div class="col-md-6 mr-0">
-            @foreach (var item in Model)
-            {
-                <p>
-                    <h1 style="color: white;" class="ml-2"><strong>@Html.DisplayFor(modelItem => item.Title)</strong></h1> <br />
-                    <h2 style="color: white;" class="ml-5 font-italic">@Html.DisplayFor(modelItem => item.Description)</h2> <br />
-                </p>
-                <h3><b>@Html.DisplayNameFor(model => model.DiyetSabah)</b>&emsp;<i class="fa fa-odnoklassniki"></i></h3>
-                <p style="font-size:20px;">  @Html.DisplayFor(modelItem => item.DiyetSabah)</p>
-                <br />
-                <h3 title="Ara Öğün"><b>@Html.DisplayNameFor(model => model.DiyetAraBir)</b>&emsp;<i class="fa fa-angellist"></i></h3>
-                <p style="font-size:20px;">@Html.DisplayFor(modelItem => item.DiyetAraBir) </p>
-                <br />
-                <h3><b>@Html.DisplayNameFor(model => model.DiyetOglen)</b>&emsp;<i class="fa fa-reddit-alien"></i></h3>
-                <p style="font-size:20px;">@Html.DisplayFor(modelItem => item.DiyetOglen)</p>
-                <br />
-                <h3><b>@Html.DisplayNameFor(model => model.DiyetAraIki)</b>&emsp;<i class="fa fa-angellist"></i></h3>
-                <p style="font-size:20px;">@Html.DisplayFor(modelItem => item.DiyetAraIki)</p>
-                <br />
-                <h3><b>@Html.DisplayNameFor(model => model.DiyetAksam)</b>&emsp;<i class="fa fa-github-alt"></i></h3>
-                <p style="font-size:20px;">@Html.DisplayFor(modelItem => item.DiyetAksam)</p>
-                <br />
-                <h3><b>@Html.DisplayNameFor(model => model.DiyetGece)</b>&emsp;<i class="fa fa-linux"></i></h3>
-                <p style="font-size:20px;">@Html.DisplayFor(modelItem => item.DiyetGece)</p>
-            }
-        </div>
-        <div class="col-md-1"> </div>
-        <div class="col-md-5 text-center">
-            <img src="~/images/diyetim.jpg" alt="" class="resim" />
-        </div>
+        @if (Request.Browser.IsMobileDevice)
+        {<div class="col-12">
+                <img src="https://lh3.googleusercontent.com/jYrONWYgKqStxkt1W3X-j-WsAzrouvsghd41uZIekFyWbUHm1xN9pme4QbDPpu6NAGRZjZRaJwUIoTsrQ53vD2v2d6h9Sx2dYJ18d5TXba6AT0GA2K_uJ6gxjsOIvv0jTuS28rfBCbiVBlWVWPqvZFADrWReT_tv2g8xha--O0F_lg2bo1SuxrhXsJYYmqBMcaLEUZIcHihF2uuUJyWtq2_TQCOdZIVTPzkfGknwvchdmrWQ2CD906_-cDv-yJdiztZ4iSdgJIFjGZnnkc8VQcMTFAtXKqiW-JEE6J1FNE4ViOBE-oSLNuGqK5LbOnjkISGSZgNQO7dutmCSH9CHNlJkL6V5PA488FS9hyxIdt2Kg8QqvtXLOm4-QzdyCxBG-PmWBnt61AUXiHSGaQzf6rdtHqwf-XLWv9zscYNBQIAOOwcTWUpWpKF0-_24qAKAMprUP37SXvauaMzjEqRyUEilI2EFMjyNYPeraqMbcw_e-4vI7-w1-3Xqxn2OzhnIoZyJ1IfHrHigcx-dA5uaG2Nd3MDrgz0beKRFCO_eTpugjK0sG29hYmRdlyjHstew6c2V0DcRzTd2psZYvSIo7byTK2-o7YiBCIWYWYOMLDb0MG5q25vHq0yC544aQp3hxmiAnijazEH2oPVwDCvqrLr5fyvYGffrZJR5pojfTeolbJKf79rQUzR1Zuw_Aw=w751-h938-no?authuser=0" alt="" class="resimMobile" />
+            </div>
+            <div class="col-12">
+                @foreach (var item in Model)
+                {
+                    <p>
+                        <h1 style="color: white;" class="ml-2"><strong>@Html.DisplayFor(modelItem => item.Title)</strong></h1> <br />
+                        <h2 style="color: white;" class="ml-5 font-italic">@Html.DisplayFor(modelItem => item.Description)</h2> <br />
+                    </p>
+                    <h3><b>@Html.DisplayNameFor(model => model.DiyetSabah)</b>&emsp;<i class="fa fa-odnoklassniki"></i></h3>
+                    <p style="font-size:20px;">  @Html.DisplayFor(modelItem => item.DiyetSabah)</p>
+                    <br />
+                    <h3 title="Ara Öğün"><b>@Html.DisplayNameFor(model => model.DiyetAraBir)</b>&emsp;<i class="fa fa-angellist"></i></h3>
+                    <p style="font-size:20px;">@Html.DisplayFor(modelItem => item.DiyetAraBir) </p>
+                    <br />
+                    <h3><b>@Html.DisplayNameFor(model => model.DiyetOglen)</b>&emsp;<i class="fa fa-reddit-alien"></i></h3>
+                    <p style="font-size:20px;">@Html.DisplayFor(modelItem => item.DiyetOglen)</p>
+                    <br />
+                    <h3><b>@Html.DisplayNameFor(model => model.DiyetAraIki)</b>&emsp;<i class="fa fa-angellist"></i></h3>
+                    <p style="font-size:20px;">@Html.DisplayFor(modelItem => item.DiyetAraIki)</p>
+                    <br />
+                    <h3><b>@Html.DisplayNameFor(model => model.DiyetAksam)</b>&emsp;<i class="fa fa-github-alt"></i></h3>
+                    <p style="font-size:20px;">@Html.DisplayFor(modelItem => item.DiyetAksam)</p>
+                    <br />
+                    <h3><b>@Html.DisplayNameFor(model => model.DiyetGece)</b>&emsp;<i class="fa fa-linux"></i></h3>
+                    <p style="font-size:20px;">@Html.DisplayFor(modelItem => item.DiyetGece)</p>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="col-5">
+                <img src="https://lh3.googleusercontent.com/jYrONWYgKqStxkt1W3X-j-WsAzrouvsghd41uZIekFyWbUHm1xN9pme4QbDPpu6NAGRZjZRaJwUIoTsrQ53vD2v2d6h9Sx2dYJ18d5TXba6AT0GA2K_uJ6gxjsOIvv0jTuS28rfBCbiVBlWVWPqvZFADrWReT_tv2g8xha--O0F_lg2bo1SuxrhXsJYYmqBMcaLEUZIcHihF2uuUJyWtq2_TQCOdZIVTPzkfGknwvchdmrWQ2CD906_-cDv-yJdiztZ4iSdgJIFjGZnnkc8VQcMTFAtXKqiW-JEE6J1FNE4ViOBE-oSLNuGqK5LbOnjkISGSZgNQO7dutmCSH9CHNlJkL6V5PA488FS9hyxIdt2Kg8QqvtXLOm4-QzdyCxBG-PmWBnt61AUXiHSGaQzf6rdtHqwf-XLWv9zscYNBQIAOOwcTWUpWpKF0-_24qAKAMprUP37SXvauaMzjEqRyUEilI2EFMjyNYPeraqMbcw_e-4vI7-w1-3Xqxn2OzhnIoZyJ1IfHrHigcx-dA5uaG2Nd3MDrgz0beKRFCO_eTpugjK0sG29hYmRdlyjHstew6c2V0DcRzTd2psZYvSIo7byTK2-o7YiBCIWYWYOMLDb0MG5q25vHq0yC544aQp3hxmiAnijazEH2oPVwDCvqrLr5fyvYGffrZJR5pojfTeolbJKf79rQUzR1Zuw_Aw=w751-h938-no?authuser=0" alt="" class="resim" />
+            </div>
+            <div class="col-2"></div>
+            <div class="col-5">
+                @foreach (var item in Model)
+                {
+                    <p>
+                        <h1 style="color: white;" class="ml-2"><strong>@Html.DisplayFor(modelItem => item.Title)</strong></h1> <br />
+                        <h2 style="color: white;" class="ml-5 font-italic">@Html.DisplayFor(modelItem => item.Description)</h2> <br />
+                    </p>
+                    <h3><b>@Html.DisplayNameFor(model => model.DiyetSabah)</b>&emsp;<i class="fa fa-odnoklassniki"></i></h3>
+                    <p style="font-size:20px;">  @Html.DisplayFor(modelItem => item.DiyetSabah)</p>
+                    <br />
+                    <h3 title="Ara Öğün"><b>@Html.DisplayNameFor(model => model.DiyetAraBir)</b>&emsp;<i class="fa fa-angellist"></i></h3>
+                    <p style="font-size:20px;">@Html.DisplayFor(modelItem => item.DiyetAraBir) </p>
+                    <br />
+                    <h3><b>@Html.DisplayNameFor(model => model.DiyetOglen)</b>&emsp;<i class="fa fa-reddit-alien"></i></h3>
+                    <p style="font-size:20px;">@Html.DisplayFor(modelItem => item.DiyetOglen)</p>
+                    <br />
+                    <h3><b>@Html.DisplayNameFor(model => model.DiyetAraIki)</b>&emsp;<i class="fa fa-angellist"></i></h3>
+                    <p style="font-size:20px;">@Html.DisplayFor(modelItem => item.DiyetAraIki)</p>
+                    <br />
+                    <h3><b>@Html.DisplayNameFor(model => model.DiyetAksam)</b>&emsp;<i class="fa fa-github-alt"></i></h3>
+                    <p style="font-size:20px;">@Html.DisplayFor(modelItem => item.DiyetAksam)</p>
+                    <br />
+                    <h3><b>@Html.DisplayNameFor(model => model.DiyetGece)</b>&emsp;<i class="fa fa-linux"></i></h3>
+                    <p style="font-size:20px;">@Html.DisplayFor(modelItem => item.DiyetGece)</p>
+                }
+            </div>
+        }
     </div>
     <br />
     <div class="col-md-12 text-left">

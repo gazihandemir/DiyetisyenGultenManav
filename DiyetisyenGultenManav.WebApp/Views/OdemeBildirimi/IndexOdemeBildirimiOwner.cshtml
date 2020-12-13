@@ -18,14 +18,26 @@
     }
 </style>
 <div class="sayfaArkaPlan mr-0 ">
-    <div class=" row pl-5 pt-3 mr-0">
-        <div class="col-md-12">
-            <p class="display-4 text-center font-weight-bold">
-                @ViewBag.Title
-            </p>
+    @if (Request.Browser.IsMobileDevice)
+    {
+        <div class="row pl-5 pt-3 mr-0">
+            <div class="col-md-12">
+                <p class="text-center font-weight-bold">
+                    @ViewBag.Title
+                </p>
+            </div>
         </div>
-    </div>
-
+    }
+    else
+    {
+        <div class="row pl-5 pt-3 mr-0">
+            <div class="col-md-12">
+                <p class="display-4 text-center font-weight-bold">
+                    @ViewBag.Title
+                </p>
+            </div>
+        </div>
+    }
     <div class="row pl-3 mr-0  vertical-strech">
         <div class="col-md-12">
             <p>
@@ -34,20 +46,12 @@
             <table class="table table-hover table-striped table-sm small">
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.IsimSoyisim)
-                    </th>
-                    <th>
                         @Html.DisplayNameFor(model => model.BankaIsmi)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.YatirilanMiktar)
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.TelefonNo)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.EkAciklamalar)
-                    </th>
+
                     <th>
                         @Html.DisplayNameFor(model => model.IsNotification)
                     </th>
@@ -60,20 +64,12 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.IsimSoyisim)
-                        </td>
-                        <td>
                             @Html.DisplayFor(modelItem => item.BankaIsmi)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.YatirilanMiktar)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.TelefonNo)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.EkAciklamalar)
-                        </td>
+
                         <td class="center-block">
                             @if (item.IsNotification)
                             {
@@ -94,7 +90,7 @@
                                 <i class="fa fa-times text-danger"></i>
                             }
                         </td>
-                       
+
                     </tr>
                 }
 
@@ -111,11 +107,8 @@
                     <div class="card card-body text-left sayfaArkaPlan pl-4" style="min-height:100%;">
                         <ul>
                             <b>Ödeme Bildirimleri Sayfasında (Kullanıcı)</b>
-                            <li>İsim Soyisim</li>
                             <li>Banka İsmi</li>
                             <li>Yatırılan Miktar</li>
-                            <li>Cep Telefonu</li>
-                            <li>Ek Açıklamalar</li>
                             <li>Ödemenin Başarı ile Ulaşabildiğini (Bildirildi)</li>
                             <li>Diyetisyen Tarafından Onaylandığını (Onaylandı)</li>
                             görelibiriz.
@@ -140,10 +133,6 @@
                                     Diyetisyen işlemi Onaylıyor ise Onaylandı kısmını <i class="fa fa-check text-success"></i> yapar.
                                 </li>
                             </ol>
-                        </p>
-                        <p>
-                            Ödeme Bildirimi Oluşturmak İçin Yeni Ödeme Bildirimi  Ekle Butonuna Basınız. <br />
-                            Ödeme Bildirimi Düzenlemek İçin Sarı Renkli Düzenleme İkonuna Basınız. <br />
                         </p>
                         <hr />
                         <p>

@@ -17,121 +17,134 @@
             min-width: 100%;
         }
     </style>
-<div class="sayfaArkaPlan pl-5 pt-3 mr-0 ">
-    <div class="row pl-5 pt-3 mr-0">
-        <div class="col-md-12">
-            <p class="display-4 text-center font-weight-bold">
-                @ViewBag.Title
-            </p>
-        </div>
-    </div>
-    <div class="row pl-3 mr-0">
-        <div class="col-md-10">
-            <div>
-                <dl class="row">
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.IsimSoyisim)
-                    </dt>
-
-                    <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.IsimSoyisim)
-                    </dd>
-
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.BankaIsmi)
-                    </dt>
-
-                    <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.BankaIsmi)
-                    </dd>
-
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.YatirilanMiktar)
-                    </dt>
-
-                    <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.YatirilanMiktar)
-                    </dd>
-
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.TelefonNo)
-                    </dt>
-
-                    <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.TelefonNo)
-                    </dd>
-
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.EkAciklamalar)
-                    </dt>
-
-                    <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.EkAciklamalar)
-                    </dd>
-
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.IsNotification)
-                    </dt>
-
-                    <dd class="col-md-9">
-                        @if (Model.IsNotification)
-                        {
-                            <i class="fa fa-check text-success"></i>
-                        }
-                        else
-                        {
-                            <i class="fa fa-times text-danger"></i>
-                        }
-                        @*  @Html.DisplayFor(model => model.IsNotification)*@
-                    </dd>
-
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.IsPay)
-                    </dt>
-
-                    <dd class="col-md-9">
-                        @if (Model.IsPay)
-                        {
-                            <i class="fa fa-check text-success"></i>
-                        }
-                        else
-                        {
-                            <i class="fa fa-times text-danger"></i>
-                        }
-                        @*  @Html.DisplayFor(model => model.IsPay)*@
-                    </dd>
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.IsOkey)
-                    </dt>
-
-                    <dd class="col-md-9">
-                        @if (Model.IsOkey)
-                        {
-                            <i class="fa fa-check text-success"></i>
-                        }
-                        else
-                        {
-                            <i class="fa fa-times text-danger"></i>
-                        }
-                        @*  @Html.DisplayFor(model => model.IsOkey)*@
-
-                </dl>
-
+    <div class="sayfaArkaPlan pl-5 pt-3 mr-0 ">
+        @if (Request.Browser.IsMobileDevice)
+        {
+            <div class="row pl-5 pt-3 mr-0">
+                <div class="col-md-12">
+                    <p class="text-center font-weight-bold">
+                        @ViewBag.Title
+                    </p>
+                </div>
             </div>
-        </div>
-        <div class="col-md-10 pl-3 text-left">
-            <h3><b>Silmek istediğinize Emin misiniz ? </b></h3>
-            @using (Html.BeginForm())
-            {
-                @Html.AntiForgeryToken()
+        }
+        else
+        {
+            <div class="row pl-5 pt-3 mr-0">
+                <div class="col-md-12">
+                    <p class="display-4 text-center font-weight-bold">
+                        @ViewBag.Title
+                    </p>
+                </div>
+            </div>
+        }
+        <div class="row pl-3 mr-0">
+            <div class="col-md-10">
+                <div>
+                    <dl class="row">
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.IsimSoyisim)
+                        </dt>
 
-                <div class="form-actions no-color">
-                    @Bootstrap.LinkButton("/OdemeBildirimi/Index", "secondary", string.Empty,
-         string.Empty, "arrow-left", "Geri Dön!")
-                    @Bootstrap.Button("danger", string.Empty, "submit", "trash", "Sil")
+                        <dd class="col-md-9">
+                            @Html.DisplayFor(model => model.IsimSoyisim)
+                        </dd>
+
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.BankaIsmi)
+                        </dt>
+
+                        <dd class="col-md-9">
+                            @Html.DisplayFor(model => model.BankaIsmi)
+                        </dd>
+
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.YatirilanMiktar)
+                        </dt>
+
+                        <dd class="col-md-9">
+                            @Html.DisplayFor(model => model.YatirilanMiktar)
+                        </dd>
+
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.TelefonNo)
+                        </dt>
+
+                        <dd class="col-md-9">
+                            @Html.DisplayFor(model => model.TelefonNo)
+                        </dd>
+
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.EkAciklamalar)
+                        </dt>
+
+                        <dd class="col-md-9">
+                            @Html.DisplayFor(model => model.EkAciklamalar)
+                        </dd>
+
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.IsNotification)
+                        </dt>
+
+                        <dd class="col-md-9">
+                            @if (Model.IsNotification)
+                            {
+                                <i class="fa fa-check text-success"></i>
+                            }
+                            else
+                            {
+                                <i class="fa fa-times text-danger"></i>
+                            }
+                            @*  @Html.DisplayFor(model => model.IsNotification)*@
+                        </dd>
+
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.IsPay)
+                        </dt>
+
+                        <dd class="col-md-9">
+                            @if (Model.IsPay)
+                            {
+                                <i class="fa fa-check text-success"></i>
+                            }
+                            else
+                            {
+                                <i class="fa fa-times text-danger"></i>
+                            }
+                            @*  @Html.DisplayFor(model => model.IsPay)*@
+                        </dd>
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.IsOkey)
+                        </dt>
+
+                        <dd class="col-md-9">
+                            @if (Model.IsOkey)
+                            {
+                                <i class="fa fa-check text-success"></i>
+                            }
+                            else
+                            {
+                                <i class="fa fa-times text-danger"></i>
+                            }
+                            @*  @Html.DisplayFor(model => model.IsOkey)*@
+
+                    </dl>
 
                 </div>
-            }
+            </div>
+            <div class="col-md-10 pl-3 text-left">
+                <h3><b>Silmek istediğinize Emin misiniz ? </b></h3>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        @Bootstrap.LinkButton("/OdemeBildirimi/Index", "secondary", string.Empty,
+             string.Empty, "arrow-left", "Geri Dön!")
+                        @Bootstrap.Button("danger", string.Empty, "submit", "trash", "Sil")
+
+                    </div>
+                }
+            </div>
         </div>
     </div>
-</div>

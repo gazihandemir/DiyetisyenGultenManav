@@ -10,16 +10,19 @@
 <style>
     .resim {
         object-fit: fill;
-        max-height: 750px;
+        max-height: 1000px;
         width: 100%;
+        max-height: 500px;
+        max-width: 1000px;
         height: 100%;
-        min-width: 750px;
     }
 
     .resimMobile {
         object-fit: fill;
-        width: 250px;
-        height: 250px;
+        width: 100%;
+        max-height: 250px;
+        max-width: 500px;
+        height: 100%;
     }
 
     .sayfaArkaPlan {
@@ -35,115 +38,141 @@
         min-width: 100%;
     }
 </style>
+<div class="sayfaArkaPlan pl-2 pt-5 container">
+    <div class="row">
+        @*  <div class="col-0">
+                @Html.Partial("_PartialKategoriler")
+            </div>*@
+        <div class="col-12">
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-11">
+                    <h1 class="">@Model.BlogYazısı.Title</h1> <br />
 
-<div class="row sayfaArkaPlan m-0">
-    <div class="col-md-2">
-        @*@Html.Partial("_PartialKategoriler")*@
-    </div>
-    <div class="col-md-10">
-        <!-- Page Content -->
-        <!-- Post Content Column -->
-        <div class="col-md-10">
-
-            <!-- Title -->
-            <h1 class="mt-4">@Model.BlogYazısı.Title</h1> <br />
-
-            <p class="lead">
-                <!-- Author -->
-                <i class="fa fa-user mr-2"></i>@Model.BlogYazısı.Owner.Username &emsp;
-                <!-- Date/Time -->
-                <i class="fa fa-clock-o mr-2"></i>@Model.BlogYazısı.ModifiedOn.ToString("dd.MM.yy HH:mm")
-            </p>
-            <hr>
-            <!-- Preview Image -->
-            @if (Request.Browser.IsMobileDevice)
-            {
-                <img class="img-fluid rounded resimMobile" src="~/ImageBlog/@Model.BlogYazısı.Picture" alt="">
-
-            }
-            else
-            {
-                <img class="img-fluid rounded resim" src="~/ImageBlog/@Model.BlogYazısı.Picture" alt="">
-            }
-
-            <hr>
-            <!-- Post Content -->
-            <p class="lead">@Model.BlogYazısı.ParagrafBir</p>
-
-            <p>@Model.BlogYazısı.ParagrafIki</p>
-
-            <p>@Model.BlogYazısı.ParagrafUc</p>
-
-            <blockquote class="blockquote">
-                <p class="mb-0">@Model.BlogYazısı.ParagrafDort</p>
-
-                <footer class="blockquote-footer">
-                    @Model.BlogYazısı.ParagrafBes
-                </footer>
-            </blockquote>
-            <p>@Model.BlogYazısı.ParagrafAlti</p>
-
-            <p>@Model.BlogYazısı.ParagrafYedi</p>
-
-            <p>@Model.BlogYazısı.ParagrafSekiz</p>
-            <p></p>
-            <hr>
-            @if (kullanıcı != null)
-            {
-                using (Html.BeginForm("BlogYazisiDetails", "Home", FormMethod.Post))
-                {
-                    @Html.AntiForgeryToken()
-                    <!-- Comments Form -->
-                    <div class="card my-4" style="        background: rgba(215,189,226,0.8);">
-                        <h5 class="card-header">Yorum Bırak:</h5>
-                        <div class="card-body">
-                            <form>
-                                <div class="form-group">
-                                    @Html.TextBox("yorumtxt", null, new { @class = "form-control col-md-12  text-left", placeholder = "Yorumunuzu yazınız", size = "50" })
-                                </div>
-                                <div class="col-md-12 text-right">
-                                    <button type="submit" class="btn btn-primary">Yorum Yap</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                }
-            }
-            else
-            {
-                <div class="card my-4" style="background: rgba(215,189,226,0.8);">
-                    <h5 class="card-header">Yorum Bırak:</h5>
-                    <div class="card-body">
-                        <form>
-                            <div class="form-group">
-                                <text><h3>Yorum Yapmak İçin Lütfen Giriş Yapınız</h3></text>
-                            </div>
-                            <div class="col-md-12 text-right">
-                                <button type="submit" class="btn btn-primary" disabled>Yorum Yap</button>
-                            </div>
-                        </form>
-                    </div>
+                    <p class="lead">
+                        <!-- Author -->
+                        <i class="fa fa-user mr-2"></i>@Model.BlogYazısı.Owner.Username &emsp; <br />
+                        <!-- Date/Time -->
+                        <i class="fa fa-clock-o mr-2"></i>@Model.BlogYazısı.ModifiedOn.ToString("dd.MM.yy HH:mm")
+                    </p>
+                    <hr>
+                    <!-- Title -->
                 </div>
-            }
-
-            <hr />
-            @foreach (var yorumlar in Model.Yorum)
-            {<!-- Single Comment -->
-                <div class="media mb-4">
-                    <img class="d-flex mr-3 rounded-circle" src="~/images/user.png" width="96" height="96">
-                    <div class="media-body">
-                        <h5 class="mt-0">@yorumlar.Owner.Username</h5>
-                        <p>@yorumlar.Text</p>
-                    </div>
-                </div>
-            }
-
-            <hr />
-
+            </div>
 
         </div>
+        <!-- Preview Image -->
+        @if (Request.Browser.IsMobileDevice)
+        {
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-11">
+                        <img class="img-fluid rounded resimMobile" src="~/ImageBlog/@Model.BlogYazısı.Picture" alt="">
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-11">
+                        <img class="img-fluid rounded resim" src="~/ImageBlog/@Model.BlogYazısı.Picture" alt="">
+                        @*<img class="img-fluid rounded resim" src="~/images/carouselBir.png" alt="">*@
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="col-10 mt-3">
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-9">
+                    <!-- Post Content -->
+                    <p class="lead">@Model.BlogYazısı.ParagrafBir</p>
 
+                    <p>@Model.BlogYazısı.ParagrafIki</p>
 
+                    <p>@Model.BlogYazısı.ParagrafUc</p>
+
+                    <blockquote class="blockquote">
+                        <p class="mb-0">@Model.BlogYazısı.ParagrafDort</p>
+
+                        <footer class="blockquote-footer">
+                            @Model.BlogYazısı.ParagrafBes
+                        </footer>
+                    </blockquote>
+                    <p>@Model.BlogYazısı.ParagrafAlti</p>
+
+                    <p>@Model.BlogYazısı.ParagrafYedi</p>
+
+                    <p>@Model.BlogYazısı.ParagrafSekiz</p>
+                    <p></p>
+                    <hr>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-10">
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-11">
+                    @if (kullanıcı != null)
+                    {
+                        using (Html.BeginForm("BlogYazisiDetails", "Home", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <!-- Comments Form -->
+                            <div class="card my-4" style="        background: rgba(215,189,226,0.8);">
+                                <h5 class="card-header">Yorum Bırak:</h5>
+                                <div class="card-body">
+                                    <form>
+                                        <div class="form-group">
+                                            @Html.TextBox("yorumtxt", null, new { @class = "form-control col-md-12  text-left", placeholder = "Yorumunuzu yazınız", size = "50" })
+                                        </div>
+                                        <div class="col-md-12 text-right">
+                                            <button type="submit" class="btn btn-primary">Yorum Yap</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="card" style="background: rgba(215,189,226,0.8);">
+                            <h5 class="card-header">Yorum Bırak:</h5>
+                            <div class="card-body">
+                                <form>
+                                    <div class="form-group">
+                                        <text><h3>Yorum Yapmak İçin Lütfen Giriş Yapınız</h3></text>
+                                    </div>
+                                    <div class="col-md-12 text-right">
+                                        <button type="submit" class="btn btn-primary" disabled>Yorum Yap</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    }
+                    <hr />
+                    @foreach (var yorumlar in Model.Yorum)
+                    {<!-- Single Comment -->
+                        <div class="media mb-4">
+                            <img class="d-flex mr-3 rounded-circle" src="~/images/user.png" width="96" height="96">
+                            <div class="media-body">
+                                <h5 class="mt-0">@yorumlar.Owner.Username</h5>
+                                <p>@yorumlar.Text</p>
+                            </div>
+                        </div>
+                    }
+                    <hr />
+                </div>
+            </div>
+
+        </div>
 
 
     </div>

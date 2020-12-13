@@ -17,109 +17,122 @@
             min-width: 100%;
         }
     </style>
-<div class="sayfaArkaPlan pl-5 pt-3 mr-0 ">
-    <div class="row pl-5 pt-3 mr-0">
-        <div class="col-md-12">
-            <p class="display-4 text-center font-weight-bold">
-                @ViewBag.Title
-            </p>
-        </div>
-    </div>
-    <div class="row pl-3 mr-0">
-        <div class="col-md-10">
-            <div>
-                <dl class="row">
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.ArkaPlanRengi)
-                    </dt>
+    <div class="sayfaArkaPlan pl-5 pt-3 mr-0 ">
+        @if (Request.Browser.IsMobileDevice)
+        {
+            <div class="row pl-5 pt-3 mr-0">
+                <div class="col-md-12">
+                    <p class="text-center font-weight-bold">
+                        @ViewBag.Title
+                    </p>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row pl-5 pt-3 mr-0">
+                <div class="col-md-12">
+                    <p class="display-4 text-center font-weight-bold">
+                        @ViewBag.Title
+                    </p>
+                </div>
+            </div>
+        }
+        <div class="row pl-3 mr-0">
+            <div class="col-md-10">
+                <div>
+                    <dl class="row">
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.ArkaPlanRengi)
+                        </dt>
 
-                    <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.ArkaPlanRengi)
-                    </dd>
+                        <dd class="col-md-9">
+                            @Html.DisplayFor(model => model.ArkaPlanRengi)
+                        </dd>
 
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.Ikon)
-                    </dt>
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.Ikon)
+                        </dt>
 
-                    <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.Ikon)
-                    </dd>
+                        <dd class="col-md-9">
+                            @Html.DisplayFor(model => model.Ikon)
+                        </dd>
 
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.IkonRengi)
-                    </dt>
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.IkonRengi)
+                        </dt>
 
-                    <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.IkonRengi)
-                    </dd>
+                        <dd class="col-md-9">
+                            @Html.DisplayFor(model => model.IkonRengi)
+                        </dd>
 
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.IkonBoyutu)
-                    </dt>
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.IkonBoyutu)
+                        </dt>
 
-                    <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.IkonBoyutu)
-                    </dd>
+                        <dd class="col-md-9">
+                            @Html.DisplayFor(model => model.IkonBoyutu)
+                        </dd>
 
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.Sayi)
-                    </dt>
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.Sayi)
+                        </dt>
 
-                    <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.Sayi)
-                    </dd>
+                        <dd class="col-md-9">
+                            @Html.DisplayFor(model => model.Sayi)
+                        </dd>
 
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.SayiRengi)
-                    </dt>
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.SayiRengi)
+                        </dt>
 
-                    <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.SayiRengi)
-                    </dd>
+                        <dd class="col-md-9">
+                            @Html.DisplayFor(model => model.SayiRengi)
+                        </dd>
 
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.SayiBoyutu)
-                    </dt>
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.SayiBoyutu)
+                        </dt>
 
-                    <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.SayiBoyutu)
-                    </dd>
+                        <dd class="col-md-9">
+                            @Html.DisplayFor(model => model.SayiBoyutu)
+                        </dd>
 
-                    <dt class="col-md-3">
+                        <dt class="col-md-3">
 
-                        @Html.DisplayNameFor(model => model.Yazi)
-                    </dt>
+                            @Html.DisplayNameFor(model => model.Yazi)
+                        </dt>
 
-                    <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.Yazi)
-                    </dd>
+                        <dd class="col-md-9">
+                            @Html.DisplayFor(model => model.Yazi)
+                        </dd>
 
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.YaziRengi)
-                    </dt>
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.YaziRengi)
+                        </dt>
 
-                    <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.YaziRengi)
-                    </dd>
+                        <dd class="col-md-9">
+                            @Html.DisplayFor(model => model.YaziRengi)
+                        </dd>
 
-                    <dt class="col-md-3">
-                        @Html.DisplayNameFor(model => model.YaziBoyutu)
-                    </dt>
+                        <dt class="col-md-3">
+                            @Html.DisplayNameFor(model => model.YaziBoyutu)
+                        </dt>
 
-                    <dd class="col-md-9">
-                        @Html.DisplayFor(model => model.YaziBoyutu)
-                    </dd>
-                </dl>
+                        <dd class="col-md-9">
+                            @Html.DisplayFor(model => model.YaziBoyutu)
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="col-md-10 pl-3">
+                <p>
+                    @Bootstrap.LinkButton("/Kahve/Index", "secondary", string.Empty,
+                   string.Empty, "arrow-left", "Geri Dön!")
+                    @Bootstrap.LinkButton("/Kahve/Edit/" + Model.Id, "warning", string.Empty,
+                   string.Empty, "edit", "Düzenle")
+
+                </p>
             </div>
         </div>
-        <div class="col-md-10 pl-3">
-            <p>
-                @Bootstrap.LinkButton("/Kahve/Index", "secondary", string.Empty,
-               string.Empty, "arrow-left", "Geri Dön!")
-                @Bootstrap.LinkButton("/Kahve/Edit/" + Model.Id, "warning", string.Empty,
-               string.Empty, "edit", "Düzenle")
-
-            </p>
-        </div>
     </div>
-</div>
