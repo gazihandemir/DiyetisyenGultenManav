@@ -14,7 +14,7 @@ using System.Web.Mvc;
 
 namespace DiyetisyenGultenManav.WebApp.Controllers
 {
-    [Exc]
+    //[Exc]
 
     public class HomeController : Controller
     {
